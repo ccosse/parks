@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<script>
+	var d		= document.createElement('div');
+	d.innerHTML	= decode("{{ pois }}");
+	
+	document.body.appendChild(d);
+</script>
+
+<form method='POST' target='/'>
+	{% csrf_token %}
+	<input name='lat'></input>
+	<button type='submit'>Submit</button>
+</form>
+
+{% endblock %}
