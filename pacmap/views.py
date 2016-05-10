@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django import forms
+
 import logging, xmlrpclib, json, time, os, string
 from pacmap.models import *
 
@@ -53,14 +55,44 @@ def pacvideo(request):
 		context_instance = RequestContext(request)
 	)
 
+
+class UploadFileForm(forms.Form):
+	desc= forms.CharField(max_length=60)
+	lat	= forms.FloatField()
+	lon	= forms.FloatField()
+	tags= forms.CharField(max_length=60)
+	file = forms.ImageField()
+
+
+def handle_uploaded_file(f):
+	oufname=f.name
+	with open('/var/www/dev/static/pacmap/upload/images/%s'%oufname, 'wb+') as destination:
+		for chunk in f.chunks():
+			destination.write(chunk)
+
+	
 def pacphotos(request):
-	logging.debug('pacmap.pacphotos')
+	if request.method=='POST':
+		form = UploadFileForm(request.POST, request.FILES)
+		if form.is_valid():
+			handle_uploaded_file(request.FILES['file'])
+			x=GalleryImage()
+			x.filename=request.FILES['file'].name
+			x.desc=request.POST.get('desc')
+			x.tabs=request.POST.get('tags')
+			x.lat	= request.POST.get('lat')
+			x.lon	= request.POST.get('lon')
+			x.save()
+			
+	images=os.listdir('/var/www/dev/static/pacmap/upload/images/')
 	return render_to_response(
 		'pacphotos.html',{
-			'title':'Protected Areas Commission, Guyana'
+			'title':'Protected Areas Commission, Guyana',
+			'images':images,
+			'form':UploadFileForm()
 		},
 		context_instance = RequestContext(request)
-	)	
+	)
 
 def contact(request):
 	logging.debug('pacmap.contact')

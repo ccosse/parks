@@ -3,11 +3,59 @@
 function init(){
 {% endblock %}
 {% block content %}
-<div class="container">	
+
 <div class="row">
-	<div class="jumbotron">
-	  <div>Photo Gallery Goes Here</div>
-	</div>
+<form enctype="multipart/form-data" method="POST" action="/pacmap/pacphotos/">
+{% csrf_token %}
+{{ form }}
+<button type="submit">Submit</button>
+</form>
 </div>
+
+<div class="row">
+	
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    	<a href="#" class="thumbnail">
+    	  <img src="/static/pacmap/upload/images/kaieteur01.jpg" alt="Kaieteur Falls, Guyana">
+    	</a>
+    </div>
+    
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    	<a href="#" class="thumbnail">
+    	  <img src="/static/pacmap/upload/images/kaieteur04.jpg" alt="Kaieteur Falls, Guyana">
+    	</a>
+    </div>
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    	<a href="#" class="thumbnail">
+    	  <img src="/static/pacmap/upload/images/kaieteur07.jpg" alt="Kaieteur Falls, Guyana">
+    	</a>
+    </div>
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    	<a href="#" class="thumbnail">
+    	  <img src="/static/pacmap/upload/images/kaieteur01.jpg" alt="Kaieteur Falls, Guyana">
+    	</a>
+    </div>
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    	<a href="#" class="thumbnail">
+    	  <img src="/static/pacmap/upload/images/kaieteur04.jpg" alt="Kaieteur Falls, Guyana">
+    	</a>
+    </div>
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    	<a href="#" class="thumbnail">
+    	  <img src="/static/pacmap/upload/images/kaieteur07.jpg" alt="Kaieteur Falls, Guyana">
+    	</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+	{% for image in images %}
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    	<a href="#" class="thumbnail">
+    	  <img src="/static/pacmap/upload/images/{{image}}" alt="Kaieteur Falls, Guyana">
+    	</a>
+    </div>	
+	{% endfor %}
 </div>
 {% endblock %}
