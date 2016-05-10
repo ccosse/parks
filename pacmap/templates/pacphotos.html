@@ -5,57 +5,33 @@ function init(){
 {% block content %}
 
 <div class="row">
-<form enctype="multipart/form-data" method="POST" action="/pacmap/pacphotos/">
-{% csrf_token %}
-{{ form }}
-<button type="submit">Submit</button>
-</form>
+	<form enctype="multipart/form-data" method="POST" action="/pacmap/pacphotos/">
+		{% csrf_token %}
+		<table>
+		{{ form }}
+		<table>
+		<button type="submit">Submit</button>
+	</form>
 </div>
 
 <div class="row">
-	
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    	<a href="#" class="thumbnail">
-    	  <img src="/static/pacmap/upload/images/kaieteur01.jpg" alt="Kaieteur Falls, Guyana">
+	{% for image in galleryobjects %}
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumbnail">
+    	<a href="/static/pacmap/upload/images/{{image.filename}}">
+    	  <img src="/static/pacmap/upload/images/{{image.filename}}" alt="">
     	</a>
-    </div>
-    
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    	<a href="#" class="thumbnail">
-    	  <img src="/static/pacmap/upload/images/kaieteur04.jpg" alt="Kaieteur Falls, Guyana">
-    	</a>
-    </div>
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    	<a href="#" class="thumbnail">
-    	  <img src="/static/pacmap/upload/images/kaieteur07.jpg" alt="Kaieteur Falls, Guyana">
-    	</a>
-    </div>
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    	<a href="#" class="thumbnail">
-    	  <img src="/static/pacmap/upload/images/kaieteur01.jpg" alt="Kaieteur Falls, Guyana">
-    	</a>
-    </div>
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    	<a href="#" class="thumbnail">
-    	  <img src="/static/pacmap/upload/images/kaieteur04.jpg" alt="Kaieteur Falls, Guyana">
-    	</a>
-    </div>
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    	<a href="#" class="thumbnail">
-    	  <img src="/static/pacmap/upload/images/kaieteur07.jpg" alt="Kaieteur Falls, Guyana">
-    	</a>
-    </div>
-
-  </div>
-</div>
-
-<div class="row">
-	{% for image in images %}
-	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    	<a href="#" class="thumbnail">
-    	  <img src="/static/pacmap/upload/images/{{image}}" alt="Kaieteur Falls, Guyana">
-    	</a>
+    	<div class="caption">
+			<h3>{{ image.filename }}</h3>
+			<p>{{ image.desc }}</p>
+			<p>{{ image.lat }}, {{ image.lon }}</p>
+			<p>{{ image.tags }}</p>
+			<p>
+				<a href="#" class="btn btn-primary" role="button">Download</a> 
+				<a href="#" class="btn btn-default" role="button">Share</a>
+			</p>
+		</div>
     </div>	
 	{% endfor %}
 </div>
+
 {% endblock %}

@@ -38,6 +38,7 @@ def hinterland(request):
 		},
 		context_instance = RequestContext(request)
 	)
+
 def urbanparks(request):
 	logging.debug('pacmap.urbanparks')
 	return render_to_response(
@@ -46,6 +47,7 @@ def urbanparks(request):
 		},
 		context_instance = RequestContext(request)
 	)
+
 def pacvideo(request):
 	logging.debug('pacmap.pacvideo')
 	return render_to_response(
@@ -55,21 +57,18 @@ def pacvideo(request):
 		context_instance = RequestContext(request)
 	)
 
-
 class UploadFileForm(forms.Form):
-	desc= forms.CharField(max_length=60)
-	lat	= forms.FloatField()
-	lon	= forms.FloatField()
-	tags= forms.CharField(max_length=60)
+	desc= forms.CharField(max_length=60,widget=forms.Textarea)
+	lat	= forms.FloatField(required=False)
+	lon	= forms.FloatField(required=False)
+	tags= forms.CharField(max_length=60,required=False)
 	file = forms.ImageField()
-
 
 def handle_uploaded_file(f):
 	oufname=f.name
 	with open('/var/www/dev/static/pacmap/upload/images/%s'%oufname, 'wb+') as destination:
 		for chunk in f.chunks():
 			destination.write(chunk)
-
 	
 def pacphotos(request):
 	if request.method=='POST':
@@ -85,10 +84,12 @@ def pacphotos(request):
 			x.save()
 			
 	images=os.listdir('/var/www/dev/static/pacmap/upload/images/')
+	#NEED: return GalleryImage.objects.all()
 	return render_to_response(
 		'pacphotos.html',{
 			'title':'Protected Areas Commission, Guyana',
 			'images':images,
+			'galleryobjects':GalleryImage.objects.all(),
 			'form':UploadFileForm()
 		},
 		context_instance = RequestContext(request)
