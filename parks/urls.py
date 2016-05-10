@@ -17,6 +17,19 @@ from django.conf.urls import url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', 'pacmap.views.home', name='home'),
+	url(r'^admin/', admin.site.urls),
+	url(r'^pacmap/pacvideo/','pacmap.views.pacvideo', name='pacvideo'),
+	url(r'^pacmap/pacphotos/','pacmap.views.pacphotos', name='pacphotos'),
+	url(r'^pacmap/contact/','pacmap.views.contact', name='contact'),
+	url(r'^pacmap/hinterland/kaieteur/','pacmap.views.hinterland',name='hinterland'),
+	url(r'^pacmap/hinterland/shellbeach/','pacmap.views.hinterland',name='hinterland'),
+	url(r'^pacmap/hinterland/kanuku/','pacmap.views.hinterland',name='hinterland'),
+	url(r'^pacmap/hinterland/iwokrama/','pacmap.views.hinterland',name='hinterland'),
+	url(r'^pacmap/hinterland/konashens/','pacmap.views.hinterland',name='hinterland'),
+	url(r'^pacmap/urbanparks/guyanazoo/','pacmap.views.urbanparks',name='urbanparks'),
+	url(r'^pacmap/urbanparks/nationalpark/','pacmap.views.urbanparks',name='urbanparks'),
+	url(r'^pacmap/urbanparks/botanicalgardens/','pacmap.views.urbanparks',name='urbanparks'),
+	url(r'^pacmap/urbanparks/joeviera/','pacmap.views.urbanparks',name='urbanparks'),
+	url(r'^pacmap/','pacmap.views.home', name='pacmap'),
+	url(r'^$', 'pacmap.views.home', name='home'),
 ]
