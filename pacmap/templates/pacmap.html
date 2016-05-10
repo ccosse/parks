@@ -1,0 +1,36 @@
+{% extends 'pacmap_base.html' %}
+{% block extra_javascript %}
+window.pacmap=null;
+window.remote=null;
+window.onresize=window.onorientationchange=function(e){
+	var w_win=window.innerWidth;
+	var h_win=window.innerHeight;
+	var le_nav_bcr=document.getElementById("le_nav").getBoundingClientRect();
+	var h_map=h_win-le_nav_bcr.height;
+	$("#mapdiv").css('height',h_map);
+	if(window.pacmap){
+		window.pacmap.map.setSize([w_win,h_map]);
+		window.pacmap.map.render();
+	}
+}
+function init(){
+	console.log("Instantiating PACMap ...")
+	window.pacmap=new PACMap();
+	window.remote=new RemotePanel('/static');
+	window.onresize();
+}
+{% endblock %}
+{% block content %}
+<div class="container">	
+	<div class="row">
+		<div id="mapdiv" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+	</div>
+
+	<div id="remotecontroldiv" class="remote_panel"></div>
+	<div id="controlpaneldiv">
+		<button type="button" class="btn btn-default btn-lg" onclick="window.pacmap.toggle()">
+			<span class="glyphicon glyphicon-plane" aria-hidden="true"></span>Tour
+		</button>
+	</div>
+</div>
+{% endblock %}

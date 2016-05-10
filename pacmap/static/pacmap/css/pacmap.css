@@ -1,3 +1,41 @@
-#logo {
-	height: 25px;
+#mapdiv{
+	background-color:darkgreen;
+	padding-left:0px;
+	padding-right:0px;
+}
+#controls{
+	background-color:gold;
+	min-height:200px;
+	max-height:100%;
+	overflow:auto;
+}
+.jumbotron{
+	background-color:#2E2D88;
+	color:white;
+}
+.container{
+	width:100%;
+	padding-left:0px;
+	padding-right:0px;
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+.row{
+	margin-left:0px;
+	margin-right:0px;
+}
+.marker{
+  width: 100px;
+  height: 100px;
+  background: url("/static/lanwatch/img/anim.png") no-repeat scroll 0% 0% transparent;
+}
+#logo{
+	height:25px;
+}
+.navbar{
+	margin-bottom:0px;
 }
