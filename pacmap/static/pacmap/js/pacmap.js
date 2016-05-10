@@ -17,13 +17,13 @@ var PACMap=function(){
 		source:new ol.source.OSM()
 	});
 	me.map = new ol.Map({
-	  layers: [osm,sat],
-	  target: 'mapdiv',
-	  view: new ol.View({
-    	center: [0, 0],
-	    zoom: 2
-	  })
+		layers: [osm,sat],
+		target: 'mapdiv',
+		view: new ol.View({
+			center:ol.proj.transform(CONFIG.pac_location, 'EPSG:4326', 'EPSG:3857'),
+			zoom: 6
+		}),
 	});
-	
+
 	return me;
 }
