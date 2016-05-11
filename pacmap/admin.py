@@ -13,7 +13,7 @@ class POIAdmin(admin.ModelAdmin):
 admin.site.register(POI, POIAdmin)
 
 class GalleryImageAdmin(admin.ModelAdmin):
-	list_display		= ('title','filename','desc','lat','lon', 'tags' )
+	list_display		= ('title','desc','lat','lon', 'tags' )
 	list_display_links	= ('title',)
 
 admin.site.register(GalleryImage, GalleryImageAdmin)

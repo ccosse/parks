@@ -58,78 +58,12 @@ def pacvideo(request):
 		context_instance = RequestContext(request)
 	)
 
-class UploadImageForm(forms.Form):
-	title=forms.CharField(max_length=60,required=True)
-	file = forms.ImageField()
-	desc= forms.CharField(max_length=60,widget=forms.Textarea)
-	lat	= forms.FloatField(required=False)
-	lon	= forms.FloatField(required=False)
-	tags= forms.CharField(max_length=60,required=False)
-
-class UploadFileForm(forms.Form):
-	title=forms.CharField(max_length=60,required=True)
-	file = forms.FileField()
-	desc= forms.CharField(max_length=60,widget=forms.Textarea)
-	lat	= forms.FloatField(required=False)
-	lon	= forms.FloatField(required=False)
-	tags= forms.CharField(max_length=60,required=False)
-
-class DeleteFileForm(forms.Form):
-	title=forms.CharField(max_length=60,required=True)
-
-class DeleteImageForm(forms.Form):
-	title=forms.CharField(max_length=60,required=False)
-
-def handle_uploaded_image(f):
-	oufname=f.name
-	with open('/var/www/dev/static/pacmap/upload/images/%s'%oufname, 'wb+') as destination:
-		for chunk in f.chunks():
-			destination.write(chunk)
-	
-def handle_uploaded_file(f):
-	oufname=f.name
-	with open('/var/www/dev/static/pacmap/upload/files/%s'%oufname, 'wb+') as destination:
-		for chunk in f.chunks():
-			destination.write(chunk)
-	
-def deletephoto(request):
-	if request.method=='POST':
-		fname=request.POST.get("pyld")
-		logging.debug(fname)
-		x=GalleryImage.objects.get(filename=fname)
-		x.delete()
-		cmd="rm /var/www/dev/static/pacmap/upload/images/%s"%fname
-		os.system(cmd)
-		logging.debug("%s deleted"%fname)
-	return redirect("/pacmap/pacphotos/")
 
 def pacphotos(request):
-	if request.method=='POST':
-		form = UploadFileForm(request.POST, request.FILES)
-		if form.is_valid():
-			logging.debug("form valid")
-			handle_uploaded_image(request.FILES['file'])
-			x=GalleryImage()
-			x.filename=request.FILES['file'].name
-			x.title=request.POST.get('title')
-			x.desc=request.POST.get('desc')
-			x.tabs=request.POST.get('tags')
-			#An improvement would be map interface with drag/drop location icon
-			x.lat	= request.POST.get('lat')
-			x.lon	= request.POST.get('lon')
-			x.save()
-		else:
-			logging.debug("form invalid")
-			
-	images=os.listdir('/var/www/dev/static/pacmap/upload/images/')
-	#NEED: return GalleryImage.objects.all()
 	return render_to_response(
 		'pacphotos.html',{
 			'title':'Protected Areas Commission, Guyana',
-			'images':images,
 			'galleryobjects':GalleryImage.objects.all(),
-			'form':UploadImageForm(),
-			'delete':DeleteImageForm()
 		},
 		context_instance = RequestContext(request)
 	)

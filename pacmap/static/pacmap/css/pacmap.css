@@ -42,3 +42,13 @@
 .textarea{
 	width:100%;
 }
+.thumbnail{
+	padding-top:15px;
+	margin-bottom:20px;
+}
+.editicon{
+	position:absolute;
+	top:0px;
+	right:0;
+	cursor:pointer;
+}
