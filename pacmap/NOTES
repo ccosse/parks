@@ -1,0 +1,4 @@
+NOTES:
+
+Changed bg color to green-ish (switched blue/green of 2 colors, #header and #breadcrumb)
+/var/www/dev/venv/lib/python2.7/site-packages/django/contrib/admin/static/admin/css/base.css

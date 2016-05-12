@@ -48,7 +48,7 @@
 }
 .editicon{
 	position:absolute;
-	top:0px;
-	right:0;
+	top:15;
+	right:15;
 	cursor:pointer;
 }

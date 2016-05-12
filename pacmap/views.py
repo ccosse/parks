@@ -63,7 +63,9 @@ def pacphotos(request):
 	return render_to_response(
 		'pacphotos.html',{
 			'title':'Protected Areas Commission, Guyana',
-			'galleryobjects':GalleryImage.objects.all(),
+			'galleryimages':GalleryImage.objects.all(),
+			'galleryfiles':GalleryFile.objects.all(),
+			'embedded':Embedded.objects.all(),
 		},
 		context_instance = RequestContext(request)
 	)
