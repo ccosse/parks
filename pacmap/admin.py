@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from pacmap.models import POI,GalleryImage,GalleryFile,Embedded
+from pacmap.models import POI,GalleryImage,GalleryFile,Embedded,GalleryDocument
 
 class POIAdmin(admin.ModelAdmin):
 	list_display		= ('name','lat','lon', 'desc',)
@@ -30,3 +30,9 @@ class GalleryFileAdmin(admin.ModelAdmin):
 	list_display_links	= ('title',)
 
 admin.site.register(GalleryFile, GalleryFileAdmin)
+
+class GalleryDocumentAdmin(admin.ModelAdmin):
+	list_display		= ('title','desc','lat','lon', 'tags' )
+	list_display_links	= ('title',)
+
+admin.site.register(GalleryDocument, GalleryDocumentAdmin)

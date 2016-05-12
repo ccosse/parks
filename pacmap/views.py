@@ -66,6 +66,7 @@ def pacphotos(request):
 			'galleryimages':GalleryImage.objects.all(),
 			'galleryfiles':GalleryFile.objects.all(),
 			'embedded':Embedded.objects.all(),
+			'documents':GalleryDocument.objects.all(),
 		},
 		context_instance = RequestContext(request)
 	)
