@@ -31,6 +31,32 @@ def home(request):
 		context_instance = RequestContext(request)
 	)
 
+class RecordForm(forms.Form):
+	title=forms.CharField(max_length=60,required=True)
+	lat	= forms.FloatField(required=False)
+	lon	= forms.FloatField(required=False)
+	tags= forms.CharField(max_length=60,required=False)
+	content=forms.CharField(required=False)
+
+def editor(request):
+	
+	logging.debug("editor")
+	
+	if request.method=='POST':
+		logging.debug(request.POST)
+		form = RecordForm(request.POST)
+		if form.is_valid():
+			logging.debug("form is valid")
+
+	return render_to_response(
+		'editor.html',{
+			'title':'PAC Editor',
+			'form':RecordForm(),
+		},
+		context_instance = RequestContext(request)
+	)
+
+
 def hinterland(request):
 	logging.debug('pacmap.hinterland')
 	return render_to_response(

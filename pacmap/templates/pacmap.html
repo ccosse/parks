@@ -1,36 +1,133 @@
 {% extends 'pacmap_base.html' %}
 {% block extra_javascript %}
-window.pacmap=null;
-window.remote=null;
-window.onresize=window.onorientationchange=function(e){
-	var w_win=window.innerWidth;
-	var h_win=window.innerHeight;
-	var le_nav_bcr=document.getElementById("le_nav").getBoundingClientRect();
-	var h_map=h_win-le_nav_bcr.height;
-	$("#mapdiv").css('height',h_map);
-	if(window.pacmap){
-		window.pacmap.map.setSize([w_win,h_map]);
-		window.pacmap.map.render();
+	window.expanded=true;
+	window.orientation=null;
+	window.onresize=function(e){
+		
+		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
+		var dy0=document.getElementById("le_nav").getBoundingClientRect().height;
+
+		//PORTRAIT
+		if(AR<1.0){
+			if(window.orientation!='portrait'){
+				console.log("changing to portrait");
+
+				var spindiv=document.getElementById("spindiv").parentNode.removeChild(document.getElementById("spindiv"));
+				document.getElementById("c12").appendChild(spindiv);
+				document.getElementById("spinner").src="/static/pacmap/img/arrow-up.png";
+
+				var controls=document.getElementById("controls").parentNode.removeChild(document.getElementById("controls"));
+				document.getElementById("c22").appendChild(controls);
+
+				window.orientation='portrait';
+			}
+
+			window.expanded=false;
+			var dx0=parseInt(1.0*window.innerWidth);
+			$("#controls").css("width",dx0);
+			$("#controls").css("height",window.innerHeight-25-dy0);
+			$("#mapdiv").css("height",(window.innerHeight-25-100-dy0));//Allow 100px of top-image ala google
+
+		}
+
+		//LANDSCAPE
+		else if(AR>=1){
+			if(window.orientation!='landscape'){
+				console.log("changing to landscape");
+			
+				var spindiv=document.getElementById("spindiv").parentNode.removeChild(document.getElementById("spindiv"));
+				document.getElementById("c01").appendChild(spindiv);
+				document.getElementById("spinner").src="/static/pacmap/img/arrow-lt.png";
+
+				var controls=document.getElementById("controls").parentNode.removeChild(document.getElementById("controls"));
+				document.getElementById("c00").appendChild(controls);
+	
+				window.orientation='landscape';
+			}
+			
+			window.expanded=true;
+			var dx0=parseInt(0.3*window.innerWidth);
+			$("#controls").css("width",dx0);
+			$("#controls").css("height",window.innerHeight-dy0);
+			$("#mapdiv").css("height",window.innerHeight-dy0);
+
+		}
+
+		
+		if(window.map){
+			var bcr=document.getElementById('mapdiv').getBoundingClientRect();
+			window.map.map.setSize([bcr.width,bcr.height]);
+		}
 	}
-}
-function init(){
-	console.log("Instantiating PACMap ...")
-	window.pacmap=new PACMap();
-	window.remote=new RemotePanel('/static');
-	window.onresize();
-}
+	function init(){
+		console.log("init");
+		
+		window.map=new PACMap('mapdiv');
+		
+		window.expanded=true;
+		window.onresize(null);
+
+		$("#spinner").click(function(e){
+			
+			$(e.target).toggleClass("up");
+
+			console.log('toggling width');
+			if(window.orientation=='landscape'){
+				$("#controls").animate({width:'toggle'},1000,function(){
+					if(window.expanded==true)window.epanded=false;
+					else window.expanded=true;
+					window.onresize(null);
+				});
+			}
+			else{
+				console.log('toggling height');
+				$("#mapdiv").animate({height:'toggle'},1000,function(){
+					if(window.expanded==true)window.epanded=false;
+					else window.expanded=true;
+					window.onresize(null);
+				});				
+			}
+		});
+	}
 {% endblock %}
 {% block content %}
-<div class="container">	
-	<div class="row">
-		<div id="mapdiv" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-	</div>
 
-	<div id="remotecontroldiv" class="remote_panel"></div>
-	<div id="controlpaneldiv">
-		<button type="button" class="btn btn-default btn-lg" onclick="window.pacmap.toggle()">
-			<span class="glyphicon glyphicon-plane" aria-hidden="true"></span>Tour
-		</button>
-	</div>
+<div class="row">
+	<table>
+	
+	<tr>
+		<td id="c00">
+		<div id="controls" class="">
+			<div style="text-align:center;">
+				<img src="/static/pacmap/img/pac_hq.jpg" class="img-responsive w100"/>
+			</div>
+		</div>
+		</td>
+
+		<td id="c01">
+			<div id="spindiv">
+				<img id="spinner" class="spinner" src="/static/pacmap/img/arrow-lt.png"/>
+			</div>
+		</td>
+
+		<td id="c02" style="width:100%;">
+			<div id="mapdiv" class=""></div>
+		</td>
+	</tr>
+
+	<tr>
+		<td id="c10"></td>
+		<td id="c11"></td>
+		<td id="c12" align="center"></td>
+	</tr>
+	<tr>
+		<td id="c20"></td>
+		<td id="c21"></td>
+		<td id="c22"></td>
+	</tr>
+	
+	</table>
+
 </div>
+
 {% endblock %}

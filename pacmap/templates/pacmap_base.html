@@ -10,7 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/ol.css">
 	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacmap.css">
-  <link rel="stylesheet" type="text/css" href="/static/pacmap/css/controls.css">
 	
 	<script type="text/javascript" src="/static/pacmap/js/ol.js"></script>
 	<script type="text/javascript" src="/static/pacmap/js/util.js"></script>
@@ -18,6 +17,9 @@
   <script type="text/javascript" src="/static/pacmap/js/remote.js"></script>
   <script type="text/javascript" src="/static/pacmap/js/pacmap.js"></script>
 
+  {% block extra_javascript_include %}
+  {% endblock %}
+  
 
   <script type="text/javascript">
   {% block extra_javascript %}

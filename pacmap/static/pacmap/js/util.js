@@ -12,3 +12,4 @@ function decode(str) {
 get_basename=function(path){
 	return path.split('/').reverse()[0];
 }
+
