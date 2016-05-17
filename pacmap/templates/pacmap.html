@@ -1,7 +1,22 @@
 {% extends 'pacmap_base.html' %}
+
+{% block extra_javascript_include %}
+	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacmap.css">
+	<script type="text/javascript" src="/static/pacmap/js/util.js"></script>
+	<script type="text/javascript" src="/static/pacmap/js/config.js"></script>
+	<script type="text/javascript" src="/static/pacmap/js/map.js"></script>
+	<script type="text/javascript" src="/static/pacmap/js/pacmap.js"></script>
+	<script type="text/javascript" src="/static/pacmap/js/zoom.js"></script>
+{% endblock %}
 {% block extra_javascript %}
 	window.expanded=true;
 	window.orientation=null;
+	
+	window.click_handler=function(e){
+		console.log("click_handler");
+		pan_zoom(Config['PAC']['Urban Parks']['center'],Config['PAC']['Urban Parks']['bbox']);
+	}
+
 	window.onresize=function(e){
 		
 		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
@@ -62,8 +77,11 @@
 	function init(){
 		console.log("init");
 		
-		window.map=new PACMap('mapdiv');
-		
+		window.map=new Map('mapdiv');
+		window.pacmap=new PACMap();
+		window.pacmap.goto('PAC');
+
+
 		window.expanded=true;
 		window.onresize(null);
 
@@ -99,14 +117,21 @@
 		<td id="c00">
 		<div id="controls" class="">
 			<div style="text-align:center;">
-				<img src="/static/pacmap/img/pac_hq.jpg" class="img-responsive w100"/>
+				<img id='img_controls_top' src="/static/pacmap/img/pac_hq.jpg" class="img-responsive w100"/>
 			</div>
+			
+			<div class="panel panel-default">
+				<div id="panel_controls_top" class="panel-body">
+					
+				</div>
+			</div>
+
 		</div>
 		</td>
 
 		<td id="c01">
 			<div id="spindiv">
-				<img id="spinner" class="spinner" src="/static/pacmap/img/arrow-lt.png"/>
+				<img id="spinner" src="/static/pacmap/img/arrow-lt.png" class="spinner"  />
 			</div>
 		</td>
 
