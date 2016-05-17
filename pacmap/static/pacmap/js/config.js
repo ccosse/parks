@@ -10,31 +10,31 @@ var Config={
 		'Hinterland Areas':{
 			'center':[-58.9,4.9],
 			'bbox':[-61.5,1.1,-56.3,8.7],
-			'photos':['/static/pacmap/img/pac_hq.jpg',],
+			'photos':['/static/pacmap/img/hinterland_areas.jpg',],
 			'keys':['Kaieteur Falls','Shell Beach','Kanuku Mountains'],
 			'Kaieteur Falls':{
 				'center':[-59.50293, 5.175],
 				'bbox':[-59.63383, 5.0468, -59.37203, 5.3032],
-				'photos':['/static/pacmap/img/pac_hq.jpg',],
+				'photos':['/static/pacmap/img/kaieteur_falls.png',],
 				'keys':{},
 			},
 			'Shell Beach':{
 				'center':[-59.294995, 7.99126],
 				'bbox':[-59.78492, 7.59982, -58.80507, 8.3827],
-				'photos':['/static/pacmap/img/pac_hq.jpg',],
+				'photos':['/static/pacmap/img/shell_beach.jpg',],
 				'keys':{},
 			},
 			'Kanuku Mountains':{
 				'center':[-59.105485, 3.2779],
 				'bbox':[-59.62108, 2.89736, -58.58989, 3.65844],
-				'photos':['/static/pacmap/img/pac_hq.jpg',],
+				'photos':['/static/pacmap/img/kanuku_mountains.png',],
 				'keys':{},
 			}
 		},
 		'Urban Parks':{
 			'center':[-58.17065, 6.79375],
 			'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
-			'photos':['/static/pacmap/img/zoo_entrance.jpg',],
+			'photos':['/static/pacmap/img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'Guyana Zoo':{
 				'center':[-58.1555, 6.8061],
@@ -45,19 +45,19 @@ var Config={
 			'Botanical Gardens':{
 				'center':[-58.1455, 6.8061],
 				'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
-				'photos':['/static/pacmap/img/pac_hq.jpg',],
+				'photos':['/static/pacmap/img/botanical_aerial.jpg',],
 				'keys':{},
 			},
 			'National Park':{
 				'center':[-58.1455, 6.9061],
 				'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
-				'photos':['/static/pacmap/img/pac_hq.jpg',],
+				'photos':['/static/pacmap/img/national_park.png',],
 				'keys':{},
 			},
 			'Joe Viera Park':{
 				'center':[-58.1655, 6.7561],
 				'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
-				'photos':['/static/pacmap/img/pac_hq.jpg',],
+				'photos':['/static/pacmap/img/joe_viera.png',],
 				'keys':{},
 			}
 		}

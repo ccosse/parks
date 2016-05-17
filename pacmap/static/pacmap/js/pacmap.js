@@ -14,6 +14,8 @@ var PACMap=function(){
 			Cfg=Cfg[skey];
 		}
 
+		pan_zoom(Cfg['center'],Cfg['bbox']);
+
 		document.getElementById('img_controls_top').src=Cfg['photos'][0];
 		console.log(Cfg['photos'][0]);
 
@@ -24,6 +26,22 @@ var PACMap=function(){
 		p.innerHTML="";
 		p.appendChild(h3);
 
+		var back=document.createElement("a");
+			back.id="back";
+			back.href="#";
+			back.className="btn btn-default btn-lg";
+			back.role="button";
+			back.text="previous";
+			p.appendChild(back);
+			back.addEventListener('click',function(e){
+				console.log(e.target.id);
+				var return_path="";
+				for(var sidx=0;sidx<spath.length-1;sidx++){
+					return_path+=spath[sidx];
+					if(sidx<spath.length-2)return_path+=".";
+				}
+				me.goto(return_path);
+			});
 
 		for(var kidx=0;kidx<Cfg['keys'].length;kidx++){
 			var key=Cfg['keys'][kidx];
