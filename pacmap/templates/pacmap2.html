@@ -16,19 +16,21 @@ window.orientation='landscape';
 
 window.onresize=function(){
   var AR=window.innerWidth/(window.innerHeight*1.0);
-  if(AR<=1 && window.orientation != 'portrait'){
+  console.log(window.orientation+" "+AR);
+
+  if(AR<=1. && window.orientation != 'portrait'){
     console.log("portrait");
     window.orientation='portrait';
     $("body").removeClass("landscape");
     $("body").addClass("portrait");
   }
-  else if(AR>1 && window.orientation != 'landscape'){
+  else if(AR>1. && window.orientation != 'landscape'){
     console.log("landscape");
-    window.orieintation='landscape';
+    window.orientation='landscape';
     $("body").removeClass("portrait");
     $("body").addClass("landscape");
   }
-  //console.log("window.onresize");
+
   var bcr=document.getElementById('mapdiv').getBoundingClientRect();
 	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
 	window.map.map.setSize([bcr.width,bcr.height]);
