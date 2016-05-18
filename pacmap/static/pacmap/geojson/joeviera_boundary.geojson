@@ -1,0 +1,8 @@
+{"crs": {"type": "EPSG", "properties": {"code": "4326"}}, "totalFeatures": 1, "type": "FeatureCollection", 
+	"features": [
+		{"geometry": {"type": "MultiPolygon", "coordinates": [[[
+			[-58.1975,6.7747],[-58.1975,6.7784],[-58.1922,6.7784],[-58.1922,6.7747],[-58.1975,6.7747]
+		]]], "Shape_Leng": 5}, "type": "Feature", "id": "Joe Viera Park", "geometry_name": "the_geom"}
+	]
+}
+

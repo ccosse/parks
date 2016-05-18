@@ -22,6 +22,10 @@ var Map=function(mapdiv){
 	  })
 	});
 	
+	me.hilite=function(f){
+		console.log("map.hilite: "+f);
+	}
+
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
 	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);

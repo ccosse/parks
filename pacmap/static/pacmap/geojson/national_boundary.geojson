@@ -1,0 +1,8 @@
+{"crs": {"type": "EPSG", "properties": {"code": "4326"}}, "totalFeatures": 1, "type": "FeatureCollection", 
+	"features": [
+		{"geometry": {"type": "MultiPolygon", "coordinates": [[[
+			[-58.1551,6.8194],[-58.1551,6.8241],[-58.1478,6.8241],[-58.1478,6.8194],[-58.1551,6.8194]
+		]]], "Shape_Leng": 5}, "type": "Feature", "id": "National Park", "geometry_name": "the_geom"}
+	]
+}
+

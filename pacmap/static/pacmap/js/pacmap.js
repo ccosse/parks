@@ -16,11 +16,13 @@ var PACMap=function(){
 
 		pan_zoom(Cfg['center'],Cfg['bbox']);
 
+		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
+		
 		document.getElementById('img_controls_top').src=Cfg['photos'][0];
 		console.log(Cfg['photos'][0]);
 
 		var h3=document.createElement("h3");
-		h3.appendChild(document.createTextNode(path));
+		h3.appendChild(document.createTextNode(spath[spath.length-1]));
 
 		var p=document.getElementById("panel_controls_top");
 		p.innerHTML="";
@@ -32,7 +34,7 @@ var PACMap=function(){
 			back.className="btn btn-default btn-lg";
 			back.role="button";
 			back.text="previous";
-			p.appendChild(back);
+			if(spath.length>1)p.appendChild(back);
 			back.addEventListener('click',function(e){
 				console.log(e.target.id);
 				var return_path="";
@@ -52,6 +54,10 @@ var PACMap=function(){
 			a.role="button";
 			a.text=key;
 			p.appendChild(a);
+			a.addEventListener('mouseover',function(e){
+				console.log(e.target.id);
+				window.map.hilite(e.target.id);
+			});
 			a.addEventListener('click',function(e){
 				console.log(e.target.id);
 				me.goto(path+'.'+e.target.id);
