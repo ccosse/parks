@@ -28,6 +28,8 @@ var PACMap=function(){
 		p.innerHTML="";
 		p.appendChild(h3);
 
+
+		//BACK=UP
 		var back=document.createElement("a");
 			back.id="back";
 			back.href="#";
@@ -45,6 +47,7 @@ var PACMap=function(){
 				me.goto(return_path);
 			});
 
+		//NEXT LEVEL DOWN
 		for(var kidx=0;kidx<Cfg['keys'].length;kidx++){
 			var key=Cfg['keys'][kidx];
 			var a=document.createElement("a");

@@ -1,0 +1,83 @@
+body{
+  overflow:hidden;
+}
+main{
+  height:100%;
+  width:100%;
+  margin-top:-52px;
+  padding-top:52px;
+}
+#controls_region{
+
+}
+.landscape #controls_region{
+  position:fixed;
+  height:100%;
+  width:408px;
+  background-color:#333333;
+  z-index: 10;
+  left:0;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+.portrait #controls_region{
+  position:fixed;
+  height:100%;
+  width:408px;
+  background-color:#555555;
+  z-index: 10;
+  left:0;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+#controls_region.notshown{
+  left:-408px;
+}
+#mapdiv_region{
+}
+.landscape #mapdiv_region{
+  background-color: teal;
+  width:100%;
+  padding-left:408px;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+.portrait #mapdiv_region{
+  background-color: yellow;
+  width:100%;
+  padding-left:408px;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+#mapdiv_region.notshown{
+  padding-left:0;
+}
+#mapdiv{
+  height: 100%;
+  background-color: red;
+}
+#logo{
+  height:25px;
+}
+.navbar{
+	margin-bottom:0px;
+}
+#controls_toggle-button {
+    position: absolute;
+    top: 10px;
+    left: 100%;
+    width: 22px;
+    height: 48px;
+    background-color: red;
+    cursor:pointer;
+}
+#controls_toggle-button img {
+    width: 18px;
+    margin-top: 14px;
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+}
+#controls_region.notshown #controls_toggle-button img {
+    transform: rotate(180deg);
+}

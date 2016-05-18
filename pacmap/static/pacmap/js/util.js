@@ -1,10 +1,10 @@
 function decode(str) {
-  var div 	= document.createElement('div'); 
+  var div 	= document.createElement('div');
   div.innerHTML	= str ;
-  
+
   var decoded=str;
   try{
-  	decoded = div.firstChild.nodeValue; 
+  	decoded = div.firstChild.nodeValue;
   }
   catch(e){;}
   return decoded;
@@ -13,12 +13,12 @@ get_basename=function(path){
 	return path.split('/').reverse()[0];
 }
 var compute_resolution=function(bbox,is3857,W,H){
-	
+
 	var xmax=bbox[2];
 	var xmin=bbox[0];
 	var ymin=bbox[1];
 	var ymax=bbox[3];
-	
+
 	var p1,p2;
 	if(is3857){
 		p2=[xmax,ymax];
@@ -28,16 +28,16 @@ var compute_resolution=function(bbox,is3857,W,H){
 		p2=ol.proj.transform([xmax,ymax],"EPSG:4326","EPSG:3857");
 		p1=ol.proj.transform([xmin,ymin],"EPSG:4326","EPSG:3857");
 	}
-	
-	console.log(p1+", "+p2);
-	
+
+	//console.log(p1+", "+p2);
+
 	var dx=p2[0]-p1[0];
 	var dy=p2[1]-p1[1];
-	
-	
+
+
 	var AR_win=W/H;
 	var AR_shp=dx/dy;
-	
+
 	var res;
 	if(AR_win>1){
 		if(AR_shp<1){
@@ -61,6 +61,6 @@ var compute_resolution=function(bbox,is3857,W,H){
 			res=dx/W;
 		}
 	}
-	console.log("res="+res);
+	//console.log("res="+res);
 	return res;
 }

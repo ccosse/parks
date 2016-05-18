@@ -23,7 +23,7 @@ def home(request):
 	pois	= POI.objects.all().values();
 
 	return render_to_response(
-		'pacmap.html',
+		'pacmap2.html',
 		{
 			'title'	: 'PAC',
 			'pois'	: pois
@@ -39,9 +39,9 @@ class RecordForm(forms.Form):
 	content=forms.CharField(required=False)
 
 def editor(request):
-	
+
 	logging.debug("editor")
-	
+
 	if request.method=='POST':
 		logging.debug(request.POST)
 		form = RecordForm(request.POST)
@@ -104,4 +104,4 @@ def contact(request):
 			'title':'Contact Protected Areas Commission, Guyana'
 		},
 		context_instance = RequestContext(request)
-	)		
+	)

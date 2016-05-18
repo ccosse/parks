@@ -21,7 +21,7 @@ var Map=function(mapdiv){
     	center:ol.proj.transform(Config['center'],"EPSG:4326","EPSG:3857"),
 	  })
 	});
-	
+
 	me.hilite=function(f){
 		console.log("map.hilite: "+f);
 	}
@@ -35,11 +35,11 @@ var Map=function(mapdiv){
 		latpanel.innerHTML=lat;
 		lonpanel.innerHTML=lon;
 	});
-
+/*
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
 	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);
 	me.map.getView().setResolution(res);
-			
+*/			
 	return me;
 }
