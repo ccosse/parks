@@ -26,6 +26,16 @@ var Map=function(mapdiv){
 		console.log("map.hilite: "+f);
 	}
 
+	me.map.on('pointermove',function(evt) {
+		var latpanel=document.getElementById("lat");
+		var lonpanel=document.getElementById("lon");
+		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
+		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
+		latpanel.innerHTML=lat;
+		lonpanel.innerHTML=lon;
+	});
+
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
 	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);
