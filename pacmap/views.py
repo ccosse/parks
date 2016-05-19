@@ -23,7 +23,7 @@ def home(request):
 	pois	= POI.objects.all().values();
 
 	return render_to_response(
-		'pacmap2.html',
+		'pacmap.html',
 		{
 			'title'	: 'PAC',
 			'pois'	: pois

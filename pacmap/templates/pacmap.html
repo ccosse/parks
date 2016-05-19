@@ -11,14 +11,14 @@
 {% block extra_javascript %}
 	window.expanded=true;
 	window.orientation=null;
-	
+
 	window.click_handler=function(e){
 		console.log("click_handler");
 		pan_zoom(Config['PAC']['Urban Parks']['center'],Config['PAC']['Urban Parks']['bbox']);
 	}
 
 	window.onresize=function(e){
-		
+
 		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
 		var dy0=document.getElementById("le_nav").getBoundingClientRect().height;
 
@@ -27,9 +27,9 @@
 			if(window.orientation!='portrait'){
 				console.log("changing to portrait");
 
-				var spindiv=document.getElementById("spindiv").parentNode.removeChild(document.getElementById("spindiv"));
-				document.getElementById("c12").appendChild(spindiv);
-				document.getElementById("spinner").src="/static/pacmap/img/arrow-up.png";
+				//var spindiv=document.getElementById("spindiv").parentNode.removeChild(document.getElementById("spindiv"));
+				//document.getElementById("c12").appendChild(spindiv);
+				//document.getElementById("spinner").src="/static/pacmap/img/arrow-up.png";
 
 				var controls=document.getElementById("controls").parentNode.removeChild(document.getElementById("controls"));
 				document.getElementById("c22").appendChild(controls);
@@ -49,26 +49,27 @@
 		else if(AR>=1){
 			if(window.orientation!='landscape'){
 				console.log("changing to landscape");
-			
-				var spindiv=document.getElementById("spindiv").parentNode.removeChild(document.getElementById("spindiv"));
-				document.getElementById("c01").appendChild(spindiv);
-				document.getElementById("spinner").src="/static/pacmap/img/arrow-lt.png";
+
+				//var spindiv=document.getElementById("spindiv").parentNode.removeChild(document.getElementById("spindiv"));
+				//document.getElementById("c01").appendChild(spindiv);
+				//document.getElementById("spinner").src="/static/pacmap/img/arrow-lt.png";
 
 				var controls=document.getElementById("controls").parentNode.removeChild(document.getElementById("controls"));
 				document.getElementById("c00").appendChild(controls);
-	
+
 				window.orientation='landscape';
 			}
-			
+
 			window.expanded=true;
 			var dx0=parseInt(0.3*window.innerWidth);
 			$("#controls").css("width",dx0);
 			$("#controls").css("height",window.innerHeight-dy0);
 			$("#mapdiv").css("height",window.innerHeight-dy0);
+			$("#layout_table").css("height",window.innerHeight-dy0);
 
 		}
 
-		
+
 		if(window.map){
 			var bcr=document.getElementById('mapdiv').getBoundingClientRect();
 			window.map.map.setSize([bcr.width,bcr.height]);
@@ -76,7 +77,7 @@
 	}
 	function init(){
 		console.log("init");
-		
+
 		window.map=new Map('mapdiv');
 		window.pacmap=new PACMap();
 		window.pacmap.goto('PAC');
@@ -85,8 +86,8 @@
 		window.expanded=true;
 		window.onresize(null);
 
-		$("#spinner").click(function(e){
-			
+		$("#controls_toggle-button").click(function(e){
+
 			$(e.target).toggleClass("up");
 
 			console.log('toggling width');
@@ -103,7 +104,7 @@
 					if(window.expanded==true)window.epanded=false;
 					else window.expanded=true;
 					window.onresize(null);
-				});				
+				});
 			}
 		});
 	}
@@ -111,16 +112,24 @@
 {% block content %}
 
 <div class="row">
-	<table>
-	
+	<table id="layout_table">
+
 	<tr>
 		<td id="c00">
+
+		<div id="controls_toggle-button" class="">
+			<img src="/static/pacmap/img/arrow-lt.png" class="">
+		</div>
+
 		<div id="controls" class="">
+
+
+
 			<div style="text-align:center;">
 				<h3><div id='title_controls_top'>Update Me</div></h3>
 				<img id='img_controls_top' src="/static/pacmap/img/pac_hq.jpg" class="img-responsive w100"/>
 			</div>
-			
+
 			<div class="panel panel-default">
 				<div id="panel_controls_top" class="panel-body"></div>
 			</div>
@@ -139,13 +148,15 @@
 		</td>
 
 		<td id="c01">
-			<div id="spindiv">
-				<img id="spinner" src="/static/pacmap/img/arrow-lt.png" class="spinner"  />
-			</div>
 		</td>
 
 		<td id="c02" style="width:100%;">
-			<div id="mapdiv" class=""></div>
+
+
+			<div id="mapdiv" class="">
+
+
+			</div>
 		</td>
 	</tr>
 
@@ -156,10 +167,12 @@
 	</tr>
 	<tr>
 		<td id="c20"></td>
-		<td id="c21"></td>
+		<td id="c21">
+			<div id="spindiv"></div>
+		</td>
 		<td id="c22"></td>
 	</tr>
-	
+
 	</table>
 
 </div>

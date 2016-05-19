@@ -35,11 +35,11 @@ var Map=function(mapdiv){
 		latpanel.innerHTML=lat;
 		lonpanel.innerHTML=lon;
 	});
-/*
+
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
 	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);
 	me.map.getView().setResolution(res);
-*/			
+
 	return me;
 }

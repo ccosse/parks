@@ -1,14 +1,32 @@
-#mapdiv{
-	background-color:white;
-	padding-left:0px;
-	padding-right:0px;
-	width:100%;
+#controls_toggle-button {
+  position: absolute;
+  top: 10px;
+  left: 100%;
+  width: 22px;
+  height: 48px;
+  background-color: red;
+  cursor:pointer;
+	z-index:999;
+}
+#controls_toggle-button img{
+	width:25px;
 }
 #controls{
 	background-color:gold;
 	overflow:auto;
 	opacity:1.;
 	width:100%;
+}
+#spindiv{width:1px;}
+#mapdiv{
+	background-color:white;
+	padding-left:0px;
+	padding-right:0px;
+	width:100%;
+	top:50px;
+}
+#c00{
+	position:relative;
 }
 .jumbotron{
 	background-color:#2E2D88;
@@ -63,7 +81,6 @@
 .spinner.up{
 	transform:rotate(180deg);
 }
-#spindiv{width:25px;text-align:center;}
 .h50px{
 	height:50px;
 }
