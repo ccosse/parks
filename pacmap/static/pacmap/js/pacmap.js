@@ -1,9 +1,12 @@
 var PACMap=function(){
 	var me={};
 	me.goto=function(path){
+		if($("#controls").hasClass("portrait")){
+			$("#controls").addClass("vhide");
+		}
 		console.log("goto");
 		console.log(path);
-		
+
 		var spath=path.split(".");
 		console.log(spath);
 
@@ -17,7 +20,7 @@ var PACMap=function(){
 		pan_zoom(Cfg['center'],Cfg['bbox']);
 
 		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
-		
+
 		document.getElementById('img_controls_top').src=Cfg['photos'][0];
 		console.log(Cfg['photos'][0]);
 
@@ -68,6 +71,6 @@ var PACMap=function(){
 			console.log("created link: "+key);
 		}
 
-	}	
+	}
 	return me;
 }
