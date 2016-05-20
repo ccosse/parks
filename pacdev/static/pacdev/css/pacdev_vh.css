@@ -1,0 +1,63 @@
+.controls{
+  position:absolute;
+  background-color:gold;
+  z-index:10;
+  left:0%;
+  bottom:0%;
+  -webkit-transition: height,left 1.0s ease;
+  transition: height,left 1.0s ease;
+}
+.controls.portrait{
+  height:85%;
+}
+.controls.landscape{
+  height:100%;
+}
+.controls.vhide{
+  height:10%;
+}
+.controls.hhide{
+  left:-33.33%;
+}
+.controls.portrait #tb{
+  position:absolute;
+  bottom:100%;
+  background-color: red;
+  width:36px;
+  height:24px;
+  left:50%;
+}
+.controls.landscape #tb{
+  position:absolute;
+  background-color: blue;
+  width:24px;
+  height:36px;
+  top:15%;
+  left:100%;
+}
+#mapdiv{
+  position:fixed;
+  background-color:darkgreen;
+  width:100%;
+  height:100%;
+  font-size:20px;
+  color:white;
+}
+#layout{
+	width:100%;
+	padding-left:0px;
+	padding-right:0px;
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+#layout .row{
+	margin-left:0px;
+	margin-right:0px;
+}
+.navbar{
+	margin-bottom:0px;
+}

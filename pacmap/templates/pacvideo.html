@@ -1,9 +1,14 @@
 {% extends 'pacmap_base.html' %}
+
+{% block extra_javascript_include %}
+	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacmap.css">
+{% endblock %}
+
 {% block extra_javascript %}
 function init(){}
 {% endblock %}
 {% block content %}
-<div class="container">	
+<div class="container">
 <div class="row">
 	<p>
 	<div class="embed-responsive embed-responsive-16by9">

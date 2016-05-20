@@ -1,0 +1,3 @@
+Config={
+  'static':'./static/',
+}
