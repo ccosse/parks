@@ -1,17 +1,22 @@
 .controls{
-  position:absolute;
-  background-color:gold;
+  position:fixed;
+  background-color:darkgreen;
+  color:#F5F5F5;
   z-index:10;
   left:0%;
   bottom:0%;
-  -webkit-transition: height 1.0s ease;
-  transition: height 1.0s ease;
+  -webkit-transition: height 1.0s ease,left 1.0s ease;
+  transition: height 1.0s ease,left 1.0s ease;
+  padding-left:0px;
+  padding-right:0px;
+  font-family:Pacifico;
 }
 .controls.portrait{
   height:85%;
 }
 .controls.landscape{
   height:100%;
+  padding-top:52px;
 }
 .controls.vhide{
   height:10%;
@@ -60,4 +65,10 @@
 }
 .navbar{
 	margin-bottom:0px;
+}
+#logo{
+	height:25px;
+}
+.w100{
+	width:100%;
 }

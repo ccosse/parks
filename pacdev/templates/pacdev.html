@@ -1,10 +1,101 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>DEV</title>
-  </head>
-  <body>
-    FUCK THIS SHIT
-  </body>
-</html>
+{% extends 'pacdev_base.html' %}
+
+{% block extra_javascript_include %}
+	<link href="https://font.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/static/pacdev/css/pacdev_vh.css">
+	<script type="text/javascript" src="/static/pacdev/js/util.js"></script>
+	<script type="text/javascript" src="/static/pacdev/js/config.js"></script>
+	<script type="text/javascript" src="/static/pacdev/js/map.js"></script>
+	<script type="text/javascript" src="/static/pacdev/js/pacmap.js"></script>
+	<script type="text/javascript" src="/static/pacdev/js/zoom.js"></script>
+{% endblock %}
+{% block extra_javascript %}
+
+	window.click_handler=function(e){
+		console.log("click_handler");
+		pan_zoom(Config['PAC']['Urban Parks']['center'],Config['PAC']['Urban Parks']['bbox']);
+	}
+
+	window.counter=0;
+
+	window.onresize=function(e){
+		var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
+		$("#mapdiv").css("top",h_nav);
+		$("#mapdiv").css("height",(window.innerHeight-h_nav));
+
+		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
+		if(window.innerWidth<768){
+			if(!$("#controls").hasClass("portrait")){
+				try{$("#controls").removeClass("landscape");}catch(e){}
+				try{$("#controls").removeClass("hhide");}catch(e){}
+				$("#controls").addClass("portrait");
+			}
+			//$("#controls").css("height",parseInt(0.85*window.innerHeight));
+		}
+		else{
+			if(!$("#controls").hasClass("landscape")){
+				try{$("#controls").removeClass("portrait");}catch(e){}
+				try{$("#controls").removeClass("vhide");}catch(e){}
+				$("#controls").addClass("landscape");
+			}
+			//$("#controls").css("height",(window.innerHeight-h_nav));
+		}
+	}
+
+	function init(e){
+		console.log('init');
+		window.map=new Map('mapdiv');
+		window.pacmap=new PACMap();
+		window.onresize(null);
+		window.pacmap.goto('Protected Areas Commission');
+
+		$("#tb").click(function(e){
+
+			window.counter+=1;
+			console.log("clicked: "+window.counter);
+
+			if($("#controls").hasClass("portrait")){
+				$("#controls").toggleClass("vhide");
+			}
+			else{
+				$("#controls").toggleClass("hhide");
+			}
+		});
+}
+
+{% endblock %}
+{% block content %}
+
+<div id="layout" class="container">
+	<div class="row">
+
+		<div id="controls" class="controls col-sm-4 col-xs-12">
+			<div id="tb" class="tb"></div>
+
+			<div style="text-align:center;">
+				<img id='img_controls_top' src="/static/pacdev/img/pac_hq.jpg" class="img-responsive w100"/>
+				<h4><div id='title_controls_top'>Update Me</div></h4>
+			</div>
+
+			<div class="panel panel-default">
+				<div id="panel_controls_top" class="panel-body"></div>
+			</div>
+
+			<div class="panel panel-default" style="text-align:center;">
+				<table width="100%" ><tr><td>
+				<div id="lat" class="panel-body" style="text-align:center;"></div>
+				</td><td>
+				<div id="lon" class="panel-body" style="text-align:center;"></div>
+				</td>
+				</tr>
+				</table>
+			</div>
+
+		</div>
+
+		<div id="mapdiv" class=""></div>
+
+	</div>
+</div>
+
+{% endblock %}

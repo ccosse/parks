@@ -26,7 +26,6 @@ var PACMap=function(){
 
 		var h3=document.createElement("h3");
 		h3.appendChild(document.createTextNode(spath[spath.length-1]));
-
 		var p=document.getElementById("panel_controls_top");
 		p.innerHTML="";
 //		p.appendChild(h3);

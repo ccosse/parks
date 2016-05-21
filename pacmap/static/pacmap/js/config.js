@@ -2,8 +2,8 @@ var Config={
 	'center':[-58.9,4.9],
 	'bbox':[-61.5,1.1,-56.3,8.7],
 	'boundary':'/static/pacmap/geojson/guyana_boundary.geojson',
-	'keys':['PAC'],
-	'PAC':{
+	'keys':['Protected Areas Commission'],
+	'Protected Areas Commission':{
 		'center':[-58.9,4.9],
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'boundary':'/static/pacmap/geojson/guyana_boundary.geojson',
@@ -108,7 +108,7 @@ var CONFIG={
 		"line_sources":[],
 		"xyz_layers":{
 			'keys':['shellbeach_satellite'],//'shellbeach_pixelated',
-		}	
+		}
 	},
 	"Urban Parks":{
 		"path":"./static/pacmap/data/urbanparks/",
@@ -143,7 +143,7 @@ var CONFIG={
 		"line_sources":[],
 		"xyz_layers":{
 			'keys':['satellite','trailmap'],//'satellite2','kaieteur_pixelated',
-		}	
+		}
 	},
 	"Iwokrama Protected Area":{
 		"path":"./static/pacmap/data/iwokrama/",
@@ -158,7 +158,7 @@ var CONFIG={
 		"line_sources":[],
 		"xyz_layers":{
 			'keys':['soil'],//'iwokrama_pixelated',
-		}	
+		}
 	},
 	"Kanuku Mountains":{
 		"path":"./static/pacmap/data/kanuku/",
@@ -177,7 +177,7 @@ var CONFIG={
 		"line_sources":[],
 		"xyz_layers":{
 			'keys':['kanuku_satellite'],//'kanuku_pixelated',
-		}	
+		}
 	},
 	"Konashens":{
 		"path":"./static/pacmap/data/konashens/",
@@ -192,7 +192,7 @@ var CONFIG={
 		"line_sources":[],
 		"xyz_layers":{
 			'keys':['konashens_satellite'],//'konashens_pixelated',
-		}	
+		}
 	},
 	"Guyana":{
 		"path":"./static/pacmap/data/guyana/",
@@ -207,8 +207,8 @@ var CONFIG={
 		"line_sources":[],
 		"xyz_layers":{
 			'keys':['guyana_pixelated'],
-		}	
+		}
 	},
 }
-	
+
 */
