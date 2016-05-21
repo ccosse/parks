@@ -35,7 +35,7 @@ var PACMap=function(){
 		var back=document.createElement("a");
 			back.id="back";
 			back.href="#";
-			back.className="btn btn-default btn-lg";
+			back.className="btn btn-warning btn-sm";
 			back.role="button";
 			back.text="previous";
 			if(spath.length>1)p.appendChild(back);
@@ -55,7 +55,7 @@ var PACMap=function(){
 			var a=document.createElement("a");
 			a.id=key;
 			a.href="#";
-			a.className="btn btn-default btn-lg";
+			a.className="btn btn-success btn-sm";
 			a.role="button";
 			a.text=key;
 			p.appendChild(a);

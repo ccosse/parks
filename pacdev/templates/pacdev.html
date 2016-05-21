@@ -28,6 +28,7 @@
 			if(!$("#controls").hasClass("portrait")){
 				try{$("#controls").removeClass("landscape");}catch(e){}
 				try{$("#controls").removeClass("hhide");}catch(e){}
+				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-dn.png";
 				$("#controls").addClass("portrait");
 			}
 			//$("#controls").css("height",parseInt(0.85*window.innerHeight));
@@ -36,6 +37,7 @@
 			if(!$("#controls").hasClass("landscape")){
 				try{$("#controls").removeClass("portrait");}catch(e){}
 				try{$("#controls").removeClass("vhide");}catch(e){}
+				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-lt.png";
 				$("#controls").addClass("landscape");
 			}
 			//$("#controls").css("height",(window.innerHeight-h_nav));
@@ -70,7 +72,9 @@
 	<div class="row">
 
 		<div id="controls" class="controls col-sm-4 col-xs-12">
-			<div id="tb" class="tb"></div>
+			<div id="tb" class="tb">
+				<img id="tb_arrow" src="/static/pacdev/img/arrow-lt.png" class="tb_arrow"/>
+			</div>
 
 			<div style="text-align:center;">
 				<img id='img_controls_top' src="/static/pacdev/img/pac_hq.jpg" class="img-responsive w100"/>
@@ -78,7 +82,7 @@
 			</div>
 
 			<div class="panel panel-default">
-				<div id="panel_controls_top" class="panel-body"></div>
+				<div id="panel_controls_top" class="panel-body center"></div>
 			</div>
 
 			<div class="panel panel-default" style="text-align:center;">

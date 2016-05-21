@@ -72,3 +72,16 @@
 .w100{
 	width:100%;
 }
+.thumbnail{
+	padding-top:15px;
+	margin-bottom:20px;
+}
+.editicon{
+	position:absolute;
+	top:15;
+	right:15;
+	cursor:pointer;
+}
+.pad52{
+  padding-top:52px;
+}
