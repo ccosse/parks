@@ -19,10 +19,10 @@ var PACMap=function(){
 
 		pan_zoom(Cfg['center'],Cfg['bbox']);
 
-		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
-
 		document.getElementById('img_controls_top').src=Cfg['photos'][0];
 		console.log(Cfg['photos'][0]);
+
+		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
 
 		var h3=document.createElement("h3");
 		h3.appendChild(document.createTextNode(spath[spath.length-1]));
@@ -68,6 +68,12 @@ var PACMap=function(){
 				me.goto(path+'.'+e.target.id);
 			});
 			console.log("created link: "+key);
+
+			//add boundary layer, mouseover button, mouseover feature
+			window.map.add_layer(Cfg[key]);
+
+			//remove parent layer assets now for smooth removal
+
 		}
 
 	}

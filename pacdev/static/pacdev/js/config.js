@@ -2,17 +2,26 @@ var Config={
 	'center':[-58.9,4.9],
 	'bbox':[-61.5,1.1,-56.3,8.7],
 	'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
+	'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#0A0',width: 2}),}),
+	'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#0F0',width: 2}),}),
 	'keys':['Protected Areas Commission'],
 	'Protected Areas Commission':{
 		'center':[-58.9,4.9],
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
+		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'green',width: 2}),}),
+		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#0F0',width: 2}),}),
 		'photos':['/static/pacdev/img/pac_hq.jpg',],
-		'keys':['Urban Parks','Hinterland Areas'],
-		'Hinterland Areas':{
+		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
+		'Hinterland Parks':{
 			'center':[-58.9,4.9],
 			'bbox':[-61.5,1.1,-56.3,8.7],
-			'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
+			//boundary geojson needs 3 areas in 1 file for group hilite
+			//according to convention of adding and removing layers based on
+			//current navigation in this Config structure
+			'boundary':'/static/pacdev/geojson/hinterland_boundaries.geojson',
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF0',width: 2}),}),
+			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
 			'photos':['/static/pacdev/img/hinterland_areas.jpg',],
 			'keys':['Kaieteur Falls','Shell Beach','Kanuku Mountains'],
 			'Kaieteur Falls':{
@@ -41,6 +50,8 @@ var Config={
 			'center':[-58.17065, 6.79375],
 			'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
 			'boundary':'/static/pacdev/geojson/urbanparks_boundary.geojson',
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 2}),}),
+			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#00F',width: 3}),}),
 			'photos':['/static/pacdev/img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'Guyana Zoo':{
@@ -48,29 +59,54 @@ var Config={
 				'bbox':[-58.1491, 6.8057, -58.1439, 6.809],
 				'boundary':'/static/pacdev/geojson/zoo_boundary.geojson',
 				'photos':['/static/pacdev/img/zoo_entrance.jpg',],
-				'keys':{},
+				'keys':[],
 			},
 			'Botanical Gardens':{
 				'center':[-58.143, 6.8055],
 				'bbox':[-58.1512, 6.8018, -58.1374, 6.8094],
 				'boundary':'/static/pacdev/geojson/botanical_boundary.geojson',
 				'photos':['/static/pacdev/img/botanical_aerial.jpg',],
-				'keys':{},
+				'keys':[],
 			},
 			'National Park':{
 				'center':[-58.1509, 6.8215],
 				'bbox':[-58.1551, 6.8194, -58.1478, 6.8241],
 				'boundary':'/static/pacdev/geojson/national_boundary.geojson',
 				'photos':['/static/pacdev/img/national_park.png',],
-				'keys':{},
+				'keys':[],
 			},
 			'Joe Viera Park':{
 				'center':[-58.1947, 6.7769],
 				'bbox':[-58.1975, 6.7447, -58.1922, 6.7784],
 				'boundary':'/static/pacdev/geojson/joeviera_boundary.geojson',
 				'photos':['/static/pacdev/img/joe_viera.png',],
-				'keys':{},
+				'keys':[],
 			}
+		},
+		'Related Areas':{
+			'center':[-58.8047,3.1735],
+			'bbox':[-59.8099, 1.3842,-58.1345, 5.1129],
+			//Konashens + Iwokrama (both) in related_boundary.geojson
+			'boundary':'/static/pacdev/geojson/related_boundary.geojson',
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'green',width: 2}),}),
+			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FD0',width: 2}),}),
+			'photos':['/static/pacdev/img/place.jpg'],
+			'keys':['Konashens','Iwokrama'],
+			'Konashens':{
+				'center':[-58.1463, 6.8073],
+				'bbox':[-58.1491, 6.8057, -58.1439, 6.809],
+				'boundary':'/static/pacdev/geojson/konashens_boundary.geojson',
+				'photos':['/static/pacdev/img/place.jpg',],
+				'keys':[],
+			},
+			'Iwokrama':{
+				'center':[-58.1463, 6.8073],
+				'bbox':[-58.1491, 6.8057, -58.1439, 6.809],
+				'boundary':'/static/pacdev/geojson/iwokrama_boundary.geojson',
+				'photos':['/static/pacdev/img/place.jpg',],
+				'keys':[],
+			},
+
 		}
 	}
 }

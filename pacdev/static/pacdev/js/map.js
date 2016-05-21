@@ -14,6 +14,39 @@ var Map=function(mapdiv){
 		source:new ol.source.OSM()
 	});
 
+	var hilite_style=new ol.style.Style({
+		stroke: new ol.style.Stroke({color: '#FF0',width: 3}),
+	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
+	});
+	var guyana_style=new ol.style.Style({
+		stroke: new ol.style.Stroke({color: '#0A0',width: 2}),
+	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
+	});
+	var pac_style=new ol.style.Style({
+		stroke: new ol.style.Stroke({color: '#FF0',width: 2}),
+	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
+	});
+	var hidden_style=new ol.style.Style({
+		stroke: new ol.style.Stroke({color:'rgba(0,0,0,0)',width: 2}),
+	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
+	});
+	me.add_layer=function(cfg){
+		console.log("map.add_layer: "+cfg['boundary']);
+		var boundary_source=new ol.source.Vector({
+			url: cfg['boundary'],
+			format: new ol.format.GeoJSON()
+		});
+
+		var le_style=cfg['style'];
+		//if(key=="Guyana")le_style=guyana_style;
+
+		var boundary_layer= new ol.layer.Vector({
+			source: boundary_source,
+			style:le_style,
+		});
+		me.map.addLayer(boundary_layer);
+
+	}
 	me.map = new ol.Map({
 	  layers: [osm,sat],
 	  target: mapdiv,
@@ -21,7 +54,7 @@ var Map=function(mapdiv){
     	center:ol.proj.transform(Config['center'],"EPSG:4326","EPSG:3857"),
 	  })
 	});
-
+	me.add_layer(Config['Protected Areas Commission']);
 	me.hilite=function(f){
 		console.log("map.hilite: "+f);
 	}
