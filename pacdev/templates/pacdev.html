@@ -28,7 +28,7 @@
 			if(!$("#controls").hasClass("portrait")){
 				try{$("#controls").removeClass("landscape");}catch(e){}
 				try{$("#controls").removeClass("hhide");}catch(e){}
-				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-dn.png";
+				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-dn.gif";
 				$("#controls").addClass("portrait");
 			}
 			//$("#controls").css("height",parseInt(0.85*window.innerHeight));
@@ -37,7 +37,7 @@
 			if(!$("#controls").hasClass("landscape")){
 				try{$("#controls").removeClass("portrait");}catch(e){}
 				try{$("#controls").removeClass("vhide");}catch(e){}
-				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-lt.png";
+				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-lt.gif";
 				$("#controls").addClass("landscape");
 			}
 			//$("#controls").css("height",(window.innerHeight-h_nav));
@@ -78,7 +78,8 @@
 
 			<div style="text-align:center;">
 				<img id='img_controls_top' src="/static/pacdev/img/pac_hq.jpg" class="img-responsive w100"/>
-				<h4><div id='title_controls_top'>Update Me</div></h4>
+				<img class="controls_logo" src="/static/pacdev/img/pac_logo.png"/>
+				<div id='title_controls_top'>Update Me</div>
 			</div>
 
 			<div class="panel panel-default">

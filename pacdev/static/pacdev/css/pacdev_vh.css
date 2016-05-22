@@ -24,6 +24,14 @@
 .controls.hhide{
   left:-33.33%;
 }
+.controls_logo{
+  position:relative;
+  border-radius:26px;
+  width:52px;
+  height:52px;
+  top:-26px;
+  right:-35%;
+}
 .controls.portrait #tb{
   padding-top:0px;
   padding-left:8px;
@@ -83,6 +91,11 @@
 }
 #logo{
 	height:25px;
+}
+#title_controls_top{
+  font-size:16pt;
+  position:relative;
+  top:-20px;
 }
 .w100{
 	width:100%;

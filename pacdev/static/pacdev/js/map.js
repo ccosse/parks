@@ -73,17 +73,22 @@ var Map=function(mapdiv){
 	me.map.setSize([bcr.width,bcr.height]);
 	me.map.getView().setResolution(res);
 
-	me.hilite=function(feature_name,layer){
-		console.log("map.hilite: "+feature_name);
+	me.unhilite=function(e){
 		for(var hidx=0;hidx<me.HILIGHTS.length;hidx++){
 			me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
 		}
+	}
+
+	me.hilite=function(feature_name,layer){
+		console.log("map.hilite: "+feature_name);
+		me.unhilite();
 		var fs=layer.getSource().getFeatures();
 		for(var fidx=0;fidx<fs.length;fidx++){
 			me.featureOverlay.addFeature(fs[fidx]);
 			me.HILIGHTS.push(fs[fidx]);
 		}
 	}
+
 	me.map.on('pointermove',function(evt){
 		if(evt.dragging){return;}
 		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
@@ -100,8 +105,8 @@ var Map=function(mapdiv){
 		map: me.map,
 		style: new ol.style.Style({
 			stroke: new ol.style.Stroke({
-				color: 'red',
-				width: 3
+				color: '#5F5',
+				width: 4
 			}),
 		}),
 	});

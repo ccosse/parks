@@ -69,6 +69,10 @@ var PACMap=function(){
 
 			//add boundary layer, mouseover button, mouseover feature
 			me.layers[key]=window.map.add_layer(Cfg[key]);
+			a.addEventListener('mouseout',function(e){
+				console.log("mouseout");
+				window.map.unhilite();
+			});
 
 			a.addEventListener('mouseover',function(e){
 				console.log(e.target.id);
