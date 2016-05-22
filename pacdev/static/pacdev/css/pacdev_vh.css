@@ -90,8 +90,12 @@
 .navbar{
 	margin-bottom:0px;
 }
+.navbar-brand{
+  padding:9px 9px;
+}
 #logo{
-	height:25px;
+	height:36px;
+  border-radius:18px;
 }
 #title_controls_top{
   font-size:16pt;
@@ -116,4 +120,15 @@
 }
 .pad52{
   padding-top:52px;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #E5E5E5;
+}
+.navbar-default {
+    background-color: darkgreen;
+    border-color: #004400;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #F5FFF5;
+    background-color: transparent;
 }
