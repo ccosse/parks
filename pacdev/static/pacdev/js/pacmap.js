@@ -1,10 +1,19 @@
 var PACMap=function(){
 	var me={};
-	me.layers={};
+	me.layers={'keys':[],};
 	me.goto=function(path){
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
 		}
+
+		console.log("removing last layer set ...");
+		while(me.layers['keys'].length>0){
+			var key=me.layers['keys'].pop();
+			window.map.map.removeLayer(me.layers[key]);
+			delete me.layers[key];
+			console.log("removed: "+key);
+		}
+
 		console.log("goto");
 		console.log(path);
 
@@ -59,7 +68,8 @@ var PACMap=function(){
 			a.href="#";
 			a.className="btn btn-success btn-sm";
 			a.role="button";
-			a.text=key;
+			//a.text=key;
+			a.appendChild(document.createTextNode(key));
 			p.appendChild(a);
 
 			a.addEventListener('click',function(e){
@@ -69,7 +79,9 @@ var PACMap=function(){
 			console.log("created link: "+key);
 
 			//add boundary layer, mouseover button, mouseover feature
+			me.layers['keys'].push(key);
 			me.layers[key]=window.map.add_layer(window.Cfg[key]);
+
 			a.addEventListener('mouseout',function(e){
 				console.log("mouseout");
 				window.map.unhilite();
