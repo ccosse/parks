@@ -11,17 +11,18 @@ var PACMap=function(){
 		var spath=path.split(".");
 		console.log(spath);
 
-		var Cfg=Config;
+		window.Cfg=Config;
 		for(var sidx=0;sidx<spath.length;sidx++){
 			var skey=spath[sidx];
-			console.log(skey);
-			Cfg=Cfg[skey];
+			console.log("sidx="+sidx+" skey="+skey);
+			window.Cfg=Cfg[skey];
 		}
-		
-		pan_zoom(Cfg['center'],Cfg['bbox']);
+		console.log("PATH:"+window.Cfg['path']);
 
-		document.getElementById('img_controls_top').src=Cfg['photos'][0];
-		console.log(Cfg['photos'][0]);
+		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
+
+		document.getElementById('img_controls_top').src=window.Cfg['photos'][0];
+		console.log(window.Cfg['photos'][0]);
 
 		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
 
@@ -68,7 +69,7 @@ var PACMap=function(){
 			console.log("created link: "+key);
 
 			//add boundary layer, mouseover button, mouseover feature
-			me.layers[key]=window.map.add_layer(Cfg[key]);
+			me.layers[key]=window.map.add_layer(window.Cfg[key]);
 			a.addEventListener('mouseout',function(e){
 				console.log("mouseout");
 				window.map.unhilite();

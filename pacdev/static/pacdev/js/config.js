@@ -1,4 +1,5 @@
 var Config={
+	'path':'',
 	'center':[-58.9,4.9],
 	'bbox':[-61.5,1.1,-56.3,8.7],
 	'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
@@ -6,25 +7,28 @@ var Config={
 	'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgreen',width: 2}),}),
 	'keys':['Protected Areas Commission'],
 	'Protected Areas Commission':{
+		'path':'Protected Areas Commission',
 		'center':[-58.9,4.9],
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
-		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#AA0',width: 2}),}),
+		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 		'photos':['/static/pacdev/img/pac_hq.jpg',],
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
 		'Hinterland Parks':{
+			'path':'Protected Areas Commission.Hinterland Parks',
 			'center':[-59.2514,5.8807],
 			'bbox':[-60.4036,3.1817,-58.1107,8.6807],
 			//boundary geojson needs 3 areas in 1 file for group hilite
 			//according to convention of adding and removing layers based on
 			//current navigation in this Config structure
 			'boundary':'/static/pacdev/geojson/hinterland_boundaries.geojson',
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#AA0',width: 2}),}),
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
 			'photos':['/static/pacdev/img/hinterland_areas.jpg',],
-			'keys':['Kaieteur Falls','Shell Beach','Kanuku Mountains'],
-			'Kaieteur Falls':{
+			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
+			'Kaieteur National Park':{
+				'path':'Protected Areas Commission.Hinterland Parks.Kaieteur National Park',
 				'center':[-59.50293, 5.175],
 				'bbox':[-59.63383, 5.0468, -59.37203, 5.3032],
 				'boundary':'/static/pacdev/geojson/kaieteur_boundary.geojson',
@@ -32,6 +36,7 @@ var Config={
 				'keys':[],
 			},
 			'Shell Beach':{
+				'path':'Protected Areas Commission.Hinterland Parks.Shell Beach',
 				'center':[-59.294995, 7.99126],
 				'bbox':[-59.78492, 7.59982, -58.80507, 8.3827],
 				'boundary':'/static/pacdev/geojson/shellbeach_boundary.geojson',
@@ -39,6 +44,7 @@ var Config={
 				'keys':[],
 			},
 			'Kanuku Mountains':{
+				'path':'Protected Areas Commission.Hinterland Parks.Kanuku Mountains',
 				'center':[-59.105485, 3.2779],
 				'bbox':[-59.62108, 2.89736, -58.58989, 3.65844],
 				'boundary':'/static/pacdev/geojson/kanuku_boundary.geojson',
@@ -47,14 +53,16 @@ var Config={
 			}
 		},
 		'Urban Parks':{
+			'path':'Protected Areas Commission.Urban Parks',
 			'center':[-58.17065, 6.79375],
 			'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
 			'boundary':'/static/pacdev/geojson/urbanparks_boundary.geojson',
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#AA0',width: 2}),}),
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'Guyana Zoo':{
+				'path':'Protected Areas Commission.Urban Parks.Guyana Zoo',
 				'center':[-58.1463, 6.8073],
 				'bbox':[-58.1491, 6.8057, -58.1439, 6.809],
 				'boundary':'/static/pacdev/geojson/zoo_boundary.geojson',
@@ -62,6 +70,7 @@ var Config={
 				'keys':[],
 			},
 			'Botanical Gardens':{
+				'path':'Protected Areas Commission.Urban Parks.Botanical Gardens',
 				'center':[-58.143, 6.8055],
 				'bbox':[-58.1512, 6.8018, -58.1374, 6.8094],
 				'boundary':'/static/pacdev/geojson/botanical_boundary.geojson',
@@ -69,6 +78,7 @@ var Config={
 				'keys':[],
 			},
 			'National Park':{
+				'path':'Protected Areas Commission.Urban Parks.National Park',
 				'center':[-58.1509, 6.8215],
 				'bbox':[-58.1551, 6.8194, -58.1478, 6.8241],
 				'boundary':'/static/pacdev/geojson/national_boundary.geojson',
@@ -76,6 +86,7 @@ var Config={
 				'keys':[],
 			},
 			'Joe Viera Park':{
+				'path':'Protected Areas Commission.Urban Parks.Joe Viera Park',
 				'center':[-58.1947, 6.7769],
 				'bbox':[-58.1975, 6.7447, -58.1922, 6.7784],
 				'boundary':'/static/pacdev/geojson/joeviera_boundary.geojson',
@@ -84,15 +95,17 @@ var Config={
 			}
 		},
 		'Related Areas':{
+			'path':'Protected Areas Commission.Related Areas',
 			'center':[-58.8047,3.1735],
 			'bbox':[-59.8099, 1.3842,-58.1345, 5.1129],
 			//Konashens + Iwokrama (both) in related_boundary.geojson
 			'boundary':'/static/pacdev/geojson/related_boundary.geojson',
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#AA0',width: 2}),}),
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/place.jpg'],
 			'keys':['Konashens','Iwokrama'],
 			'Konashens':{
+				'path':'Protected Areas Commission.Related Areas.Konashens',
 				'center':[-58.909, 1.7511],
 				'bbox':[-59.7366,1.1001,-58.2143,2.1133],
 				'boundary':'/static/pacdev/geojson/konashens_boundary.geojson',
@@ -100,6 +113,7 @@ var Config={
 				'keys':[],
 			},
 			'Iwokrama':{
+				'path':'Protected Areas Commission.Related Areas.Iwokrama',
 				'center':[-58.83, 4.4983],
 				'bbox':[-59.4164,4.1441,-58.3395,4.9927],
 				'boundary':'/static/pacdev/geojson/iwokrama_boundary.geojson',

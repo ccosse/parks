@@ -58,6 +58,25 @@ var Map=function(mapdiv){
 	});
 	me.add_layer(Config['Protected Areas Commission']);
 
+	me.map.on('click',function(evt){
+		/*This feature info comes from inside the geojson
+		file, so Name in Geojson needs to match name in Cfg
+		structure; So Name="Hinterland Parks" for Kaieteur
+		at Hinterland Parks.geojson.
+		*/
+		var features=[];
+		var layers=[];
+		var pixel = me.map.getEventPixel(evt.originalEvent);
+		var dummy = me.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
+			features.push(feature);
+			layers.push(layer);
+		});
+		if(features.length>0){
+			var feature_name=features[0].getProperties().Name;
+			console.log("goto:"+feature_name);
+			window.pacmap.goto(window.Cfg['path']+'.'+feature_name);
+		}
+	});
 	me.map.on('pointermove',function(evt) {
 		var latpanel=document.getElementById("lat");
 		var lonpanel=document.getElementById("lon");
@@ -105,8 +124,8 @@ var Map=function(mapdiv){
 		map: me.map,
 		style: new ol.style.Style({
 			stroke: new ol.style.Stroke({
-				color: '#0F0',
-				width: 2
+				color: 'gold',
+				width: 3
 			}),
 		}),
 	});

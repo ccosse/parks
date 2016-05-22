@@ -1,8 +1,7 @@
-{"crs": {"type": "EPSG", "properties": {"code": "4326"}}, "totalFeatures": 1, "type": "FeatureCollection", 
+{"crs": {"type": "EPSG", "properties": {"code": "4326"}}, "totalFeatures": 1, "type": "FeatureCollection",
 	"features": [
 		{"geometry": {"type": "MultiPolygon", "coordinates": [[[
 			[-58.1491,6.8057],[-58.1491,6.809],[-58.1439,6.809],[-58.1439,6.8057],[-58.1491,6.8057]
-		]]], "Shape_Leng": 5}, "type": "Feature", "id": "Botanical Gardens", "geometry_name": "the_geom"}
+		]]], "Shape_Leng": 5}, "type": "Feature", "id": "Guyana Zoo", "Name":"Guyana Zoo","geometry_name": "the_geom"}
 	]
 }
-
