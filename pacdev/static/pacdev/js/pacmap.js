@@ -1,5 +1,6 @@
 var PACMap=function(){
 	var me={};
+	me.layers={};
 	me.goto=function(path){
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
@@ -59,10 +60,7 @@ var PACMap=function(){
 			a.role="button";
 			a.text=key;
 			p.appendChild(a);
-			a.addEventListener('mouseover',function(e){
-				console.log(e.target.id);
-				window.map.hilite(e.target.id);
-			});
+
 			a.addEventListener('click',function(e){
 				console.log(e.target.id);
 				me.goto(path+'.'+e.target.id);
@@ -70,7 +68,12 @@ var PACMap=function(){
 			console.log("created link: "+key);
 
 			//add boundary layer, mouseover button, mouseover feature
-			window.map.add_layer(Cfg[key]);
+			me.layers[key]=window.map.add_layer(Cfg[key]);
+
+			a.addEventListener('mouseover',function(e){
+				console.log(e.target.id);
+				window.map.hilite(e.target.id,me.layers[e.target.id]);
+			});
 
 			//remove parent layer assets now for smooth removal
 

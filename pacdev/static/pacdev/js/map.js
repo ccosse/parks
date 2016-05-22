@@ -1,5 +1,7 @@
 var Map=function(mapdiv){
 	var me={};
+	me.HILIGHTS=[];
+
 	var sat=new ol.layer.Tile({
 		minResolution:500,
 		preload:14,
@@ -45,7 +47,7 @@ var Map=function(mapdiv){
 			style:le_style,
 		});
 		me.map.addLayer(boundary_layer);
-
+		return boundary_layer;
 	}
 	me.map = new ol.Map({
 	  layers: [osm,sat],
@@ -55,9 +57,6 @@ var Map=function(mapdiv){
 	  })
 	});
 	me.add_layer(Config['Protected Areas Commission']);
-	me.hilite=function(f){
-		console.log("map.hilite: "+f);
-	}
 
 	me.map.on('pointermove',function(evt) {
 		var latpanel=document.getElementById("lat");
@@ -74,5 +73,37 @@ var Map=function(mapdiv){
 	me.map.setSize([bcr.width,bcr.height]);
 	me.map.getView().setResolution(res);
 
+	me.hilite=function(feature_name,layer){
+		console.log("map.hilite: "+feature_name);
+		for(var hidx=0;hidx<me.HILIGHTS.length;hidx++){
+			me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
+		}
+		var fs=layer.getSource().getFeatures();
+		for(var fidx=0;fidx<fs.length;fidx++){
+			me.featureOverlay.addFeature(fs[fidx]);
+			me.HILIGHTS.push(fs[fidx]);
+		}
+	}
+	me.map.on('pointermove',function(evt){
+		if(evt.dragging){return;}
+		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
+			var target_name=target_feature.get("NAME");
+			if(!target_name)target_name=target_feature.get("Name");
+			if(layer){
+				me.hilite(target_name,layer);
+				//if(DEBUG)console.log(target_name);
+			};
+		});
+	});
+
+	me.featureOverlay = new ol.FeatureOverlay({
+		map: me.map,
+		style: new ol.style.Style({
+			stroke: new ol.style.Stroke({
+				color: 'red',
+				width: 3
+			}),
+		}),
+	});
 	return me;
 }
