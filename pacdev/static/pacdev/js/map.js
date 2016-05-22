@@ -81,7 +81,6 @@ var Map=function(mapdiv){
 
 	me.hilite=function(feature_name,layer){
 		console.log("map.hilite: "+feature_name);
-		me.unhilite();
 		var fs=layer.getSource().getFeatures();
 		for(var fidx=0;fidx<fs.length;fidx++){
 			me.featureOverlay.addFeature(fs[fidx]);
@@ -90,6 +89,7 @@ var Map=function(mapdiv){
 	}
 
 	me.map.on('pointermove',function(evt){
+		me.unhilite();
 		if(evt.dragging){return;}
 		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
 			var target_name=target_feature.get("NAME");
@@ -105,8 +105,8 @@ var Map=function(mapdiv){
 		map: me.map,
 		style: new ol.style.Style({
 			stroke: new ol.style.Stroke({
-				color: '#5F5',
-				width: 4
+				color: '#0F0',
+				width: 2
 			}),
 		}),
 	});

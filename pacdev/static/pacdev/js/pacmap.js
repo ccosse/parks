@@ -17,7 +17,7 @@ var PACMap=function(){
 			console.log(skey);
 			Cfg=Cfg[skey];
 		}
-
+		
 		pan_zoom(Cfg['center'],Cfg['bbox']);
 
 		document.getElementById('img_controls_top').src=Cfg['photos'][0];
