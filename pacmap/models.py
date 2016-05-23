@@ -1,13 +1,17 @@
 from __future__ import unicode_literals
 from django.db import models
 import os
+from tinymce.models import HTMLField
+
+class TestArticle(models.Model):
+	content = HTMLField()
 
 class POI(models.Model):
 	name= models.CharField(max_length=60,blank=False)
 	desc= models.CharField(max_length=60,blank=False)
 	lat	= models.FloatField(blank=False)
 	lon	= models.FloatField(blank=False)
-	
+
 	def __unicode__(self):
 		return self.name
 
@@ -18,7 +22,7 @@ class Embedded(models.Model):
 	lon	= models.FloatField(blank=True)
 	tags= models.CharField(max_length=100,blank=False)
 	url = models.URLField(blank=False)
-	
+
 	def __unicode__(self):
 		return self.title
 
@@ -44,7 +48,7 @@ class GalleryFile(models.Model):
 	file = models.FileField(upload_to='/var/www/dev/static/pacmap/upload/files/', null=True, blank=True)
 	#how can we make filename hidden in admin interface? (b/c want blank and filled-out below)
 	filename=models.CharField(max_length=60,blank=True)
-	
+
 	def __unicode__(self):
 		return self.title
 
@@ -57,7 +61,7 @@ class GalleryDocument(models.Model):
 	file = models.FileField(upload_to='/var/www/dev/static/pacmap/upload/docs/', null=True, blank=True)
 	#how can we make filename hidden in admin interface? (b/c want blank and filled-out below)
 	filename=models.CharField(max_length=60,blank=True)
-	
+
 	def __unicode__(self):
 		return self.title
 

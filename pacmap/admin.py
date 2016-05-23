@@ -5,6 +5,15 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from pacmap.models import POI,GalleryImage,GalleryFile,Embedded,GalleryDocument
+from pacmap.models import TestArticle
+
+from tinymce.widgets import TinyMCE
+
+class TestArticleAdmin(admin.ModelAdmin):
+        list_display		= ('content',)
+    	list_display_links	= ('content',)
+
+admin.site.register(TestArticle, TestArticleAdmin)
 
 class POIAdmin(admin.ModelAdmin):
 	list_display		= ('name','lat','lon', 'desc',)

@@ -121,3 +121,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/parks/static/'
+
+TINYMCE_DEFAULT_CONFIG = {
+    'width':600,
+    'height':400,
+    #'plugins': "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker,searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking,save table contextmenu directionality emoticons template paste textcolor",
+    'theme': "advanced",
+    'toolbar': "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+    'plugins': "table,spellchecker,paste,searchreplace",
+    'theme': "advanced",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+}
+TINYMCE_SPELLCHECKER = True
+

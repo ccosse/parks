@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from tinymce.models import HTMLField
 import os
 
 class POI(models.Model):
@@ -61,6 +62,9 @@ class GalleryDocument(models.Model):
 	def __unicode__(self):
 		return self.title
 
+class TestArticle(models.Model):
+	content = HTMLField()
+	
 #http://stackoverflow.com/questions/5372934/how-do-i-get-django-admin-to-delete-files-when-i-remove-an-object-from-the-datab
 #Receive the pre_delete signal and delete the file associated with the model instance.
 from django.db.models.signals import pre_delete,pre_save
