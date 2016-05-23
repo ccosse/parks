@@ -6,6 +6,7 @@ var Config={
 	'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgreen',width: 2}),}),
 	'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgreen',width: 2}),}),
 	'keys':['Protected Areas Commission'],
+	'points':[],
 	'Protected Areas Commission':{
 		'path':'Protected Areas Commission',
 		'center':[-58.9,4.9],
@@ -15,6 +16,7 @@ var Config={
 		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 		'photos':['/static/pacdev/img/pac_hq.jpg',],
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
+		'points':[],
 		'Hinterland Parks':{
 			'path':'Protected Areas Commission.Hinterland Parks',
 			'center':[-59.2514,5.8807],
@@ -27,6 +29,7 @@ var Config={
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
 			'photos':['/static/pacdev/img/hinterland_areas.jpg',],
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
+			'points':[],
 			'Kaieteur National Park':{
 				'path':'Protected Areas Commission.Hinterland Parks.Kaieteur National Park',
 				'center':[-59.50293, 5.175],
@@ -34,6 +37,9 @@ var Config={
 				'boundary':'/static/pacdev/geojson/kaieteur_boundary.geojson',
 				'photos':['/static/pacdev/img/kaieteur_falls.png',],
 				'keys':[],
+				'points':[
+					'/static/pacdev/geojson/falls.geojson',
+				],
 			},
 			'Shell Beach':{
 				'path':'Protected Areas Commission.Hinterland Parks.Shell Beach',
@@ -42,6 +48,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/shellbeach_boundary.geojson',
 				'photos':['/static/pacdev/img/shell_beach.jpg',],
 				'keys':[],
+				'points':[],
 			},
 			'Kanuku Mountains':{
 				'path':'Protected Areas Commission.Hinterland Parks.Kanuku Mountains',
@@ -50,6 +57,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/kanuku_boundary.geojson',
 				'photos':['/static/pacdev/img/kanuku_mountains.png',],
 				'keys':[],
+				'points':[],
 			}
 		},
 		'Urban Parks':{
@@ -61,6 +69,7 @@ var Config={
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
+			'points':[],
 			'Guyana Zoo':{
 				'path':'Protected Areas Commission.Urban Parks.Guyana Zoo',
 				'center':[-58.1463, 6.8073],
@@ -68,6 +77,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/zoo_boundary.geojson',
 				'photos':['/static/pacdev/img/zoo_entrance.jpg',],
 				'keys':[],
+				'points':[],
 			},
 			'Botanical Gardens':{
 				'path':'Protected Areas Commission.Urban Parks.Botanical Gardens',
@@ -76,6 +86,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/botanical_boundary.geojson',
 				'photos':['/static/pacdev/img/botanical_aerial.jpg',],
 				'keys':[],
+				'points':[],
 			},
 			'National Park':{
 				'path':'Protected Areas Commission.Urban Parks.National Park',
@@ -84,6 +95,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/national_boundary.geojson',
 				'photos':['/static/pacdev/img/national_park.png',],
 				'keys':[],
+				'points':[],
 			},
 			'Joe Viera Park':{
 				'path':'Protected Areas Commission.Urban Parks.Joe Viera Park',
@@ -92,6 +104,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/joeviera_boundary.geojson',
 				'photos':['/static/pacdev/img/joe_viera.png',],
 				'keys':[],
+				'points':[],
 			}
 		},
 		'Related Areas':{
@@ -104,6 +117,7 @@ var Config={
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/place.jpg'],
 			'keys':['Konashens','Iwokrama'],
+			'points':[],
 			'Konashens':{
 				'path':'Protected Areas Commission.Related Areas.Konashens',
 				'center':[-58.909, 1.7511],
@@ -111,6 +125,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/konashens_boundary.geojson',
 				'photos':['/static/pacdev/img/place.jpg',],
 				'keys':[],
+				'points':[],
 			},
 			'Iwokrama':{
 				'path':'Protected Areas Commission.Related Areas.Iwokrama',
@@ -119,6 +134,7 @@ var Config={
 				'boundary':'/static/pacdev/geojson/iwokrama_boundary.geojson',
 				'photos':['/static/pacdev/img/place.jpg',],
 				'keys':[],
+				'points':[],
 			},
 
 		}

@@ -1,0 +1,14 @@
+.xBdiv{
+	top:0;
+	left:0;
+	width:100%;
+	position:absolute;
+	text-align:right;
+	z-index:999;
+
+}
+.xBicon{
+	width:24px;
+	height:24px;
+	background-color:#666666;
+}

@@ -32,6 +32,48 @@ var Map=function(mapdiv){
 		stroke: new ol.style.Stroke({color:'rgba(0,0,0,0)',width: 2}),
 	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
 	});
+
+	var point_style=new ol.style.Style({
+	image:new ol.style.Circle({
+		radius:10,
+		stroke: new ol.style.Stroke({
+			color: 'rgba(0,255,0,1)',
+			width:5
+		}),
+		fill: new ol.style.Fill({
+			color: 'rgba(255,255,0,1)',
+		}),
+	})
+});
+
+var hidden_point_style=new ol.style.Style({
+	image:new ol.style.Circle({
+		radius:0,
+		stroke: new ol.style.Stroke({
+			color: 'rgba(0,255,0,0)',
+			width:0
+		}),
+		fill: new ol.style.Fill({
+			color: 'rgba(255,255,0,0)',
+		}),
+	})
+});
+me.add_point=function(src_url){
+		var point_source=new ol.source.Vector({
+			url: src_url,
+			format: new ol.format.GeoJSON(),
+	//		minZoom: mapMinZoom,
+	//		maxZoom: mapMaxZoom
+		});
+
+		var point_layer= new ol.layer.Vector({
+			source: point_source,
+			style:point_style
+		});
+		me.map.addLayer(point_layer);
+		return point_layer;
+	}
+
 	me.add_layer=function(cfg){
 		console.log("map.add_layer: "+cfg['boundary']);
 		var boundary_source=new ol.source.Vector({
@@ -64,15 +106,30 @@ var Map=function(mapdiv){
 		structure; So Name="Hinterland Parks" for Kaieteur
 		at Hinterland Parks.geojson.
 		*/
-		var features=[];
-		var layers=[];
+		var clicked_features=[];
+		var clicked_layers=[];
 		var pixel = me.map.getEventPixel(evt.originalEvent);
 		var dummy = me.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
-			features.push(feature);
-			layers.push(layer);
+			clicked_features.push(feature);
+			clicked_layers.push(layer);
 		});
-		if(features.length>0){
-			var feature_name=features[0].getProperties().Name;
+		var found=false;
+		if(clicked_layers.length>0){
+			console.log("layers.length="+clicked_layers.length);
+			for(var lidx=0;lidx<clicked_layers.length;lidx++){
+				//var layer_type=clicked_layers[lidx].get("layer_type");
+				//console.log(layer_type);
+				if(false){//}(layer_type=="Launch3D"){
+					found=true;
+					console.log("Launching 3D Viewer ...");
+					if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
+					else{console.log("NEED: WebGL Required Message to user");}
+				}
+			}
+		}
+
+		if(clicked_features.length>0 && !found){
+			var feature_name=clicked_features[0].getProperties().Name;
 			console.log("goto:"+feature_name);
 			window.pacmap.goto(window.Cfg['path']+'.'+feature_name);
 		}

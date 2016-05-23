@@ -1,5 +1,15 @@
 var PACMap=function(){
 	var me={};
+
+	me.WebGL=false;
+	me.lib3D=null;
+	try{
+		me.lib3D=new My3DStuff();
+		me.lib3D.init3d();
+		me.WebGL=true;
+	}
+	catch(e){}
+
 	me.layers={'keys':[],};
 	me.goto=function(path){
 		if($("#controls").hasClass("portrait")){
@@ -48,7 +58,7 @@ var PACMap=function(){
 			back.href="#";
 			back.className="btn btn-warning btn-sm";
 			back.role="button";
-			back.text="previous";
+			back.appendChild(document.createTextNode("Previous"));
 			if(spath.length>1)p.appendChild(back);
 			back.addEventListener('click',function(e){
 				console.log(e.target.id);
@@ -61,7 +71,7 @@ var PACMap=function(){
 			});
 
 		//NEXT LEVEL DOWN
-		for(var kidx=0;kidx<Cfg['keys'].length;kidx++){
+		for(var kidx=0;kidx<window.Cfg['keys'].length;kidx++){
 			var key=Cfg['keys'][kidx];
 			var a=document.createElement("a");
 			a.id=key;
@@ -93,7 +103,14 @@ var PACMap=function(){
 			});
 
 			//remove parent layer assets now for smooth removal
+			//also remove points now
+		}
 
+		for(var pidx=0;pidx<window.Cfg['points'].length;pidx++){
+			var point_filename=window.Cfg['points'][pidx];
+			console.log(point_filename);
+			me.layers['keys'].push(point_filename);
+			me.layers[point_filename]=window.map.add_point(point_filename);
 		}
 
 	}

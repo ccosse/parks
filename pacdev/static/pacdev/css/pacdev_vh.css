@@ -139,3 +139,6 @@
     color: #FFFFFF;
     background-color: #759935;
 }
+.ol-attribution button, .ol-attribution ul {
+    display: None;
+}
