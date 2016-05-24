@@ -1,0 +1,144 @@
+#div_controls_top{
+  text-align:center;
+  background-color:darkgoldenrod;
+  color:#F5F5F5;
+}
+.controls{
+  position:fixed;
+  background-color:#F5F5F5;
+  color:#83ad35;
+  z-index:10;
+  left:0%;
+  bottom:0%;
+  -webkit-transition: height 1.0s ease,left 1.0s ease;
+  transition: height 1.0s ease,left 1.0s ease;
+  padding-left:0px;
+  padding-right:0px;
+  font-family:Pacifico;
+}
+.controls.portrait{
+  height:85%;
+}
+.controls.landscape{
+  height:100%;
+  padding-top:52px;
+}
+.controls.vhide{
+  height:10%;
+}
+.controls.hhide{
+  left:-33.33%;
+}
+.controls_logo{
+  position:relative;
+  border-radius:26px;
+  width:52px;
+  height:52px;
+  top:-26px;
+  right:-35%;
+  box-shadow: 3px 3px 8px #333333;
+}
+.controls.portrait #tb{
+  padding-top:0px;
+  padding-left:8px;
+  position:absolute;
+  bottom:100%;
+  background-color: darkgoldenrod;
+  width:36px;
+  height:24px;
+  left:50%;
+}
+.tb_arrow{
+  cursor:pointer;
+  width:17px;
+  -webkit-transition: transform 1.0s ease;
+  transition: transform 1.0s ease;
+}
+.controls.vhide #tb_arrow{
+	transform:rotate(180deg);
+}
+.controls.hhide #tb_arrow{
+	transform:rotate(180deg);
+}
+.controls.landscape #tb{
+  padding-top:8px;
+  padding-left:0px;
+  position:absolute;
+  background-color:darkgoldenrod;
+  width:24px;
+  height:36px;
+  top:15%;
+  left:100%;
+}
+#mapdiv{
+  position:fixed;
+  background-color:#FFFFFF;
+  width:100%;
+  height:100%;
+  font-size:20px;
+  color:white;
+}
+#layout{
+	width:100%;
+	padding-left:0px;
+	padding-right:0px;
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+#layout .row{
+	margin-left:0px;
+	margin-right:0px;
+}
+.navbar{
+	margin-bottom:0px;
+}
+.navbar-brand{
+  padding:9px 9px;
+}
+#logo{
+	height:36px;
+  border-radius:18px;
+  cursor:pointer;
+}
+#title_controls_top{
+  font-size:16pt;
+  position:relative;
+  top:-20px;
+}
+.w100{
+	width:100%;
+}
+.center{
+  text-align:center;
+}
+.thumbnail{
+	padding-top:15px;
+	margin-bottom:20px;
+}
+.editicon{
+	position:absolute;
+	top:15;
+	right:15;
+	cursor:pointer;
+}
+.pad52{
+  padding-top:52px;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #FFFFFF;
+}
+.navbar-default {
+    background-color: #83ad35;
+    border-color: #004400;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #FFFFFF;
+    background-color: #759935;
+}
+.ol-attribution button, .ol-attribution ul {
+    display: None;
+}

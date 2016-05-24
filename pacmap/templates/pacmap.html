@@ -1,13 +1,15 @@
 {% extends 'pacmap_base.html' %}
 
 {% block extra_javascript_include %}
-	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacdev_vh.css">
 	<link href="https://font.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/my3dstuff.css">
+	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacmap_vh.css">
 	<script type="text/javascript" src="/static/pacmap/js/util.js"></script>
 	<script type="text/javascript" src="/static/pacmap/js/config.js"></script>
 	<script type="text/javascript" src="/static/pacmap/js/map.js"></script>
 	<script type="text/javascript" src="/static/pacmap/js/pacmap.js"></script>
 	<script type="text/javascript" src="/static/pacmap/js/zoom.js"></script>
+	<script type="text/javascript" src="/static/pacmap/js/my3dstuff.js"></script>
 {% endblock %}
 {% block extra_javascript %}
 
@@ -17,6 +19,7 @@
 	}
 
 	window.counter=0;
+	window.Cfg=Config;
 
 	window.onresize=function(e){
 		var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
@@ -28,13 +31,16 @@
 			if(!$("#controls").hasClass("portrait")){
 				try{$("#controls").removeClass("landscape");}catch(e){}
 				try{$("#controls").removeClass("hhide");}catch(e){}
+				document.getElementById("tb_arrow").src="/static/pacmap/img/arrow-dn.gif";
 				$("#controls").addClass("portrait");
 			}
+			//$("#controls").css("height",parseInt(0.85*window.innerHeight));
 		}
 		else{
 			if(!$("#controls").hasClass("landscape")){
 				try{$("#controls").removeClass("portrait");}catch(e){}
 				try{$("#controls").removeClass("vhide");}catch(e){}
+				document.getElementById("tb_arrow").src="/static/pacmap/img/arrow-lt.gif";
 				$("#controls").addClass("landscape");
 			}
 			//$("#controls").css("height",(window.innerHeight-h_nav));
@@ -69,15 +75,18 @@
 	<div class="row">
 
 		<div id="controls" class="controls col-sm-4 col-xs-12">
-			<div id="tb" class="tb"></div>
+			<div id="tb" class="tb">
+				<img id="tb_arrow" src="/static/pacmap/img/arrow-lt.png" class="tb_arrow"/>
+			</div>
 
-			<div style="text-align:center;">
+			<div id="div_controls_top" >
 				<img id='img_controls_top' src="/static/pacmap/img/pac_hq.jpg" class="img-responsive w100"/>
-				<h4><div id='title_controls_top'>Update Me</div></h4>
+				<img class="controls_logo" src="/static/pacmap/img/pac_logo.png"/>
+				<div id='title_controls_top'>Update Me</div>
 			</div>
 
 			<div class="panel panel-default">
-				<div id="panel_controls_top" class="panel-body"></div>
+				<div id="panel_controls_top" class="panel-body center"></div>
 			</div>
 
 			<div class="panel panel-default" style="text-align:center;">

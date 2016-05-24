@@ -29,7 +29,7 @@ class GalleryImage(models.Model):
 	lat	= models.FloatField(blank=True)
 	lon	= models.FloatField(blank=True)
 	tags= models.CharField(max_length=100,blank=False)
-	image = models.ImageField(upload_to='/var/www/dev/static/pacdev/upload/images/', null=True, blank=True)
+	image = models.ImageField(upload_to='/var/www/dev/static/pacmap/upload/images/', null=True, blank=True)
 	#how can we make filename hidden in admin interface? (b/c want blank and filled-out below)
 	filename=models.CharField(max_length=60,blank=True)
 
@@ -42,7 +42,7 @@ class GalleryFile(models.Model):
 	lat	= models.FloatField(blank=True)
 	lon	= models.FloatField(blank=True)
 	tags= models.CharField(max_length=100,blank=False)
-	file = models.FileField(upload_to='/var/www/dev/static/pacdev/upload/files/', null=True, blank=True)
+	file = models.FileField(upload_to='/var/www/dev/static/pacmap/upload/files/', null=True, blank=True)
 	#how can we make filename hidden in admin interface? (b/c want blank and filled-out below)
 	filename=models.CharField(max_length=60,blank=True)
 
@@ -55,7 +55,7 @@ class GalleryDocument(models.Model):
 	lat	= models.FloatField(blank=True)
 	lon	= models.FloatField(blank=True)
 	tags= models.CharField(max_length=100,blank=False)
-	file = models.FileField(upload_to='/var/www/dev/static/pacdev/upload/docs/', null=True, blank=True)
+	file = models.FileField(upload_to='/var/www/dev/static/pacmap/upload/docs/', null=True, blank=True)
 	#how can we make filename hidden in admin interface? (b/c want blank and filled-out below)
 	filename=models.CharField(max_length=60,blank=True)
 
@@ -64,7 +64,7 @@ class GalleryDocument(models.Model):
 
 class TestArticle(models.Model):
 	content = HTMLField()
-	
+
 #http://stackoverflow.com/questions/5372934/how-do-i-get-django-admin-to-delete-files-when-i-remove-an-object-from-the-datab
 #Receive the pre_delete signal and delete the file associated with the model instance.
 from django.db.models.signals import pre_delete,pre_save
