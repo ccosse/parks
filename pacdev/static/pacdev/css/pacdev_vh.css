@@ -142,3 +142,16 @@
 .ol-attribution button, .ol-attribution ul {
     display: None;
 }
+.glyphicon.glyphicon-arrow-left {
+    font-size: 35px;
+    color:#83ad35;
+    cursor:pointer;
+}
+.ring{
+    text-align:center;
+    padding-top:3px;
+    height:50px;width:50px;
+    border-radius:25px;
+    border: 3px solid #83ad35;
+    cursor:pointer;
+}

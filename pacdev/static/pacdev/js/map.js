@@ -82,6 +82,7 @@ me.add_point=function(src_url){
 		});
 
 		var le_style=cfg['style'];
+		console.log(le_style);
 		//if(key=="Guyana")le_style=guyana_style;
 
 		var boundary_layer= new ol.layer.Vector({

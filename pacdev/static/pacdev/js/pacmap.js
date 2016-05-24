@@ -11,6 +11,7 @@ var PACMap=function(){
 	catch(e){}
 
 	me.layers={'keys':[],};
+
 	me.goto=function(path){
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
@@ -49,30 +50,46 @@ var PACMap=function(){
 		h3.appendChild(document.createTextNode(spath[spath.length-1]));
 		var p=document.getElementById("panel_controls_top");
 		p.innerHTML="";
-//		p.appendChild(h3);
+//		p.appendChild(h3);//NEED: show if in phone mode
 
+		var t=document.createElement("table");
+		var r0=t.insertRow(-1);
+		var r1=t.insertRow(-1);
+		var d,l,s;
 
 		//BACK=UP
-		var back=document.createElement("a");
-			back.id="back";
-			back.href="#";
-			back.className="btn btn-warning btn-sm";
-			back.role="button";
-			back.appendChild(document.createTextNode("Previous"));
-			if(spath.length>1)p.appendChild(back);
-			back.addEventListener('click',function(e){
-				console.log(e.target.id);
-				var return_path="";
-				for(var sidx=0;sidx<spath.length-1;sidx++){
-					return_path+=spath[sidx];
-					if(sidx<spath.length-2)return_path+=".";
-				}
-				me.goto(return_path);
-			});
+		d=document.createElement("div");
+		d.className="ring";
+		d.title="Previous";
+
+		s=document.createElement("span");
+		s.className="glyphicon glyphicon-arrow-left";
+		d.appendChild(s);
+
+		l=document.createElement("span");
+		l.className="label label-default";
+		l.appendChild(document.createTextNode("Previous"));
+
+		r0.insertCell(-1).appendChild(d);
+		r1.insertCell(-1).appendChild(l);
+		if(spath.length>1)p.appendChild(t);
+
+		d.addEventListener('click',function(e){
+			console.log(e.target.id);
+			var return_path="";
+			for(var sidx=0;sidx<spath.length-1;sidx++){
+				return_path+=spath[sidx];
+				if(sidx<spath.length-2)return_path+=".";
+			}
+			me.goto(return_path);
+		});
+
+
 
 		//NEXT LEVEL DOWN
 		for(var kidx=0;kidx<window.Cfg['keys'].length;kidx++){
 			var key=Cfg['keys'][kidx];
+			/*
 			var a=document.createElement("a");
 			a.id=key;
 			a.href="#";
@@ -87,17 +104,39 @@ var PACMap=function(){
 				me.goto(path+'.'+e.target.id);
 			});
 			console.log("created link: "+key);
+			*/
+
+			d=document.createElement("div");
+			d.className="ring";
+			d.title=key;
+
+			s=document.createElement("span");
+			s.className="glyphicon glyphicon-arrow-left";
+			d.appendChild(s);
+
+			l=document.createElement("span");
+			l.className="label label-default";
+			l.appendChild(document.createTextNode(key));
+
+			r0.insertCell(-1).appendChild(d);
+			r1.insertCell(-1).appendChild(l);
+			if(spath.length>1)p.appendChild(t);
+
+			d.addEventListener('click',function(e){
+				console.log(e.target.id);
+				me.goto(path+'.'+e.target.id);
+			});
 
 			//add boundary layer, mouseover button, mouseover feature
 			me.layers['keys'].push(key);
 			me.layers[key]=window.map.add_layer(window.Cfg[key]);
 
-			a.addEventListener('mouseout',function(e){
+			d.addEventListener('mouseout',function(e){
 				console.log("mouseout");
 				window.map.unhilite();
 			});
 
-			a.addEventListener('mouseover',function(e){
+			d.addEventListener('mouseover',function(e){
 				console.log(e.target.id);
 				window.map.hilite(e.target.id,me.layers[e.target.id]);
 			});
