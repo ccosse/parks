@@ -209,10 +209,6 @@ me.add_point=function(src_url){
 				console.log("target_feature="+target_feature);
 				me.xpopup.innerHTML = '<p>'+target_name+'</p>';//feature.getProperties().Name
 				me.xpopup.innerHTML += lon+", "+lat+"<br>";
-				//me.xpopup.innerHTML += window.Cfg['keys'];
-				var coordinate = evt.coordinate;
-				//me.overlay.setPosition(coordinate);
-				//console.log("setPosiiton:"+coordinate);
 				me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
 
 				found=true;

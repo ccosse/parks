@@ -54,6 +54,8 @@
 		window.onresize(null);
 		window.pacmap.goto('Protected Areas Commission');
 
+
+
 		$("#tb").click(function(e){
 
 			window.counter+=1;
@@ -61,6 +63,13 @@
 
 			if($("#controls").hasClass("portrait")){
 				$("#controls").toggleClass("vhide");
+				if($("#controls").hasClass("vhide")){
+					var spath=window.Cfg['path'].split(".");
+					document.getElementById("mobile_header").innerHTML=spath[spath.length-1];
+				}
+				else{
+					document.getElementById("mobile_header").innerHTML=null;
+				}
 			}
 			else{
 				$("#controls").toggleClass("hhide");
@@ -74,7 +83,10 @@
 <div id="layout" class="container">
 	<div class="row">
 
-		<div id="controls" class="controls col-sm-4 col-xs-12">
+		<div id="controls" class="controls col-sm-3 col-xs-12">
+			<div id="mobile_header" class="mobile_header">
+				Protected Areas Commission
+			</div>
 			<div id="tb" class="tb">
 				<img id="tb_arrow" src="/static/pacmap/img/arrow-lt.png" class="tb_arrow"/>
 			</div>
@@ -82,11 +94,13 @@
 			<div id="div_controls_top" >
 				<img id='img_controls_top' src="/static/pacmap/img/pac_hq.jpg" class="img-responsive w100"/>
 				<img class="controls_logo" src="/static/pacmap/img/pac_logo.png"/>
-				<div id='title_controls_top'>Update Me</div>
+				<div id='title_controls_top'>Protected Areas Commission</div>
 			</div>
 
 			<div class="panel panel-default">
 				<div id="panel_controls_top" class="panel-body center"></div>
+				<hline>
+				<img id="front_img_02" src="/static/pacmap/img/kaieteur_falls.png" class="img-responsive w100"></img>
 			</div>
 
 			<div class="panel panel-default" style="text-align:center;">
@@ -102,6 +116,11 @@
 		</div>
 
 		<div id="mapdiv" class=""></div>
+
+		<div id="popup" class="ol-popup">
+			<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+			<div id="xpopup"></div>
+		</div>
 
 	</div>
 </div>

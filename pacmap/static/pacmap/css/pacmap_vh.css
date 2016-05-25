@@ -17,17 +17,30 @@
   font-family:Pacifico;
 }
 .controls.portrait{
-  height:85%;
+  height:94%;
+  z-index:10000;
 }
 .controls.landscape{
   height:100%;
   padding-top:52px;
 }
+.controls.landscape #mobile_header{
+  height:0;
+  font-size:0;
+}
 .controls.vhide{
-  height:10%;
+  height:7%;
+}
+.controls.vhide #mobile_header{
+  height:100%;
+  text-align:center;
+  background-color:darkgoldenrod;
+  color:#F5F5F5;
+  font-size:18pt;
+  font-family:Pacifico;
 }
 .controls.hhide{
-  left:-33.33%;
+  left:-25%;
 }
 .controls_logo{
   position:relative;
@@ -47,6 +60,10 @@
   width:36px;
   height:24px;
   left:50%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 .tb_arrow{
   cursor:pointer;
@@ -69,6 +86,11 @@
   height:36px;
   top:15%;
   left:100%;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+
 }
 #mapdiv{
   position:fixed;
@@ -141,4 +163,43 @@
 }
 .ol-attribution button, .ol-attribution ul {
     display: None;
+}
+.glyphicon.glyphicon-arrow-left {
+    font-size: 25px;
+    color:#83ad35;
+    cursor:pointer;
+}
+.glyphicon.glyphicon-arrow-left:hover {
+  color:gold;
+}
+.glyphicon.glyphicon-arrow-right {
+    font-size: 25px;
+    color:#83ad35;
+    cursor:pointer;
+}
+.glyphicon.glyphicon-arrow-right:hover {
+  color:gold;
+}
+.ring{
+    text-align:center;
+    padding-top:3px;
+    height:40px;width:40px;
+    border-radius:25px;
+    border: 3px solid #83ad35;
+    cursor:pointer;
+}
+.nav_buttons_table{
+  width:100%;
+}
+td{
+  padding:10px;
+}
+#xpopup{
+  font-family:Pacifico;
+  font-size:12pt;
+  padding:10px;
+  color:#f5f5f5;
+  background-color:#333333;
+  text-align:center;
+  border-radius:8px;
 }

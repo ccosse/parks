@@ -11,7 +11,9 @@ var PACMap=function(){
 	catch(e){}
 
 	me.layers={'keys':[],};
+
 	me.goto=function(path){
+
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
 		}
@@ -49,18 +51,39 @@ var PACMap=function(){
 		h3.appendChild(document.createTextNode(spath[spath.length-1]));
 		var p=document.getElementById("panel_controls_top");
 		p.innerHTML="";
-//		p.appendChild(h3);
+//		p.appendChild(h3);//NEED: show if in phone mode
+
+		var t=document.createElement("table");
+		t.className="nav_button_table";
+		t.align="center";
+		t.cellpadding="10";
+		p.appendChild(t);
+		var r0=t.insertRow(-1);
+//		var r1=t.insertRow(-1);
 
 
 		//BACK=UP
-		var back=document.createElement("a");
-			back.id="back";
-			back.href="#";
-			back.className="btn btn-warning btn-sm";
-			back.role="button";
-			back.appendChild(document.createTextNode("Previous"));
-			if(spath.length>1)p.appendChild(back);
-			back.addEventListener('click',function(e){
+		if(spath.length>1){
+			var d,l,s;
+
+			d=document.createElement("div");
+			d.className="ring";
+			d.setAttribute("data-toggle","tooltip");
+			d.setAttribute("data-placement","bottom");
+			d.setAttribute("data-original-title","Previous");
+
+			s=document.createElement("span");
+			s.className="glyphicon glyphicon-arrow-left";
+			d.appendChild(s);
+
+			l=document.createElement("span");
+			l.className="label label-default";
+//			l.appendChild(document.createTextNode("Previous"));
+
+			r0.insertCell(-1).appendChild(d);
+//			r1.insertCell(-1).appendChild(l);
+
+			d.addEventListener('click',function(e){
 				console.log(e.target.id);
 				var return_path="";
 				for(var sidx=0;sidx<spath.length-1;sidx++){
@@ -69,36 +92,51 @@ var PACMap=function(){
 				}
 				me.goto(return_path);
 			});
+		}
+
 
 		//NEXT LEVEL DOWN
 		for(var kidx=0;kidx<window.Cfg['keys'].length;kidx++){
 			var key=Cfg['keys'][kidx];
-			var a=document.createElement("a");
-			a.id=key;
-			a.href="#";
-			a.className="btn btn-success btn-sm";
-			a.role="button";
-			//a.text=key;
-			a.appendChild(document.createTextNode(key));
-			p.appendChild(a);
 
-			a.addEventListener('click',function(e){
+
+			var d,l,s;
+
+			d=document.createElement("div");
+			d.className="ring";
+			d.setAttribute("data-toggle","tooltip");
+			d.setAttribute("data-placement","bottom");
+			d.setAttribute("data-original-title",key);
+
+			s=document.createElement("span");
+			s.className="glyphicon glyphicon-arrow-right";
+			s.id=key;
+			d.appendChild(s);
+
+			l=document.createElement("span");
+			l.className="label label-default";
+//			l.appendChild(document.createTextNode(key));
+
+			r0.insertCell(-1).appendChild(d);
+//			r1.insertCell(-1).appendChild(l);
+//			p.appendChild(t);
+
+			s.addEventListener('click',function(e){
 				console.log(e.target.id);
 				me.goto(path+'.'+e.target.id);
 			});
-			console.log("created link: "+key);
 
 			//add boundary layer, mouseover button, mouseover feature
 			me.layers['keys'].push(key);
 			me.layers[key]=window.map.add_layer(window.Cfg[key]);
 
-			a.addEventListener('mouseout',function(e){
+			s.addEventListener('mouseout',function(e){
 				console.log("mouseout");
 				window.map.unhilite();
 			});
 
-			a.addEventListener('mouseover',function(e){
-				console.log(e.target.id);
+			s.addEventListener('mouseover',function(e){
+				console.log('mouseover: '+e.target.id);
 				window.map.hilite(e.target.id,me.layers[e.target.id]);
 			});
 
@@ -112,7 +150,7 @@ var PACMap=function(){
 			me.layers['keys'].push(point_filename);
 			me.layers[point_filename]=window.map.add_point(point_filename);
 		}
-
+		$('[data-toggle="tooltip"]').tooltip();
 	}
 	return me;
 }
