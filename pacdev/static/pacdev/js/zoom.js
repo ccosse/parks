@@ -30,7 +30,9 @@ var pan_zoom=function(center,bbox){
 		//3857 is in meters, 4326 in degrees.  convert center to 3857, then add offset, then setCenter:
 		var lon_offset=0;
 		if($("#controls").hasClass("landscape") && !$("#controls").hasClass("hhide")){
-			lon_offset=(0.16*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
+//			Following 0.16 for 4-column bootstrap layout;0.125 for 3-columns.
+//			lon_offset=(0.16*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
+			lon_offset=(0.125*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
 		}
 		var c0=ol.proj.transform(center,"EPSG:4326","EPSG:3857");
 		var c1=[c0[0]-lon_offset,c0[1]];

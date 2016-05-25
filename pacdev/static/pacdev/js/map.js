@@ -2,6 +2,19 @@ var Map=function(mapdiv){
 	var me={};
 	me.HILIGHTS=[];
 
+	me.popup_container = document.getElementById('popup');
+	me.xpopup = document.getElementById('xpopup');
+	console.log('xpopup found by map.js');
+	me.popup_closer = document.getElementById('popup-closer');
+
+	me.overlay = new ol.Overlay({
+		element: me.popup_container,
+		autoPan: true,
+		autoPanAnimation: {
+			duration: 250
+		}
+	});
+
 	var sat=new ol.layer.Tile({
 		minResolution:500,
 		preload:14,
@@ -145,6 +158,16 @@ me.add_point=function(src_url){
 		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
 		latpanel.innerHTML=lat;
 		lonpanel.innerHTML=lon;
+
+		me.xpopup.innerHTML = '<p>'+'FEATURE NAME GOES HERE'+'</p><code>';//feature.getProperties().Name
+		me.xpopup.innerHTML += lon+", "+lat;
+		me.xpopup.innerHTML += '</code>';
+		me.xpopup.innerHTML += '<br>';
+
+		var coordinate = evt.coordinate;
+		//console.log(coordinate);
+		me.overlay.setPosition(coordinate);
+
 	});
 
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();

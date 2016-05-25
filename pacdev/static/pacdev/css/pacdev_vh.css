@@ -40,7 +40,7 @@
   font-family:Pacifico;
 }
 .controls.hhide{
-  left:-33.33%;
+  left:-25%;
 }
 .controls_logo{
   position:relative;
@@ -193,4 +193,8 @@
 }
 td{
   padding:10px;
+}
+#xpopup{
+	top:0px;
+	left:0px;
 }
