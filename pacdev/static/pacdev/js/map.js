@@ -2,18 +2,22 @@ var Map=function(mapdiv){
 	var me={};
 	me.HILIGHTS=[];
 
-	me.popup_container = document.getElementById('popup');
 	me.xpopup = document.getElementById('xpopup');
 	console.log('xpopup found by map.js');
 	me.popup_closer = document.getElementById('popup-closer');
 
 	me.overlay = new ol.Overlay({
-		element: me.popup_container,
+		element: document.getElementById('popup'),
 		autoPan: true,
 		autoPanAnimation: {
 			duration: 250
 		}
 	});
+	me.popup_closer.onclick = function() {
+		me.overlay.setPosition(undefined);
+		me.popup_closer.blur();
+		return false;
+	};
 
 	var sat=new ol.layer.Tile({
 		minResolution:500,
@@ -58,7 +62,7 @@ var Map=function(mapdiv){
 		}),
 	})
 });
-
+/*
 var hidden_point_style=new ol.style.Style({
 	image:new ol.style.Circle({
 		radius:0,
@@ -71,6 +75,7 @@ var hidden_point_style=new ol.style.Style({
 		}),
 	})
 });
+*/
 me.add_point=function(src_url){
 		var point_source=new ol.source.Vector({
 			url: src_url,
@@ -115,6 +120,9 @@ me.add_point=function(src_url){
 	  })
 	});
 	me.add_layer(Config['Protected Areas Commission']);
+	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
+	me.overlay.setMap(me.map);
+//	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));
 
 	me.map.on('click',function(evt){
 		/*This feature info comes from inside the geojson
@@ -150,25 +158,6 @@ me.add_point=function(src_url){
 			window.pacmap.goto(window.Cfg['path']+'.'+feature_name);
 		}
 	});
-	me.map.on('pointermove',function(evt) {
-		var latpanel=document.getElementById("lat");
-		var lonpanel=document.getElementById("lon");
-		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
-		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
-		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
-		latpanel.innerHTML=lat;
-		lonpanel.innerHTML=lon;
-
-		me.xpopup.innerHTML = '<p>'+'FEATURE NAME GOES HERE'+'</p><code>';//feature.getProperties().Name
-		me.xpopup.innerHTML += lon+", "+lat;
-		me.xpopup.innerHTML += '</code>';
-		me.xpopup.innerHTML += '<br>';
-
-		var coordinate = evt.coordinate;
-		//console.log(coordinate);
-		me.overlay.setPosition(coordinate);
-
-	});
 
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
 	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
@@ -179,6 +168,8 @@ me.add_point=function(src_url){
 		for(var hidx=0;hidx<me.HILIGHTS.length;hidx++){
 			me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
 		}
+		me.overlay.setPosition(undefined);
+		me.popup_closer.blur();
 	}
 
 	me.hilite=function(feature_name,layer){
@@ -188,19 +179,50 @@ me.add_point=function(src_url){
 			me.featureOverlay.addFeature(fs[fidx]);
 			me.HILIGHTS.push(fs[fidx]);
 		}
+		try{
+			me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
+			me.overlay.setPosition(ol.proj.transform(window.Cfg[feature_name]['center'],"EPSG:4326","EPSG:3857"));
+		}catch(e){}
+
 	}
 
 	me.map.on('pointermove',function(evt){
+
+		var latpanel=document.getElementById("lat");
+		var lonpanel=document.getElementById("lon");
+		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
+		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
+		latpanel.innerHTML=lat;
+		lonpanel.innerHTML=lon;
+
 		me.unhilite();
 		if(evt.dragging){return;}
+		var found=false;
 		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
 				me.hilite(target_name,layer);
-				//if(DEBUG)console.log(target_name);
-			};
+			}
+			if(target_feature){
+				console.log("target_feature="+target_feature);
+				me.xpopup.innerHTML = '<p>'+target_name+'</p>';//feature.getProperties().Name
+				me.xpopup.innerHTML += lon+", "+lat+"<br>";
+				//me.xpopup.innerHTML += window.Cfg['keys'];
+				var coordinate = evt.coordinate;
+				//me.overlay.setPosition(coordinate);
+				//console.log("setPosiiton:"+coordinate);
+				me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
+
+				found=true;
+			}
 		});
+		if(!found){
+			me.overlay.setPosition(undefined);
+			me.popup_closer.blur();
+		}
+
 	});
 
 	me.featureOverlay = new ol.FeatureOverlay({

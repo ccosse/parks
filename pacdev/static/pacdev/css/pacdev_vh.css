@@ -195,6 +195,12 @@ td{
   padding:10px;
 }
 #xpopup{
-	top:0px;
-	left:0px;
+  top:-300px;
+  font-family:Pacifico;
+  font-size:12pt;
+  padding:10px;
+  color:#f5f5f5;
+  background-color:#333333;
+  text-align:center;
+  border-radius:8px;
 }
