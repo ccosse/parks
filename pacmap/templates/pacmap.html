@@ -13,18 +13,13 @@
 {% endblock %}
 {% block extra_javascript %}
 
-	window.click_handler=function(e){
-		console.log("click_handler");
-		pan_zoom(Config['PAC']['Urban Parks']['center'],Config['PAC']['Urban Parks']['bbox']);
-	}
-
 	window.counter=0;
 	window.Cfg=Config;
 
 	window.onresize=function(e){
 		var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
 		$("#mapdiv").css("top",h_nav);
-		$("#mapdiv").css("height",(window.innerHeight-h_nav));
+//		$("#mapdiv").css("height",(window.innerHeight-h_nav));
 
 		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
 		if(window.innerWidth<768){

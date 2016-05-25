@@ -22,9 +22,10 @@
 	window.Cfg=Config;
 
 	window.onresize=function(e){
+		console.log("onresize");
 		var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
 		$("#mapdiv").css("top",h_nav);
-		$("#mapdiv").css("height",(window.innerHeight-h_nav));
+//		$("#mapdiv").css("height",(window.innerHeight-h_nav));
 
 		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
 		if(window.innerWidth<768){
@@ -51,7 +52,7 @@
 		console.log('init');
 		window.map=new Map('mapdiv');
 		window.pacmap=new PACMap();
-		window.onresize(null);
+		window.onresize(null);//this sets landscape needed for lon_offset at zoom
 		window.pacmap.goto('Protected Areas Commission');
 
 
@@ -121,7 +122,7 @@
 			<a href="#" id="popup-closer" class="ol-popup-closer"></a>
 			<div id="xpopup"></div>
 		</div>
-		
+
 	</div>
 </div>
 

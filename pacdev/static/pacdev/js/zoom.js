@@ -34,10 +34,17 @@ var pan_zoom=function(center,bbox){
 //			lon_offset=(0.16*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
 			lon_offset=(0.125*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
 		}
+		else{
+			console.log("landscape: "+$("#controls").hasClass("landscape"));
+			console.log("hhide: "+$("#controls").hasClass("hhide"));
+		}
+		console.log("lon_offset: "+lon_offset);
+
 		var c0=ol.proj.transform(center,"EPSG:4326","EPSG:3857");
 		var c1=[c0[0]-lon_offset,c0[1]];
 		window.map.map.getView().setResolution(res);
 		window.map.map.getView().setCenter(c1);
+		window.onresize();
 	}
 var pan_zoom_home=function(){
 	console.log("bounce_home");
