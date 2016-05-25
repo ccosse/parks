@@ -94,6 +94,8 @@ me.add_point=function(src_url){
 	}
 	me.map = new ol.Map({
 	  layers: [osm,sat],
+		controls:[],
+		interactions:[],
 	  target: mapdiv,
 	  view: new ol.View({
     	center:ol.proj.transform(Config['center'],"EPSG:4326","EPSG:3857"),

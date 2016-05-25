@@ -1,6 +1,6 @@
 var Config={
 	'path':'',
-	'center':[-58.9,4.9],
+	'center':[-58.9,4.7],
 	'bbox':[-61.5,1.1,-56.3,8.7],
 	'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
 	'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgreen',width: 2}),}),
@@ -9,7 +9,7 @@ var Config={
 	'points':[],
 	'Protected Areas Commission':{
 		'path':'Protected Areas Commission',
-		'center':[-58.9,4.9],
+		'center':[-58.9,4.7],
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
 		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
