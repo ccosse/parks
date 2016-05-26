@@ -203,7 +203,8 @@ me.add_point=function(src_url){
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
-				me.hilite(target_name,layer);
+				if(target_name!="Guyana")
+					me.hilite(target_name,layer);
 			}
 			if(target_feature){
 				console.log("target_feature="+target_feature);

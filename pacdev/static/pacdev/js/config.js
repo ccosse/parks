@@ -3,7 +3,7 @@ var Config={
 	'center':[-58.9,4.7],
 	'bbox':[-61.5,1.1,-56.3,8.7],
 	'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
-	'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgreen',width: 2}),}),
+	'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgoldenrod',width: 2}),}),
 	'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgreen',width: 2}),}),
 	'keys':['Protected Areas Commission'],
 	'points':[],
@@ -25,7 +25,7 @@ var Config={
 			//according to convention of adding and removing layers based on
 			//current navigation in this Config structure
 			'boundary':'/static/pacdev/geojson/hinterland_boundaries.geojson',
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
 			'photos':['/static/pacdev/img/hinterland_areas.jpg',],
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
@@ -68,7 +68,7 @@ var Config={
 			'center':[-58.17065, 6.79375],
 			'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
 			'boundary':'/static/pacdev/geojson/urbanparks_boundary.geojson',
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
@@ -120,7 +120,7 @@ var Config={
 			'bbox':[-59.8099, 1.3842,-58.1345, 5.1129],
 			//Konashens + Iwokrama (both) in related_boundary.geojson
 			'boundary':'/static/pacdev/geojson/related_boundary.geojson',
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/place.jpg'],
 			'keys':['Konashens','Iwokrama'],
