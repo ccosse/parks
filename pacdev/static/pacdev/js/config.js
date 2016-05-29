@@ -11,7 +11,7 @@ var Config={
 		'points':[],
 		'Hinterland Parks':{
 			'path':'Protected Areas Commission.Hinterland Parks',
-			'center':[-59.2514,5.8807],
+			'center':[-59.2514,5.5807],
 			'bbox':[-60.4036,3.1817,-58.1107,8.6807],
 			//boundary geojson needs 3 areas in 1 file for group hilite
 			//according to convention of adding and removing layers based on

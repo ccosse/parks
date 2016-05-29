@@ -15,24 +15,16 @@ var get_offset=function(res){
 	else if($("#controls").hasClass("wide")){
 		n=0.3;
 	}
-	else{
-		console.log("unknown width");
-	}
 	var factor=n+(1.-n)/2.-0.5;
 	lon_offset=(factor*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
 	return lon_offset;
 }
 var pan_zoom=function(center,bbox){
 
-		console.log("pan_zoom: "+center);
-		window.debug();
-		window.debug(center[0]+","+center[1]);
-		console.log(center[0]+","+center[1]);
-
 		var this_delay=4000;
 
 		var bounce = ol.animation.bounce({
-		  resolution:window.map.map.getView().getResolution()*1.2,
+		  resolution:window.map.map.getView().getResolution(),
 		  duration:this_delay
 		});
 
@@ -63,7 +55,7 @@ var pan_zoom=function(center,bbox){
 		var c1=[c0[0]-lon_offset,c0[1]];
 		window.map.map.getView().setResolution(res);
 		window.map.map.getView().setCenter(c1);
-//		window.onresize();
+		window.onresize();
 	}
 var pan_zoom_home=function(){
 	console.log("bounce_home");
