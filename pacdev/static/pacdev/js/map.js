@@ -8,7 +8,7 @@ var Map=function(mapdiv){
 
 	me.overlay = new ol.Overlay({
 		element: document.getElementById('popup'),
-		autoPan: true,
+		autoPan: false,
 		autoPanAnimation: {
 			duration: 250
 		}
@@ -100,7 +100,7 @@ me.add_point=function(src_url){
 		});
 
 		var le_style=cfg['style'];
-		console.log(le_style);
+//		console.log(le_style);
 		//if(key=="Guyana")le_style=guyana_style;
 
 		var boundary_layer= new ol.layer.Vector({
@@ -116,10 +116,10 @@ me.add_point=function(src_url){
 		interactions:[],
 	  target: mapdiv,
 	  view: new ol.View({
-    	center:ol.proj.transform(Config['center'],"EPSG:4326","EPSG:3857"),
+    	center:ol.proj.transform([0,0],"EPSG:4326","EPSG:3857"),
 	  })
 	});
-	me.add_layer(Config['Protected Areas Commission']);
+	me.add_layer(window.Cfg);
 	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
 	me.overlay.setMap(me.map);
 //	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));
@@ -160,7 +160,7 @@ me.add_point=function(src_url){
 	});
 
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
-	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
+	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);
 	me.map.getView().setResolution(res);
 

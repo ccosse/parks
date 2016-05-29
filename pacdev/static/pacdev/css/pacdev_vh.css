@@ -95,7 +95,13 @@
 .controls.vhide #tb_arrow{
 	transform:rotate(180deg);
 }
-.controls.hhide #tb_arrow{
+.controls.hhide_small #tb_arrow{
+	transform:rotate(180deg);
+}
+.controls.hhide_medium #tb_arrow{
+	transform:rotate(180deg);
+}
+.controls.hhide_wide #tb_arrow{
 	transform:rotate(180deg);
 }
 .controls.landscape #tb{

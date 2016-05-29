@@ -36,7 +36,7 @@ var PACMap=function(){
 		for(var sidx=0;sidx<spath.length;sidx++){
 			var skey=spath[sidx];
 			console.log("sidx="+sidx+" skey="+skey);
-			window.Cfg=Cfg[skey];
+			window.Cfg=window.Cfg[skey];
 		}
 		console.log("PATH:"+window.Cfg['path']);
 
@@ -90,6 +90,7 @@ var PACMap=function(){
 					return_path+=spath[sidx];
 					if(sidx<spath.length-2)return_path+=".";
 				}
+				console.log("return_path: "+return_path);
 				me.goto(return_path);
 			});
 		}

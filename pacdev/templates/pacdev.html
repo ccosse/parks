@@ -24,6 +24,7 @@
 				d.innerHTML+=$("#controls").css("width");
 				d.innerHTML+="<br>";
 				d.innerHTML+=window.innerWidth+"<br>";
+				d.innerHTML+=window.Cfg['path'];
 		}
 		else{
 			d.innerHTML+="<br>";
@@ -35,7 +36,7 @@
 		console.log("onresize");
 		var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
 		$("#mapdiv").css("top",h_nav);
-		
+
 		var msg="";
 		window.debug();
 
@@ -81,9 +82,19 @@
 		}
 
 	}
-
+	window.centerCB=function(e){
+		window.Cfg=Config['Protected Areas Commission'];
+		var center=ol.proj.transform(window.Cfg['center'],"EPSG:4326","EPSG:3857");
+		var offset=get_offset();
+		var offset_center=[center[0]-offset,center[1]];
+//		window.map.map.getView().setCenter(offset_center);
+//		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
+		pan_zoom_home();
+		console.log("centerCB");
+	}
 	function init(e){
 		console.log('init');
+		window.Cfg=Config['Protected Areas Commission'];
 		window.map=new Map('mapdiv');
 		window.pacmap=new PACMap();
 		window.onresize(null);//this sets landscape needed for lon_offset at zoom
@@ -152,7 +163,11 @@
 				</table>
 			</div>
 			-->
+			<div id="centerB" onclick="window.centerCB()">
+				<img class="controls_logo" src="/static/pacdev/img/pac_logo.png"/>
+			</div>
 			<div id="debug" class="panel panel-default" style="text-align:center;"></div>
+
 
 		</div>
 

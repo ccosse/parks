@@ -1,12 +1,4 @@
 var Config={
-	'path':'',
-	'center':[-58.9,4.7],
-	'bbox':[-61.5,1.1,-56.3,8.7],
-	'boundary':'/static/pacdev/geojson/guyana_boundary.geojson',
-	'style':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgoldenrod',width: 2}),}),
-	'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'darkgreen',width: 2}),}),
-	'keys':['Protected Areas Commission'],
-	'points':[],
 	'Protected Areas Commission':{
 		'path':'Protected Areas Commission',
 		'center':[-58.9,4.31],
@@ -116,8 +108,8 @@ var Config={
 		},
 		'Related Areas':{
 			'path':'Protected Areas Commission.Related Areas',
-			'center':[-58.8047,3.1735],
-			'bbox':[-59.8099, 1.3842,-58.1345, 5.1129],
+			'center':[-58.96,2.99],
+			'bbox':[-59.56666,1.17728,-58.36804,4.80849],
 			//Konashens + Iwokrama (both) in related_boundary.geojson
 			'boundary':'/static/pacdev/geojson/related_boundary.geojson',
 			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
@@ -127,8 +119,8 @@ var Config={
 			'points':[],
 			'Konashens':{
 				'path':'Protected Areas Commission.Related Areas.Konashens',
-				'center':[-58.909, 1.7511],
-				'bbox':[-59.7366,1.1001,-58.2143,2.1133],
+				'center':[-58.96735,1.51319],
+				'bbox':[-59.56666,1.17728,-58.36804,1.8491],
 				'boundary':'/static/pacdev/geojson/konashens_boundary.geojson',
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/place.jpg',],
@@ -137,8 +129,8 @@ var Config={
 			},
 			'Iwokrama':{
 				'path':'Protected Areas Commission.Related Areas.Iwokrama',
-				'center':[-58.83, 4.4983],
-				'bbox':[-59.4164,4.1441,-58.3395,4.9927],
+				'center':[-58.881185,4.47368],
+				'bbox':[-59.2709,4.13887,-58.49147,4.80849],
 				'boundary':'/static/pacdev/geojson/iwokrama_boundary.geojson',
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/place.jpg',],
