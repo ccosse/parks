@@ -1,0 +1,108 @@
+<html>
+
+<head>
+	<title>BSTest</title>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<style>
+		.cp{
+			height:400px;
+			opacity:0.8;
+		}
+		#controls01{
+			position:fixed;
+			background:orange;
+		  color:#000000;
+		  z-index:10;
+		  left:0%;
+		  bottom:0%;
+		  padding-left:0px;
+		  padding-right:0px;
+		}
+		#controls02{background:red;}
+		#controls03{background:purple;}
+		#controls04{background:green;}
+		#controls05{background:brown;}
+		#controls06{background:pink;}
+		#controls07{background:navy;}
+		#controls08{background:maroon;}
+		#controls09{background:lightgreen;}
+		#controls10{background:lightblue;}
+		#controls11{background:teal;}
+		#controls12{background:magenta;}
+		#controls{
+			background:yellow;
+		}
+		#map{
+			background:gray;
+			height:200px;
+		}
+		#layout{
+			width:100%;
+			padding-left:0px;
+			padding-right:0px;
+			padding-bottom:0px;
+			padding-top:0px;
+			margin-left:0px;
+			margin-right:0px;
+			margin-top:0px;
+			margin-bottom:0px;
+		}
+		#layout .row{
+			margin-left:0px;
+			margin-right:0px;
+		}
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="/static/pacdev/css/bootstrap.css">
+  <script type="text/javascript">
+	window.onresize=function(){
+		var mc_bcr=document.getElementById("mycontainer").getBoundingClientRect();
+		var mr_bcr=document.getElementById("myrow").getBoundingClientRect();
+		var c_bcr=document.getElementById("controls01").getBoundingClientRect();
+		//var m=document.getElementById("map");
+		var c=document.getElementById("controls01");
+
+		var msg=mc_bcr.left+","+mc_bcr.top+","+mc_bcr.width+","+mc_bcr.height;
+		msg+="<br>";
+		msg+=mr_bcr.left+","+mr_bcr.top+","+mr_bcr.width+","+mr_bcr.height;
+		msg+="<br>";
+		msg+=c_bcr.left+","+c_bcr.top+","+parseInt(c_bcr.width)+","+c_bcr.height;
+		c.innerHTML=msg;
+	}
+	function init(){
+		window.onresize();
+	}
+  </script>
+
+</head>
+
+<body onload="init()">
+
+<div id="layout" class="container">
+<div id="myrow" class="row">
+	<div id="controls01" class="cp col-xs-1"></div>
+	<div id="controls02" class="cp col-xs-1"></div>
+	<div id="controls03" class="cp col-xs-1"></div>
+	<div id="controls04" class="cp col-xs-1"></div>
+	<div id="controls05" class="cp col-xs-1"></div>
+	<div id="controls06" class="cp col-xs-1"></div>
+	<div id="controls07" class="cp col-xs-1"></div>
+	<div id="controls08" class="cp col-xs-1"></div>
+	<div id="controls09" class="cp col-xs-1"></div>
+	<div id="controls10" class="cp col-xs-1"></div>
+	<div id="controls11" class="cp col-xs-1"></div>
+	<div id="controls12" class="cp col-xs-1"></div>
+
+	<div id="map" class="col-xl-12"></div>
+
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="/static/pacdev/js/bootstrap.min.js"></script>
+</body>
+
+</html>

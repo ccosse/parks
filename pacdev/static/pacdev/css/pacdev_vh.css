@@ -19,10 +19,20 @@
 .controls.portrait{
   height:100%;
   z-index:10000;
+  width:100%;
 }
 .controls.landscape{
   height:100%;
   padding-top:52px;
+}
+.controls.small{
+  width:50%;
+}
+.controls.medium{
+  width:40%;
+}
+.controls.wide{
+  width:30%;
 }
 .controls.landscape #mobile_header{
   height:0;
@@ -32,17 +42,22 @@
   height:7%;
 }
 .controls.vhide #mobile_header{
-  height:100%;
   text-align:center;
   background-color:#83ad35;
   color:#F5F5F5;
   font-size:18pt;
-  padding-top:22px;
   font-family:Pacifico;
 }
-.controls.hhide{
-  left:-25%;
+.controls.hhide_small{
+  left:-50%;
 }
+.controls.hhide_medium{
+  left:-40%;
+}
+.controls.hhide_wide{
+  left:-30%;
+}
+
 .controls_logo{
   position:relative;
   border-radius:26px;

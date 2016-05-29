@@ -29,10 +29,35 @@ var pan_zoom=function(center,bbox){
 		//we need to setCenter at offset point (b/c landscape sidebar reduces available window space)
 		//3857 is in meters, 4326 in degrees.  convert center to 3857, then add offset, then setCenter:
 		var lon_offset=0;
+		var msg="";
 		if($("#controls").hasClass("landscape") && !$("#controls").hasClass("hhide")){
-//			Following 0.16 for 4-column bootstrap layout;0.125 for 3-columns.
+
+				var n;
+				if($("#controls").hasClass("small")){
+					n=.5;
+				}
+				else if($("#controls").hasClass("medium")){
+					n=0.4;
+				}
+				else if($("#controls").hasClass("wide")){
+					n=0.3;
+				}
+				else{
+					console.log("unknown width");
+				}
+				var factor=n+(1.-n)/2.-0.5;
+
+				console.log( $("#controls").css("width") );
+				console.log("innerWidth: "+window.innerWidth);
+				console.log("factor: "+factor);
+
+				msg+="#controls:"+$("#controls").css("width")+"<br>";
+				msg+="innerWidth:"+window.innerWidth+"<br>";
+				window.debug(msg);
+
+//			Following 0.16 for 4-column bootstrap layout;0.125 for 3-columns. .2083=5 column
 //			lon_offset=(0.16*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
-			lon_offset=(0.125*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
+			lon_offset=(factor*window.innerWidth*res);//units of meters b/c [res]=[m/pixel]
 		}
 		else{
 			console.log("landscape: "+$("#controls").hasClass("landscape"));
