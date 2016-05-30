@@ -6,6 +6,17 @@ var Map=function(mapdiv){
 	console.log('xpopup found by map.js');
 	me.popup_closer = document.getElementById('popup-closer');
 
+	me.WebGL=false;
+	me.lib3D=null;
+	try{
+		console.log("initializing 3D");
+		me.lib3D=new My3DStuff();
+		me.lib3D.init3d();
+		me.WebGL=true;
+		console.log("3D initialized");
+	}
+	catch(e){console.log(e);}
+
 	me.overlay = new ol.Overlay({
 		element: document.getElementById('popup'),
 		autoPan: false,
@@ -88,6 +99,7 @@ me.add_point=function(src_url){
 			source: point_source,
 			style:point_style
 		});
+		point_layer.set("layer_type","Launch3D");
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
@@ -141,14 +153,17 @@ me.add_point=function(src_url){
 		if(clicked_layers.length>0){
 			console.log("layers.length="+clicked_layers.length);
 			for(var lidx=0;lidx<clicked_layers.length;lidx++){
-				//var layer_type=clicked_layers[lidx].get("layer_type");
-				//console.log(layer_type);
-				if(false){//}(layer_type=="Launch3D"){
+				try{
+				var layer_type=clicked_layers[lidx].get("layer_type");
+				console.log(layer_type);
+				if(layer_type=="Launch3D"){
 					found=true;
 					console.log("Launching 3D Viewer ...");
-					if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
+					//if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
+					if(me.WebGL){me.lib3D.start(['/static/','geojson','falls3d']);}
 					else{console.log("NEED: WebGL Required Message to user");}
 				}
+				}catch(e){console.log(e);}
 			}
 		}
 
