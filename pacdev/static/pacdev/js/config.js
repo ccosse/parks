@@ -8,7 +8,11 @@ var Config={
 		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 		'photos':['/static/pacdev/img/pac_hq.jpg',],
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
-		'points':[],
+		'layers':{
+			'keys':['boundary',],
+			'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/guyana_boundary.geojson',},
+		},
+
 		'Hinterland Parks':{
 			'path':'Protected Areas Commission.Hinterland Parks',
 			'center':[-59.2514,5.5807],
@@ -21,28 +25,41 @@ var Config={
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
 			'photos':['/static/pacdev/img/hinterland_areas.jpg',],
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
-			'points':[],
+			'layers':{
+				'keys':['boundary',],
+				'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/hinterland_boundaries.geojson',},
+			},
 			'Kaieteur National Park':{
 				'path':'Protected Areas Commission.Hinterland Parks.Kaieteur National Park',
 				'center':[-59.50293, 5.175],
 				'bbox':[-59.63383, 5.0468, -59.37203, 5.3032],
-				'boundary':'/static/pacdev/geojson/kaieteur_boundary.geojson',
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/kaieteur_falls.png',],
 				'keys':[],
-				'points':[
-					'/static/pacdev/geojson/falls.geojson',
-				],
+				'layers':{
+					'keys':['guyana_pixelated','satellite','boundary','trailmap','falls3d',],
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/kaieteur_boundary.geojson',},
+					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
+					'satellite':{'type':'xyz','src_url':'/static/pacdev/data/kaieteur/satellite/'},
+					'trailmap':{'type':'xyz','src_url':'/static/pacdev/data/kaieteur/trailmap/'},
+					'falls3d':{'type':'points','src_url':'/static/pacdev/geojson/falls.geojson'},
+				},
 			},
 			'Shell Beach':{
 				'path':'Protected Areas Commission.Hinterland Parks.Shell Beach',
 				'center':[-59.294995, 7.99126],
 				'bbox':[-59.78492, 7.59982, -58.80507, 8.3827],
-				'boundary':'/static/pacdev/geojson/shellbeach_boundary.geojson',
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/shell_beach.jpg',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['guyana_pixelated','shellbeach_satellite','boundary','panorama1','panorama2'],
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/shellbeach_boundary.geojson',},
+					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
+					'shellbeach_satellite':{'type':'xyz','src_url':'/static/pacdev/data/shellbeach/shellbeach_satellite/'},
+					'panorama1':{'type':'points','src_url':'/static/pacdev/data/shellbeach/beach.geojson'},
+					'panorama2':{'type':'points','src_url':'/static/pacdev/data/shellbeach/shellbeach_panorama2.geojson'},
+				},
 			},
 			'Kanuku Mountains':{
 				'path':'Protected Areas Commission.Hinterland Parks.Kanuku Mountains',
@@ -52,7 +69,13 @@ var Config={
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/kanuku_mountains.png',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['guyana_pixelated','kanuku_satellite','boundary','kanuku_panorama'],
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/kanuku_boundary.geojson',},
+					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
+					'kanuku_satellite':{'type':'xyz','src_url':'/static/pacdev/data/kanuku/kanuku_satellite/'},
+					'kanuku_panorama':{'type':'points','src_url':'/static/pacdev/data/kanuku3d.geojson'},
+				},
 			}
 		},
 		'Urban Parks':{
@@ -64,7 +87,10 @@ var Config={
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
-			'points':[],
+			'layers':{
+				'keys':['boundary',],
+				'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/urbanparks_boundary.geojson',},
+			},
 			'Guyana Zoo':{
 				'path':'Protected Areas Commission.Urban Parks.Guyana Zoo',
 				'center':[-58.1463, 6.8073],
@@ -73,7 +99,11 @@ var Config={
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/zoo_entrance.jpg',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['botanical_satellite','boundary',],
+					'botanical_satellite':{'type':'xyz','src_url':'/static/pacdev/data/urbanparks/botanical_satellite/'},
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/zoo_boundary.geojson',},
+				},
 			},
 			'Botanical Gardens':{
 				'path':'Protected Areas Commission.Urban Parks.Botanical Gardens',
@@ -83,7 +113,12 @@ var Config={
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/botanical_aerial.jpg',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['botanical_satellite','boundary','botanical3d'],
+					'botanical_satellite':{'type':'xyz','src_url':'/static/pacdev/data/urbanparks/botanical_satellite/'},
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/botanical_boundary.geojson',},
+					'botanical3d':{'type':'points','src_url':'/static/pacdev/data/urbanparks/botanical.geojson'},
+				},
 			},
 			'National Park':{
 				'path':'Protected Areas Commission.Urban Parks.National Park',
@@ -93,7 +128,11 @@ var Config={
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/national_park.png',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['national_satellite','boundary',],
+					'national_satellite':{'type':'xyz','src_url':'/static/pacdev/data/urbanparks/national_satellite/'},
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/national_boundary.geojson',},
+				},
 			},
 			'Joe Viera Park':{
 				'path':'Protected Areas Commission.Urban Parks.Joe Viera Park',
@@ -103,7 +142,10 @@ var Config={
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/joe_viera.png',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['boundary',],
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/joeviera_boundary.geojson',},
+				},
 			}
 		},
 		'Related Areas':{
@@ -116,7 +158,10 @@ var Config={
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':['/static/pacdev/img/place.jpg'],
 			'keys':['Konashens','Iwokrama'],
-			'points':[],
+			'layers':{
+				'keys':['boundary',],
+				'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/related_boundary.geojson',},
+			},
 			'Konashens':{
 				'path':'Protected Areas Commission.Related Areas.Konashens',
 				'center':[-58.96735,1.51319],
@@ -125,7 +170,11 @@ var Config={
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/place.jpg',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['konashens_satellite','boundary',],
+					'konashens_satellite':{'type':'xyz','src_url':'/static/pacdev/data/konashens/konashens_satellite/'},
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/konashens_boundary.geojson',},
+				},
 			},
 			'Iwokrama':{
 				'path':'Protected Areas Commission.Related Areas.Iwokrama',
@@ -135,7 +184,11 @@ var Config={
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':['/static/pacdev/img/place.jpg',],
 				'keys':[],
-				'points':[],
+				'layers':{
+					'keys':['soil','boundary',],
+					'soil':{'type':'xyz','src_url':'/static/pacdev/data/iwokrama/soil/'},
+					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/iwokrama_boundary.geojson',},
+				},
 			},
 
 		}

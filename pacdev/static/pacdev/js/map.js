@@ -87,9 +87,9 @@ var hidden_point_style=new ol.style.Style({
 	})
 });
 */
-me.add_point=function(src_url){
+me.add_point_layer=function(cfg){
 		var point_source=new ol.source.Vector({
-			url: src_url,
+			url: cfg['src_url'],
 			format: new ol.format.GeoJSON(),
 	//		minZoom: mapMinZoom,
 	//		maxZoom: mapMaxZoom
@@ -103,11 +103,27 @@ me.add_point=function(src_url){
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
+	me.add_xyz_layer=function(cfg){
+					var iurl=cfg['src_url']+"/{z}/{x}/{y}.png";
+					console.log(iurl);
 
-	me.add_layer=function(cfg){
-		console.log("map.add_layer: "+cfg['boundary']);
-		var boundary_source=new ol.source.Vector({
-			url: cfg['boundary'],
+					var image_layer=new ol.layer.Tile({
+			  			//extent: layerExtent,
+			  			preload:10,
+						source: new ol.source.XYZ({
+//			    			attributions: [new ol.Attribution({html: basename+": "+ikey})],
+			    			url: iurl,
+//			    			minZoom: mapMinZoom,
+//			    			maxZoom: mapMaxZoom
+			  			})
+					});
+					me.map.addLayer(image_layer);
+					return image_layer;
+	}
+	me.add_polygon_layer=function(cfg){
+		console.log("map.add_layer: "+cfg['src_url']);
+		var polygon_source=new ol.source.Vector({
+			url: cfg['src_url'],
 			format: new ol.format.GeoJSON()
 		});
 
@@ -115,12 +131,12 @@ me.add_point=function(src_url){
 //		console.log(le_style);
 		//if(key=="Guyana")le_style=guyana_style;
 
-		var boundary_layer= new ol.layer.Vector({
-			source: boundary_source,
+		var polygon_layer= new ol.layer.Vector({
+			source: polygon_source,
 			style:le_style,
 		});
-		me.map.addLayer(boundary_layer);
-		return boundary_layer;
+		me.map.addLayer(polygon_layer);
+		return polygon_layer;
 	}
 	me.map = new ol.Map({
 	  layers: [osm,sat],
@@ -131,7 +147,7 @@ me.add_point=function(src_url){
     	center:ol.proj.transform([0,0],"EPSG:4326","EPSG:3857"),
 	  })
 	});
-	me.add_layer(window.Cfg);
+	me.add_polygon_layer(window.Cfg['layers']['boundary']);
 	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
 	me.overlay.setMap(me.map);
 //	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));
