@@ -6,9 +6,20 @@ var Map=function(mapdiv){
 	console.log('xpopup found by map.js');
 	me.popup_closer = document.getElementById('popup-closer');
 
+	me.WebGL=false;
+	me.lib3D=null;
+	try{
+		console.log("initializing 3D");
+		me.lib3D=new My3DStuff();
+		me.lib3D.init3d();
+		me.WebGL=true;
+		console.log("3D initialized");
+	}
+	catch(e){console.log(e);}
+
 	me.overlay = new ol.Overlay({
 		element: document.getElementById('popup'),
-		autoPan: true,
+		autoPan: false,
 		autoPanAnimation: {
 			duration: 250
 		}
@@ -88,6 +99,7 @@ me.add_point=function(src_url){
 			source: point_source,
 			style:point_style
 		});
+		point_layer.set("layer_type","Launch3D");
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
@@ -100,7 +112,7 @@ me.add_point=function(src_url){
 		});
 
 		var le_style=cfg['style'];
-		console.log(le_style);
+//		console.log(le_style);
 		//if(key=="Guyana")le_style=guyana_style;
 
 		var boundary_layer= new ol.layer.Vector({
@@ -116,10 +128,10 @@ me.add_point=function(src_url){
 		interactions:[],
 	  target: mapdiv,
 	  view: new ol.View({
-    	center:ol.proj.transform(Config['center'],"EPSG:4326","EPSG:3857"),
+    	center:ol.proj.transform([0,0],"EPSG:4326","EPSG:3857"),
 	  })
 	});
-	me.add_layer(Config['Protected Areas Commission']);
+	me.add_layer(window.Cfg);
 	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
 	me.overlay.setMap(me.map);
 //	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));
@@ -141,14 +153,17 @@ me.add_point=function(src_url){
 		if(clicked_layers.length>0){
 			console.log("layers.length="+clicked_layers.length);
 			for(var lidx=0;lidx<clicked_layers.length;lidx++){
-				//var layer_type=clicked_layers[lidx].get("layer_type");
-				//console.log(layer_type);
-				if(false){//}(layer_type=="Launch3D"){
+				try{
+				var layer_type=clicked_layers[lidx].get("layer_type");
+				console.log(layer_type);
+				if(layer_type=="Launch3D"){
 					found=true;
 					console.log("Launching 3D Viewer ...");
-					if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
+					//if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
+					if(me.WebGL){me.lib3D.start(['/static/','geojson','falls3d']);}
 					else{console.log("NEED: WebGL Required Message to user");}
 				}
+				}catch(e){console.log(e);}
 			}
 		}
 
@@ -160,7 +175,7 @@ me.add_point=function(src_url){
 	});
 
 	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
-	var res=compute_resolution(Config['bbox'],false,bcr.width,bcr.height);
+	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);
 	me.map.getView().setResolution(res);
 
@@ -193,8 +208,8 @@ me.add_point=function(src_url){
 		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
 		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
 		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
-		latpanel.innerHTML=lat;
-		lonpanel.innerHTML=lon;
+//		latpanel.innerHTML=lat;
+//		lonpanel.innerHTML=lon;
 
 		me.unhilite();
 		if(evt.dragging){return;}
@@ -227,7 +242,7 @@ me.add_point=function(src_url){
 		style: new ol.style.Style({
 			stroke: new ol.style.Stroke({
 				color: 'gold',
-				width: 3
+				width: 2
 			}),
 		}),
 	});

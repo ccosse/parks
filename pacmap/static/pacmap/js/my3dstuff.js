@@ -17,13 +17,14 @@ var My3DStuff=function(){
 	me.touchY=null;
 
 	me.RUNNING=false;
+	var NOSERVER=false;
 
 	me.hires_div=document.createElement("div");
 	me.hires_div.id="hires_div";
 	me.hires_div.className="hires_div";
 	var xB=new Image();
-	if(NOSERVER)xB.src="./static/pacmap/img/flaticon/close.png";
-	else xB.src="/static/pacmap/img/flaticon/close.png";
+	if(NOSERVER)xB.src="./static/pacmap/img/close.png";
+	else xB.src="/static/pacmap/img/close.png";
 	xB.className="xBicon";
 	xB.id="xB";
 	me.xB=xB;
@@ -42,32 +43,32 @@ var My3DStuff=function(){
 
 		var sides = [
 			{
-				url: mediapath[0]+'/pacmap/data/'+mediapath[1]+'/'+mediapath[2]+'/negx.png',
+				url: mediapath[0]+'/pacmap/'+mediapath[1]+'/'+mediapath[2]+'/negx.png',
 				position: [ -512, 0, 0 ],
 				rotation: [ 0, Math.PI / 2, 0 ]
 			},
 			{
-				url: mediapath[0]+'/pacmap/data/'+mediapath[1]+'/'+mediapath[2]+'/posx.png',
+				url: mediapath[0]+'/pacmap/'+mediapath[1]+'/'+mediapath[2]+'/posx.png',
 				position: [ 512, 0, 0 ],
 				rotation: [ 0, -Math.PI / 2, 0 ]
 			},
 			{
-				url: mediapath[0]+'/pacmap/data/'+mediapath[1]+'/'+mediapath[2]+'/posy.png',
+				url: mediapath[0]+'/pacmap/'+mediapath[1]+'/'+mediapath[2]+'/posy.png',
 				position: [ 0,  512, 0 ],
 				rotation: [ Math.PI / 2, 0, Math.PI ]
 			},
 			{
-				url: mediapath[0]+'/pacmap/data/'+mediapath[1]+'/'+mediapath[2]+'/negy.png',
+				url: mediapath[0]+'/pacmap/'+mediapath[1]+'/'+mediapath[2]+'/negy.png',
 				position: [ 0, -512, 0 ],
 				rotation: [ - Math.PI / 2, 0, Math.PI ]
 			},
 			{
-				url: mediapath[0]+'/pacmap/data/'+mediapath[1]+'/'+mediapath[2]+'/posz.png',
+				url: mediapath[0]+'/pacmap/'+mediapath[1]+'/'+mediapath[2]+'/posz.png',
 				position: [ 0, 0,  512 ],
 				rotation: [ 0, Math.PI, 0 ]
 			},
 			{
-				url: mediapath[0]+'/pacmap/data/'+mediapath[1]+'/'+mediapath[2]+'/negz.png',
+				url: mediapath[0]+'/pacmap/'+mediapath[1]+'/'+mediapath[2]+'/negz.png',
 				position: [ 0, 0, -512 ],
 				rotation: [ 0, 0, 0 ]
 			}
@@ -92,7 +93,7 @@ var My3DStuff=function(){
 
 
 
-		var nav_bcr=document.getElementById("navbar_div").getBoundingClientRect();
+		var nav_bcr=document.getElementById("le_nav").getBoundingClientRect();
 		me.renderer.setSize( window.innerWidth, (window.innerHeight-nav_bcr.height) );
 
 		document.body.appendChild(me.hires_div);
