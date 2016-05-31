@@ -173,19 +173,30 @@ me.add_point_layer=function(cfg){
 			if(layer)clicked_layers.push(layer);
 		});
 		var found=false;
+
+		console.log("clicked_features.length="+clicked_features.length);
+		console.log("clicked_layers.length="+clicked_layers.length);
+
+		for(var fidx=0;fidx<clicked_features.length;fidx++){
+			var name=clicked_features[fidx].get("Name");
+			console.log(fidx+" "+name);
+			var mediapath=clicked_features[fidx].get("mediapath");
+			console.log(fidx+" "+mediapath);
+			var feature_type=clicked_features[fidx].get("feature_type");
+			console.log(fidx+" "+feature_type);
+			if(feature_type=="Launch3D"){
+				found=true;
+				console.log("Launching 3D Viewer ...");
+				if(me.WebGL){me.lib3D.start(mediapath);}
+				else{console.log("NEED: WebGL Required Message to user");}
+			}
+		}
+
 		if(clicked_layers.length>0){
-			console.log("layers.length="+clicked_layers.length);
 			for(var lidx=0;lidx<clicked_layers.length;lidx++){
 				try{
-				var layer_type=clicked_layers[lidx].get("layer_type");
-				console.log(layer_type);
-				if(layer_type=="Launch3D"){
-					found=true;
-					console.log("Launching 3D Viewer ...");
-					if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
-					//if(me.WebGL){me.lib3D.start(['/static/','geojson','falls3d']);}
-					else{console.log("NEED: WebGL Required Message to user");}
-				}
+					var layer_type=clicked_layers[lidx].get("layer_type");
+					console.log(layer_type);
 				}catch(e){console.log(e);}
 			}
 		}
@@ -245,7 +256,8 @@ me.add_point_layer=function(cfg){
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
-				if(layer.get("title")!="/static/pacdev/geojson/guyana_boundary.geojson"){
+				if(layer.get("title")!="/static/pacdev/data/guyana/guyana_boundary.geojson"){
+					console.log("target_name = "+target_name);
 					me.hilite(target_name,layer);
 
 				if(target_feature && target_name){

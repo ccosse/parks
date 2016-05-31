@@ -9,7 +9,7 @@ var Config={
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
 		'layers':{
 			'keys':[],
-			'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
+			'boundary':{'type':'polygon','src_url':'/static/pacdev/data/guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
 		},
 
 		'Hinterland Parks':{
@@ -41,7 +41,7 @@ var Config={
 					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
 					'satellite':{'type':'xyz','src_url':'/static/pacdev/data/kaieteur/satellite/'},
 					'trailmap':{'type':'xyz','src_url':'/static/pacdev/data/kaieteur/trailmap/'},
-					'falls3d':{'type':'points','src_url':'/static/pacdev/data/kaieteur/falls.geojson','mediapath':['/static','kaieteur','falls3d']},
+					'falls3d':{'type':'points','src_url':'/static/pacdev/data/kaieteur/falls.geojson',},
 				},
 			},
 			'Shell Beach':{
@@ -52,12 +52,13 @@ var Config={
 				'photos':['/static/pacdev/img/shell_beach.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','shellbeach_satellite','panorama1','panorama2'],
+					'keys':['guyana_pixelated','shellbeach_satellite','panorama1','panorama2','sinewave'],
 					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/shellbeach_boundary.geojson',},
 					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
 					'shellbeach_satellite':{'type':'xyz','src_url':'/static/pacdev/data/shellbeach/shellbeach_satellite/'},
-					'panorama1':{'type':'points','src_url':'/static/pacdev/data/shellbeach/beach.geojson','mediapath':['/static','shellbeach','shellbeach_panorama']},
-					'panorama2':{'type':'points','src_url':'/static/pacdev/data/shellbeach/shellbeach_panorama2.geojson','mediapath':['/static','shellbeach','shellbeach_panorama2']},
+					'panorama1':{'type':'points','src_url':'/static/pacdev/data/shellbeach/beach.geojson',},
+					'panorama2':{'type':'points','src_url':'/static/pacdev/data/shellbeach/shellbeach_panorama2.geojson',},
+					'sinewave':{'type':'points','src_url':'/static/pacdev/data/shellbeach/sinewave.geojson',},
 				},
 			},
 			'Kanuku Mountains':{
@@ -68,11 +69,12 @@ var Config={
 				'photos':['/static/pacdev/img/kanuku_mountains.png',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','kanuku_satellite','boundary','kanuku_panorama'],
+					'keys':['guyana_pixelated','kanuku_satellite','boundary','kanuku_panorama','rupununi_panorama'],
 					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/kanuku_boundary.geojson',},
 					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
 					'kanuku_satellite':{'type':'xyz','src_url':'/static/pacdev/data/kanuku/kanuku_satellite/'},
-					'kanuku_panorama':{'type':'points','src_url':'/static/pacdev/data/kanuku3d.geojson','mediapath':['/static','kanuku','kanuku_panorama']},
+					'kanuku_panorama':{'type':'points','src_url':'/static/pacdev/data/kanuku/kanuku3d.geojson',},
+					'rupununi_panorama':{'type':'points','src_url':'/static/pacdev/data/kanuku/rupununi3d.geojson',},
 				},
 			}
 		},
@@ -112,7 +114,7 @@ var Config={
 					'keys':['botanical_satellite','botanical3d'],
 					'botanical_satellite':{'type':'xyz','src_url':'/static/pacdev/data/urbanparks/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/botanical_boundary.geojson',},
-					'botanical3d':{'type':'points','src_url':'/static/pacdev/data/urbanparks/botanical.geojson','mediapath':['/static','urbanparks','botanical3d']},
+					'botanical3d':{'type':'points','src_url':'/static/pacdev/data/urbanparks/botanical.geojson',},
 				},
 			},
 			'National Park':{
