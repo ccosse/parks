@@ -41,7 +41,7 @@ var Config={
 					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
 					'satellite':{'type':'xyz','src_url':'/static/pacdev/data/kaieteur/satellite/'},
 					'trailmap':{'type':'xyz','src_url':'/static/pacdev/data/kaieteur/trailmap/'},
-					'falls3d':{'type':'points','src_url':'/static/pacdev/data/falls.geojson'},
+					'falls3d':{'type':'points','src_url':'/static/pacdev/data/kaieteur/falls.geojson','mediapath':['/static','kaieteur','falls3d']},
 				},
 			},
 			'Shell Beach':{
@@ -56,8 +56,8 @@ var Config={
 					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/shellbeach_boundary.geojson',},
 					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
 					'shellbeach_satellite':{'type':'xyz','src_url':'/static/pacdev/data/shellbeach/shellbeach_satellite/'},
-					'panorama1':{'type':'points','src_url':'/static/pacdev/data/shellbeach/beach.geojson'},
-					'panorama2':{'type':'points','src_url':'/static/pacdev/data/shellbeach/shellbeach_panorama2.geojson'},
+					'panorama1':{'type':'points','src_url':'/static/pacdev/data/shellbeach/beach.geojson','mediapath':['/static','shellbeach','shellbeach_panorama']},
+					'panorama2':{'type':'points','src_url':'/static/pacdev/data/shellbeach/shellbeach_panorama2.geojson','mediapath':['/static','shellbeach','shellbeach_panorama2']},
 				},
 			},
 			'Kanuku Mountains':{
@@ -72,7 +72,7 @@ var Config={
 					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/kanuku_boundary.geojson',},
 					'guyana_pixelated':{'type':'xyz','src_url':'/static/pacdev/data/guyana/guyana_pixelated/',},
 					'kanuku_satellite':{'type':'xyz','src_url':'/static/pacdev/data/kanuku/kanuku_satellite/'},
-					'kanuku_panorama':{'type':'points','src_url':'/static/pacdev/data/kanuku3d.geojson'},
+					'kanuku_panorama':{'type':'points','src_url':'/static/pacdev/data/kanuku3d.geojson','mediapath':['/static','kanuku','kanuku_panorama']},
 				},
 			}
 		},
@@ -112,7 +112,7 @@ var Config={
 					'keys':['botanical_satellite','botanical3d'],
 					'botanical_satellite':{'type':'xyz','src_url':'/static/pacdev/data/urbanparks/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'/static/pacdev/geojson/botanical_boundary.geojson',},
-					'botanical3d':{'type':'points','src_url':'/static/pacdev/data/urbanparks/botanical.geojson'},
+					'botanical3d':{'type':'points','src_url':'/static/pacdev/data/urbanparks/botanical.geojson','mediapath':['/static','urbanparks','botanical3d']},
 				},
 			},
 			'National Park':{

@@ -100,7 +100,9 @@ me.add_point_layer=function(cfg){
 			style:point_style
 		});
 		point_layer.set("layer_type","Launch3D");
-		point_layer.set("title",cfg['src_url'])
+		point_layer.set("title",cfg['src_url']);
+		console.log("trying to get mediapath: "+cfg["mediapath"]);
+		point_layer.set("mediapath",cfg["mediapath"]);
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
@@ -168,7 +170,7 @@ me.add_point_layer=function(cfg){
 		var pixel = me.map.getEventPixel(evt.originalEvent);
 		var dummy = me.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
 			clicked_features.push(feature);
-			clicked_layers.push(layer);
+			if(layer)clicked_layers.push(layer);
 		});
 		var found=false;
 		if(clicked_layers.length>0){
@@ -243,21 +245,21 @@ me.add_point_layer=function(cfg){
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
-				if(target_name!="Guyana")
+				if(layer.get("title")!="/static/pacdev/geojson/guyana_boundary.geojson"){
 					me.hilite(target_name,layer);
-			}
-			if(target_feature && target_name){
-				//console.log("target_feature="+target_feature);
-				me.xpopup.innerHTML = '<p>'+target_name+'</p>';//feature.getProperties().Name
-				me.xpopup.innerHTML += lon+", "+lat+"<br>";
-				var keystr="keystr: ";
-				for(var kidx=0;kidx<window.Cfg.keys.length;kidx++)
-					keystr+=window.Cfg.keys[kidx]+",";
-				console.log(keystr);
-				me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
 
-				found=true;
-			}
+				if(target_feature && target_name){
+					//console.log("target_feature="+target_feature);
+					me.xpopup.innerHTML = '<p>'+target_name+'</p>';//feature.getProperties().Name
+					me.xpopup.innerHTML += lon+", "+lat+"<br>";
+					var keystr="keystr: ";
+					for(var kidx=0;kidx<window.Cfg.keys.length;kidx++)
+					keystr+=window.Cfg.keys[kidx]+",";
+					console.log(keystr);
+					me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
+					found=true;
+				}
+			}}
 		});
 		if(!found){
 			me.overlay.setPosition(undefined);
