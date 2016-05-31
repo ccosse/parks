@@ -100,12 +100,13 @@ me.add_point_layer=function(cfg){
 			style:point_style
 		});
 		point_layer.set("layer_type","Launch3D");
+		point_layer.set("title",cfg['src_url'])
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
 	me.add_xyz_layer=function(cfg){
 					var iurl=cfg['src_url']+"/{z}/{x}/{y}.png";
-					console.log(iurl);
+					console.log("add_xyz_layer: "+iurl);
 
 					var image_layer=new ol.layer.Tile({
 			  			//extent: layerExtent,
@@ -117,11 +118,12 @@ me.add_point_layer=function(cfg){
 //			    			maxZoom: mapMaxZoom
 			  			})
 					});
+					image_layer.set("title",cfg['src_url'])
 					me.map.addLayer(image_layer);
 					return image_layer;
 	}
 	me.add_polygon_layer=function(cfg){
-		console.log("map.add_layer: "+cfg['src_url']);
+		console.log("map.add_polygon_layer: "+cfg['src_url']);
 		var polygon_source=new ol.source.Vector({
 			url: cfg['src_url'],
 			format: new ol.format.GeoJSON()
@@ -135,6 +137,7 @@ me.add_point_layer=function(cfg){
 			source: polygon_source,
 			style:le_style,
 		});
+		polygon_layer.set("title",cfg['src_url'])
 		me.map.addLayer(polygon_layer);
 		return polygon_layer;
 	}
@@ -143,6 +146,8 @@ me.add_point_layer=function(cfg){
 		controls:[],
 		interactions:[],
 	  target: mapdiv,
+//		loadTilesWhileAnimating:true,
+//		loadTilesWhileInteracting:true,
 	  view: new ol.View({
     	center:ol.proj.transform([0,0],"EPSG:4326","EPSG:3857"),
 	  })
@@ -175,8 +180,8 @@ me.add_point_layer=function(cfg){
 				if(layer_type=="Launch3D"){
 					found=true;
 					console.log("Launching 3D Viewer ...");
-					//if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
-					if(me.WebGL){me.lib3D.start(['/static/','geojson','falls3d']);}
+					if(me.WebGL){me.lib3D.start(clicked_layers[lidx].get("mediapath"));}
+					//if(me.WebGL){me.lib3D.start(['/static/','geojson','falls3d']);}
 					else{console.log("NEED: WebGL Required Message to user");}
 				}
 				}catch(e){console.log(e);}
@@ -228,19 +233,27 @@ me.add_point_layer=function(cfg){
 //		lonpanel.innerHTML=lon;
 
 		me.unhilite();
+
 		if(evt.dragging){return;}
 		var found=false;
 		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
+
+			if(layer)console.log("title="+layer.get("title"));
+
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
 				if(target_name!="Guyana")
 					me.hilite(target_name,layer);
 			}
-			if(target_feature){
-				console.log("target_feature="+target_feature);
+			if(target_feature && target_name){
+				//console.log("target_feature="+target_feature);
 				me.xpopup.innerHTML = '<p>'+target_name+'</p>';//feature.getProperties().Name
 				me.xpopup.innerHTML += lon+", "+lat+"<br>";
+				var keystr="keystr: ";
+				for(var kidx=0;kidx<window.Cfg.keys.length;kidx++)
+					keystr+=window.Cfg.keys[kidx]+",";
+				console.log(keystr);
 				me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
 
 				found=true;

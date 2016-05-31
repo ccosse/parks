@@ -26,11 +26,9 @@ var PACMap=function(){
 			console.log("removed: "+key);
 		}
 
-		console.log("goto");
-		console.log(path);
+		console.log("goto: "+path);
 
 		var spath=path.split(".");
-		console.log(spath);
 
 		window.Cfg=Config;
 		for(var sidx=0;sidx<spath.length;sidx++){
@@ -167,23 +165,11 @@ var PACMap=function(){
 						me.layers[key]=window.map.add_point_layer(obj);
 				}
 			}
-/*
-			console.log("adding points");
-			for(var pidx=0;pidx<window.Cfg['points'].length;pidx++){
-				var point_filename=window.Cfg['points'][pidx];
-				console.log(point_filename);
-				me.layers['keys'].push(point_filename);
-				me.layers[point_filename]=window.map.add_point(point_filename);
-			}
-
-			console.log("adding xyz");
-			for(var xidx=0;xidx<window.Cfg["xyz_layers"]["keys"].length;xidx++){
-				var xyz_filename=window.Cfg['xyz_layers']["keys"][xidx];
-				console.log(xyz_filename);
-				me.layers['keys'].push(xyz_filename);
-				me.layers[point_filename]=window.map.add_xyz(xyz_filename);
-			}
-*/
+			console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
+			console.log("layers.length: "+window.map.map.getLayers().getLength());
+			window.map.map.getLayers().forEach(function(a,b,c){
+				console.log(b+": "+a.get("title"));
+			});
 		}catch(e){console.log(e);}
 
 		$('[data-toggle="tooltip"]').tooltip();
