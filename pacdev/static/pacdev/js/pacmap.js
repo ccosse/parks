@@ -1,6 +1,6 @@
 var PACMap=function(){
 	var me={};
-
+	var DATA="/static/pacdev/data/";
 	me.WebGL=false;
 	me.lib3D=null;
 	try{
@@ -150,17 +150,17 @@ var PACMap=function(){
 				var obj=window.Cfg['layers'][xkey];
 				if(false){;}
 				else if(obj.type=='xyz'){
-						var key=obj['src_url'];
+						var key=DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_xyz_layer(obj);
 				}
 				else if(obj.type=='polygon'){
-						var key=obj['src_url'];
+						var key=DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_polygon_layer(obj);
 				}
 				else if(obj.type=='points'){
-						var key=obj['src_url'];
+						var key=DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_point_layer(obj);
 				}

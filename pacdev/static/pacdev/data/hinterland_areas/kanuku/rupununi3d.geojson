@@ -1,0 +1,23 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Rupununi 3D",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.4415, 3.4348]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Rupununi Savanah",
+				"color":"#ff0",
+				"fill":"#ff0",
+				"width":1,
+				"mediapath":["/static","kanuku","rupununi_panorama"],
+				"feature_type":"Launch3D"
+			}
+		}
+	]
+}

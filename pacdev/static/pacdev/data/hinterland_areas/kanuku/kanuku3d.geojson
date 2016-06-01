@@ -1,0 +1,23 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Kanuku 3D",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.105485, 3.2779]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Kanuku Mountains",
+				"color":"#ff0",
+				"fill":"#ff0",
+				"width":1,
+				"mediapath":["/static","kanuku","kanuku_panorama"],
+				"feature_type":"Launch3D"
+			}
+		}
+	]
+}

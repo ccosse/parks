@@ -1,0 +1,23 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Wave 3D",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.3, 8.24]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"SineWave",
+				"color":"#ff0",
+				"fill":"#ff0",
+				"width":1,
+				"mediapath":["/static","shellbeach","sinewave"],
+				"feature_type":"Launch3D"
+			}
+		}
+	]
+}

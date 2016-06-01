@@ -1,0 +1,23 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Shell Beach 3D",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.0094, 7.7912]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Shell Beach",
+				"color":"#ff0",
+				"fill":"#ff0",
+				"width":1,
+				"mediapath":["/static","shellbeach","shellbeach_panorama"],
+				"feature_type":"Launch3D"
+			}
+		}
+	]
+}

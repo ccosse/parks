@@ -1,0 +1,23 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Botanical Gardens 3D",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1455, 6.8061]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Botanical Gardens",
+				"color":"#ff0",
+				"fill":"#ff0",
+				"width":1,
+				"mediapath":["/static","urbanparks","botanical3d"],
+				"feature_type":"Launch3D"
+			}
+		}
+	]
+}

@@ -1,5 +1,6 @@
 var Map=function(mapdiv){
 	var me={};
+	var DATA="/static/pacdev/data/";
 	me.HILIGHTS=[];
 
 	me.xpopup = document.getElementById('xpopup');
@@ -89,7 +90,7 @@ var hidden_point_style=new ol.style.Style({
 */
 me.add_point_layer=function(cfg){
 		var point_source=new ol.source.Vector({
-			url: cfg['src_url'],
+			url: DATA+cfg['src_url'],
 			format: new ol.format.GeoJSON(),
 	//		minZoom: mapMinZoom,
 	//		maxZoom: mapMaxZoom
@@ -100,14 +101,14 @@ me.add_point_layer=function(cfg){
 			style:point_style
 		});
 		point_layer.set("layer_type","Launch3D");
-		point_layer.set("title",cfg['src_url']);
+		point_layer.set("title",DATA+cfg['src_url']);
 		console.log("trying to get mediapath: "+cfg["mediapath"]);
 		point_layer.set("mediapath",cfg["mediapath"]);
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
 	me.add_xyz_layer=function(cfg){
-					var iurl=cfg['src_url']+"/{z}/{x}/{y}.png";
+					var iurl=DATA+cfg['src_url']+"/{z}/{x}/{y}.png";
 					console.log("add_xyz_layer: "+iurl);
 
 					var image_layer=new ol.layer.Tile({
@@ -120,14 +121,14 @@ me.add_point_layer=function(cfg){
 //			    			maxZoom: mapMaxZoom
 			  			})
 					});
-					image_layer.set("title",cfg['src_url'])
+					image_layer.set("title",DATA+cfg['src_url'])
 					me.map.addLayer(image_layer);
 					return image_layer;
 	}
 	me.add_polygon_layer=function(cfg){
-		console.log("map.add_polygon_layer: "+cfg['src_url']);
+		console.log("map.add_polygon_layer: "+DATA+cfg['src_url']);
 		var polygon_source=new ol.source.Vector({
-			url: cfg['src_url'],
+			url: DATA+cfg['src_url'],
 			format: new ol.format.GeoJSON()
 		});
 
@@ -139,7 +140,7 @@ me.add_point_layer=function(cfg){
 			source: polygon_source,
 			style:le_style,
 		});
-		polygon_layer.set("title",cfg['src_url'])
+		polygon_layer.set("title",DATA+cfg['src_url'])
 		me.map.addLayer(polygon_layer);
 		return polygon_layer;
 	}
