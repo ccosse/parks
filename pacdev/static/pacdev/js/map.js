@@ -1,6 +1,5 @@
 var Map=function(mapdiv){
 	var me={};
-	var DATA="/static/pacdev/data/";
 	me.HILIGHTS=[];
 
 	me.xpopup = document.getElementById('xpopup');
@@ -133,6 +132,8 @@ me.add_point_layer=function(cfg){
 		});
 
 		var le_style=cfg['style'];
+		if(!le_style)
+			le_style=new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),});
 //		console.log(le_style);
 		//if(key=="Guyana")le_style=guyana_style;
 
@@ -144,18 +145,24 @@ me.add_point_layer=function(cfg){
 		me.map.addLayer(polygon_layer);
 		return polygon_layer;
 	}
+
+
 	me.map = new ol.Map({
-	  layers: [osm,sat],
+	  layers: [osm],//sat
 		controls:[],
 		interactions:[],
 	  target: mapdiv,
-//		loadTilesWhileAnimating:true,
-//		loadTilesWhileInteracting:true,
+		loadTilesWhileAnimating:true,
+		loadTilesWhileInteracting:true,
 	  view: new ol.View({
     	center:ol.proj.transform([0,0],"EPSG:4326","EPSG:3857"),
 	  })
 	});
+
+	me.add_xyz_layer({'type':'xyz','src_url':'guyana/guyana_pixelated/'});
+	me.map.addLayer(sat);
 	me.add_polygon_layer(window.Cfg['layers']['boundary']);
+
 	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
 	me.overlay.setMap(me.map);
 //	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));

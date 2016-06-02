@@ -1,4 +1,5 @@
 //PATH=/static/pacdev/data/
+var DATA="/static/pacdev/data/";
 var Config={
 	'Protected Areas Commission':{
 		'path':'Protected Areas Commission',
@@ -37,9 +38,8 @@ var Config={
 				'photos':['/static/pacdev/img/kaieteur_falls.png',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','satellite','trailmap','falls3d',],
+					'keys':['satellite','trailmap','falls3d','boundary'],
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/kaieteur/kaieteur_boundary.geojson',},
-					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/',},
 					'satellite':{'type':'xyz','src_url':'hinterland_areas/kaieteur/satellite/'},
 					'trailmap':{'type':'xyz','src_url':'hinterland_areas/kaieteur/trailmap/'},
 					'falls3d':{'type':'points','src_url':'hinterland_areas/kaieteur/falls.geojson',},
@@ -53,9 +53,8 @@ var Config={
 				'photos':['/static/pacdev/img/shell_beach.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','shellbeach_satellite','panorama1','panorama2','sinewave'],
+					'keys':['shellbeach_satellite','panorama1','panorama2','sinewave'],
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/shellbeach/shellbeach_boundary.geojson',},
-					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/',},
 					'shellbeach_satellite':{'type':'xyz','src_url':'hinterland_areas/shellbeach/shellbeach_satellite/'},
 					'panorama1':{'type':'points','src_url':'hinterland_areas/shellbeach/beach.geojson',},
 					'panorama2':{'type':'points','src_url':'hinterland_areas/shellbeach/shellbeach_panorama2.geojson',},
@@ -70,9 +69,8 @@ var Config={
 				'photos':['/static/pacdev/img/kanuku_mountains.png',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','kanuku_satellite','boundary','kanuku_panorama','rupununi_panorama'],
+					'keys':['kanuku_satellite','boundary','kanuku_panorama','rupununi_panorama'],
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/kanuku/kanuku_boundary.geojson',},
-					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/',},
 					'kanuku_satellite':{'type':'xyz','src_url':'hinterland_areas/kanuku/kanuku_satellite/'},
 					'kanuku_panorama':{'type':'points','src_url':'hinterland_areas/kanuku/kanuku3d.geojson',},
 					'rupununi_panorama':{'type':'points','src_url':'hinterland_areas/kanuku/rupununi3d.geojson',},
@@ -167,9 +165,8 @@ var Config={
 				'photos':['/static/pacdev/img/place.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','konashens_satellite'],
+					'keys':['konashens_satellite'],
 					'konashens_satellite':{'type':'xyz','src_url':'related_areas/konashens/konashens_satellite/'},
-					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/',},
 					'boundary':{'type':'polygon','src_url':'related_areas/konashens/konashens_boundary.geojson',},
 				},
 			},
@@ -181,9 +178,8 @@ var Config={
 				'photos':['/static/pacdev/img/place.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','soil'],
+					'keys':['soil'],
 					'soil':{'type':'xyz','src_url':'related_areas/iwokrama/soil/'},
-					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/',},
 					'boundary':{'type':'polygon','src_url':'related_areas/iwokrama/iwokrama_boundary.geojson',},
 				},
 			},

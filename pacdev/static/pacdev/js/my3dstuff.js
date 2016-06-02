@@ -43,32 +43,32 @@ var My3DStuff=function(){
 
 		var sides = [
 			{
-				url: '/static/pacdev/data/'+mediapath[1]+'/'+mediapath[2]+'/negx.png',
+				url: DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/negx.png',
 				position: [ -512, 0, 0 ],
 				rotation: [ 0, Math.PI / 2, 0 ]
 			},
 			{
-				url: '/static/pacdev/data/'+mediapath[1]+'/'+mediapath[2]+'/posx.png',
+				url: DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/posx.png',
 				position: [ 512, 0, 0 ],
 				rotation: [ 0, -Math.PI / 2, 0 ]
 			},
 			{
-				url: '/static/pacdev/data/'+mediapath[1]+'/'+mediapath[2]+'/posy.png',
+				url: DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/posy.png',
 				position: [ 0,  512, 0 ],
 				rotation: [ Math.PI / 2, 0, Math.PI ]
 			},
 			{
-				url: '/static/pacdev/data/'+mediapath[1]+'/'+mediapath[2]+'/negy.png',
+				url: DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/negy.png',
 				position: [ 0, -512, 0 ],
 				rotation: [ - Math.PI / 2, 0, Math.PI ]
 			},
 			{
-				url: '/static/pacdev/data/'+mediapath[1]+'/'+mediapath[2]+'/posz.png',
+				url: DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/posz.png',
 				position: [ 0, 0,  512 ],
 				rotation: [ 0, Math.PI, 0 ]
 			},
 			{
-				url: '/static/pacdev/data/'+mediapath[1]+'/'+mediapath[2]+'/negz.png',
+				url: DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/negz.png',
 				position: [ 0, 0, -512 ],
 				rotation: [ 0, 0, 0 ]
 			}

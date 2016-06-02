@@ -1,6 +1,5 @@
 var PACMap=function(){
 	var me={};
-	var DATA="/static/pacdev/data/";
 	me.WebGL=false;
 	me.lib3D=null;
 	try{
@@ -18,13 +17,8 @@ var PACMap=function(){
 			$("#controls").addClass("vhide");
 		}
 
-		console.log("removing last layer set ...");
-		while(me.layers['keys'].length>0){
-			var key=me.layers['keys'].pop();
-			window.map.map.removeLayer(me.layers[key]);
-			delete me.layers[key];
-			console.log("removed: "+key);
-		}
+		me.old_layers=me.layers;
+		me.layers={'keys':[],};
 
 		console.log("goto: "+path);
 
@@ -165,6 +159,16 @@ var PACMap=function(){
 						me.layers[key]=window.map.add_point_layer(obj);
 				}
 			}
+
+			console.log("removing last layer set ...");
+			while(me.old_layers['keys'].length>0){
+				var key=me.old_layers['keys'].pop();
+				window.map.map.removeLayer(me.old_layers[key]);
+				delete me.old_layers[key];
+				console.log("removed: "+key);
+			}
+			delete me.old_layers;
+			
 			console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
 			console.log("layers.length: "+window.map.map.getLayers().getLength());
 			window.map.map.getLayers().forEach(function(a,b,c){
