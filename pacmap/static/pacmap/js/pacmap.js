@@ -1,6 +1,6 @@
 var PACMap=function(){
 	var me={};
-
+	var DATA="/static/pacmap/data/";
 	me.WebGL=false;
 	me.lib3D=null;
 	try{
@@ -26,11 +26,9 @@ var PACMap=function(){
 			console.log("removed: "+key);
 		}
 
-		console.log("goto");
-		console.log(path);
+		console.log("goto: "+path);
 
 		var spath=path.split(".");
-		console.log(spath);
 
 		window.Cfg=Config;
 		for(var sidx=0;sidx<spath.length;sidx++){
@@ -129,7 +127,7 @@ var PACMap=function(){
 
 			//add boundary layer, mouseover button, mouseover feature
 			me.layers['keys'].push(key);
-			me.layers[key]=window.map.add_layer(window.Cfg[key]);
+			me.layers[key]=window.map.add_polygon_layer(window.Cfg[key]['layers']['boundary']);
 
 			s.addEventListener('mouseout',function(e){
 				console.log("mouseout");
@@ -144,14 +142,38 @@ var PACMap=function(){
 			//remove parent layer assets now for smooth removal
 			//also remove points now
 		}
+		try{
 
-		for(var pidx=0;pidx<window.Cfg['points'].length;pidx++){
-			var point_filename=window.Cfg['points'][pidx];
-			console.log(point_filename);
-			me.layers['keys'].push(point_filename);
-			me.layers[point_filename]=window.map.add_point(point_filename);
-		}
+			console.log("adding layers");
+			for(var lidx=0;lidx<window.Cfg['layers']['keys'].length;lidx++){
+				var xkey=window.Cfg['layers']['keys'][lidx];
+				var obj=window.Cfg['layers'][xkey];
+				if(false){;}
+				else if(obj.type=='xyz'){
+						var key=DATA+obj['src_url'];
+						me.layers['keys'].push(key);
+						me.layers[key]=window.map.add_xyz_layer(obj);
+				}
+				else if(obj.type=='polygon'){
+						var key=DATA+obj['src_url'];
+						me.layers['keys'].push(key);
+						me.layers[key]=window.map.add_polygon_layer(obj);
+				}
+				else if(obj.type=='points'){
+						var key=DATA+obj['src_url'];
+						me.layers['keys'].push(key);
+						me.layers[key]=window.map.add_point_layer(obj);
+				}
+			}
+			console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
+			console.log("layers.length: "+window.map.map.getLayers().getLength());
+			window.map.map.getLayers().forEach(function(a,b,c){
+				console.log(b+": "+a.get("title"));
+			});
+		}catch(e){console.log(e);}
+
 		$('[data-toggle="tooltip"]').tooltip();
+
 	}
 	return me;
 }

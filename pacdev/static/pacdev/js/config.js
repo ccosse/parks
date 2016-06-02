@@ -88,7 +88,9 @@ var Config={
 			'photos':['/static/pacdev/img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'layers':{
-				'keys':[],//'boundary',
+				'keys':['botanical_satellite','national_satellite'],//'boundary',''
+				'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
+				'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
 				'boundary':{'type':'polygon','src_url':'urbanparks/urbanparks_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
 			},
 			'Guyana Zoo':{
