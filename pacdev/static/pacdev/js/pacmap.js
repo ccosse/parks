@@ -10,16 +10,17 @@ var PACMap=function(){
 	catch(e){}
 
 	me.layers={'keys':[],};
+	me.old_layers=null;
 
 	me.goto=function(path){
 
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
 		}
-
+		console.log("later will remove: "+me.layers['keys'].length);
 		me.old_layers=me.layers;
 		me.layers={'keys':[],};
-
+		
 		console.log("goto: "+path);
 
 		var spath=path.split(".");
@@ -160,15 +161,15 @@ var PACMap=function(){
 				}
 			}
 
-			console.log("removing last layer set ...");
+			console.log("removing last layer set: "+me.old_layers['keys'].length);
 			while(me.old_layers['keys'].length>0){
 				var key=me.old_layers['keys'].pop();
 				window.map.map.removeLayer(me.old_layers[key]);
 				delete me.old_layers[key];
 				console.log("removed: "+key);
 			}
-			delete me.old_layers;
-			
+			me.old_layers=null;
+
 			console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
 			console.log("layers.length: "+window.map.map.getLayers().getLength());
 			window.map.map.getLayers().forEach(function(a,b,c){

@@ -1,6 +1,5 @@
 var Map=function(mapdiv){
 	var me={};
-	var DATA="/static/pacmap/data/";
 	me.HILIGHTS=[];
 
 	me.xpopup = document.getElementById('xpopup');

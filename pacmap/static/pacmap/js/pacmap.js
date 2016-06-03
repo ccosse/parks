@@ -1,6 +1,5 @@
 var PACMap=function(){
 	var me={};
-	var DATA="/static/pacmap/data/";
 	me.WebGL=false;
 	me.lib3D=null;
 	try{

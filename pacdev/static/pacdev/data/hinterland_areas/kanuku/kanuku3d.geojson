@@ -15,7 +15,7 @@
 				"color":"#ff0",
 				"fill":"#ff0",
 				"width":1,
-				"mediapath":["/static","kanuku","kanuku_panorama"],
+				"mediapath":["hinterland_areas","kanuku","kanuku_panorama"],
 				"feature_type":"Launch3D"
 			}
 		}

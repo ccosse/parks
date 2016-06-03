@@ -15,7 +15,7 @@
 				"color":"#ff0",
 				"fill":"#ff0",
 				"width":1,
-				"mediapath":["/static","urbanparks","botanical3d"],
+				"mediapath":["urbanparks","botanical","botanical3d"],
 				"feature_type":"Launch3D"
 			}
 		}

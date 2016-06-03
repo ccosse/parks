@@ -15,7 +15,7 @@
 				"color":"#ff0",
 				"fill":"#ff0",
 				"width":1,
-				"mediapath":["/static","shellbeach","shellbeach_panorama"],
+				"mediapath":["hinterland_areas","shellbeach","shellbeach_panorama"],
 				"feature_type":"Launch3D"
 			}
 		}

@@ -1,6 +1,7 @@
 var Map=function(mapdiv){
 	var me={};
 	me.HILIGHTS=[];
+	me.POINT_HILIGHTS=[];
 
 	me.xpopup = document.getElementById('xpopup');
 	console.log('xpopup found by map.js');
@@ -33,13 +34,13 @@ var Map=function(mapdiv){
 	var sat=new ol.layer.Tile({
 		minResolution:500,
 		preload:14,
-		opacity:0.85,
+		opacity:1.0,
 		title:'Satellite',
 		source: new ol.source.MapQuest({layer: 'sat'})
 	});
 	var osm=new ol.layer.Tile({
 		preload:14,
-		opacity:0.4,
+		opacity:1.0,
 		title:'OpenStreetMap2',
 		source:new ol.source.OSM()
 	});
@@ -101,8 +102,8 @@ me.add_point_layer=function(cfg){
 		});
 		point_layer.set("layer_type","Launch3D");
 		point_layer.set("title",DATA+cfg['src_url']);
-		console.log("trying to get mediapath: "+cfg["mediapath"]);
-		point_layer.set("mediapath",cfg["mediapath"]);
+//		console.log("trying to get mediapath: "+cfg["mediapath"]);
+//		point_layer.set("mediapath",cfg["mediapath"]);
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
@@ -120,8 +121,20 @@ me.add_point_layer=function(cfg){
 //			    			maxZoom: mapMaxZoom
 			  			})
 					});
+					image_layer.set("layer_type","xyz");
 					image_layer.set("title",DATA+cfg['src_url'])
-					me.map.addLayer(image_layer);
+					if(cfg['bbox']){
+						image_layer.set("bbox",cfg["bbox"]);
+					}
+					if(cfg['layeridx']){//hack to control layer position of guyana_pixelated
+						me.map.getLayers().insertAt(cfg['layeridx'], image_layer);
+						console.log("added "+cfg['src_url']+" at "+cfg['layeridx']);
+					}
+					else{
+						me.map.addLayer(image_layer);
+						console.log("appended layer: "+cfg['src_url']);
+					}
+
 					return image_layer;
 	}
 	me.add_polygon_layer=function(cfg){
@@ -141,6 +154,7 @@ me.add_point_layer=function(cfg){
 			source: polygon_source,
 			style:le_style,
 		});
+		polygon_layer.set("layer_type","polygon");
 		polygon_layer.set("title",DATA+cfg['src_url'])
 		me.map.addLayer(polygon_layer);
 		return polygon_layer;
@@ -148,19 +162,19 @@ me.add_point_layer=function(cfg){
 
 
 	me.map = new ol.Map({
-	  layers: [osm],//sat
+	  layers: [],//osm,sat
 		controls:[],
 		interactions:[],
 	  target: mapdiv,
 		loadTilesWhileAnimating:true,
 		loadTilesWhileInteracting:true,
 	  view: new ol.View({
-    	center:ol.proj.transform([0,0],"EPSG:4326","EPSG:3857"),
+    	center:ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"),
 	  })
 	});
 
-	me.add_xyz_layer({'type':'xyz','src_url':'guyana/guyana_pixelated/'});
-	me.map.addLayer(sat);
+	me.add_xyz_layer({'layeridx':0,'type':'xyz','src_url':'guyana/guyana_pixelated/'});
+//	me.map.addLayer(sat);
 	me.add_polygon_layer(window.Cfg['layers']['boundary']);
 
 	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
@@ -178,7 +192,10 @@ me.add_point_layer=function(cfg){
 		var pixel = me.map.getEventPixel(evt.originalEvent);
 		var dummy = me.map.forEachFeatureAtPixel(pixel, function(feature, layer) {
 			clicked_features.push(feature);
-			if(layer)clicked_layers.push(layer);
+//			if(layer)clicked_layers.push(layer);
+		});
+		var dummy2=me.map.forEachLayerAtPixel(pixel,function(layer){
+			clicked_layers.push(layer);
 		});
 		var found=false;
 
@@ -187,32 +204,48 @@ me.add_point_layer=function(cfg){
 
 		for(var fidx=0;fidx<clicked_features.length;fidx++){
 			var name=clicked_features[fidx].get("Name");
-			console.log(fidx+" "+name);
+			console.log(fidx+" Name "+name);
 			var mediapath=clicked_features[fidx].get("mediapath");
-			console.log(fidx+" "+mediapath);
+			console.log(fidx+" mediapath "+mediapath);
 			var feature_type=clicked_features[fidx].get("feature_type");
-			console.log(fidx+" "+feature_type);
+			console.log(fidx+" feature_type "+feature_type);
 			if(feature_type=="Launch3D"){
 				found=true;
 				console.log("Launching 3D Viewer ...");
 				if(me.WebGL){me.lib3D.start(mediapath);}
 				else{console.log("NEED: WebGL Required Message to user");}
+				return;
 			}
 		}
 
 		if(clicked_layers.length>0){
 			for(var lidx=0;lidx<clicked_layers.length;lidx++){
 				try{
-					var layer_type=clicked_layers[lidx].get("layer_type");
-					console.log(layer_type);
-				}catch(e){console.log(e);}
+					console.log(lidx+" "+clicked_layers[lidx].get("layer_type")+" "+clicked_layers[lidx].get("title"));
+					if(clicked_layers[lidx].get("bbox")){
+						var bbox=clicked_layers[lidx].get("bbox");
+						console.log("GOT BBOX! "+bbox);//via cfg->add_*_layer
+						var center=[(bbox[0]+bbox[2])/2.,(bbox[1]+bbox[3])/2.];
+						pan_zoom(center,bbox);
+					}
+					else{
+						console.log("no bbox this layer");
+					}
+				}catch(e){console.log("ERROR");}
 			}
 		}
 
 		if(clicked_features.length>0 && !found){
 			var feature_name=clicked_features[0].getProperties().Name;
-			console.log("goto:"+feature_name);
-			window.pacmap.goto(window.Cfg['path']+'.'+feature_name);
+
+			if(window.Cfg['keys'].indexOf(feature_name)>-1){
+				console.log("goto:"+feature_name);
+				window.pacmap.goto(window.Cfg['path']+'.'+feature_name);
+			}
+			else {
+				console.log("What do we want to do for this layer?");
+				//embed instructions in file ... trailmap xyz
+			}
 		}
 	});
 
@@ -222,6 +255,9 @@ me.add_point_layer=function(cfg){
 	me.map.getView().setResolution(res);
 
 	me.unhilite=function(e){
+		for(var hidx=0;hidx<me.POINT_HILIGHTS.length;hidx++){
+			me.pointOverlay.removeFeature(me.POINT_HILIGHTS[hidx]);
+		}
 		for(var hidx=0;hidx<me.HILIGHTS.length;hidx++){
 			me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
 		}
@@ -230,11 +266,18 @@ me.add_point_layer=function(cfg){
 	}
 
 	me.hilite=function(feature_name,layer){
-		console.log("map.hilite: "+feature_name);
+//		console.log("map.hilite: "+feature_name);
+//		console.log("layer_type: "+layer.get("layer_type"));
 		var fs=layer.getSource().getFeatures();
 		for(var fidx=0;fidx<fs.length;fidx++){
-			me.featureOverlay.addFeature(fs[fidx]);
-			me.HILIGHTS.push(fs[fidx]);
+			if(layer.get("layer_type")=="Launch3D"){
+				me.pointOverlay.addFeature(fs[fidx]);
+				me.POINT_HILIGHTS.push(fs[fidx]);
+			}
+			else{
+				me.featureOverlay.addFeature(fs[fidx]);
+				me.HILIGHTS.push(fs[fidx]);
+			}
 		}
 		try{
 			me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
@@ -259,13 +302,13 @@ me.add_point_layer=function(cfg){
 		var found=false;
 		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
 
-			if(layer)console.log("title="+layer.get("title"));
+//			if(layer)console.log("title="+layer.get("title"));
 
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
 				if(layer.get("title")!="/static/pacdev/data/guyana/guyana_boundary.geojson"){
-					console.log("target_name = "+target_name);
+//					console.log("target_name = "+target_name);
 					me.hilite(target_name,layer);
 
 				if(target_feature && target_name){
@@ -275,8 +318,13 @@ me.add_point_layer=function(cfg){
 					var keystr="keystr: ";
 					for(var kidx=0;kidx<window.Cfg.keys.length;kidx++)
 					keystr+=window.Cfg.keys[kidx]+",";
-					console.log(keystr);
-					me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
+//					console.log(keystr);
+					try{
+						me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
+					}
+					catch(e){
+						me.overlay.setPosition(ol.proj.transform(evt.coordinate,"EPSG:4326","EPSG:3857"));
+					}
 					found=true;
 				}
 			}}
@@ -288,6 +336,21 @@ me.add_point_layer=function(cfg){
 
 	});
 
+	me.pointOverlay = new ol.FeatureOverlay({
+		map: me.map,
+		style: new ol.style.Style({
+		image:new ol.style.Circle({
+			radius:10,
+			stroke: new ol.style.Stroke({
+				color: 'rgba(222,255,0,1)',
+				width:6
+			}),
+			fill: new ol.style.Fill({
+				color: 'rgba(255,0,0,1)',
+			}),
+			})
+		}),
+	});
 	me.featureOverlay = new ol.FeatureOverlay({
 		map: me.map,
 		style: new ol.style.Style({

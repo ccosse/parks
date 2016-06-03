@@ -15,7 +15,7 @@
 				"color":"#ff0",
 				"fill":"#ff0",
 				"width":1,
-				"mediapath":["/static","shellbeach","sinewave"],
+				"mediapath":["hinterland_areas","shellbeach","sinewave"],
 				"feature_type":"Launch3D"
 			}
 		}

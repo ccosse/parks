@@ -1,5 +1,6 @@
 //PATH=/static/pacdev/data/
-var DATA="/static/pacdev/data/";
+var STATIC="./static/pacdev/"
+var DATA="./static/pacdev/data/";
 var Config={
 	'Protected Areas Commission':{
 		'path':'Protected Areas Commission',
@@ -7,7 +8,7 @@ var Config={
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
-		'photos':['/static/pacdev/img/pac_hq.jpg',],
+		'photos':[STATIC+'img/pac_hq.jpg',],
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
 		'layers':{
 			'keys':[],
@@ -24,7 +25,7 @@ var Config={
 			//'boundary':'/static/pacdev/geojson/hinterland_boundaries.geojson',
 			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
-			'photos':['/static/pacdev/img/hinterland_areas.jpg',],
+			'photos':[STATIC+'img/hinterland_areas.jpg',],
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
 			'layers':{
 				'keys':[],
@@ -35,13 +36,13 @@ var Config={
 				'center':[-59.50293, 5.175],
 				'bbox':[-59.63383, 5.0468, -59.37203, 5.3032],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/kaieteur_falls.png',],
+				'photos':[STATIC+'img/kaieteur_falls.png',],
 				'keys':[],
 				'layers':{
-					'keys':['satellite','trailmap','falls3d','boundary'],
+					'keys':['satellite','boundary','trailmap','falls3d'],//
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/kaieteur/kaieteur_boundary.geojson',},
 					'satellite':{'type':'xyz','src_url':'hinterland_areas/kaieteur/satellite/'},
-					'trailmap':{'type':'xyz','src_url':'hinterland_areas/kaieteur/trailmap/'},
+					'trailmap':{'type':'xyz','src_url':'hinterland_areas/kaieteur/trailmap/','bbox':[-59.48,5.127,-59.43,5.21]},
 					'falls3d':{'type':'points','src_url':'hinterland_areas/kaieteur/falls.geojson',},
 				},
 			},
@@ -50,7 +51,7 @@ var Config={
 				'center':[-59.294995, 7.99126],
 				'bbox':[-59.78492, 7.59982, -58.80507, 8.3827],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/shell_beach.jpg',],
+				'photos':[STATIC+'img/shell_beach.jpg',],
 				'keys':[],
 				'layers':{
 					'keys':['shellbeach_satellite','panorama1','panorama2','sinewave'],
@@ -66,7 +67,7 @@ var Config={
 				'center':[-59.105485, 3.2779],
 				'bbox':[-59.62108, 2.89736, -58.58989, 3.65844],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/kanuku_mountains.png',],
+				'photos':[STATIC+'img/kanuku_mountains.png',],
 				'keys':[],
 				'layers':{
 					'keys':['kanuku_satellite','boundary','kanuku_panorama','rupununi_panorama'],
@@ -83,7 +84,7 @@ var Config={
 			'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
 			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
-			'photos':['/static/pacdev/img/urban_parks.jpg',],
+			'photos':[STATIC+'img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'layers':{
 				'keys':['botanical_satellite','national_satellite'],//'boundary',''
@@ -96,7 +97,7 @@ var Config={
 				'center':[-58.1463, 6.8073],
 				'bbox':[-58.1491, 6.8057, -58.1439, 6.809],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/zoo_entrance.jpg',],
+				'photos':[STATIC+'img/zoo_entrance.jpg',],
 				'keys':[],
 				'layers':{
 					'keys':['botanical_satellite',],
@@ -109,7 +110,7 @@ var Config={
 				'center':[-58.143, 6.8055],
 				'bbox':[-58.1512, 6.8018, -58.1374, 6.8094],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/botanical_aerial.jpg',],
+				'photos':[STATIC+'img/botanical_aerial.jpg',],
 				'keys':[],
 				'layers':{
 					'keys':['botanical_satellite','botanical3d'],
@@ -123,7 +124,7 @@ var Config={
 				'center':[-58.1509, 6.8215],
 				'bbox':[-58.1551, 6.8194, -58.1478, 6.8241],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/national_park.png',],
+				'photos':[STATIC+'img/national_park.png',],
 				'keys':[],
 				'layers':{
 					'keys':['national_satellite',],
@@ -136,7 +137,7 @@ var Config={
 				'center':[-58.1947, 6.7769],
 				'bbox':[-58.1975, 6.7447, -58.1922, 6.7784],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/joe_viera.png',],
+				'photos':[STATIC+'img/joe_viera.png',],
 				'keys':[],
 				'layers':{
 					'keys':[],
@@ -151,7 +152,7 @@ var Config={
 			//Konashens + Iwokrama (both) in related_boundary.geojson
 
 			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
-			'photos':['/static/pacdev/img/place.jpg'],
+			'photos':[STATIC+'img/place.jpg'],
 			'keys':['Konashens','Iwokrama'],
 			'layers':{
 				'keys':[],
@@ -162,7 +163,7 @@ var Config={
 				'center':[-58.96735,1.51319],
 				'bbox':[-59.56666,1.17728,-58.36804,1.8491],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/place.jpg',],
+				'photos':[STATIC+'img/place.jpg',],
 				'keys':[],
 				'layers':{
 					'keys':['konashens_satellite'],
@@ -175,7 +176,7 @@ var Config={
 				'center':[-58.881185,4.47368],
 				'bbox':[-59.2709,4.13887,-58.49147,4.80849],
 				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-				'photos':['/static/pacdev/img/place.jpg',],
+				'photos':[STATIC+'/img/place.jpg',],
 				'keys':[],
 				'layers':{
 					'keys':['soil'],

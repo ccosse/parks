@@ -15,7 +15,7 @@
 				"color":"#ff0",
 				"fill":"#ff0",
 				"width":1,
-				"mediapath":["/static","kanuku","rupununi_panorama"],
+				"mediapath":["hinterland_areas","kanuku","rupununi_panorama"],
 				"feature_type":"Launch3D"
 			}
 		}
