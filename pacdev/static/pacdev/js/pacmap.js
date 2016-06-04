@@ -20,7 +20,7 @@ var PACMap=function(){
 		console.log("later will remove: "+me.layers['keys'].length);
 		me.old_layers=me.layers;
 		me.layers={'keys':[],};
-		
+
 		console.log("goto: "+path);
 
 		var spath=path.split(".");
@@ -38,7 +38,8 @@ var PACMap=function(){
 		document.getElementById('img_controls_top').src=window.Cfg['photos'][0];
 		console.log(window.Cfg['photos'][0]);
 
-		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
+//		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
+		document.getElementById('title_controls_top').innerHTML=window.Cfg['html'];
 
 		var h3=document.createElement("h3");
 		h3.appendChild(document.createTextNode(spath[spath.length-1]));
@@ -84,6 +85,8 @@ var PACMap=function(){
 					if(sidx<spath.length-2)return_path+=".";
 				}
 				console.log("return_path: "+return_path);
+				try{me.lib3D.closeCB();}
+				catch(e){console.log(e);}
 				me.goto(return_path);
 			});
 		}
@@ -117,6 +120,8 @@ var PACMap=function(){
 
 			s.addEventListener('click',function(e){
 				console.log(e.target.id);
+				try{me.lib3D.closeCB();}
+				catch(e){console.log(e);}
 				me.goto(path+'.'+e.target.id);
 			});
 
@@ -144,18 +149,22 @@ var PACMap=function(){
 				var xkey=window.Cfg['layers']['keys'][lidx];
 				var obj=window.Cfg['layers'][xkey];
 				if(false){;}
+				else if(obj.type=='base'){
+					me.layers['keys'].push(obj['name']);
+					me.layers[key]=window.map.add_base_layer(obj);
+				}
 				else if(obj.type=='xyz'){
-						var key=DATA+obj['src_url'];
+						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_xyz_layer(obj);
 				}
 				else if(obj.type=='polygon'){
-						var key=DATA+obj['src_url'];
+						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_polygon_layer(obj);
 				}
 				else if(obj.type=='points'){
-						var key=DATA+obj['src_url'];
+						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_point_layer(obj);
 				}

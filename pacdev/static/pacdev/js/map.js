@@ -90,7 +90,7 @@ var hidden_point_style=new ol.style.Style({
 */
 me.add_point_layer=function(cfg){
 		var point_source=new ol.source.Vector({
-			url: DATA+cfg['src_url'],
+			url: window.DATA+cfg['src_url'],
 			format: new ol.format.GeoJSON(),
 	//		minZoom: mapMinZoom,
 	//		maxZoom: mapMaxZoom
@@ -100,15 +100,15 @@ me.add_point_layer=function(cfg){
 			source: point_source,
 			style:point_style
 		});
-		point_layer.set("layer_type","Launch3D");
-		point_layer.set("title",DATA+cfg['src_url']);
+		point_layer.set("layer_type",cfg["layer_type"]);
+		point_layer.set("title",window.DATA+cfg['src_url']);
 //		console.log("trying to get mediapath: "+cfg["mediapath"]);
 //		point_layer.set("mediapath",cfg["mediapath"]);
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
 	me.add_xyz_layer=function(cfg){
-					var iurl=DATA+cfg['src_url']+"/{z}/{x}/{y}.png";
+					var iurl=window.DATA+cfg['src_url']+"/{z}/{x}/{y}.png";
 					console.log("add_xyz_layer: "+iurl);
 
 					var image_layer=new ol.layer.Tile({
@@ -122,7 +122,7 @@ me.add_point_layer=function(cfg){
 			  			})
 					});
 					image_layer.set("layer_type","xyz");
-					image_layer.set("title",DATA+cfg['src_url'])
+					image_layer.set("title",window.DATA+cfg['src_url'])
 					if(cfg['bbox']){
 						image_layer.set("bbox",cfg["bbox"]);
 					}
@@ -137,10 +137,34 @@ me.add_point_layer=function(cfg){
 
 					return image_layer;
 	}
+	me.add_base_layer=function(obj){
+		var base;
+		if(obj['name']=='sat'){
+			base=new ol.layer.Tile({
+				minResolution:500,
+				preload:14,
+				opacity:obj['opacity'],
+				title:'Satellite',
+				source: new ol.source.MapQuest({layer: 'sat'})
+			});
+		}
+		else if(obj['name']=='OpenStreetMap2'){
+			base=new ol.layer.Tile({
+				preload:14,
+				opacity:obj['opacity'],
+				title:'OpenStreetMap2',
+				source:new ol.source.OSM()
+			});
+		}
+		else return null;
+
+		me.map.getLayers().insertAt(obj['layeridx'],base);
+		return base;
+	}
 	me.add_polygon_layer=function(cfg){
-		console.log("map.add_polygon_layer: "+DATA+cfg['src_url']);
+		console.log("map.add_polygon_layer: "+window.DATA+cfg['src_url']);
 		var polygon_source=new ol.source.Vector({
-			url: DATA+cfg['src_url'],
+			url: window.DATA+cfg['src_url'],
 			format: new ol.format.GeoJSON()
 		});
 
@@ -155,7 +179,7 @@ me.add_point_layer=function(cfg){
 			style:le_style,
 		});
 		polygon_layer.set("layer_type","polygon");
-		polygon_layer.set("title",DATA+cfg['src_url'])
+		polygon_layer.set("title",window.DATA+cfg['src_url'])
 		me.map.addLayer(polygon_layer);
 		return polygon_layer;
 	}
@@ -163,8 +187,8 @@ me.add_point_layer=function(cfg){
 
 	me.map = new ol.Map({
 	  layers: [],//osm,sat
-		controls:[],
-		interactions:[],
+		//controls:[],
+		//interactions:[],
 	  target: mapdiv,
 		loadTilesWhileAnimating:true,
 		loadTilesWhileInteracting:true,
@@ -227,6 +251,7 @@ me.add_point_layer=function(cfg){
 						console.log("GOT BBOX! "+bbox);//via cfg->add_*_layer
 						var center=[(bbox[0]+bbox[2])/2.,(bbox[1]+bbox[3])/2.];
 						pan_zoom(center,bbox);
+						//NEED: navigation way back to previous
 					}
 					else{
 						console.log("no bbox this layer");
@@ -249,11 +274,6 @@ me.add_point_layer=function(cfg){
 		}
 	});
 
-	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
-	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
-	me.map.setSize([bcr.width,bcr.height]);
-	me.map.getView().setResolution(res);
-
 	me.unhilite=function(e){
 		for(var hidx=0;hidx<me.POINT_HILIGHTS.length;hidx++){
 			me.pointOverlay.removeFeature(me.POINT_HILIGHTS[hidx]);
@@ -266,23 +286,36 @@ me.add_point_layer=function(cfg){
 	}
 
 	me.hilite=function(feature_name,layer){
-//		console.log("map.hilite: "+feature_name);
-//		console.log("layer_type: "+layer.get("layer_type"));
+		console.log("map.hilite: "+feature_name);
+		console.log("layer_type: "+layer.get("layer_type"));
 		var fs=layer.getSource().getFeatures();
 		for(var fidx=0;fidx<fs.length;fidx++){
 			if(layer.get("layer_type")=="Launch3D"){
 				me.pointOverlay.addFeature(fs[fidx]);
 				me.POINT_HILIGHTS.push(fs[fidx]);
 			}
+			else if(layer.get("layer_type")=="poi"){
+				if(fs[fidx].get("Name")==feature_name){
+					me.pointOverlay.addFeature(fs[fidx]);
+					me.POINT_HILIGHTS.push(fs[fidx]);
+					me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
+					me.xpopup.innerHTML+="<img src='"+fs[fidx].get("img_src")+"'/>"
+					me.overlay.setPosition(ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857"));
+					break;
+				}
+			}
 			else{
 				me.featureOverlay.addFeature(fs[fidx]);
 				me.HILIGHTS.push(fs[fidx]);
+				try{
+					var src=window.Cfg[feature_name]['photos'][0];
+					me.xpopup.innerHTML="<img width='120px' src='"+src+"'/>";
+					me.xpopup.innerHTML += '<p>'+feature_name+'</p>';//feature.getProperties().Name
+					me.overlay.setPosition(ol.proj.transform(window.Cfg[feature_name]['center'],"EPSG:4326","EPSG:3857"));
+				}catch(e){}
+//				break;
 			}
 		}
-		try{
-			me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
-			me.overlay.setPosition(ol.proj.transform(window.Cfg[feature_name]['center'],"EPSG:4326","EPSG:3857"));
-		}catch(e){}
 
 	}
 
@@ -293,8 +326,8 @@ me.add_point_layer=function(cfg){
 		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
 		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
 		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
-//		latpanel.innerHTML=lat;
-//		lonpanel.innerHTML=lon;
+		latpanel.innerHTML=lat;
+		lonpanel.innerHTML=lon;
 
 		me.unhilite();
 
@@ -308,26 +341,17 @@ me.add_point_layer=function(cfg){
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
 				if(layer.get("title")!="/static/pacdev/data/guyana/guyana_boundary.geojson"){
-//					console.log("target_name = "+target_name);
+					console.log("layer_title="+layer.get("title"));
+					if(target_name=='Guyana'){
+						return;
+					}
 					me.hilite(target_name,layer);
-
-				if(target_feature && target_name){
-					//console.log("target_feature="+target_feature);
-					me.xpopup.innerHTML = '<p>'+target_name+'</p>';//feature.getProperties().Name
-					me.xpopup.innerHTML += lon+", "+lat+"<br>";
-					var keystr="keystr: ";
-					for(var kidx=0;kidx<window.Cfg.keys.length;kidx++)
-					keystr+=window.Cfg.keys[kidx]+",";
-//					console.log(keystr);
-					try{
-						me.overlay.setPosition(ol.proj.transform(window.Cfg[target_name]['center'],"EPSG:4326","EPSG:3857"));
+					if(target_feature && target_name){
+						me.xpopup.innerHTML +=lon+", "+lat;
+						found=true;
 					}
-					catch(e){
-						me.overlay.setPosition(ol.proj.transform(evt.coordinate,"EPSG:4326","EPSG:3857"));
-					}
-					found=true;
 				}
-			}}
+			}
 		});
 		if(!found){
 			me.overlay.setPosition(undefined);
@@ -360,5 +384,11 @@ me.add_point_layer=function(cfg){
 			}),
 		}),
 	});
+
+	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
+	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
+	me.map.setSize([bcr.width,bcr.height]);
+	me.map.getView().setResolution(res);
+
 	return me;
 }

@@ -29,7 +29,8 @@
 
   <script type="text/javascript">
 //  {% block extra_javascript %}
-  window.counter=0;
+
+window.counter=0;
 	window.Cfg=Config;
 	window.onresize=function(e){
 		console.log("onresize");
@@ -209,7 +210,7 @@
     <div class="panel panel-default">
       <div id="panel_controls_top" class="panel-body center"></div>
     </div>
-    <!--
+
     <div class="panel panel-default" style="text-align:center;">
       <table width="100%" ><tr><td>
       <div id="lat" class="panel-body" style="text-align:center;"></div>
@@ -219,6 +220,7 @@
       </tr>
       </table>
     </div>
+    <!--
     <div id="centerB" onclick="window.centerCB()">
       <img class="controls_logo" src="./static/pacdev/img/pac_logo.png"/>
     </div>
@@ -234,6 +236,7 @@
     <a href="#" id="popup-closer" class="ol-popup-closer"></a>
     <div id="xpopup"></div>
   </div>
+
 
 </div>
 //{% endblock %}

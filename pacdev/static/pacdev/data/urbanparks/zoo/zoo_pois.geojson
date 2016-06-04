@@ -1,0 +1,45 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":2,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Zoo POI1",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1468,6.808]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Harpy Eagle",
+				"color":"#ff0",
+				"fill":"#ff0",
+				"width":1,
+				"mediapath":["urbanparks","zoo","zoo_pois"],
+				"img_src":"/static/pacdev/img/harpyeagle.jpg",
+				"feature_type":"POI",
+				"coordinates":[-58.1468,6.808]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"Zoo POI2",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1456,6.8076]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Giant Otter",
+				"color":"#ff0",
+				"fill":"#ff0",
+				"width":1,
+				"mediapath":["urbanparks","zoo","zoo_pois"],
+				"img_src":"/static/pacdev/img/giantotter.jpg",
+				"feature_type":"POI",
+				"coordinates":[-58.1456,6.8076]
+			}
+		}
+
+	]
+}

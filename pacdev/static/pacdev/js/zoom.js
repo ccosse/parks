@@ -21,7 +21,7 @@ var get_offset=function(res){
 }
 var pan_zoom=function(center,bbox){
 
-		var this_delay=2000;
+		var this_delay=4000;
 
 		var bounce = ol.animation.bounce({
 		  resolution:window.map.map.getView().getResolution(),
