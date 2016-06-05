@@ -16,7 +16,8 @@
 				"fill":"#ff0",
 				"width":1,
 				"mediapath":["urbanparks","botanical","botanical3d"],
-				"feature_type":"Launch3D"
+				"feature_type":"Launch3D",
+				"coordinates":[-58.1455, 6.8061]
 			}
 		}
 	]

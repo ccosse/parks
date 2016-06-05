@@ -16,7 +16,8 @@
 				"fill":"#ff0",
 				"width":1,
 				"mediapath":["hinterland_areas","shellbeach","shellbeach_panorama"],
-				"feature_type":"Launch3D"
+				"feature_type":"Launch3D",
+				"coordinates":[-59.0094, 7.7912]
 			}
 		}
 	]

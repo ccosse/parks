@@ -16,7 +16,8 @@
 				"fill":"#ff0",
 				"width":1,
 				"mediapath":["hinterland_areas","shellbeach","sinewave"],
-				"feature_type":"Launch3D"
+				"feature_type":"Launch3D",
+				"coordinates":[-59.1551, 8.0068]
 			}
 		}
 	]

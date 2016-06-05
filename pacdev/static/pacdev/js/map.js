@@ -44,7 +44,7 @@ var Map=function(mapdiv){
 	})
 });
 
-me.add_point_layer=function(cfg){
+	me.add_point_layer=function(cfg){
 		var point_source=new ol.source.Vector({
 			url: window.DATA+cfg['src_url'],
 			format: new ol.format.GeoJSON(),
@@ -257,6 +257,25 @@ me.add_point_layer=function(cfg){
 			if(layer.get("layer_type")=="Launch3D"){
 				me.pointOverlay.addFeature(fs[fidx]);
 				me.POINT_HILIGHTS.push(fs[fidx]);
+				me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
+				console.log("getting mediapath ...");
+				var mediapath=fs[fidx].get("mediapath");
+				console.log("mediapath="+mediapath);
+				var src=window.DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/negx.png'
+				console.log(src);
+				me.xpopup.innerHTML+="<img width='120px' src='"+src+"'/>"
+//					me.overlay.setPosition(ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857"));
+
+				var center=ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857");
+
+				var bcr=document.getElementById("popup").getBoundingClientRect();
+				var dy=window.map.map.getView().getResolution()*parseInt(80);
+				var dx=window.map.map.getView().getResolution()*parseInt(30);
+				center[1]+=dy;
+				center[0]+=dx;
+				console.log(center);
+				me.overlay.setPosition(center);
+				break;
 			}
 			else if(layer.get("layer_type")=="poi"){
 				if(fs[fidx].get("Name")==feature_name){
@@ -264,7 +283,18 @@ me.add_point_layer=function(cfg){
 					me.POINT_HILIGHTS.push(fs[fidx]);
 					me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
 					me.xpopup.innerHTML+="<img src='"+fs[fidx].get("img_src")+"'/>"
-					me.overlay.setPosition(ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857"));
+//					me.overlay.setPosition(ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857"));
+
+					var center=ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857");
+
+					var bcr=document.getElementById("popup").getBoundingClientRect();
+					//me.xpopup.innerHTML+="<br>"+parseInt(i.width)+","+parseInt(i.height)+"<br>";
+					var dy=window.map.map.getView().getResolution()*parseInt(80);
+					var dx=window.map.map.getView().getResolution()*parseInt(30);
+					center[1]+=dy;
+					center[0]+=dx;
+					console.log(center);
+					me.overlay.setPosition(center);
 					break;
 				}
 			}
@@ -273,13 +303,24 @@ me.add_point_layer=function(cfg){
 				me.HILIGHTS.push(fs[fidx]);
 				try{
 					var src=window.Cfg[feature_name]['photos'][0];
+
 					me.xpopup.innerHTML="<img width='120px' src='"+src+"'/>";
 					me.xpopup.innerHTML += '<p>'+feature_name+'</p>';//feature.getProperties().Name
-					me.overlay.setPosition(ol.proj.transform(window.Cfg[feature_name]['center'],"EPSG:4326","EPSG:3857"));
-				}catch(e){}
+
+					var center=ol.proj.transform(window.Cfg[feature_name]['center'],"EPSG:4326","EPSG:3857");
+					var bcr=document.getElementById("popup").getBoundingClientRect();
+					//me.xpopup.innerHTML+="<br>"+parseInt(bcr.width)+","+parseInt(bcr.height);
+					var dy=window.map.map.getView().getResolution()*parseInt(80);
+					var dx=window.map.map.getView().getResolution()*parseInt(50);
+					center[1]+=dy;
+					center[0]+=dx;
+					console.log(center);
+					me.overlay.setPosition(center);
+				}catch(e){console.log(e);}
 //				break;
 			}
 		}
+
 
 	}
 
