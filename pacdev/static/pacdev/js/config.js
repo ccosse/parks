@@ -1,6 +1,6 @@
 //PATH=/window.STATIC/pacdev/window.DATA/
-window.STATIC="/static/pacdev/"
-window.DATA="/static/pacdev/data/";
+window.STATIC="./static/pacdev/"
+window.DATA="./static/pacdev/data/";
 var Config={
 	'Protected Areas Commission':{
 		'html':"Protected Areas Commission<br><span style='font-size:0.8em'>Georgetown, Guyana</span>",
@@ -12,9 +12,9 @@ var Config={
 		'photos':[window.STATIC+'img/pac_hq.jpg',],
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
 		'layers':{
-			'keys':[],
+			'keys':['Satellite','boundary'],
 			'boundary':{'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
-			'osm':{'type':'base','name':'osm','layeridx':0,'opacity':0.8},
+			'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 		},
 
 		'Hinterland Parks':{
@@ -31,8 +31,9 @@ var Config={
 			'photos':[window.STATIC+'img/hinterland_areas.jpg',],
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
 			'layers':{
-				'keys':[],
+				'keys':['guyana_boundary'],
 				'boundary':{'type':'polygon','src_url':'hinterland_areas/hinterland_boundaries.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
+				'guyana_boundary':{'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
 			},
 			'Kaieteur National Park':{
 				'html':"Kaieteur National Park",
@@ -43,7 +44,8 @@ var Config={
 				'photos':[window.STATIC+'img/kaieteur_falls.png',],
 				'keys':[],
 				'layers':{
-					'keys':['satellite','boundary','trailmap','falls3d'],//
+					'keys':['guyana_pixelated','satellite','boundary','trailmap','falls3d'],//
+					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/kaieteur/kaieteur_boundary.geojson',},
 					'satellite':{'type':'xyz','src_url':'hinterland_areas/kaieteur/satellite/'},
 					'trailmap':{'bbox':[-59.48,5.127,-59.43,5.21],'type':'xyz','src_url':'hinterland_areas/kaieteur/trailmap/',},
@@ -95,7 +97,7 @@ var Config={
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'layers':{
 				'keys':['OpenStreetMap2','botanical_satellite','national_satellite'],//'boundary',''
-				'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
+				'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':0,'opacity':1.0},
 				'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 				'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
 				'boundary':{'type':'polygon','src_url':'urbanparks/urbanparks_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
@@ -109,7 +111,8 @@ var Config={
 				'photos':[window.STATIC+'img/zoo_entrance.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['botanical_satellite','zoo_pois'],
+					'keys':['OpenStreetMap2','botanical_satellite','zoo_pois'],
+					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'zoo_pois':{'layer_type':'poi','type':'points','src_url':'urbanparks/zoo/zoo_pois.geojson'},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/zoo/zoo_boundary.geojson',},
@@ -124,7 +127,8 @@ var Config={
 				'photos':[window.STATIC+'img/botanical_aerial.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['botanical_satellite','botanical3d'],
+					'keys':['OpenStreetMap2','botanical_satellite','botanical3d'],
+					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/botanical/botanical_boundary.geojson',},
 					'botanical3d':{'layer_type':'Launch3D','type':'points','src_url':'urbanparks/botanical/botanical3d.geojson',},
@@ -139,7 +143,8 @@ var Config={
 				'photos':[window.STATIC+'img/national_park.png',],
 				'keys':[],
 				'layers':{
-					'keys':['national_satellite',],
+					'keys':['OpenStreetMap2','national_satellite',],
+					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/national/national_boundary.geojson',},
 				},
@@ -153,7 +158,8 @@ var Config={
 				'photos':[window.STATIC+'img/joe_viera.png',],
 				'keys':[],
 				'layers':{
-					'keys':[],
+					'keys':['OpenStreetMap2',],
+					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'boundary':{'type':'polygon','src_url':'urbanparks/joeviera/joeviera_boundary.geojson',},
 				},
 			}

@@ -139,7 +139,7 @@ me.add_point_layer=function(cfg){
 	}
 	me.add_base_layer=function(obj){
 		var base;
-		if(obj['name']=='sat'){
+		if(obj['name']=='Satellite'){
 			base=new ol.layer.Tile({
 				minResolution:500,
 				preload:14,
@@ -159,6 +159,8 @@ me.add_point_layer=function(cfg){
 		else return null;
 
 		me.map.getLayers().insertAt(obj['layeridx'],base);
+		base.set("layer_type","baseXXZ");
+		console.log("added base layer: "+obj['name']);
 		return base;
 	}
 	me.add_polygon_layer=function(cfg){
@@ -197,9 +199,9 @@ me.add_point_layer=function(cfg){
 	  })
 	});
 
-	me.add_xyz_layer({'layeridx':0,'type':'xyz','src_url':'guyana/guyana_pixelated/'});
+//	me.add_xyz_layer({'layeridx':0,'type':'xyz','src_url':'guyana/guyana_pixelated/'});
 //	me.map.addLayer(sat);
-	me.add_polygon_layer(window.Cfg['layers']['boundary']);
+//	me.add_polygon_layer(window.Cfg['layers']['boundary']);
 
 	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
 	me.overlay.setMap(me.map);

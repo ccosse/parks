@@ -19,6 +19,27 @@ var PACMap=function(){
 		}
 		console.log("later will remove: "+me.layers['keys'].length);
 		me.old_layers=me.layers;
+		console.log("removing last layer set: "+me.old_layers['keys'].length);
+		while(me.old_layers['keys'].length>0){
+			var key=me.old_layers['keys'].pop();
+			window.map.map.removeLayer(me.old_layers[key]);
+			delete me.old_layers[key];
+			console.log("removed: "+key);
+		}
+
+		window.map.map.getLayers().forEach(function(a,b,c){
+			window.map.map.removeLayer(a);
+		});
+
+		console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
+		console.log("layers.length: "+window.map.map.getLayers().getLength());
+		window.map.map.getLayers().forEach(function(a,b,c){
+			console.log(b+": "+a.get("title"));
+		});
+
+
+		me.old_layers=null;
+
 		me.layers={'keys':[],};
 
 		console.log("goto: "+path);
@@ -126,8 +147,10 @@ var PACMap=function(){
 			});
 
 			//add boundary layer, mouseover button, mouseover feature
+			console.log("adding layer: "+key);
 			me.layers['keys'].push(key);
 			me.layers[key]=window.map.add_polygon_layer(window.Cfg[key]['layers']['boundary']);
+			console.log(me.layers[key].get('layer_type'));
 
 			s.addEventListener('mouseout',function(e){
 				console.log("mouseout");
@@ -136,6 +159,13 @@ var PACMap=function(){
 
 			s.addEventListener('mouseover',function(e){
 				console.log('mouseover: '+e.target.id);
+				console.log(me.layers['keys']);
+				for(var kidx=0;kidx<me.layers['keys'].length;kidx++){
+					var key=me.layers['keys'][kidx];
+					console.log(key+": "+me.layers[key]);
+				}
+				console.log("e.target.id: "+e.target.id);
+				console.log(me.layers[e.target.id].get("layer_type"));
 				window.map.hilite(e.target.id,me.layers[e.target.id]);
 			});
 
@@ -151,7 +181,9 @@ var PACMap=function(){
 				if(false){;}
 				else if(obj.type=='base'){
 					me.layers['keys'].push(obj['name']);
-					me.layers[key]=window.map.add_base_layer(obj);
+					var base_layer=window.map.add_base_layer(obj);
+					me.layers[xkey]=base_layer;
+					console.log("pacmap received base: "+base_layer);
 				}
 				else if(obj.type=='xyz'){
 						var key=window.DATA+obj['src_url'];
@@ -170,14 +202,6 @@ var PACMap=function(){
 				}
 			}
 
-			console.log("removing last layer set: "+me.old_layers['keys'].length);
-			while(me.old_layers['keys'].length>0){
-				var key=me.old_layers['keys'].pop();
-				window.map.map.removeLayer(me.old_layers[key]);
-				delete me.old_layers[key];
-				console.log("removed: "+key);
-			}
-			me.old_layers=null;
 
 			console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
 			console.log("layers.length: "+window.map.map.getLayers().getLength());
