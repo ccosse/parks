@@ -7,7 +7,7 @@
 			"id":"Wave 3D",
 			"geometry":{
 				"type":"Point",
-				"coordinates":[-59.3, 8.24]
+				"coordinates":[-59.1551, 8.0068]
 			},
 			"geometry_name":"the_geom",
 			"properties":{

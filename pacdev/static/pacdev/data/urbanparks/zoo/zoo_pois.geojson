@@ -16,7 +16,7 @@
 				"fill":"#ff0",
 				"width":1,
 				"mediapath":["urbanparks","zoo","zoo_pois"],
-				"img_src":"./static/pacdev/img/harpyeagle.jpg",
+				"img_src":"./static/pacdev/data/urbanparks/zoo/img/harpyeagle.jpg",
 				"feature_type":"POI",
 				"coordinates":[-58.1468,6.808]
 			}
@@ -35,7 +35,7 @@
 				"fill":"#ff0",
 				"width":1,
 				"mediapath":["urbanparks","zoo","zoo_pois"],
-				"img_src":"./static/pacdev/img/giantotter.jpg",
+				"img_src":"./static/pacdev/data/urbanparks/zoo/img/giantotter.jpg",
 				"feature_type":"POI",
 				"coordinates":[-58.1456,6.8076]
 			}

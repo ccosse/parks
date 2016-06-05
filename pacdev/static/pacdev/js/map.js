@@ -31,79 +31,32 @@ var Map=function(mapdiv){
 		return false;
 	};
 
-	var sat=new ol.layer.Tile({
-		minResolution:500,
-		preload:14,
-		opacity:1.0,
-		title:'Satellite',
-		source: new ol.source.MapQuest({layer: 'sat'})
-	});
-	var osm=new ol.layer.Tile({
-		preload:14,
-		opacity:1.0,
-		title:'OpenStreetMap2',
-		source:new ol.source.OSM()
-	});
-
-	var hilite_style=new ol.style.Style({
-		stroke: new ol.style.Stroke({color: '#FF0',width: 3}),
-	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
-	});
-	var guyana_style=new ol.style.Style({
-		stroke: new ol.style.Stroke({color: '#0A0',width: 2}),
-	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
-	});
-	var pac_style=new ol.style.Style({
-		stroke: new ol.style.Stroke({color: '#FF0',width: 2}),
-	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
-	});
-	var hidden_style=new ol.style.Style({
-		stroke: new ol.style.Stroke({color:'rgba(0,0,0,0)',width: 2}),
-	//	fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),
-	});
-
 	var point_style=new ol.style.Style({
 	image:new ol.style.Circle({
-		radius:10,
+		radius:7,
 		stroke: new ol.style.Stroke({
 			color: 'rgba(0,255,0,1)',
-			width:5
+			width:2
 		}),
 		fill: new ol.style.Fill({
-			color: 'rgba(255,255,0,1)',
+			color: 'rgba(0,0,255,1)',
 		}),
 	})
 });
-/*
-var hidden_point_style=new ol.style.Style({
-	image:new ol.style.Circle({
-		radius:0,
-		stroke: new ol.style.Stroke({
-			color: 'rgba(0,255,0,0)',
-			width:0
-		}),
-		fill: new ol.style.Fill({
-			color: 'rgba(255,255,0,0)',
-		}),
-	})
-});
-*/
+
 me.add_point_layer=function(cfg){
 		var point_source=new ol.source.Vector({
 			url: window.DATA+cfg['src_url'],
 			format: new ol.format.GeoJSON(),
-	//		minZoom: mapMinZoom,
-	//		maxZoom: mapMaxZoom
 		});
-
 		var point_layer= new ol.layer.Vector({
 			source: point_source,
 			style:point_style
 		});
 		point_layer.set("layer_type",cfg["layer_type"]);
 		point_layer.set("title",window.DATA+cfg['src_url']);
-//		console.log("trying to get mediapath: "+cfg["mediapath"]);
-//		point_layer.set("mediapath",cfg["mediapath"]);
+		point_layer.set("hilite",true);
+
 		me.map.addLayer(point_layer);
 		return point_layer;
 	}
@@ -123,6 +76,8 @@ me.add_point_layer=function(cfg){
 					});
 					image_layer.set("layer_type","xyz");
 					image_layer.set("title",window.DATA+cfg['src_url'])
+					image_layer.set("hilite",false);
+
 					if(cfg['bbox']){
 						image_layer.set("bbox",cfg["bbox"]);
 					}
@@ -160,6 +115,7 @@ me.add_point_layer=function(cfg){
 
 		me.map.getLayers().insertAt(obj['layeridx'],base);
 		base.set("layer_type","baseXXZ");
+		base.set("hilite",false);
 		console.log("added base layer: "+obj['name']);
 		return base;
 	}
@@ -182,6 +138,12 @@ me.add_point_layer=function(cfg){
 		});
 		polygon_layer.set("layer_type","polygon");
 		polygon_layer.set("title",window.DATA+cfg['src_url'])
+		var hilite=true;
+		try{hilite=cfg['hilite'];}
+		catch(e){hilite=true;}
+		console.log("hilite="+hilite);
+		polygon_layer.set("hilite",hilite);
+
 		me.map.addLayer(polygon_layer);
 		return polygon_layer;
 	}
@@ -342,11 +304,11 @@ me.add_point_layer=function(cfg){
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
-				if(layer.get("title")!="/static/pacdev/data/guyana/guyana_boundary.geojson"){
-					console.log("layer_title="+layer.get("title"));
-					if(target_name=='Guyana'){
-						return;
-					}
+				console.log("layer_title="+layer.get("title"));
+				var hilite=true;
+				try{hilite=layer.get("hilite");}
+				catch(e){hilite=true;}
+				if(hilite!=false){
 					me.hilite(target_name,layer);
 					if(target_feature && target_name){
 						me.xpopup.innerHTML +=lon+", "+lat;
@@ -366,13 +328,13 @@ me.add_point_layer=function(cfg){
 		map: me.map,
 		style: new ol.style.Style({
 		image:new ol.style.Circle({
-			radius:10,
+			radius:7,
 			stroke: new ol.style.Stroke({
-				color: 'rgba(222,255,0,1)',
-				width:6
+				color: 'rgba(0,0,255,1)',
+				width:2
 			}),
 			fill: new ol.style.Fill({
-				color: 'rgba(255,0,0,1)',
+				color: 'rgba(0,255,0,1)',
 			}),
 			})
 		}),
