@@ -125,9 +125,10 @@ var Config={
 				'photos':[window.STATIC+'img/zoo_entrance.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['OpenStreetMap2','botanical_satellite','zoo_pois'],
+					'keys':['OpenStreetMap2','botanical_satellite','zoo_pois','zoo_trail',],//
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'zoo_pois':{'type':'points','src_url':'urbanparks/zoo/zoo_pois.geojson'},
+					'zoo_trail':{'type':'line','src_url':'urbanparks/zoo/zoo_trail.geojson'},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/zoo/zoo_boundary.geojson',},
 				},

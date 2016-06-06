@@ -195,6 +195,12 @@ var PACMap=function(){
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_polygon_layer(obj);
 				}
+				else if(obj.type=='line'){
+						console.log("loading line layer");
+						var key=window.DATA+obj['src_url'];
+						me.layers['keys'].push(key);
+						me.layers[key]=window.map.add_line_layer(obj);
+				}
 				else if(obj.type=='points'){
 						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);

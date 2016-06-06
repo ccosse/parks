@@ -119,6 +119,30 @@ var Map=function(mapdiv){
 		console.log("added base layer: "+obj['name']);
 		return base;
 	}
+	me.add_line_layer=function(cfg){
+		console.log("add_line_layer");
+		var line_source=new ol.source.Vector({
+			url: window.DATA+cfg['src_url'],
+			format: new ol.format.GeoJSON()
+		});
+
+		var line_layer= new ol.layer.Vector({
+			source: line_source,
+			style:new ol.style.Style({
+				stroke: new ol.style.Stroke({
+					color: 'red',
+					width: 3
+				})
+			})
+		});
+		line_layer.set("hilite",false);
+		line_layer.set("layer_type","line");
+		line_layer.set("title",window.DATA+cfg['src_url'])
+
+		console.log("line_layer="+line_layer);
+		me.map.addLayer(line_layer);
+		return line_layer;
+	}
 	me.add_polygon_layer=function(cfg){
 		console.log("map.add_polygon_layer: "+window.DATA+cfg['src_url']);
 		var polygon_source=new ol.source.Vector({
@@ -256,6 +280,7 @@ var Map=function(mapdiv){
 			if(fs[fidx].get("Name")!=feature_name)continue;//hinterland_boundaries have 3 features same name!
 
 			var ftype=fs[fidx].get("feature_type");
+
 			if(ftype=="youtube"||ftype=="Launch3D"||ftype=="poi"){
 				me.pointOverlay.addFeature(fs[fidx]);
 				me.POINT_HILIGHTS.push(fs[fidx]);
@@ -265,7 +290,8 @@ var Map=function(mapdiv){
 				var dy=window.map.map.getView().getResolution()*parseInt(80);
 				var dx=window.map.map.getView().getResolution()*parseInt(30);
 				center[1]+=dy;
-				center[0]+=dx;
+				if(ftype=='youtube')center[0]-=dx;
+				else center[0]+=dx;
 				me.overlay.setPosition(center);
 				break;
 			}

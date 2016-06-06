@@ -31,6 +31,21 @@
 				"feature_type":"poi",
 				"coordinates":[-58.1456,6.8076]
 			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1462,6.8076]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Change Me!",
+				"mediapath":["hinterland_areas","kaieteur","kaieteur_pois"],
+				"media_html":"<iframe width='420' height='315' src='https://www.youtube.com/embed/faX71pa-i1M' frameborder='0' allowfullscreen></iframe>",
+				"feature_type":"youtube",
+				"coordinates":[-58.1462,6.8076]
+			}
 		}
 
 	]
