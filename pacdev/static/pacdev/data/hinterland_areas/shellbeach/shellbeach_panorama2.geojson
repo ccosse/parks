@@ -12,10 +12,8 @@
 			"geometry_name":"the_geom",
 			"properties":{
 				"Name":"Shell Beach Panorama2",
-				"color":"#ff0",
-				"fill":"#ff0",
-				"width":1,
 				"mediapath":["hinterland_areas","shellbeach","shellbeach_panorama2"],
+				"media_html":"<img width='120px' src='./static/pacdev/data/hinterland_areas/shellbeach/shellbeach_panorama2/negx.png'/>",
 				"feature_type":"Launch3D",
 				"coordinates":[-59.4796, 8.24]
 			}

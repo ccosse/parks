@@ -14,6 +14,8 @@ var PACMap=function(){
 
 	me.goto=function(path){
 
+		window.map.unhilite(null);
+
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
 		}
@@ -105,9 +107,9 @@ var PACMap=function(){
 					return_path+=spath[sidx];
 					if(sidx<spath.length-2)return_path+=".";
 				}
-				console.log("return_path: "+return_path);
 				try{me.lib3D.closeCB();}
 				catch(e){console.log(e);}
+				console.log("return_path: "+return_path);
 				me.goto(return_path);
 			});
 		}
@@ -116,8 +118,6 @@ var PACMap=function(){
 		//NEXT LEVEL DOWN
 		for(var kidx=0;kidx<window.Cfg['keys'].length;kidx++){
 			var key=Cfg['keys'][kidx];
-
-
 			var d,l,s;
 
 			d=document.createElement("div");

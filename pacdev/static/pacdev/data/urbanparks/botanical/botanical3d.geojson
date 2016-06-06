@@ -12,10 +12,8 @@
 			"geometry_name":"the_geom",
 			"properties":{
 				"Name":"Botanical Gardens",
-				"color":"#ff0",
-				"fill":"#ff0",
-				"width":1,
 				"mediapath":["urbanparks","botanical","botanical3d"],
+				"media_html":"<img width='120px' src='./static/pacdev/data/urbanparks/botanical/botanical3d/negx.png'/>",
 				"feature_type":"Launch3D",
 				"coordinates":[-58.1455, 6.8061]
 			}

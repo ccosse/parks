@@ -3,7 +3,7 @@ window.STATIC="./static/pacdev/"
 window.DATA="./static/pacdev/data/";
 var river_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'#11A1FF',width: 2}),fill: new ol.style.Fill({color:'#1111FF'})});
 var creek_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(100,200,255,0.5)',width: 2}),});
-var boundary2_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(131,173,53,0.5)',width: 2}),});
+var boundary2_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(255,255,0,0.5)',width: 2}),});
 var Config={
 	'Protected Areas Commission':{
 		'html':"Protected Areas Commission<br><span style='font-size:0.8em'>Georgetown, Guyana</span>",
@@ -48,15 +48,16 @@ var Config={
 				'photos':[window.STATIC+'img/kaieteur_falls.png',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','satellite','creeks','rivers','boundary2','falls3d'],//'trailmap',
+					'keys':['guyana_pixelated','satellite','creeks','rivers','boundary2','falls3d','kaieteur_pois'],//'trailmap',
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
+					'kaieteur_pois':{'type':'points','src_url':'hinterland_areas/kaieteur/kaieteur_pois.geojson'},
 					'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style },
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/kaieteur/kaieteur_boundary.geojson',},
 					'boundary2':{'hilite':false,'style':boundary2_style,'type':'polygon','src_url':'hinterland_areas/kaieteur/kaieteur_boundary.geojson',},
 					'satellite':{'type':'xyz','src_url':'hinterland_areas/kaieteur/satellite/'},
 					'trailmap':{'bbox':[-59.5025,5.1511,-59.465,5.1914],'type':'xyz','src_url':'hinterland_areas/kaieteur/trailmap/',},
-					'falls3d':{'layer_type':'Launch3D','tooltip':'Click for 3D viewer','type':'points','src_url':'hinterland_areas/kaieteur/falls.geojson',},
+					'falls3d':{'tooltip':'Click for 3D viewer','type':'points','src_url':'hinterland_areas/kaieteur/falls.geojson',},
 				},
 			},
 			'Shell Beach':{
@@ -74,9 +75,9 @@ var Config={
 					'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style },
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/shellbeach/shellbeach_boundary.geojson',},
 					'shellbeach_satellite':{'type':'xyz','src_url':'hinterland_areas/shellbeach/shellbeach_satellite/'},
-					'panorama1':{'layer_type':'Launch3D','type':'points','src_url':'hinterland_areas/shellbeach/beach.geojson',},
-					'panorama2':{'layer_type':'Launch3D','type':'points','src_url':'hinterland_areas/shellbeach/shellbeach_panorama2.geojson',},
-					'sinewave':{'layer_type':'Launch3D','type':'points','src_url':'hinterland_areas/shellbeach/wave.geojson',},
+					'panorama1':{'type':'points','src_url':'hinterland_areas/shellbeach/beach.geojson',},
+					'panorama2':{'type':'points','src_url':'hinterland_areas/shellbeach/shellbeach_panorama2.geojson',},
+					'sinewave':{'type':'points','src_url':'hinterland_areas/shellbeach/wave.geojson',},
 				},
 			},
 			'Kanuku Mountains':{
@@ -94,8 +95,8 @@ var Config={
 					'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style },
 					'boundary':{'type':'polygon','src_url':'hinterland_areas/kanuku/kanuku_boundary.geojson',},
 					'kanuku_satellite':{'type':'xyz','src_url':'hinterland_areas/kanuku/kanuku_satellite/'},
-					'kanuku_panorama':{'layer_type':'Launch3D','type':'points','src_url':'hinterland_areas/kanuku/kanuku3d.geojson',},
-					'rupununi_panorama':{'layer_type':'Launch3D','type':'points','src_url':'hinterland_areas/kanuku/rupununi3d.geojson',},
+					'kanuku_panorama':{'type':'points','src_url':'hinterland_areas/kanuku/kanuku3d.geojson',},
+					'rupununi_panorama':{'type':'points','src_url':'hinterland_areas/kanuku/rupununi3d.geojson',},
 				},
 			}
 		},
@@ -126,7 +127,7 @@ var Config={
 				'layers':{
 					'keys':['OpenStreetMap2','botanical_satellite','zoo_pois'],
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
-					'zoo_pois':{'layer_type':'poi','type':'points','src_url':'urbanparks/zoo/zoo_pois.geojson'},
+					'zoo_pois':{'type':'points','src_url':'urbanparks/zoo/zoo_pois.geojson'},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/zoo/zoo_boundary.geojson',},
 				},
@@ -144,7 +145,7 @@ var Config={
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/botanical/botanical_boundary.geojson',},
-					'botanical3d':{'layer_type':'Launch3D','type':'points','src_url':'urbanparks/botanical/botanical3d.geojson',},
+					'botanical3d':{'type':'points','src_url':'urbanparks/botanical/botanical3d.geojson',},
 				},
 			},
 			'National Park':{

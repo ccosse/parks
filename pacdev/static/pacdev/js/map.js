@@ -250,53 +250,24 @@ var Map=function(mapdiv){
 	}
 
 	me.hilite=function(feature_name,layer){
-		console.log("map.hilite: "+feature_name);
-		console.log("layer_type: "+layer.get("layer_type"));
 		var fs=layer.getSource().getFeatures();
 		for(var fidx=0;fidx<fs.length;fidx++){
-			if(layer.get("layer_type")=="Launch3D"){
+			console.log(fs[fidx].get("Name")+", "+feature_name+", "+fs[fidx].get("feature_type"));
+			if(fs[fidx].get("Name")!=feature_name)continue;//hinterland_boundaries have 3 features same name!
+
+			var ftype=fs[fidx].get("feature_type");
+			if(ftype=="youtube"||ftype=="Launch3D"||ftype=="poi"){
 				me.pointOverlay.addFeature(fs[fidx]);
 				me.POINT_HILIGHTS.push(fs[fidx]);
-				me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
-				console.log("getting mediapath ...");
-				var mediapath=fs[fidx].get("mediapath");
-				console.log("mediapath="+mediapath);
-				var src=window.DATA+mediapath[0]+'/'+mediapath[1]+'/'+mediapath[2]+'/negx.png'
-				console.log(src);
-				me.xpopup.innerHTML+="<img width='120px' src='"+src+"'/>"
-//					me.overlay.setPosition(ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857"));
-
+				me.xpopup.innerHTML = '<p>'+feature_name+'</p>';
+				me.xpopup.innerHTML+=fs[fidx].get("media_html");
 				var center=ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857");
-
-				var bcr=document.getElementById("popup").getBoundingClientRect();
 				var dy=window.map.map.getView().getResolution()*parseInt(80);
 				var dx=window.map.map.getView().getResolution()*parseInt(30);
 				center[1]+=dy;
 				center[0]+=dx;
-				console.log(center);
 				me.overlay.setPosition(center);
 				break;
-			}
-			else if(layer.get("layer_type")=="poi"){
-				if(fs[fidx].get("Name")==feature_name){
-					me.pointOverlay.addFeature(fs[fidx]);
-					me.POINT_HILIGHTS.push(fs[fidx]);
-					me.xpopup.innerHTML = '<p>'+feature_name+'</p>';//feature.getProperties().Name
-					me.xpopup.innerHTML+="<img src='"+fs[fidx].get("img_src")+"'/>"
-//					me.overlay.setPosition(ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857"));
-
-					var center=ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857");
-
-					var bcr=document.getElementById("popup").getBoundingClientRect();
-					//me.xpopup.innerHTML+="<br>"+parseInt(i.width)+","+parseInt(i.height)+"<br>";
-					var dy=window.map.map.getView().getResolution()*parseInt(80);
-					var dx=window.map.map.getView().getResolution()*parseInt(30);
-					center[1]+=dy;
-					center[0]+=dx;
-					console.log(center);
-					me.overlay.setPosition(center);
-					break;
-				}
 			}
 			else{
 				me.featureOverlay.addFeature(fs[fidx]);
@@ -305,7 +276,7 @@ var Map=function(mapdiv){
 					var src=window.Cfg[feature_name]['photos'][0];
 
 					me.xpopup.innerHTML="<img width='120px' src='"+src+"'/>";
-					me.xpopup.innerHTML += '<p>'+feature_name+'</p>';//feature.getProperties().Name
+					me.xpopup.innerHTML += '<p>'+feature_name+'</p>';
 
 					var center=ol.proj.transform(window.Cfg[feature_name]['center'],"EPSG:4326","EPSG:3857");
 					var bcr=document.getElementById("popup").getBoundingClientRect();
@@ -314,14 +285,10 @@ var Map=function(mapdiv){
 					var dx=window.map.map.getView().getResolution()*parseInt(50);
 					center[1]+=dy;
 					center[0]+=dx;
-					console.log(center);
 					me.overlay.setPosition(center);
-				}catch(e){console.log(e);}
-//				break;
+				}catch(e){;}
 			}
 		}
-
-
 	}
 
 	me.map.on('pointermove',function(evt){
@@ -345,7 +312,7 @@ var Map=function(mapdiv){
 			var target_name=target_feature.get("NAME");
 			if(!target_name)target_name=target_feature.get("Name");
 			if(layer){
-				console.log("layer_title="+layer.get("title"));
+//				console.log("layer_title="+layer.get("title"));
 				var hilite=true;
 				try{hilite=layer.get("hilite");}
 				catch(e){hilite=true;}
