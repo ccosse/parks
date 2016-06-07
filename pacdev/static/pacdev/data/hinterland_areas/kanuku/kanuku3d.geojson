@@ -13,7 +13,7 @@
 			"properties":{
 				"Name":"Kanuku Mountains",
 				"mediapath":["hinterland_areas","kanuku","kanuku_panorama"],
-				"media_html":"<img width='120px' src='./static/pacdev/data/hinterland_areas/kanuku/kanuku_panorama/negx.png'/>",
+				"media_html":"<img width='120px' src='/static/pacdev/data/hinterland_areas/kanuku/kanuku_panorama/negx.png'/>",
 				"feature_type":"Launch3D",
 				"coordinates":[-59.105485, 3.2779]
 			}

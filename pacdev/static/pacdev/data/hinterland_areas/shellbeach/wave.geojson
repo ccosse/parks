@@ -13,7 +13,7 @@
 			"properties":{
 				"Name":"SineWave",
 				"mediapath":["hinterland_areas","shellbeach","sinewave"],
-				"media_html":"<img width='120px' src='./static/pacdev/data/hinterland_areas/shellbeach/sinewave/negx.png'/>",
+				"media_html":"<img width='120px' src='/static/pacdev/data/hinterland_areas/shellbeach/sinewave/negx.png'/>",
 				"feature_type":"Launch3D",
 				"coordinates":[-59.1551, 8.0068]
 			}

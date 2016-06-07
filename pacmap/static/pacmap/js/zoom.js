@@ -5,14 +5,14 @@ var get_offset=function(res){
 		if(res==0)res=100;
 	}
 
-	var n;
-	if($("#controls").hasClass("small")){
+	var n=0.;
+	if($("#controls").hasClass("small") && !$("#controls").hasClass("hhide_small")){
 		n=.5;
 	}
-	else if($("#controls").hasClass("medium")){
+	else if($("#controls").hasClass("medium") && !$("#controls").hasClass("hhide_medium")){
 		n=0.4;
 	}
-	else if($("#controls").hasClass("wide")){
+	else if($("#controls").hasClass("wide") && !$("#controls").hasClass("hhide_wide")){
 		n=0.3;
 	}
 	var factor=n+(1.-n)/2.-0.5;

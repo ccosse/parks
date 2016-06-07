@@ -1,6 +1,7 @@
 //PATH=/window.STATIC/pacdev/window.DATA/
-window.STATIC="./static/pacdev/"
-window.DATA="./static/pacdev/data/";
+window.STATIC="/static/pacdev/"
+window.DATA="/static/pacdev/data/";
+window.DEBUG=true;
 var river_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'#11A1FF',width: 2}),fill: new ol.style.Fill({color:'#1111FF'})});
 var creek_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(100,200,255,0.5)',width: 2}),});
 var boundary2_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(255,255,0,0.5)',width: 2}),});

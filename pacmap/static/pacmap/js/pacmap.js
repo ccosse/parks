@@ -10,20 +10,39 @@ var PACMap=function(){
 	catch(e){}
 
 	me.layers={'keys':[],};
+	me.old_layers=null;
 
 	me.goto=function(path){
+
+		window.map.unhilite(null);
 
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
 		}
-
-		console.log("removing last layer set ...");
-		while(me.layers['keys'].length>0){
-			var key=me.layers['keys'].pop();
-			window.map.map.removeLayer(me.layers[key]);
-			delete me.layers[key];
+		console.log("later will remove: "+me.layers['keys'].length);
+		me.old_layers=me.layers;
+		console.log("removing last layer set: "+me.old_layers['keys'].length);
+		while(me.old_layers['keys'].length>0){
+			var key=me.old_layers['keys'].pop();
+			window.map.map.removeLayer(me.old_layers[key]);
+			delete me.old_layers[key];
 			console.log("removed: "+key);
 		}
+
+		window.map.map.getLayers().forEach(function(a,b,c){
+			window.map.map.removeLayer(a);
+		});
+
+		console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
+		console.log("layers.length: "+window.map.map.getLayers().getLength());
+		window.map.map.getLayers().forEach(function(a,b,c){
+			console.log(b+": "+a.get("title"));
+		});
+
+
+		me.old_layers=null;
+
+		me.layers={'keys':[],};
 
 		console.log("goto: "+path);
 
@@ -42,7 +61,8 @@ var PACMap=function(){
 		document.getElementById('img_controls_top').src=window.Cfg['photos'][0];
 		console.log(window.Cfg['photos'][0]);
 
-		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
+//		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
+		document.getElementById('title_controls_top').innerHTML=window.Cfg['html'];
 
 		var h3=document.createElement("h3");
 		h3.appendChild(document.createTextNode(spath[spath.length-1]));
@@ -87,6 +107,8 @@ var PACMap=function(){
 					return_path+=spath[sidx];
 					if(sidx<spath.length-2)return_path+=".";
 				}
+				try{me.lib3D.closeCB();}
+				catch(e){console.log(e);}
 				console.log("return_path: "+return_path);
 				me.goto(return_path);
 			});
@@ -96,8 +118,6 @@ var PACMap=function(){
 		//NEXT LEVEL DOWN
 		for(var kidx=0;kidx<window.Cfg['keys'].length;kidx++){
 			var key=Cfg['keys'][kidx];
-
-
 			var d,l,s;
 
 			d=document.createElement("div");
@@ -121,12 +141,16 @@ var PACMap=function(){
 
 			s.addEventListener('click',function(e){
 				console.log(e.target.id);
+				try{me.lib3D.closeCB();}
+				catch(e){console.log(e);}
 				me.goto(path+'.'+e.target.id);
 			});
 
 			//add boundary layer, mouseover button, mouseover feature
+			console.log("adding layer: "+key);
 			me.layers['keys'].push(key);
 			me.layers[key]=window.map.add_polygon_layer(window.Cfg[key]['layers']['boundary']);
+			console.log(me.layers[key].get('layer_type'));
 
 			s.addEventListener('mouseout',function(e){
 				console.log("mouseout");
@@ -135,6 +159,13 @@ var PACMap=function(){
 
 			s.addEventListener('mouseover',function(e){
 				console.log('mouseover: '+e.target.id);
+				console.log(me.layers['keys']);
+				for(var kidx=0;kidx<me.layers['keys'].length;kidx++){
+					var key=me.layers['keys'][kidx];
+					console.log(key+": "+me.layers[key]);
+				}
+				console.log("e.target.id: "+e.target.id);
+				console.log(me.layers[e.target.id].get("layer_type"));
 				window.map.hilite(e.target.id,me.layers[e.target.id]);
 			});
 
@@ -148,22 +179,36 @@ var PACMap=function(){
 				var xkey=window.Cfg['layers']['keys'][lidx];
 				var obj=window.Cfg['layers'][xkey];
 				if(false){;}
+				else if(obj.type=='base'){
+					me.layers['keys'].push(obj['name']);
+					var base_layer=window.map.add_base_layer(obj);
+					me.layers[xkey]=base_layer;
+					console.log("pacmap received base: "+base_layer);
+				}
 				else if(obj.type=='xyz'){
-						var key=DATA+obj['src_url'];
+						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_xyz_layer(obj);
 				}
 				else if(obj.type=='polygon'){
-						var key=DATA+obj['src_url'];
+						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_polygon_layer(obj);
 				}
+				else if(obj.type=='line'){
+						console.log("loading line layer");
+						var key=window.DATA+obj['src_url'];
+						me.layers['keys'].push(key);
+						me.layers[key]=window.map.add_line_layer(obj);
+				}
 				else if(obj.type=='points'){
-						var key=DATA+obj['src_url'];
+						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_point_layer(obj);
 				}
 			}
+
+
 			console.log("layers.keys: "+window.map.map.getLayerGroup().getKeys());
 			console.log("layers.length: "+window.map.map.getLayers().getLength());
 			window.map.map.getLayers().forEach(function(a,b,c){

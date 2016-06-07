@@ -13,7 +13,7 @@
 			"properties":{
 				"Name":"Rupununi Savanah",
 				"mediapath":["hinterland_areas","kanuku","rupununi_panorama"],
-				"media_html":"<img width='120px' src='./static/pacdev/data/hinterland_areas/kanuku/rupununi_panorama/negx.png'/>",
+				"media_html":"<img width='120px' src='/static/pacdev/data/hinterland_areas/kanuku/rupununi_panorama/negx.png'/>",
 				"feature_type":"Launch3D",
 				"coordinates":[-59.4415, 3.4348]
 			}

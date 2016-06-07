@@ -14,7 +14,7 @@
 				"Name":"Kaieteur Falls 3D",
 				"mediapath":["hinterland_areas","kaieteur","falls3d"],
 				"feature_type":"Launch3D",
-				"media_html":"<img width='120px' src='./static/pacdev/data/hinterland_areas/kaieteur/falls3d/negx.png'/>",
+				"media_html":"<img width='120px' src='/static/pacdev/data/hinterland_areas/kaieteur/falls3d/negx.png'/>",
 				"coordinates":[-59.4796, 5.1754]
 			}
 		}

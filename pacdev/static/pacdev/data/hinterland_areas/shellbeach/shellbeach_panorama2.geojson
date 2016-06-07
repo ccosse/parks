@@ -13,7 +13,7 @@
 			"properties":{
 				"Name":"Shell Beach Panorama2",
 				"mediapath":["hinterland_areas","shellbeach","shellbeach_panorama2"],
-				"media_html":"<img width='120px' src='./static/pacdev/data/hinterland_areas/shellbeach/shellbeach_panorama2/negx.png'/>",
+				"media_html":"<img width='120px' src='/static/pacdev/data/hinterland_areas/shellbeach/shellbeach_panorama2/negx.png'/>",
 				"feature_type":"Launch3D",
 				"coordinates":[-59.4796, 8.24]
 			}

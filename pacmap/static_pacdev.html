@@ -1,0 +1,250 @@
+<html>
+
+<head>
+	<title>STATIC</title>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="./static/pacmap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./static/pacmap/css/pacmap_vh.css">
+
+	<link rel="stylesheet" type="text/css" href="./static/pacmap/css/ol.css">
+	<script type="text/javascript" src="./static/pacmap/js/ol.js"></script>
+
+<!--  {% block extra_javascript_include %} -->
+<!--
+  <link href="https://font.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+-->
+	<link rel="stylesheet" type="text/css" href="./static/pacmap/css/my3dstuff.css">
+	<script type="text/javascript" src="./static/pacmap/js/util.js"></script>
+	<script type="text/javascript" src="./static/pacmap/js/config.js"></script>
+	<script type="text/javascript" src="./static/pacmap/js/map.js"></script>
+	<script type="text/javascript" src="./static/pacmap/js/pacmap.js"></script>
+	<script type="text/javascript" src="./static/pacmap/js/zoom.js"></script>
+	<script type="text/javascript" src="./static/pacmap/js/three.min.js"></script>
+	<script type="text/javascript" src="./static/pacmap/js/CSS3DRenderer.js"></script>
+	<script type="text/javascript" src="./static/pacmap/js/my3dstuff.js"></script>
+
+  <script type="text/javascript">
+//  {% block extra_javascript %}
+
+window.counter=0;
+	window.Cfg=Config;
+	window.onresize=function(e){
+		console.log("onresize");
+		var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
+		$("#mapdiv").css("top",h_nav);
+
+		var msg="";
+
+		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
+		if(window.innerWidth<=650){
+			if(!$("#controls").hasClass("portrait")){
+				try{$("#controls").removeClass("landscape");}catch(e){}
+				try{$("#controls").removeClass("hhide_medium");}catch(e){}
+				try{$("#controls").removeClass("hhide_wide");}catch(e){}
+				try{$("#controls").removeClass("hhide_small");}catch(e){}
+				try{$("#controls").removeClass("small");}catch(e){}
+				try{$("#controls").removeClass("medium");}catch(e){}
+				try{$("#controls").removeClass("wide");}catch(e){}
+				document.getElementById("tb_arrow").src="./static/pacmap/img/arrow-dn.gif";
+				$("#controls").addClass("portrait");
+			}
+		}
+		else{
+			if(!$("#controls").hasClass("landscape")){
+				try{$("#controls").removeClass("portrait");}catch(e){}
+				try{$("#controls").removeClass("vhide");}catch(e){}
+				document.getElementById("tb_arrow").src="./static/pacmap/img/arrow-lt.gif";
+				$("#controls").addClass("landscape");
+			}
+			if(window.innerWidth<=800 && !$("#controls").hasClass("small")){
+				try{$("#controls").removeClass("medium");}catch(e){}
+				try{$("#controls").removeClass("wide");}catch(e){}
+				$("#controls").addClass("small");
+			}
+			else if(window.innerWidth>800 && window.innerWidth<=1150 && !$("#controls").hasClass("medium")){
+				try{$("#controls").removeClass("small");}catch(e){}
+				try{$("#controls").removeClass("wide");}catch(e){}
+				$("#controls").addClass("medium");
+			}
+			else if(window.innerWidth>1150 && !$("#controls").hasClass("wide")){
+				try{$("#controls").removeClass("small");}catch(e){}
+				try{$("#controls").removeClass("medium");}catch(e){}
+				$("#controls").addClass("wide");
+			}
+		}
+
+	}
+	window.centerCB=function(e){
+		window.Cfg=Config['Protected Areas Commission'];
+		var center=ol.proj.transform(window.Cfg['center'],"EPSG:4326","EPSG:3857");
+		var offset=get_offset();
+		var offset_center=[center[0]-offset,center[1]];
+//		window.map.map.getView().setCenter(offset_center);
+//		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
+		pan_zoom_home();
+		console.log("centerCB");
+	}
+	function init(e){
+		console.log('init');
+		window.Cfg=Config['Protected Areas Commission'];
+		window.map=new Map('mapdiv');
+		window.pacmap=new PACMap();
+		window.onresize(null);//this sets landscape needed for lon_offset at zoom
+		window.pacmap.goto('Protected Areas Commission');
+
+		$("#tb").click(function(e){
+
+			window.counter+=1;
+			console.log("clicked: "+window.counter);
+
+			if($("#controls").hasClass("portrait")){
+				$("#controls").toggleClass("vhide");
+				//if($("#controls").hasClass("vhide")){
+					var spath=window.Cfg['path'].split(".");
+					//document.getElementById("mobile_header").innerHTML=spath[spath.length-1];
+				//}
+				//else{
+				//	document.getElementById("mobile_header").innerHTML=null;
+				//}
+			}
+			else{
+				if($("#controls").hasClass("small")){
+					$("#controls").toggleClass("hhide_small");
+				}
+				else if($("#controls").hasClass("medium")){
+					$("#controls").toggleClass("hhide_medium");
+				}
+				else if($("#controls").hasClass("wide")){
+					$("#controls").toggleClass("hhide_wide");
+				}
+			}
+      pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
+		});
+}
+//{% endblock %}
+  </script>
+
+</head>
+
+<body onload="init()">
+
+<div id="layout" class="container">
+
+<nav id="le_nav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/pacmap/">
+        <img id="logo" alt="Brand" src="./static/pacmap/img/pac_logo.png">
+      </a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li><a href="/pacmap/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+        <li><a href="/pacmap/pacvideo/"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> Featured</a></li>
+        <li><a href="/pacmap/pacphotos/"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Multimedia</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-deciduous" aria-hidden="true"></span> Hinterland Parks <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">Managed by PAC</li>
+            <li><a href="/pacmap/hinterland/kaieteur/">Kaieteur National Park</a></li>
+            <li><a href="/pacmap/hinterland/shellbeach/">Shell Beach Protected Area</a></li>
+            <li><a href="/pacmap/hinterland/kanuku/">Kanuku Mountains Protected Area</a></li>
+            <li class="dropdown-header">Managed by Iwokrama</li>
+            <li><a href="/pacmap/hinterland/iwokrama/">Iwokrama Conservation Area</a></li>
+            <li class="dropdown-header">Managed by Community</li>
+            <li><a href="/pacmap/hinterland/konashens/">Konashens</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-deciduous" aria-hidden="true"></span> Urban Parks <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">Managed by PAC</li>
+            <li><a href="/pacmap/urbanparks/guyanazoo/">The Guyana Zoo</a></li>
+            <li><a href="/pacmap/urbanparks/botanicalgardens/">Botanical Gardens</a></li>
+            <li><a href="/pacmap/urbanparks/nationalpark/">National Park</a></li>
+            <li><a href="/pacmap/urbanparks/joeviera/">Joe Viera</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/pacmap/contact/"><span aria-hidden="true"></span> Contact</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+//{% block content %}
+<div class="row">
+
+  <div id="controls" class="controls">
+    <div id="mobile_header" class="mobile_header">
+
+    </div>
+    <div id="tb" class="tb">
+      <img id="tb_arrow" src="./static/pacmap/img/arrow-lt.png" class="tb_arrow"/>
+    </div>
+
+    <div id="div_controls_top" >
+      <img id='img_controls_top' src="./static/pacmap/img/pac_hq.jpg" class="img-responsive w100"/>
+      <img class="controls_logo" src="./static/pacmap/img/pac_logo.png"/>
+      <div id='title_controls_top'>Protected Areas Commission</div>
+    </div>
+
+    <div class="panel panel-default">
+      <div id="panel_controls_top" class="panel-body center"></div>
+    </div>
+
+    <div class="panel panel-default" style="text-align:center;">
+      <table width="100%" ><tr><td>
+      <div id="lat" class="panel-body" style="text-align:center;"></div>
+      </td><td>
+      <div id="lon" class="panel-body" style="text-align:center;"></div>
+      </td>
+      </tr>
+      </table>
+    </div>
+    <!--
+    <div id="centerB" onclick="window.centerCB()">
+      <img class="controls_logo" src="./static/pacmap/img/pac_logo.png"/>
+    </div>
+    <div id="debug" class="panel panel-default" style="text-align:center;"></div>
+    -->
+
+
+  </div>
+
+  <div id="mapdiv" class=""></div>
+
+  <div id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="xpopup"></div>
+  </div>
+
+
+</div>
+//{% endblock %}
+</div>
+
+
+<script src="./static/pacmap/js/jquery.min.js"></script>
+<script type="text/javascript" src="./static/pacmap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
