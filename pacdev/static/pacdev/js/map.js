@@ -1,5 +1,9 @@
 var Map=function(mapdiv){
 	var me={};
+
+	me.map=null;
+	me.gmap=null;
+
 	me.HILIGHTS=[];
 	me.POINT_HILIGHTS=[];
 
@@ -171,29 +175,51 @@ var Map=function(mapdiv){
 		me.map.addLayer(polygon_layer);
 		return polygon_layer;
 	}
+	me.setup=function(){
+	me.gmap = new google.maps.Map(document.getElementById('gmap'), {
+	  disableDefaultUI: true,
+	  keyboardShortcuts: false,
+	  draggable: false,
+	  disableDoubleClickZoom: true,
+	  scrollwheel: false,
+	  streetViewControl: false,
+	  mapTypeId: google.maps.MapTypeId.SATELLITE
+	});
 
+	var view = new ol.View({
+	  // make sure the view doesn't go beyond the 22 zoom levels of Google Maps
+	  maxZoom: 21,
+		center:ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"),
+	});
+	view.on('change:center', function() {
+	  var center = ol.proj.transform(view.getCenter(), 'EPSG:3857', 'EPSG:4326');
+		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
+	});
+	view.on('change:resolution', function() {
+	  me.gmap.setZoom(view.getZoom());
+	});
 
 	me.map = new ol.Map({
 	  layers: [],//osm,sat
 		//controls:[],
-		//interactions:[],
 	  target: mapdiv,
 		loadTilesWhileAnimating:true,
 		loadTilesWhileInteracting:true,
-	  view: new ol.View({
-    	center:ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"),
-	  })
+	  view:view,
+		interactions: ol.interaction.defaults({
+			altShiftDragRotate: false,
+			dragPan: false,
+			rotate: false
+		}).extend([new ol.interaction.DragPan({kinetic: null})]),
 	});
 
-//	me.add_xyz_layer({'layeridx':0,'type':'xyz','src_url':'guyana/guyana_pixelated/'});
-//	me.map.addLayer(sat);
-//	me.add_polygon_layer(window.Cfg['layers']['boundary']);
-
-	me.xpopup.innerHTML="WHERE IS THIS POPUP?"
-	me.overlay.setMap(me.map);
-//	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));
-
 	me.map.on('click',function(evt){
+		var debugpanel=document.getElementById("debug");
+		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
+		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
+		debugpanel.innerHTML+="["+lon+","+lat+"],";
+
 		/*This feature info comes from inside the geojson
 		file, so Name in Geojson needs to match name in Cfg
 		structure; So Name="Hinterland Parks" for Kaieteur
@@ -262,6 +288,72 @@ var Map=function(mapdiv){
 		}
 	});
 
+	me.map.on('pointermove',function(evt){
+
+		var latpanel=document.getElementById("lat");
+		var lonpanel=document.getElementById("lon");
+		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
+		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
+		latpanel.innerHTML=lat;
+		lonpanel.innerHTML=lon;
+
+		me.unhilite();
+
+		if(evt.dragging){return;}
+		var found=false;
+		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
+
+//			if(layer)console.log("title="+layer.get("title"));
+
+			var target_name=target_feature.get("NAME");
+			if(!target_name)target_name=target_feature.get("Name");
+			if(layer){
+//				console.log("layer_title="+layer.get("title"));
+				var hilite=true;
+				try{hilite=layer.get("hilite");}
+				catch(e){hilite=true;}
+				if(hilite!=false){
+					me.hilite(target_name,layer);
+					if(target_feature && target_name){
+						me.xpopup.innerHTML +=lon+", "+lat;
+						found=true;
+					}
+				}
+			}
+		});
+		if(!found){
+			me.overlay.setPosition(undefined);
+			me.popup_closer.blur();
+		}
+
+	});
+
+	//END OF SETUP STUFF:
+	//	me.add_xyz_layer({'layeridx':0,'type':'xyz','src_url':'guyana/guyana_pixelated/'});
+	//	me.map.addLayer(sat);
+	//	me.add_polygon_layer(window.Cfg['layers']['boundary']);
+		me.xpopup.innerHTML="WHERE IS THIS POPUP?"
+		me.overlay.setMap(me.map);
+	//	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));
+
+	var gmap=document.getElementById('gmap');
+	$("#gmap").css("height",window.innerHeight-51);
+	var bcr=gmap.getBoundingClientRect();
+	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
+	me.map.setSize([bcr.width,bcr.height]);
+	me.map.getView().setResolution(res);
+
+	view.setCenter(ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"));
+	var olMapDiv=document.getElementById('mapdiv');
+	olMapDiv=olMapDiv.parentNode.removeChild(olMapDiv);
+	me.gmap.controls[google.maps.ControlPosition.TOP_LEFT].push(olMapDiv);
+//	me.map.getView().setZoom(7);
+
+}//end:setup
+
+
+
 	me.unhilite=function(e){
 		for(var hidx=0;hidx<me.POINT_HILIGHTS.length;hidx++){
 			me.pointOverlay.removeFeature(me.POINT_HILIGHTS[hidx]);
@@ -317,46 +409,6 @@ var Map=function(mapdiv){
 		}
 	}
 
-	me.map.on('pointermove',function(evt){
-
-		var latpanel=document.getElementById("lat");
-		var lonpanel=document.getElementById("lon");
-		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
-		var lon=parseFloat(parseInt(lonlat[0]*1E4)/1E4);
-		var lat=parseFloat(parseInt(lonlat[1]*1E4)/1E4);
-		latpanel.innerHTML=lat;
-		lonpanel.innerHTML=lon;
-
-		me.unhilite();
-
-		if(evt.dragging){return;}
-		var found=false;
-		dummmy=me.map.forEachFeatureAtPixel(evt.pixel,function(target_feature,layer){
-
-//			if(layer)console.log("title="+layer.get("title"));
-
-			var target_name=target_feature.get("NAME");
-			if(!target_name)target_name=target_feature.get("Name");
-			if(layer){
-//				console.log("layer_title="+layer.get("title"));
-				var hilite=true;
-				try{hilite=layer.get("hilite");}
-				catch(e){hilite=true;}
-				if(hilite!=false){
-					me.hilite(target_name,layer);
-					if(target_feature && target_name){
-						me.xpopup.innerHTML +=lon+", "+lat;
-						found=true;
-					}
-				}
-			}
-		});
-		if(!found){
-			me.overlay.setPosition(undefined);
-			me.popup_closer.blur();
-		}
-
-	});
 
 	me.pointOverlay = new ol.FeatureOverlay({
 		map: me.map,
@@ -382,11 +434,6 @@ var Map=function(mapdiv){
 			}),
 		}),
 	});
-
-	var bcr=document.getElementById('mapdiv').getBoundingClientRect();
-	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
-	me.map.setSize([bcr.width,bcr.height]);
-	me.map.getView().setResolution(res);
 
 	return me;
 }

@@ -9,14 +9,14 @@ var Config={
 	'Protected Areas Commission':{
 		'html':"Protected Areas Commission<br><span style='font-size:0.8em'>Georgetown, Guyana</span>",
 		'path':'Protected Areas Commission',
-		'center':[-58.9,4.31],
+		'center':[-58.9,4.41],
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'red',width: 4}),}),
 		'photos':[window.STATIC+'img/pac_hq.jpg',],
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
 		'layers':{
-			'keys':['Satellite','boundary'],
+			'keys':['boundary'],//
 			'boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
 			'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 		},
@@ -35,7 +35,7 @@ var Config={
 			'photos':[window.STATIC+'img/hinterland_areas.jpg',],
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
 			'layers':{
-				'keys':['Satellite','guyana_boundary'],
+				'keys':['guyana_boundary'],//'Satellite',
 				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 				'boundary':{'type':'polygon','src_url':'hinterland_areas/hinterland_boundaries.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
 				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
@@ -49,7 +49,7 @@ var Config={
 				'photos':[window.STATIC+'img/kaieteur_falls.png',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','satellite','creeks','rivers','boundary2','falls3d','kaieteur_pois'],//'trailmap',
+					'keys':['creeks','rivers','boundary2','falls3d','kaieteur_pois'],//'guyana_pixelated','satellite','trailmap',
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'kaieteur_pois':{'type':'points','src_url':'hinterland_areas/kaieteur/kaieteur_pois.geojson'},
 					'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style },

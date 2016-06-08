@@ -58,7 +58,7 @@ var PACMap=function(){
 
 		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
 
-		document.getElementById('img_controls_top').src=window.Cfg['photos'][0];
+		//document.getElementById('img_controls_top').src=window.Cfg['photos'][0];
 		console.log(window.Cfg['photos'][0]);
 
 //		document.getElementById('title_controls_top').innerHTML=spath[spath.length-1];
