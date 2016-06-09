@@ -22,6 +22,30 @@ var Map=function(mapdiv){
 	}
 	catch(e){console.log(e);}
 
+	me.pointOverlay = new ol.FeatureOverlay({
+		map: me.map,
+		style: new ol.style.Style({
+		image:new ol.style.Circle({
+			radius:7,
+			stroke: new ol.style.Stroke({
+				color: 'rgba(0,0,255,1)',
+				width:2
+			}),
+			fill: new ol.style.Fill({
+				color: 'rgba(0,255,0,1)',
+			}),
+			})
+		}),
+	});
+	me.featureOverlay = new ol.FeatureOverlay({
+		map: me.map,
+		style: new ol.style.Style({
+			stroke: new ol.style.Stroke({
+				color: 'gold',
+				width: 2
+			}),
+		}),
+	});
 	me.overlay = new ol.Overlay({
 		element: document.getElementById('popup'),
 		autoPan: false,
@@ -57,7 +81,6 @@ var Map=function(mapdiv){
 			source: point_source,
 			style:point_style
 		});
-		point_layer.set("layer_type",cfg["layer_type"]);
 		point_layer.set("title",window.DATA+cfg['src_url']);
 		point_layer.set("hilite",true);
 
@@ -78,7 +101,6 @@ var Map=function(mapdiv){
 //			    			maxZoom: mapMaxZoom
 			  			})
 					});
-					image_layer.set("layer_type","xyz");
 					image_layer.set("title",window.DATA+cfg['src_url'])
 					image_layer.set("hilite",false);
 
@@ -118,7 +140,6 @@ var Map=function(mapdiv){
 		else return null;
 
 		me.map.getLayers().insertAt(obj['layeridx'],base);
-		base.set("layer_type","baseXXZ");
 		base.set("hilite",false);
 		console.log("added base layer: "+obj['name']);
 		return base;
@@ -140,7 +161,6 @@ var Map=function(mapdiv){
 			})
 		});
 		line_layer.set("hilite",false);
-		line_layer.set("layer_type","line");
 		line_layer.set("title",window.DATA+cfg['src_url'])
 
 		console.log("line_layer="+line_layer);
@@ -164,7 +184,6 @@ var Map=function(mapdiv){
 			source: polygon_source,
 			style:le_style,
 		});
-		polygon_layer.set("layer_type","polygon");
 		polygon_layer.set("title",window.DATA+cfg['src_url'])
 		var hilite=true;
 		try{hilite=cfg['hilite'];}
@@ -185,34 +204,45 @@ var Map=function(mapdiv){
 	  streetViewControl: false,
 	  mapTypeId: google.maps.MapTypeId.SATELLITE
 	});
-
-	var view = new ol.View({
-	  // make sure the view doesn't go beyond the 22 zoom levels of Google Maps
+	window.view = new ol.View({
 	  maxZoom: 21,
 		center:ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"),
 	});
-	view.on('change:center', function() {
-	  var center = ol.proj.transform(view.getCenter(), 'EPSG:3857', 'EPSG:4326');
-		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
+	window.view.on('change:center', function(evt) {
+		console.log("GMAP setCenter: "+evt.type);
+	  var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
+		me.gmap.panTo(new google.maps.LatLng(center[1], center[0]));
 	});
-	view.on('change:resolution', function() {
-	  me.gmap.setZoom(view.getZoom());
+	window.view.on('change:resolution', function(evt) {
+		console.log("GMAP setZoom: "+evt.type);
+		me.gmap.setZoom(window.view.getZoom());
 	});
 
 	me.map = new ol.Map({
 	  layers: [],//osm,sat
-		//controls:[],
+		controls:[],
 	  target: mapdiv,
 		loadTilesWhileAnimating:true,
 		loadTilesWhileInteracting:true,
-	  view:view,
+	  view:window.view,
 		interactions: ol.interaction.defaults({
 			altShiftDragRotate: false,
 			dragPan: false,
 			rotate: false
 		}).extend([new ol.interaction.DragPan({kinetic: null})]),
 	});
-
+	me.map.on('postrender',function(evt){
+		console.log('postrender: '+evt.type);
+		var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
+		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
+		me.gmap.setZoom(window.view.getZoom());
+	});
+	me.map.on('moveend',function(evt){
+		console.log("moveend: "+evt.type);
+		var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
+		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
+		me.gmap.setZoom(window.view.getZoom());
+	});
 	me.map.on('click',function(evt){
 		var debugpanel=document.getElementById("debug");
 		var lonlat=ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
@@ -259,7 +289,7 @@ var Map=function(mapdiv){
 		if(clicked_layers.length>0){
 			for(var lidx=0;lidx<clicked_layers.length;lidx++){
 				try{
-					console.log(lidx+" "+clicked_layers[lidx].get("layer_type")+" "+clicked_layers[lidx].get("title"));
+					console.log(lidx+" "+clicked_layers[lidx].get("title"));
 					if(clicked_layers[lidx].get("bbox")){
 						var bbox=clicked_layers[lidx].get("bbox");
 						console.log("GOT BBOX! "+bbox);//via cfg->add_*_layer
@@ -342,9 +372,9 @@ var Map=function(mapdiv){
 	var bcr=gmap.getBoundingClientRect();
 	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);
-	me.map.getView().setResolution(res);
+	window.view.setResolution(res);
 
-	view.setCenter(ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"));
+	window.view.setCenter(ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"));
 	var olMapDiv=document.getElementById('mapdiv');
 	olMapDiv=olMapDiv.parentNode.removeChild(olMapDiv);
 	me.gmap.controls[google.maps.ControlPosition.TOP_LEFT].push(olMapDiv);
@@ -363,13 +393,15 @@ var Map=function(mapdiv){
 		}
 		me.overlay.setPosition(undefined);
 		me.popup_closer.blur();
+		me.HILIGHTS=[];
+		me.POINT_HILIGHTS=[];
 	}
 
 	me.hilite=function(feature_name,layer){
 		var fs=layer.getSource().getFeatures();
 		for(var fidx=0;fidx<fs.length;fidx++){
-			console.log(fs[fidx].get("Name")+", "+feature_name+", "+fs[fidx].get("feature_type"));
 			if(fs[fidx].get("Name")!=feature_name)continue;//hinterland_boundaries have 3 features same name!
+			console.log(fs[fidx].get("Name")+", "+feature_name);
 
 			var ftype=fs[fidx].get("feature_type");
 
@@ -390,6 +422,7 @@ var Map=function(mapdiv){
 			else{
 				me.featureOverlay.addFeature(fs[fidx]);
 				me.HILIGHTS.push(fs[fidx]);
+				console.log("added to HILIGHTS: "+me.HILIGHTS.length);
 				try{
 					var src=window.Cfg[feature_name]['photos'][0];
 
@@ -399,8 +432,8 @@ var Map=function(mapdiv){
 					var center=ol.proj.transform(window.Cfg[feature_name]['center'],"EPSG:4326","EPSG:3857");
 					var bcr=document.getElementById("popup").getBoundingClientRect();
 					//me.xpopup.innerHTML+="<br>"+parseInt(bcr.width)+","+parseInt(bcr.height);
-					var dy=window.map.map.getView().getResolution()*parseInt(80);
-					var dx=window.map.map.getView().getResolution()*parseInt(50);
+					var dy=window.view.getResolution()*parseInt(80);
+					var dx=window.view.getResolution()*parseInt(50);
 					center[1]+=dy;
 					center[0]+=dx;
 					me.overlay.setPosition(center);
@@ -410,30 +443,6 @@ var Map=function(mapdiv){
 	}
 
 
-	me.pointOverlay = new ol.FeatureOverlay({
-		map: me.map,
-		style: new ol.style.Style({
-		image:new ol.style.Circle({
-			radius:7,
-			stroke: new ol.style.Stroke({
-				color: 'rgba(0,0,255,1)',
-				width:2
-			}),
-			fill: new ol.style.Fill({
-				color: 'rgba(0,255,0,1)',
-			}),
-			})
-		}),
-	});
-	me.featureOverlay = new ol.FeatureOverlay({
-		map: me.map,
-		style: new ol.style.Style({
-			stroke: new ol.style.Stroke({
-				color: 'gold',
-				width: 2
-			}),
-		}),
-	});
 
 	return me;
 }

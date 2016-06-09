@@ -19,7 +19,7 @@ var PACMap=function(){
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
 		}
-		console.log("later will remove: "+me.layers['keys'].length);
+
 		me.old_layers=me.layers;
 		console.log("removing last layer set: "+me.old_layers['keys'].length);
 		while(me.old_layers['keys'].length>0){
@@ -150,7 +150,6 @@ var PACMap=function(){
 			console.log("adding layer: "+key);
 			me.layers['keys'].push(key);
 			me.layers[key]=window.map.add_polygon_layer(window.Cfg[key]['layers']['boundary']);
-			console.log(me.layers[key].get('layer_type'));
 
 			s.addEventListener('mouseout',function(e){
 				console.log("mouseout");
@@ -165,7 +164,6 @@ var PACMap=function(){
 					console.log(key+": "+me.layers[key]);
 				}
 				console.log("e.target.id: "+e.target.id);
-				console.log(me.layers[e.target.id].get("layer_type"));
 				window.map.hilite(e.target.id,me.layers[e.target.id]);
 			});
 

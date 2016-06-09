@@ -20,21 +20,21 @@ var get_offset=function(res){
 	return lon_offset;
 }
 var pan_zoom=function(center,bbox){
-
-		var this_delay=4000;
+		console.log("pan_zoom");
+		var this_delay=100;
 
 		var bounce = ol.animation.bounce({
-		  resolution:window.map.map.getView().getResolution(),
+		  resolution:window.view.getResolution(),
 		  duration:this_delay
 		});
 
 		var pan = ol.animation.pan({
-		  source: window.map.map.getView().getCenter(),
+		  source: window.view.getCenter(),
 		  duration:this_delay
 		});
 
 		var zoom = ol.animation.zoom({
-			resolution: window.map.map.getView().getResolution(),
+			resolution: window.view.getResolution(),
 			duration:this_delay
 		});
 
@@ -53,22 +53,35 @@ var pan_zoom=function(center,bbox){
 		}
 		var c0=ol.proj.transform(center,"EPSG:4326","EPSG:3857");
 		var c1=[c0[0]-lon_offset,c0[1]];
-		window.map.map.getView().setResolution(res);
-		window.map.map.getView().setCenter(c1);
+		console.log("res:"+res);
+		console.log("ctr:"+c1);
+
+		window.view.setCenter(c1);
+		window.view.setZoom(window.res2zoom(res));
+/*
+		window.map.gmap.setCenter(new google.maps.LatLng(c1[1], c1[0]));
+		var zoom=window.res2zoom(res);
+		var resolution=window.view.getResolution();
+		console.log("zoom,resolution="+zoom+","+resolution);
+		window.map.gmap.setZoom(zoom);
+		var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
+
+		console.log("calling resize");
 		window.onresize();
+*/
 	}
 var pan_zoom_home=function(){
-	console.log("bounce_home");
+	console.log("pan_zoom_home");
 
 	var this_delay=1000;
 
 	var pan = ol.animation.pan({
-	  source: window.map.map.getView().getCenter(),
+	  source: window.view.getCenter(),
 	  duration:this_delay
 	});
 
 	var zoom = ol.animation.zoom({
-		resolution: window.map.map.getView().getResolution(),
+		resolution: window.view.getResolution(),
 		duration:this_delay
 	});
 
@@ -87,6 +100,12 @@ var pan_zoom_home=function(){
 	var offset=get_offset(res);
 	var c0=ol.proj.transform(center,"EPSG:4326","EPSG:3857");
 	var c1=[c0[0]-offset,c0[1]];
-	window.map.map.getView().setResolution(res);
-	window.map.map.getView().setCenter(c1);
+	window.view.setZoom(window.res2zoom(res));
+	window.view.setCenter(c1);
+
+	console.log("no call to resize");
+
+	var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
+	window.map.gmap.setCenter(new google.maps.LatLng(c1[1], c1[0]));
+	window.map.gmap.setZoom(window.res2zoom(res));
 }

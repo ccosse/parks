@@ -2,6 +2,8 @@
 window.STATIC="/static/pacdev/"
 window.DATA="/static/pacdev/data/";
 window.DEBUG=true;
+window.view=null;
+window.rlist=null;
 var river_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'#11A1FF',width: 2}),fill: new ol.style.Fill({color:'#1111FF'})});
 var creek_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(100,200,255,0.5)',width: 2}),});
 var boundary2_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(255,255,0,0.5)',width: 2}),});
@@ -9,7 +11,7 @@ var Config={
 	'Protected Areas Commission':{
 		'html':"Protected Areas Commission<br><span style='font-size:0.8em'>Georgetown, Guyana</span>",
 		'path':'Protected Areas Commission',
-		'center':[-58.9,4.41],
+		'center':[-58.9,4.81],
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'red',width: 4}),}),
@@ -70,7 +72,7 @@ var Config={
 				'photos':[window.STATIC+'img/shell_beach.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','shellbeach_satellite','creeks','rivers','panorama1','panorama2','sinewave'],//'boundary',
+					'keys':['boundary','creeks','rivers','panorama1','panorama2','sinewave'],//'boundary','guyana_pixelated','shellbeach_satellite',
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style },
@@ -90,7 +92,7 @@ var Config={
 				'photos':[window.STATIC+'img/kanuku_mountains.png',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','kanuku_satellite','creeks','rivers','boundary','kanuku_panorama','rupununi_panorama'],
+					'keys':['boundary','creeks','rivers','boundary','kanuku_panorama','rupununi_panorama'],//'guyana_pixelated','kanuku_satellite',
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style },
@@ -111,7 +113,7 @@ var Config={
 			'photos':[window.STATIC+'img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'layers':{
-				'keys':['OpenStreetMap2','botanical_satellite','national_satellite'],//'boundary',''
+				'keys':['botanical_satellite','national_satellite'],//'boundary','OpenStreetMap2',
 				'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':0,'opacity':1.0},
 				'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 				'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},

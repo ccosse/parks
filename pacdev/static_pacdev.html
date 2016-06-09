@@ -90,6 +90,22 @@ window.counter=0;
 		pan_zoom_home();
 		console.log("centerCB");
 	}
+	window.res2zoom=function(res){
+		console.log("res2zoom: "+res);
+		var rval=null;
+		var last_delta=1E6;
+		var new_delta=1E6;
+		for(var z=0;z<21;z++){
+			new_delta=Math.abs(res-window.rlist[z]);
+			if(new_delta>last_delta){
+				console.log("returning: "+(z-1).toString());
+				return z-1;
+			}
+			last_delta=new_delta;
+			console.log(z+" "+last_delta);
+		}
+		return rval;
+	}
 	function init(e){
 		console.log('init');
 		window.Cfg=Config['Protected Areas Commission'];
@@ -97,8 +113,25 @@ window.counter=0;
 		window.map.setup();
 		window.pacmap=new PACMap();
 		window.onresize(null);//this sets landscape needed for lon_offset at zoom
+
+		window.rlist=[];
+		console.log("generating data:");
+		for(var z=0;z<22;z++){
+			window.view.setZoom(z);
+			var res=window.view.getResolution();
+			var zoom=window.view.getZoom();
+			window.rlist.push(res);
+		}
+		for(var z=0;z<22;z++){
+			console.log(z+" "+window.rlist[z]);
+		}
+
 		window.pacmap.goto('Protected Areas Commission');
-		window.map.map.getView().setZoom(7);
+/*
+		console.log("window.view.getZoom()="+window.view.getZoom());
+		window.view.setZoom(7);
+		console.log("window.view.getZoom()="+window.view.getZoom());
+*/
 
 		$("#tb").click(function(e){
 
