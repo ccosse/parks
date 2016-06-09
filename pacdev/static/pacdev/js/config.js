@@ -4,12 +4,8 @@ window.DATA="/static/pacdev/data/";
 window.DEBUG=true;
 window.view=null;
 window.rlist=null;
-var hilite_style=new ol.style.Style({
-	stroke: new ol.style.Stroke({
-		color: 'gold',
-		width: 2
-	})});
-var pac_style=new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),});
+var hilite_style=new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 3}),fill: new ol.style.Fill({color: 'rgba(0,255,0,0.6)'}),});
+var pac_style=new ol.style.Style({stroke: new ol.style.Stroke({color: '#FFad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.3)'}),});
 var river_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'#11A1FF',width: 2}),fill: new ol.style.Fill({color:'#1111FF'})});
 var creek_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(100,200,255,0.5)',width: 2}),});
 var boundary2_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(255,255,0,0.5)',width: 2}),});
@@ -19,13 +15,11 @@ var Config={
 		'path':'Protected Areas Commission',
 		'center':[-58.9,4.81],
 		'bbox':[-61.5,1.1,-56.3,8.7],
-		'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
-		'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'red',width: 4}),}),
 		'photos':[window.STATIC+'img/pac_hq.jpg',],
 		'keys':['Urban Parks','Hinterland Parks','Related Areas'],
 		'layers':{
 			'keys':['boundary'],//
-			'boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
+			'boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':[pac_style,hilite_style],},
 			'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 		},
 
@@ -38,22 +32,22 @@ var Config={
 			//according to convention of adding and removing layers based on
 			//current navigation in this Config structure
 			//'boundary':'/window.STATIC/pacdev/geojson/hinterland_boundaries.geojson',
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
-			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
+			//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.9)'}),}),
+			//'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF4',width: 4}),}),
 			'photos':[window.STATIC+'img/hinterland_areas.jpg',],
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
 			'layers':{
 				'keys':['guyana_boundary'],//'Satellite',
 				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
-				'boundary':{'type':'polygon','src_url':'hinterland_areas/hinterland_boundaries.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
-				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
+				'boundary':{'type':'polygon','src_url':'hinterland_areas/hinterland_boundaries.geojson','style':[pac_style,hilite_style]},//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),}
+				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			},
 			'Kaieteur National Park':{
 				'html':"Kaieteur National Park",
 				'path':'Protected Areas Commission.Hinterland Parks.Kaieteur National Park',
 				'center':[-59.50293, 5.175],
 				'bbox':[-59.63383, 5.0468, -59.37203, 5.3032],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/kaieteur_falls.png',],
 				'keys':[],
 				'layers':{
@@ -74,7 +68,7 @@ var Config={
 				'path':'Protected Areas Commission.Hinterland Parks.Shell Beach',
 				'center':[-59.294995, 7.99126],
 				'bbox':[-59.78492, 7.59982, -58.80507, 8.3827],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/shell_beach.jpg',],
 				'keys':[],
 				'layers':{
@@ -94,7 +88,7 @@ var Config={
 				'path':'Protected Areas Commission.Hinterland Parks.Kanuku Mountains',
 				'center':[-59.105485, 3.2779],
 				'bbox':[-59.62108, 2.89736, -58.58989, 3.65844],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/kanuku_mountains.png',],
 				'keys':[],
 				'layers':{
@@ -114,8 +108,8 @@ var Config={
 			'path':'Protected Areas Commission.Urban Parks',
 			'center':[-58.17065, 6.79375],
 			'bbox':[-58.2153, 6.7706, -58.1166, 6.8398],
-			'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
-			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
+			//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
+			//'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':[window.STATIC+'img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'layers':{
@@ -123,14 +117,14 @@ var Config={
 				'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':0,'opacity':1.0},
 				'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 				'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
-				'boundary':{'type':'polygon','src_url':'urbanparks/urbanparks_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
+				'boundary':{'type':'polygon','src_url':'urbanparks/urbanparks_boundary.geojson','style':[pac_style,hilite_style]},//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			},
 			'Guyana Zoo':{
 				'html':"Guyana Zoo",
 				'path':'Protected Areas Commission.Urban Parks.Guyana Zoo',
 				'center':[-58.1463, 6.8073],
 				'bbox':[-58.1491, 6.8057, -58.1439, 6.809],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/zoo_entrance.jpg',],
 				'keys':[],
 				'layers':{
@@ -147,7 +141,7 @@ var Config={
 				'path':'Protected Areas Commission.Urban Parks.Botanical Gardens',
 				'center':[-58.143, 6.8055],
 				'bbox':[-58.1512, 6.8018, -58.1374, 6.8094],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/botanical_aerial.jpg',],
 				'keys':[],
 				'layers':{
@@ -163,7 +157,7 @@ var Config={
 				'path':'Protected Areas Commission.Urban Parks.National Park',
 				'center':[-58.1509, 6.8215],
 				'bbox':[-58.1551, 6.8194, -58.1478, 6.8241],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/national_park.png',],
 				'keys':[],
 				'layers':{
@@ -178,7 +172,7 @@ var Config={
 				'path':'Protected Areas Commission.Urban Parks.Joe Viera Park',
 				'center':[-58.1947, 6.7769],
 				'bbox':[-58.1975, 6.7447, -58.1922, 6.7784],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/joe_viera.png',],
 				'keys':[],
 				'layers':{
@@ -195,21 +189,21 @@ var Config={
 			'bbox':[-59.56666,1.17728,-58.36804,4.80849],
 			//Konashens + Iwokrama (both) in related_boundary.geojson
 
-			'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
+			//'hilite':new ol.style.Style({stroke: new ol.style.Stroke({color: 'gold',width: 4}),}),
 			'photos':[window.STATIC+'img/place.jpg'],
 			'keys':['Konashens','Iwokrama'],
 			'layers':{
 				'keys':['guyana_boundary'],//'Satellite',
-				'boundary':{'type':'polygon','src_url':'related_areas/related_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
+				'boundary':{'type':'polygon','src_url':'related_areas/related_boundary.geojson','style':[pac_style,hilite_style]},//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
-				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
+				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),
 			},
 			'Konashens':{
 				'html':"Konashens<br><span style='font-size:0.9em'>Community Owned & Managed</span>",
 				'path':'Protected Areas Commission.Related Areas.Konashens',
 				'center':[-58.96735,1.51319],
 				'bbox':[-59.56666,1.17728,-58.36804,1.8491],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'img/place.jpg',],
 				'keys':[],
 				'layers':{
@@ -226,7 +220,7 @@ var Config={
 				'path':'Protected Areas Commission.Related Areas.Iwokrama',
 				'center':[-58.881185,4.47368],
 				'bbox':[-59.2709,4.13887,-58.49147,4.80849],
-				'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
+				//'style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),}),
 				'photos':[window.STATIC+'/img/place.jpg',],
 				'keys':[],
 				'layers':{

@@ -11,106 +11,143 @@
 	<script type="text/javascript" src="/static/pacdev/js/three.min.js"></script>
 	<script type="text/javascript" src="/static/pacdev/js/CSS3DRenderer.js"></script>
 	<script type="text/javascript" src="/static/pacdev/js/my3dstuff.js"></script>
-  <script src="http://maps.google.com/maps/api/js?v=3?key=AIzaSyApdqffeE3ATyFZWOKbtQsrBMqEUY_cxWw "></script>
-  <script type="text/javascript" src="/static/pacdev/js/google-map.js"></script>
+
+  <script src="http://maps.google.com/maps/api/js?v=3?key=AIzaSyApdqffeE3ATyFZWOKbtQsrBMqEUY_cxWw"></script>
+
 {% endblock %}
 {% block extra_javascript %}
 
-window.counter=0;
-window.Cfg=Config;
-window.onresize=function(e){
-	console.log("onresize");
-	var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
-	$("#mapdiv").css("top",h_nav);
+  window.counter=0;
+	window.Cfg=Config;
+	window.onresize=function(e){
+		console.log("onresize");
+		var h_nav=document.getElementById("le_nav").getBoundingClientRect().height;
+		$("#gmap").css("top",h_nav);
 
-	var msg="";
+		var msg="";
 
-	var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
-	if(window.innerWidth<=650){
-		if(!$("#controls").hasClass("portrait")){
-			try{$("#controls").removeClass("landscape");}catch(e){}
-			try{$("#controls").removeClass("hhide_medium");}catch(e){}
-			try{$("#controls").removeClass("hhide_wide");}catch(e){}
-			try{$("#controls").removeClass("hhide_small");}catch(e){}
-			try{$("#controls").removeClass("small");}catch(e){}
-			try{$("#controls").removeClass("medium");}catch(e){}
-			try{$("#controls").removeClass("wide");}catch(e){}
-			document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-dn.gif";
-			$("#controls").addClass("portrait");
-		}
-	}
-	else{
-		if(!$("#controls").hasClass("landscape")){
-			try{$("#controls").removeClass("portrait");}catch(e){}
-			try{$("#controls").removeClass("vhide");}catch(e){}
-			document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-lt.gif";
-			$("#controls").addClass("landscape");
-		}
-		if(window.innerWidth<=800 && !$("#controls").hasClass("small")){
-			try{$("#controls").removeClass("medium");}catch(e){}
-			try{$("#controls").removeClass("wide");}catch(e){}
-			$("#controls").addClass("small");
-		}
-		else if(window.innerWidth>800 && window.innerWidth<=1150 && !$("#controls").hasClass("medium")){
-			try{$("#controls").removeClass("small");}catch(e){}
-			try{$("#controls").removeClass("wide");}catch(e){}
-			$("#controls").addClass("medium");
-		}
-		else if(window.innerWidth>1150 && !$("#controls").hasClass("wide")){
-			try{$("#controls").removeClass("small");}catch(e){}
-			try{$("#controls").removeClass("medium");}catch(e){}
-			$("#controls").addClass("wide");
-		}
-	}
-
-}
-window.centerCB=function(e){
-	window.Cfg=Config['Protected Areas Commission'];
-	var center=ol.proj.transform(window.Cfg['center'],"EPSG:4326","EPSG:3857");
-	var offset=get_offset();
-	var offset_center=[center[0]-offset,center[1]];
-//		window.map.map.getView().setCenter(offset_center);
-//		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
-	pan_zoom_home();
-	console.log("centerCB");
-}
-function init(e){
-	console.log('init');
-	window.Cfg=Config['Protected Areas Commission'];
-	window.map=new Map('mapdiv');
-	window.pacmap=new PACMap();
-	window.onresize(null);//this sets landscape needed for lon_offset at zoom
-	window.pacmap.goto('Protected Areas Commission');
-
-	$("#tb").click(function(e){
-
-		window.counter+=1;
-		console.log("clicked: "+window.counter);
-
-		if($("#controls").hasClass("portrait")){
-			$("#controls").toggleClass("vhide");
-			//if($("#controls").hasClass("vhide")){
-				var spath=window.Cfg['path'].split(".");
-				//document.getElementById("mobile_header").innerHTML=spath[spath.length-1];
-			//}
-			//else{
-			//	document.getElementById("mobile_header").innerHTML=null;
-			//}
+		var AR=(1.0*window.innerWidth)/(1.0*window.innerHeight);
+		if(window.innerWidth<=650){
+			if(!$("#controls").hasClass("portrait")){
+				try{$("#controls").removeClass("landscape");}catch(e){}
+				try{$("#controls").removeClass("hhide_medium");}catch(e){}
+				try{$("#controls").removeClass("hhide_wide");}catch(e){}
+				try{$("#controls").removeClass("hhide_small");}catch(e){}
+				try{$("#controls").removeClass("small");}catch(e){}
+				try{$("#controls").removeClass("medium");}catch(e){}
+				try{$("#controls").removeClass("wide");}catch(e){}
+				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-dn.gif";
+				$("#controls").addClass("portrait");
+			}
 		}
 		else{
-			if($("#controls").hasClass("small")){
-				$("#controls").toggleClass("hhide_small");
+			if(!$("#controls").hasClass("landscape")){
+				try{$("#controls").removeClass("portrait");}catch(e){}
+				try{$("#controls").removeClass("vhide");}catch(e){}
+				document.getElementById("tb_arrow").src="/static/pacdev/img/arrow-lt.gif";
+				$("#controls").addClass("landscape");
 			}
-			else if($("#controls").hasClass("medium")){
-				$("#controls").toggleClass("hhide_medium");
+			if(window.innerWidth<=800 && !$("#controls").hasClass("small")){
+				try{$("#controls").removeClass("medium");}catch(e){}
+				try{$("#controls").removeClass("wide");}catch(e){}
+				$("#controls").addClass("small");
 			}
-			else if($("#controls").hasClass("wide")){
-				$("#controls").toggleClass("hhide_wide");
+			else if(window.innerWidth>800 && window.innerWidth<=1150 && !$("#controls").hasClass("medium")){
+				try{$("#controls").removeClass("small");}catch(e){}
+				try{$("#controls").removeClass("wide");}catch(e){}
+				$("#controls").addClass("medium");
+			}
+			else if(window.innerWidth>1150 && !$("#controls").hasClass("wide")){
+				try{$("#controls").removeClass("small");}catch(e){}
+				try{$("#controls").removeClass("medium");}catch(e){}
+				$("#controls").addClass("wide");
 			}
 		}
-		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
-	});
+
+	}
+	window.centerCB=function(e){
+		window.Cfg=Config['Protected Areas Commission'];
+		var center=ol.proj.transform(window.Cfg['center'],"EPSG:4326","EPSG:3857");
+		var offset=get_offset();
+		var offset_center=[center[0]-offset,center[1]];
+//		window.map.map.getView().setCenter(offset_center);
+//		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
+		pan_zoom_home();
+		console.log("centerCB");
+	}
+	window.res2zoom=function(res){
+		console.log("res2zoom: "+res);
+		var rval=null;
+		var last_delta=1E6;
+		var new_delta=1E6;
+		for(var z=0;z<21;z++){
+			new_delta=Math.abs(res-window.rlist[z]);
+			if(new_delta>last_delta){
+				console.log("returning: "+(z-1).toString());
+				return z-1;
+			}
+			last_delta=new_delta;
+			console.log(z+" "+last_delta);
+		}
+		return rval;
+	}
+	function init(e){
+		console.log('init');
+		window.Cfg=Config['Protected Areas Commission'];
+		window.map=new Map('mapdiv');
+		window.map.setup();
+		window.pacmap=new PACMap();
+		window.onresize(null);//this sets landscape needed for lon_offset at zoom
+
+		window.rlist=[];
+		console.log("generating data:");
+		for(var z=0;z<22;z++){
+			window.view.setZoom(z);
+			var res=window.view.getResolution();
+			var zoom=window.view.getZoom();
+			window.rlist.push(res);
+		}
+		for(var z=0;z<22;z++){
+			console.log(z+" "+window.rlist[z]);
+		}
+
+		window.pacmap.goto('Protected Areas Commission');
+/*
+		console.log("window.view.getZoom()="+window.view.getZoom());
+		window.view.setZoom(7);
+		console.log("window.view.getZoom()="+window.view.getZoom());
+*/
+
+		$("#tb").click(function(e){
+
+			window.counter+=1;
+			console.log("clicked: "+window.counter);
+
+			if($("#controls").hasClass("portrait")){
+				$("#controls").toggleClass("vhide");
+				//if($("#controls").hasClass("vhide")){
+					var spath=window.Cfg['path'].split(".");
+					//document.getElementById("mobile_header").innerHTML=spath[spath.length-1];
+				//}
+				//else{
+				//	document.getElementById("mobile_header").innerHTML=null;
+				//}
+			}
+			else{
+				if($("#controls").hasClass("small")){
+					$("#controls").toggleClass("hhide_small");
+				}
+				else if($("#controls").hasClass("medium")){
+					$("#controls").toggleClass("hhide_medium");
+				}
+				else if($("#controls").hasClass("wide")){
+					$("#controls").toggleClass("hhide_wide");
+				}
+			}
+      pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
+		});
 }
+
 {% endblock %}
 {% block content %}
 <div class="row">
@@ -135,13 +172,14 @@ function init(e){
 
     <div class="panel panel-default" style="text-align:center;">
       <table width="100%" ><tr><td>
-      <div id="lon" class="panel-body" style="text-align:center;"></div>
-      </td><td>
       <div id="lat" class="panel-body" style="text-align:center;"></div>
+      </td><td>
+      <div id="lon" class="panel-body" style="text-align:center;"></div>
       </td>
       </tr>
       </table>
     </div>
+		<div id="debug" class="panel panel-default" style="text-align:center;"></div>
     <!--
     <div id="centerB" onclick="window.centerCB()">
       <img class="controls_logo" src="/static/pacdev/img/pac_logo.png"/>
@@ -152,6 +190,7 @@ function init(e){
 
   </div>
 
+	<div id="gmap" class="fill" style="opacity:1.0"></div>
   <div id="mapdiv" class=""></div>
 
   <div id="popup" class="ol-popup">

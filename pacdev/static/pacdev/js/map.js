@@ -174,15 +174,21 @@ var Map=function(mapdiv){
 			format: new ol.format.GeoJSON()
 		});
 
-		var le_style=cfg['style'];
+		var le_style=null;
+		try{
+			le_style=cfg['style'];
+			console.log("le_style.length="+le_style.length);
+		}
+		catch(e){console.log(e);}
+
 		if(!le_style)
-			le_style=new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),});
+			le_style=[pac_style,hilite_style];//#83ad35
 //		console.log(le_style);
 		//if(key=="Guyana")le_style=guyana_style;
 
 		var polygon_layer= new ol.layer.Vector({
 			source: polygon_source,
-			style:le_style,
+			style:pac_style,
 		});
 		polygon_layer.set("title",window.DATA+cfg['src_url'])
 		var hilite=true;
@@ -390,12 +396,18 @@ var Map=function(mapdiv){
 		}
 		for(var hidx=0;hidx<me.HILIGHTS.length;hidx++){
 			//me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
-			me.HILIGHTS[hidx].setStyle(pac_style);
+			try{
+					console.log("trying to unhilite: "+me.HILIGHTS[hidx][1]);
+					me.HILIGHTS[hidx][0].setStyle(pac_style);
+			}
+			catch(e){console.log(e);}
+
 		}
 		me.overlay.setPosition(undefined);
 		me.popup_closer.blur();
-		me.HILIGHTS=[];
+//		me.HILIGHTS=[];
 		me.POINT_HILIGHTS=[];
+		console.log("unhilite done");
 	}
 
 	me.hilite=function(feature_name,layer){
@@ -423,8 +435,15 @@ var Map=function(mapdiv){
 			else{
 				//me.featureOverlay.addFeature(fs[fidx]);
 				//console.log("added to HILIGHTS: "+me.HILIGHTS.length);
-				fs[fidx].setStyle(hilite_style);
-				me.HILIGHTS.push(fs[fidx]);
+
+				try{
+					console.log("setting style="+layer.getStyle());
+					fs[fidx].setStyle(hilite_style);
+					me.HILIGHTS.push([fs[fidx],layer]);
+					console.log("added to HILITES");
+				}
+				catch(e){console.log(e);}
+
 				try{
 					var src=window.Cfg[feature_name]['photos'][0];
 
@@ -439,9 +458,11 @@ var Map=function(mapdiv){
 					center[1]+=dy;
 					center[0]+=dx;
 					me.overlay.setPosition(center);
-				}catch(e){;}
+				}catch(e){console.log(e);}
 			}
+			console.log("fidx="+fidx+"/"+fs.length+" done");
 		}
+		console.log("hilite done");
 	}
 
 
