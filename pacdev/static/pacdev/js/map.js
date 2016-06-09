@@ -389,7 +389,8 @@ var Map=function(mapdiv){
 			me.pointOverlay.removeFeature(me.POINT_HILIGHTS[hidx]);
 		}
 		for(var hidx=0;hidx<me.HILIGHTS.length;hidx++){
-			me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
+			//me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
+			me.HILIGHTS[hidx].setStyle(pac_style);
 		}
 		me.overlay.setPosition(undefined);
 		me.popup_closer.blur();
@@ -420,9 +421,10 @@ var Map=function(mapdiv){
 				break;
 			}
 			else{
-				me.featureOverlay.addFeature(fs[fidx]);
+				//me.featureOverlay.addFeature(fs[fidx]);
+				//console.log("added to HILIGHTS: "+me.HILIGHTS.length);
+				fs[fidx].setStyle(hilite_style);
 				me.HILIGHTS.push(fs[fidx]);
-				console.log("added to HILIGHTS: "+me.HILIGHTS.length);
 				try{
 					var src=window.Cfg[feature_name]['photos'][0];
 

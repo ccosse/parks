@@ -4,6 +4,12 @@ window.DATA="/static/pacdev/data/";
 window.DEBUG=true;
 window.view=null;
 window.rlist=null;
+var hilite_style=new ol.style.Style({
+	stroke: new ol.style.Stroke({
+		color: 'gold',
+		width: 2
+	})});
+var pac_style=new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),});
 var river_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'#11A1FF',width: 2}),fill: new ol.style.Fill({color:'#1111FF'})});
 var creek_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(100,200,255,0.5)',width: 2}),});
 var boundary2_style=new ol.style.Style({stroke: new ol.style.Stroke({color:'rgba(255,255,0,0.5)',width: 2}),});
@@ -113,7 +119,7 @@ var Config={
 			'photos':[window.STATIC+'img/urban_parks.jpg',],
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'layers':{
-				'keys':['botanical_satellite','national_satellite'],//'boundary','OpenStreetMap2',
+				'keys':['national_satellite','boundary'],//'boundary','OpenStreetMap2','botanical_satellite',
 				'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':0,'opacity':1.0},
 				'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 				'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
@@ -128,7 +134,7 @@ var Config={
 				'photos':[window.STATIC+'img/zoo_entrance.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['OpenStreetMap2','botanical_satellite','zoo_pois','zoo_trail',],//
+					'keys':['boundary','zoo_pois','zoo_trail',],//'OpenStreetMap2','botanical_satellite',
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'zoo_pois':{'type':'points','src_url':'urbanparks/zoo/zoo_pois.geojson'},
 					'zoo_trail':{'type':'line','src_url':'urbanparks/zoo/zoo_trail.geojson'},
@@ -145,7 +151,7 @@ var Config={
 				'photos':[window.STATIC+'img/botanical_aerial.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['OpenStreetMap2','botanical_satellite','botanical3d'],
+					'keys':['botanical_satellite','botanical3d'],//'OpenStreetMap2',
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/botanical/botanical_boundary.geojson',},
@@ -161,7 +167,7 @@ var Config={
 				'photos':[window.STATIC+'img/national_park.png',],
 				'keys':[],
 				'layers':{
-					'keys':['OpenStreetMap2','national_satellite',],
+					'keys':['national_satellite',],//'OpenStreetMap2',
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/national/national_boundary.geojson',},
@@ -176,7 +182,7 @@ var Config={
 				'photos':[window.STATIC+'img/joe_viera.png',],
 				'keys':[],
 				'layers':{
-					'keys':['OpenStreetMap2',],
+					'keys':[],//'OpenStreetMap2'
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'boundary':{'type':'polygon','src_url':'urbanparks/joeviera/joeviera_boundary.geojson',},
 				},
@@ -193,7 +199,7 @@ var Config={
 			'photos':[window.STATIC+'img/place.jpg'],
 			'keys':['Konashens','Iwokrama'],
 			'layers':{
-				'keys':['Satellite','guyana_boundary'],
+				'keys':['guyana_boundary'],//'Satellite',
 				'boundary':{'type':'polygon','src_url':'related_areas/related_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
 				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson','style':new ol.style.Style({stroke: new ol.style.Stroke({color: '#83ad35',width: 2}),fill: new ol.style.Fill({color: 'rgba(0,200,0,0.1)'}),}),},
@@ -207,7 +213,7 @@ var Config={
 				'photos':[window.STATIC+'img/place.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','konashens_satellite','creeks','rivers'],
+					'keys':['boundary','creeks','rivers'],//'guyana_pixelated','konashens_satellite',
 					'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style },
 					'konashens_satellite':{'type':'xyz','src_url':'related_areas/konashens/konashens_satellite/'},
@@ -224,7 +230,7 @@ var Config={
 				'photos':[window.STATIC+'/img/place.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['guyana_pixelated','boundary','creeks','rivers',],
+					'keys':['boundary','creeks','rivers',],//'guyana_pixelated',
 					'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style },
 					'soil':{'type':'xyz','src_url':'related_areas/iwokrama/soil/'},
