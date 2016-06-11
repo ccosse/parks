@@ -59,7 +59,7 @@ var Config={
 				'photos':[window.DATA+'hinterland_areas/kaieteur/img/kaieteur_falls.png',],
 				'keys':[],
 				'layers':{
-					'keys':['creeks','rivers','boundary2','falls3d','kaieteur_pois','kaieteur_orange','kaieteur_blue'],//'guyana_pixelated','satellite','trailmap',
+					'keys':['boundary2','creeks','rivers','falls3d','kaieteur_pois','kaieteur_orange','kaieteur_blue'],//'guyana_pixelated','satellite','trailmap',
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'kaieteur_pois':{'style':'red_flag','type':'points','src_url':'hinterland_areas/kaieteur/kaieteur_pois.geojson'},
 					'kaieteur_orange':{'style':'orange_flag','type':'points','src_url':'hinterland_areas/kaieteur/kaieteur_orange.geojson'},

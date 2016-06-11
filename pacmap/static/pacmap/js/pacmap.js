@@ -13,13 +13,13 @@ var PACMap=function(){
 	me.old_layers=null;
 
 	me.goto=function(path){
-
+		
 		window.map.unhilite(null);
 
 		if($("#controls").hasClass("portrait")){
 			$("#controls").addClass("vhide");
 		}
-		console.log("later will remove: "+me.layers['keys'].length);
+
 		me.old_layers=me.layers;
 		console.log("removing last layer set: "+me.old_layers['keys'].length);
 		while(me.old_layers['keys'].length>0){
@@ -54,8 +54,11 @@ var PACMap=function(){
 			console.log("sidx="+sidx+" skey="+skey);
 			window.Cfg=window.Cfg[skey];
 		}
-		console.log("PATH:"+window.Cfg['path']);
-
+/*
+		console.log("ALWAYS CURRENT BOUNDARY:"+window.Cfg['path']);
+		me.layers['keys'].push(window.Cfg['path']);
+		me.layers[window.Cfg['path']]=window.map.add_polygon_layer(window.Cfg['layers']['boundary']);
+*/
 		pan_zoom(window.Cfg['center'],window.Cfg['bbox']);
 
 		document.getElementById('img_controls_top').src=window.Cfg['photos'][0];
@@ -146,11 +149,13 @@ var PACMap=function(){
 				me.goto(path+'.'+e.target.id);
 			});
 
+
 			//add boundary layer, mouseover button, mouseover feature
-			console.log("adding layer: "+key);
+			console.log("HARD-CODED ADD BOUNDARY: "+key);
 			me.layers['keys'].push(key);
 			me.layers[key]=window.map.add_polygon_layer(window.Cfg[key]['layers']['boundary']);
-			console.log(me.layers[key].get('layer_type'));
+			console.log(me.layers[key].getSource().getFeatures());
+
 
 			s.addEventListener('mouseout',function(e){
 				console.log("mouseout");
@@ -165,7 +170,6 @@ var PACMap=function(){
 					console.log(key+": "+me.layers[key]);
 				}
 				console.log("e.target.id: "+e.target.id);
-				console.log(me.layers[e.target.id].get("layer_type"));
 				window.map.hilite(e.target.id,me.layers[e.target.id]);
 			});
 
@@ -180,10 +184,9 @@ var PACMap=function(){
 				var obj=window.Cfg['layers'][xkey];
 				if(false){;}
 				else if(obj.type=='base'){
-					me.layers['keys'].push(obj['name']);
-					var base_layer=window.map.add_base_layer(obj);
-					me.layers[xkey]=base_layer;
-					console.log("pacmap received base: "+base_layer);
+						me.layers['keys'].push(obj['name']);
+						var base_layer=window.map.add_base_layer(obj);
+						me.layers[xkey]=base_layer;
 				}
 				else if(obj.type=='xyz'){
 						var key=window.DATA+obj['src_url'];
@@ -205,6 +208,12 @@ var PACMap=function(){
 						var key=window.DATA+obj['src_url'];
 						me.layers['keys'].push(key);
 						me.layers[key]=window.map.add_point_layer(obj);
+				}
+				else if(obj.type=='gpx'){
+						console.log("GPX GPX GPX");
+						var key=window.DATA+obj['src_url'];
+						me.layers['keys'].push(key);
+						me.layers[key]=window.map.add_gpx_layer(obj);
 				}
 			}
 
