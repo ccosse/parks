@@ -6,6 +6,7 @@ var Map=function(mapdiv){
 
 	me.HILIGHTS=[];
 	me.POINT_HILIGHTS=[];
+	me.hiliteMgr=null;
 
 	me.xpopup = document.getElementById('xpopup');
 	console.log('xpopup found by map.js');
@@ -22,30 +23,6 @@ var Map=function(mapdiv){
 	}
 	catch(e){console.log(e);}
 
-	me.pointOverlay = new ol.FeatureOverlay({
-		map: me.map,
-		style: new ol.style.Style({
-		image:new ol.style.Circle({
-			radius:7,
-			stroke: new ol.style.Stroke({
-				color: 'rgba(0,0,255,1)',
-				width:2
-			}),
-			fill: new ol.style.Fill({
-				color: 'rgba(0,255,0,1)',
-			}),
-			})
-		}),
-	});
-	me.featureOverlay = new ol.FeatureOverlay({
-		map: me.map,
-		style: new ol.style.Style({
-			stroke: new ol.style.Stroke({
-				color: 'gold',
-				width: 2
-			}),
-		}),
-	});
 	me.overlay = new ol.Overlay({
 		element: document.getElementById('popup'),
 		autoPan: false,
@@ -59,32 +36,37 @@ var Map=function(mapdiv){
 		return false;
 	};
 
-	var point_style=new ol.style.Style({
-	image:new ol.style.Circle({
-		radius:7,
-		stroke: new ol.style.Stroke({
-			color: 'rgba(0,255,0,1)',
-			width:2
-		}),
-		fill: new ol.style.Fill({
-			color: 'rgba(0,0,255,1)',
-		}),
-	})
-});
 
 	me.add_point_layer=function(cfg){
 		var point_source=new ol.source.Vector({
 			url: window.DATA+cfg['src_url'],
 			format: new ol.format.GeoJSON(),
 		});
+
+		var le_style=point_style;
+		if(cfg['style']=='red_flag')
+			le_style=red_flag;
+		else if(cfg['style']=='green_flag')
+			le_style=green_flag;
+		else if(cfg['style']=='blue_flag')
+			le_style=blue_flag;
+		else if(cfg['style']=='orange_flag')
+			le_style=orange_flag;
+		else {
+				le_style=point_style;
+				cfg['style']='point_style';
+		}
 		var point_layer= new ol.layer.Vector({
 			source: point_source,
-			style:point_style
+			style:le_style
 		});
+
 		point_layer.set("title",window.DATA+cfg['src_url']);
 		point_layer.set("hilite",true);
+		point_layer.set("style",cfg['style']);//maintain as string so can decide which overlay list to remove from! (the whole point of carrying a string along)
 
 		me.map.addLayer(point_layer);
+
 		return point_layer;
 	}
 	me.add_xyz_layer=function(cfg){
@@ -167,6 +149,22 @@ var Map=function(mapdiv){
 		me.map.addLayer(line_layer);
 		return line_layer;
 	}
+	me.add_gpx_layer=function(cfg){
+		var gpx_source=new ol.source.Vector({
+			url:window.DATA+cfg['src_url'],
+			format: new ol.format.GPX()
+		});
+		var gpx_layer= new ol.layer.Vector({
+			source: gpx_source,
+			style:gpx_style,
+		});
+		gpx_layer.set("type","gpx");
+		gpx_layer.set("title",window.DATA+cfg['src_url']);
+		gpx_layer.set("hilite",true);
+		me.map.addLayer(gpx_layer);
+		return gpx_layer;
+	}
+
 	me.add_polygon_layer=function(cfg){
 		console.log("map.add_polygon_layer: "+window.DATA+cfg['src_url']);
 		var polygon_source=new ol.source.Vector({
@@ -174,27 +172,22 @@ var Map=function(mapdiv){
 			format: new ol.format.GeoJSON()
 		});
 
-		var le_style=null;
-		try{
-			le_style=cfg['style'];
-			console.log("le_style.length="+le_style.length);
-		}
-		catch(e){console.log(e);}
+		var le_style=cfg['style'];
+		if(le_style)console.log(le_style);
+		else{console.log("le_style not defined in this cfg");}
 
 		if(!le_style)
-			le_style=[pac_style,hilite_style];//#83ad35
-//		console.log(le_style);
-		//if(key=="Guyana")le_style=guyana_style;
+			le_style=clear_pac;//#83ad35
 
 		var polygon_layer= new ol.layer.Vector({
 			source: polygon_source,
-			style:pac_style,
+			style:le_style,
 		});
 		polygon_layer.set("title",window.DATA+cfg['src_url'])
 		var hilite=true;
 		try{hilite=cfg['hilite'];}
 		catch(e){hilite=true;}
-		console.log("hilite="+hilite);
+		console.log("allow hilite="+hilite);
 		polygon_layer.set("hilite",hilite);
 
 		me.map.addLayer(polygon_layer);
@@ -215,12 +208,12 @@ var Map=function(mapdiv){
 		center:ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"),
 	});
 	window.view.on('change:center', function(evt) {
-		console.log("GMAP setCenter: "+evt.type);
+		//console.log("GMAP setCenter: "+evt.type);
 	  var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
 		me.gmap.panTo(new google.maps.LatLng(center[1], center[0]));
 	});
 	window.view.on('change:resolution', function(evt) {
-		console.log("GMAP setZoom: "+evt.type);
+		//console.log("GMAP setZoom: "+evt.type);
 		me.gmap.setZoom(window.view.getZoom());
 	});
 
@@ -237,14 +230,30 @@ var Map=function(mapdiv){
 			rotate: false
 		}).extend([new ol.interaction.DragPan({kinetic: null})]),
 	});
+	me.pointOverlay = new ol.FeatureOverlay({
+		map: me.map,
+		style: red_flag_hilite,
+	});
+	me.featureOverlay = new ol.FeatureOverlay({
+		map: me.map,
+		style: hilite_style,
+	});
+	me.hiliteMgr={
+		'keys':['red_flag','green_flag','blue_flag','orange_flag','point_style'],
+		'red_flag':new ol.FeatureOverlay({map:me.map,style:red_flag_hilite,}),
+		'green_flag':new ol.FeatureOverlay({map:me.map,style:green_flag_hilite,}),
+		'blue_flag':new ol.FeatureOverlay({map:me.map,style:blue_flag_hilite,}),
+		'orange_flag':new ol.FeatureOverlay({map:me.map,style:orange_flag_hilite,}),
+		'point_style':new ol.FeatureOverlay({map:me.map,style:point_hilite,}),
+	};
 	me.map.on('postrender',function(evt){
-		console.log('postrender: '+evt.type);
+		//console.log('postrender: '+evt.type);
 		var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
 		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
 		me.gmap.setZoom(window.view.getZoom());
 	});
 	me.map.on('moveend',function(evt){
-		console.log("moveend: "+evt.type);
+		//console.log("moveend: "+evt.type);
 		var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
 		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
 		me.gmap.setZoom(window.view.getZoom());
@@ -323,7 +332,6 @@ var Map=function(mapdiv){
 			}
 		}
 	});
-
 	me.map.on('pointermove',function(evt){
 
 		var latpanel=document.getElementById("lat");
@@ -391,23 +399,35 @@ var Map=function(mapdiv){
 
 
 	me.unhilite=function(e){
-		for(var hidx=0;hidx<me.POINT_HILIGHTS.length;hidx++){
-			me.pointOverlay.removeFeature(me.POINT_HILIGHTS[hidx]);
-		}
-		for(var hidx=0;hidx<me.HILIGHTS.length;hidx++){
-			//me.featureOverlay.removeFeature(me.HILIGHTS[hidx]);
-			try{
-					console.log("trying to unhilite: "+me.HILIGHTS[hidx][1]);
-					me.HILIGHTS[hidx][0].setStyle(pac_style);
-			}
-			catch(e){console.log(e);}
 
+		if(me.POINT_HILIGHTS.length||me.HILIGHTS.length)
+			console.log("map.unhilite removing "+me.POINT_HILIGHTS.length+" points, "+me.HILIGHTS.length+" features");
+
+		var x=null;
+		for(var kidx=0;kidx<me.hiliteMgr['keys'].length;kidx++){
+			var key=me.hiliteMgr['keys'][kidx];
+			me.hiliteMgr[key].getFeatures().clear();
 		}
+		while(me.POINT_HILIGHTS.length>0){
+			x=me.POINT_HILIGHTS.pop();
+			me.pointOverlay.removeFeature(x);
+		}
+
+		while(me.HILIGHTS.length>0){
+			try{
+					x=me.HILIGHTS.pop();
+					me.featureOverlay.removeFeature(x);
+					console.log("trying to unhilite: "+x[1]);
+					//x.setStyle(pac_style);
+			}
+			catch(e){"ERROR WHILE HILITING: "+console.log(e);}
+		}
+
 		me.overlay.setPosition(undefined);
 		me.popup_closer.blur();
-//		me.HILIGHTS=[];
-		me.POINT_HILIGHTS=[];
-		console.log("unhilite done");
+		//me.HILIGHTS=[];
+		//me.POINT_HILIGHTS=[];
+		console.log("unhilite done: "+me.POINT_HILIGHTS.length+", "+me.HILIGHTS.length);
 	}
 
 	me.hilite=function(feature_name,layer){
@@ -419,8 +439,10 @@ var Map=function(mapdiv){
 			var ftype=fs[fidx].get("feature_type");
 
 			if(ftype=="youtube"||ftype=="Launch3D"||ftype=="poi"){
-				me.pointOverlay.addFeature(fs[fidx]);
-				me.POINT_HILIGHTS.push(fs[fidx]);
+				var le_style=layer.get("style");
+				me.hiliteMgr[le_style].addFeature(fs[fidx]);
+				//me.pointOverlay.addFeature(fs[fidx]);
+				//me.POINT_HILIGHTS.push(fs[fidx]);
 				me.xpopup.innerHTML = '<p>'+feature_name+'</p>';
 				me.xpopup.innerHTML+=fs[fidx].get("media_html");
 				var center=ol.proj.transform(fs[fidx].get("coordinates"),"EPSG:4326","EPSG:3857");
@@ -433,16 +455,15 @@ var Map=function(mapdiv){
 				break;
 			}
 			else{
-				//me.featureOverlay.addFeature(fs[fidx]);
-				//console.log("added to HILIGHTS: "+me.HILIGHTS.length);
-
 				try{
-					console.log("setting style="+layer.getStyle());
-					fs[fidx].setStyle(hilite_style);
-					me.HILIGHTS.push([fs[fidx],layer]);
-					console.log("added to HILITES");
+					me.featureOverlay.addFeature(fs[fidx]);
+					me.HILIGHTS.push(fs[fidx]);
+					console.log("added to HILIGHTS");
 				}
-				catch(e){console.log(e);}
+				catch(e){
+						console.log(window.Cfg['path']);
+						console.log("feature_name="+feature_name);console.log(e);
+					}
 
 				try{
 					var src=window.Cfg[feature_name]['photos'][0];
@@ -458,7 +479,9 @@ var Map=function(mapdiv){
 					center[1]+=dy;
 					center[0]+=dx;
 					me.overlay.setPosition(center);
-				}catch(e){console.log(e);}
+				}catch(e){
+					console.log(window.Cfg['path']);
+					console.log("feature_name="+feature_name);console.log(e);}
 			}
 			console.log("fidx="+fidx+"/"+fs.length+" done");
 		}

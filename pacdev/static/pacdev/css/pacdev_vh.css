@@ -283,3 +283,7 @@ td{
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+.checkbox{
+  width:24px;
+  height:24px;
+}

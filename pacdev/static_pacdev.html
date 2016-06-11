@@ -125,8 +125,9 @@ window.counter=0;
 		for(var z=0;z<22;z++){
 			console.log(z+" "+window.rlist[z]);
 		}
-
+		
 		window.pacmap.goto('Protected Areas Commission');
+
 /*
 		console.log("window.view.getZoom()="+window.view.getZoom());
 		window.view.setZoom(7);
@@ -240,13 +241,15 @@ window.counter=0;
     </div>
 
     <div id="div_controls_top" >
-      <img id='img_controls_top' src="/static/pacdev/img/pac_hq.jpg" class="img-responsive w100"/>
+      <img id='img_controls_top' src="/static/pacdev/data/guyana/img/pac_hq.jpg" class="img-responsive w100"/>
       <img class="controls_logo" src="/static/pacdev/img/pac_logo.png"/>
       <div id='title_controls_top'>Protected Areas Commission</div>
     </div>
 
     <div class="panel panel-default">
       <div id="panel_controls_top" class="panel-body center"></div>
+			<div id="toggles"><span>Rivers</span><img class="checkbox" src="/static/pacdev/img/checkbox-1.png"/></div>
+			<div id="toggles2"><span class="label label-default">Icons</span><img class="checkbox" src="/static/pacdev/img/checkbox-0.png"/></div>
     </div>
 
     <div class="panel panel-default" style="text-align:center;">
