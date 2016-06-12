@@ -6,6 +6,7 @@ from django.views.decorators.http import require_http_methods
 from django import forms
 
 import logging, xmlrpclib, json, time, os, string
+
 from pacmap.models import *
 
 FORMAT = '%(asctime)-15s %(message)s'
@@ -24,6 +25,24 @@ def home(request):
 
 	return render_to_response(
 		'pacmap.html',
+		{
+			'title'	: 'PAC',
+			'pois'	: pois
+		},
+		context_instance = RequestContext(request)
+	)
+def dev(request):
+	logging.debug('pacmap.home')
+	if request.method == 'POST':
+		pois 	= POI.objects.all()
+		#x 	= pois.get(name='Georgetown')
+		#x.lat	= request.POST.get('lat')
+		#x.save()
+
+	pois	= POI.objects.all().values();
+
+	return render_to_response(
+		'pacmapdev.html',
 		{
 			'title'	: 'PAC',
 			'pois'	: pois
@@ -59,9 +78,15 @@ def editor(request):
 
 def hinterland(request):
 	logging.debug('pacmap.hinterland')
+
+	pa_path = os.path.basename(request.path[:-1])
+	pa = TestArticle.objects.filter(name=pa_path)
+
 	return render_to_response(
 		'hinterland.html',{
-			'title':'Hinterland Parks, Protected Areas Commission, Guyana'
+			'title':'Hinterland Parks, Protected Areas Commission, Guyana',
+			'pa_path': pa_path, 
+			'content': pa.get().content
 		},
 		context_instance = RequestContext(request)
 	)

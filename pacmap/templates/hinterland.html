@@ -2,9 +2,14 @@
 
 {% block extra_javascript_include %}
 	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacmap.css">
+	<script src="/static/pacmap/js/util.js">
 {% endblock %}
 
-{% block js %}
+{% block extra_javascript %}
+var init = function(){
+	var blob = decode("{{ content }}");
+	console.log(blob);
+}
 {% endblock %}
 
 
@@ -22,6 +27,8 @@
       Protected Areas Commission
     </p>
   </div>
+<h1> {{ pa_path }}</h1>
+<h3> {{ content }}</h3>
 </div>
 </div>
 {% endblock %}

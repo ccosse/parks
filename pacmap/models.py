@@ -4,7 +4,11 @@ import os
 from tinymce.models import HTMLField
 
 class TestArticle(models.Model):
+	name	= models.CharField(default='Untitled',max_length=32,blank=False)
 	content = HTMLField()
+
+	def __unicode__(self):
+		return self.name
 
 class POI(models.Model):
 	name= models.CharField(max_length=60,blank=False)

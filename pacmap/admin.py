@@ -10,8 +10,8 @@ from pacmap.models import TestArticle
 from tinymce.widgets import TinyMCE
 
 class TestArticleAdmin(admin.ModelAdmin):
-        list_display		= ('content',)
-    	list_display_links	= ('content',)
+        list_display		= ('name','content',)
+    	list_display_links	= ('name',)
 
 admin.site.register(TestArticle, TestArticleAdmin)
 
