@@ -4,6 +4,7 @@ window.DEBUG=true;
 window.view=null;
 window.rlist=null;
 
+var amer_style=new ol.style.Style({stroke: new ol.style.Stroke({color: 'rgba(246,14,255,0.8)',width: 2}),fill: new ol.style.Fill({color: 'rgba(17,227,236,.2)'}),});
 var gpx_style=new ol.style.Style({stroke: new ol.style.Stroke({color: '#FF0000',width: 4}),});
 var clear_hilite=new ol.style.Style({stroke: new ol.style.Stroke({color: 'red',width: 2}),});
 var clear_pac=new ol.style.Style({stroke: new ol.style.Stroke({color: '#FFad35',width: 2}),});
@@ -32,16 +33,36 @@ var Config={
 		'center':[-58.9,4.81],
 		'bbox':[-61.5,1.1,-56.3,8.7],
 		'photos':[window.DATA+'guyana/img/pac_hq.jpg',],
-		'keys':['Urban Parks','Hinterland Parks','Related Areas'],//
+		'keys':['Urban Parks','Hinterland Parks','Related Areas','More'],//
 		'layers':{
-			'keys':['boundary',],//'boundary','creeks','rivers','towns','roads'
+			'keys':['boundary',],//'boundary','creeks','rivers','towns','roads','amer','rivers'
 			'boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},
 			'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 			'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},
-			'towns':{'hilite':false,'type':'points','src_url':'guyana/gy_towns.geojson','style':'green_flag'},
-			'roads':{'hilite':false,'type':'polygon','src_url':'guyana/gy_roads.geojson','style':road_style},
-			'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style},
-			'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style},
+		},
+		'More':{
+			'html':"Guyana",
+			'path':'Protected Areas Commission.More',
+			'center':[-58.9,4.81],
+			'bbox':[-61.5,1.1,-56.3,8.7],
+			'photos':[window.STATIC+'img/place.jpg',],
+			'keys':[],
+			'layers':{
+				'keys':['guyana_boundary','hinterland','related','amer','roads','rivers','creeks','amertowns','towns','paflags','waterfalls'],//'Satellite',
+				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
+				'boundary':{'type':'polygon','src_url':'guyana/guyana_boundary.geojson'},//
+				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},
+				'towns':{'hilite':false,'type':'points','src_url':'guyana/gy_towns.geojson','style':'red_flag'},
+				'amertowns':{'hilite':false,'type':'points','src_url':'guyana/gy_amertowns.geojson','style':'green_flag'},
+				'roads':{'hilite':false,'type':'polygon','src_url':'guyana/gy_roads.geojson','style':road_style},
+				'rivers':{'hilite':false,'type':'polygon','src_url':'guyana/gy_rivers.geojson','style':river_style},
+				'creeks':{'hilite':false,'type':'polygon','src_url':'guyana/gy_creeks.geojson','style':creek_style},
+				'amer':{'hilite':false,'type':'polygon','src_url':'guyana/gy_amerindian.geojson','style':amer_style},
+				'paflags':{'hilite':false,'type':'points','src_url':'guyana/gy_paflags.geojson','style':'orange_flag'},
+				'waterfalls':{'hilite':false,'type':'points','src_url':'guyana/gy_waterfalls.geojson','style':'blue_flag'},
+				'hinterland':{'type':'polygon','src_url':'hinterland_areas/hinterland_boundaries.geojson','style':clear_pac,},
+				'related':{'hilite':false,'style':clear_pac,'type':'polygon','src_url':'related_areas/related_boundary.geojson',},
+			},//no keys
 		},
 		'Hinterland Parks':{
 			'html':"Hinterland Parks",
