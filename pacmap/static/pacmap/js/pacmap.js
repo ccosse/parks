@@ -13,7 +13,7 @@ var PACMap=function(){
 	me.old_layers=null;
 
 	me.goto=function(path){
-		
+
 		window.map.unhilite(null);
 
 		if($("#controls").hasClass("portrait")){
@@ -176,6 +176,7 @@ var PACMap=function(){
 			//remove parent layer assets now for smooth removal
 			//also remove points now
 		}
+
 		try{
 
 			console.log("adding layers");
@@ -195,8 +196,8 @@ var PACMap=function(){
 				}
 				else if(obj.type=='polygon'){
 						var key=window.DATA+obj['src_url'];
-						me.layers['keys'].push(key);
-						me.layers[key]=window.map.add_polygon_layer(obj);
+						me.layers['keys'].push(xkey);
+						me.layers[xkey]=window.map.add_polygon_layer(obj);
 				}
 				else if(obj.type=='line'){
 						console.log("loading line layer");
@@ -223,10 +224,53 @@ var PACMap=function(){
 			window.map.map.getLayers().forEach(function(a,b,c){
 				console.log(b+": "+a.get("title"));
 			});
+
+			//Toggles:
+			var tt=document.createElement("table");
+			tt.className="toggle_table";
+			tt.align="center";
+			tt.cellpadding="10";
+			p.appendChild(tt);
+			var r1=tt.insertRow(-1);
+
+			var toggles=window.Cfg['layers']['toggles'];
+			for(var tidx=0;tidx<toggles.length;tidx++){
+				console.log("TOGGLE "+toggles[tidx]['title']+": "+toggles[tidx]['layers']);
+				var b=document.createElement("input");
+				b.type="checkbox";
+				b.title=toggles[tidx]['title'];
+				b.checked=true;
+				var pyld=document.createElement("input");
+				pyld.type="hidden";
+				pyld.value=toggles[tidx]['layers'];
+				b.appendChild(pyld);
+				var c=r1.insertCell(-1);
+				c.appendChild(b);
+				b.addEventListener("click",me.toggleCB);
+			}
+
+
+
+
 		}catch(e){console.log(e);}
 
 		$('[data-toggle="tooltip"]').tooltip();
 
+	}
+	me.toggleCB=function(e){
+		console.log(me.layers['keys']);
+		console.log(e.target.firstChild.value);
+		var layers=e.target.firstChild.value.split(",");
+		for(var lidx=0;lidx<layers.length;lidx++){
+			console.log(lidx+": "+layers[lidx]+" "+me.layers[layers[lidx]]);
+			if(e.target.checked){
+				me.layers[layers[lidx]].setOpacity(1);
+			}
+			else{
+				me.layers[layers[lidx]].setOpacity(0);
+			}
+
+		}
 	}
 	return me;
 }

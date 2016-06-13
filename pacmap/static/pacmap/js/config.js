@@ -36,6 +36,7 @@ var Config={
 		'keys':['Urban Parks','Hinterland Parks','Related Areas','More'],//
 		'layers':{
 			'keys':['boundary',],//'boundary','creeks','rivers','towns','roads','amer','rivers'
+			'toggles':[],
 			'boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},
 			'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 			'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},
@@ -49,6 +50,7 @@ var Config={
 			'keys':[],
 			'layers':{
 				'keys':['guyana_boundary','hinterland','related','amer','roads','rivers','creeks','amertowns','towns','paflags','waterfalls'],//'Satellite',
+				'toggles':[],
 				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 				'boundary':{'type':'polygon','src_url':'guyana/guyana_boundary.geojson'},//
 				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},
@@ -73,6 +75,7 @@ var Config={
 			'keys':['Kaieteur National Park','Shell Beach','Kanuku Mountains'],
 			'layers':{
 				'keys':['guyana_boundary'],//'Satellite',
+				'toggles':[],
 				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
 				'boundary':{'type':'polygon','src_url':'hinterland_areas/hinterland_boundaries.geojson','style':pac_style,},//
 				'guyana_boundary':{'hilite':false,'type':'polygon','src_url':'guyana/guyana_boundary.geojson',},
@@ -86,6 +89,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['creeks','rivers','boundary2','falls3d','kaieteur_pois','kaieteur_orange','kaieteur_blue'],//'guyana_pixelated','satellite','trailmap',
+					'toggles':[],
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'kaieteur_pois':{'style':'red_flag','type':'points','src_url':'hinterland_areas/kaieteur/kaieteur_pois.geojson'},
 					'kaieteur_orange':{'style':'orange_flag','type':'points','src_url':'hinterland_areas/kaieteur/kaieteur_orange.geojson'},
@@ -108,6 +112,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['boundary2','creeks','rivers','panorama1','panorama2','sinewave'],//'boundary','guyana_pixelated','shellbeach_satellite',
+					'toggles':[],
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'rivers':{'hilite':false,'type':'polygon','src_url':'hinterland_areas/shellbeach/shellbeach_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'hinterland_areas/shellbeach/shellbeach_creeks.geojson','style':creek_style },
@@ -128,6 +133,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['boundary2','creeks','rivers','kanuku_panorama','rupununi_panorama'],//'guyana_pixelated','kanuku_satellite',
+					'toggles':[],
 					'guyana_pixelated':{'type':'xyz','src_url':'guyana/guyana_pixelated/','layeridx':0,},
 					'rivers':{'hilite':false,'type':'polygon','src_url':'hinterland_areas/kanuku/kanuku_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'hinterland_areas/kanuku/kanuku_creeks.geojson','style':creek_style },
@@ -148,6 +154,7 @@ var Config={
 			'keys':['Guyana Zoo','Botanical Gardens','National Park','Joe Viera Park'],
 			'layers':{
 				'keys':['boundary2',],//'boundary','OpenStreetMap2','botanical_satellite',
+				'toggles':[],
 				'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':0,'opacity':1.0},
 				'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 				'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
@@ -164,6 +171,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['boundary2','zoo_pois','zoo_trail',],//'OpenStreetMap2','botanical_satellite',
+					'toggles':[],
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'zoo_pois':{'style':'green_flag','type':'points','src_url':'urbanparks/zoo/zoo_pois.geojson'},
 					'zoo_trail':{'type':'line','src_url':'urbanparks/zoo/zoo_trail.geojson'},
@@ -181,6 +189,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['boundary2','botanical_satellite','botanical3d'],//'OpenStreetMap2',
+					'toggles':[],
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/botanical/botanical_boundary.geojson','style':pac_style,},
@@ -197,6 +206,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['national_satellite','boundary2','track'],//'OpenStreetMap2',
+					'toggles':[],
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'track':{'type':'gpx','src_url':'urbanparks/national/national_track.gpx'},
 					'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},
@@ -213,6 +223,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['boundary2'],//'OpenStreetMap2'
+					'toggles':[],
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'boundary':{'type':'polygon','src_url':'urbanparks/joeviera/joeviera_boundary.geojson','style':pac_style,},
 					'boundary2':{'hilite':false,'style':clear_pac,'type':'polygon','src_url':'urbanparks/joeviera/joeviera_boundary.geojson',},
@@ -229,6 +240,7 @@ var Config={
 			'keys':['Konashens','Iwokrama'],
 			'layers':{
 				'keys':['boundary2','guyana_boundary'],//'Satellite',
+				'toggles':[],
 				'boundary':{'type':'polygon','src_url':'related_areas/related_boundary.geojson','style':pac_style,},
 				'boundary2':{'hilite':false,'style':clear_pac,'type':'polygon','src_url':'related_areas/related_boundary.geojson',},
 				'Satellite':{'type':'base','name':'Satellite','layeridx':0,'opacity':0.8},
@@ -243,6 +255,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['boundary2','creeks','rivers'],//'guyana_pixelated','konashens_satellite',
+					'toggles':[],
 					'rivers':{'hilite':false,'type':'polygon','src_url':'related_areas/konashens/konashens_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'related_areas/konashens/konashens_creeks.geojson','style':creek_style },
 					'konashens_satellite':{'type':'xyz','src_url':'related_areas/konashens/konashens_satellite/'},
@@ -260,6 +273,7 @@ var Config={
 				'keys':[],
 				'layers':{
 					'keys':['boundary2','creeks','rivers',],//'guyana_pixelated',
+					'toggles':[{'title':'Rivers','layers':['creeks','rivers']},{'title':'Boundary','layers':['boundary2']}],
 					'rivers':{'hilite':false,'type':'polygon','src_url':'related_areas/iwokrama/iwokrama_rivers.geojson','style':river_style },
 					'creeks':{'hilite':false,'type':'polygon','src_url':'related_areas/iwokrama/iwokrama_creeks.geojson','style':creek_style },
 					'soil':{'type':'xyz','src_url':'related_areas/iwokrama/soil/'},
