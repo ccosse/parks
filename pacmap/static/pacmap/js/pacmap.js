@@ -191,8 +191,8 @@ var PACMap=function(){
 				}
 				else if(obj.type=='xyz'){
 						var key=window.DATA+obj['src_url'];
-						me.layers['keys'].push(key);
-						me.layers[key]=window.map.add_xyz_layer(obj);
+						me.layers['keys'].push(xkey);
+						me.layers[xkey]=window.map.add_xyz_layer(obj);
 				}
 				else if(obj.type=='polygon'){
 						var key=window.DATA+obj['src_url'];
@@ -202,19 +202,19 @@ var PACMap=function(){
 				else if(obj.type=='line'){
 						console.log("loading line layer");
 						var key=window.DATA+obj['src_url'];
-						me.layers['keys'].push(key);
-						me.layers[key]=window.map.add_line_layer(obj);
+						me.layers['keys'].push(xkey);
+						me.layers[xkey]=window.map.add_line_layer(obj);
 				}
 				else if(obj.type=='points'){
 						var key=window.DATA+obj['src_url'];
-						me.layers['keys'].push(key);
-						me.layers[key]=window.map.add_point_layer(obj);
+						me.layers['keys'].push(xkey);
+						me.layers[xkey]=window.map.add_point_layer(obj);
 				}
 				else if(obj.type=='gpx'){
 						console.log("GPX GPX GPX");
 						var key=window.DATA+obj['src_url'];
-						me.layers['keys'].push(key);
-						me.layers[key]=window.map.add_gpx_layer(obj);
+						me.layers['keys'].push(xkey);
+						me.layers[xkey]=window.map.add_gpx_layer(obj);
 				}
 			}
 
@@ -240,17 +240,20 @@ var PACMap=function(){
 				b.type="checkbox";
 				b.title=toggles[tidx]['title'];
 				b.checked=true;
+
+				var img=new Image();
+				img.src=window.STATIC+"img/checkbox-1.png";
+				img.title=toggles[tidx]['title'];
+				img.className="checkbox";
+				img.value=true;
 				var pyld=document.createElement("input");
 				pyld.type="hidden";
 				pyld.value=toggles[tidx]['layers'];
-				b.appendChild(pyld);
+				img.appendChild(pyld);
 				var c=r1.insertCell(-1);
-				c.appendChild(b);
-				b.addEventListener("click",me.toggleCB);
+				c.appendChild(img);
+				img.addEventListener("click",me.toggleCB);
 			}
-
-
-
 
 		}catch(e){console.log(e);}
 
@@ -258,19 +261,31 @@ var PACMap=function(){
 
 	}
 	me.toggleCB=function(e){
+
 		console.log(me.layers['keys']);
 		console.log(e.target.firstChild.value);
+
 		var layers=e.target.firstChild.value.split(",");
 		for(var lidx=0;lidx<layers.length;lidx++){
 			console.log(lidx+": "+layers[lidx]+" "+me.layers[layers[lidx]]);
-			if(e.target.checked){
-				me.layers[layers[lidx]].setOpacity(1);
-			}
-			else{
+
+			if(e.target.value==true){
 				me.layers[layers[lidx]].setOpacity(0);
 			}
-
+			else{
+				me.layers[layers[lidx]].setOpacity(1);
+			}
 		}
+
+		if(e.target.value==true){
+			e.target.src=window.STATIC+"img/checkbox-0.png";
+			e.target.value=false;
+		}
+		else{
+			e.target.src=window.STATIC+"img/checkbox-1.png";
+			e.target.value=true;
+		}
+
 	}
 	return me;
 }
