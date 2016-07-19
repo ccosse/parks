@@ -1,4 +1,4 @@
 # parks
 
-<img src='061316b.png'/>
-<img src='061316a.png'/>
+<img src='pacmap/static/pacmap/screenshots/061316b.png'/>
+<img src='pacmap/static/pacmap/screenshots/061316a.png'/>
