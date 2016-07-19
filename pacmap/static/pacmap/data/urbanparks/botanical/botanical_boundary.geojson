@@ -1,0 +1,5 @@
+{"crs": {"type": "EPSG", "properties": {"code": "4326"}}, "totalFeatures": 1, "type": "FeatureCollection",
+	"features": [
+		{"geometry": {"type": "MultiPolygon", "coordinates": [[[[-58.1508,6.8018],[-58.1508,6.8094],[-58.1374,6.8094],[-58.1374,6.8018],[-58.1508,6.8018]]]]}, "properties": {"Shape_Area": 3498362680.92, "OBJECTID_1": 2, "Name": "Botanical Gardens", "OBJECTID": 2, "Region": 8, "Hectares": 349836.268092, "coords": [[[[-58.1512,6.8018],[-58.1512,6.8094],[-58.1374,6.8094],[-58.1374,6.8018],[-58.1512,6.8018]]]], "Shape_Leng": 465936.313051}, "type": "Feature", "id": "guyana_protected_areas.6", "geometry_name": "the_geom"}
+	]
+}

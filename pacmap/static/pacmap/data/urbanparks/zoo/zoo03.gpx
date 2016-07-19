@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<gpx version="1.0" creator="Ultra GPS Logger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/0" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+<trk>
+<name><![CDATA[GY-zoo03]]></name>
+<trkseg>
+<trkpt lat="6.807523" lon="-58.147831"><ele>-27.00</ele><time>2016-06-13T19:58:24Z</time></trkpt>
+<trkpt lat="6.807474" lon="-58.147829"><ele>-28.00</ele><time>2016-06-13T19:58:32Z</time></trkpt>
+<trkpt lat="6.807424" lon="-58.147824"><ele>-30.00</ele><time>2016-06-13T19:58:36Z</time></trkpt>
+<trkpt lat="6.807386" lon="-58.147790"><ele>-31.00</ele><time>2016-06-13T19:58:42Z</time></trkpt>
+<trkpt lat="6.807359" lon="-58.147754"><ele>-31.00</ele><time>2016-06-13T19:58:51Z</time></trkpt>
+<trkpt lat="6.807307" lon="-58.147731"><ele>-31.00</ele><time>2016-06-13T19:58:55Z</time></trkpt>
+<trkpt lat="6.807250" lon="-58.147726"><ele>-30.00</ele><time>2016-06-13T19:58:59Z</time></trkpt>
+<trkpt lat="6.807196" lon="-58.147735"><ele>-29.00</ele><time>2016-06-13T19:59:03Z</time></trkpt>
+<trkpt lat="6.807140" lon="-58.147757"><ele>-28.00</ele><time>2016-06-13T19:59:07Z</time></trkpt>
+<trkpt lat="6.807091" lon="-58.147790"><ele>-28.00</ele><time>2016-06-13T19:59:11Z</time></trkpt>
+<trkpt lat="6.807044" lon="-58.147825"><ele>-27.00</ele><time>2016-06-13T19:59:15Z</time></trkpt>
+<trkpt lat="6.807008" lon="-58.147866"><ele>-26.00</ele><time>2016-06-13T19:59:19Z</time></trkpt>
+<trkpt lat="6.806976" lon="-58.147911"><ele>-27.00</ele><time>2016-06-13T19:59:23Z</time></trkpt>
+<trkpt lat="6.806944" lon="-58.147947"><ele>-26.00</ele><time>2016-06-13T19:59:27Z</time></trkpt>
+<trkpt lat="6.806932" lon="-58.147998"><ele>-26.00</ele><time>2016-06-13T19:59:32Z</time></trkpt>
+<trkpt lat="6.806912" lon="-58.148050"><ele>-26.00</ele><time>2016-06-13T19:59:37Z</time></trkpt>
+<trkpt lat="6.806901" lon="-58.148071"><ele>-27.00</ele><time>2016-06-13T19:59:40Z</time></trkpt>
+</trkseg>
+</trk>
+</gpx>
+<!-- Summary -->
+<!-- Creator: Ultra GPS Logger 3.115i -->
+<!-- Name: GY-zoo03 -->
+<!-- Duration: 00:01:17 -->
+<!-- Length: 92.20 -->
+<!-- Speed: 4.31 -->
+<!-- POI: 0 -->
+<!-- Category: Hike -->
+<!-- From: 6.807522895484753; -58.147831326743464 To: 6.806900673955981; -58.148070694718726 -->
+<!-- FromCity: Georgetown ToCity: Georgetown -->
+<!-- FromUTC: 2016-06-13T19:58:24Z [-4.0] ToUTC: 2016-06-13T19:59:40Z [-4.0] -->
+<!-- Trigger: 5 TimeTrigger: 1000 DistTrigger: 0 -->
+<!-- MaxSpeed: 5.40 -->
+<!-- Stopped: 00:00:00 (0) -->
+<!-- AvgMovSpeed: 4.19 -->

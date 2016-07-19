@@ -1,0 +1,52 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":2,
+	"features":[
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1468,6.808]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Harpy Eagle",
+				"mediapath":["urbanparks","zoo","zoo_pois"],
+				"media_html":"<img width='120px' src='/static/pacmap/data/urbanparks/zoo/img/harpyeagle.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1468,6.808]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1456,6.8076]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Giant Otter",
+				"mediapath":["urbanparks","zoo","zoo_pois"],
+				"media_html":"<img width='120px' src='/static/pacmap/data/urbanparks/zoo/img/giantotter.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1456,6.8076]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1462,6.8076]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Change Me!",
+				"mediapath":["hinterland_areas","kaieteur","kaieteur_pois"],
+				"media_html":"<iframe width='420' height='315' src='https://www.youtube.com/embed/faX71pa-i1M' frameborder='0' allowfullscreen></iframe>",
+				"feature_type":"youtube",
+				"coordinates":[-58.1462,6.8076]
+			}
+		}
+
+	]
+}

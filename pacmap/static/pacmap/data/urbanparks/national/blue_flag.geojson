@@ -1,0 +1,48 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":2,
+	"features":[
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1494,6.82]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Protected Areas Commission",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1494,6.82]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1529,6.8228]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Example Point",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1529,6.8228]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1512,6.8208]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Example Point",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1512,6.8208]
+			}
+		}
+	]
+}

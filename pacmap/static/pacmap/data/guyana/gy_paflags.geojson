@@ -1,0 +1,81 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Kaieteur National Park",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.4881,5.1711]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Kaieteur National Park",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.4881,5.1711]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"Shell Beach Protected Area",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.1805,8.25851]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Shell Beach Protected Area",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.1805,8.25851]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"Kanuku Mountains Protected Area",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.0926,3.4073]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Kanuku Mountains Protected Area",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.0926,3.4073]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"Iwokrama",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.8949,4.6348]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Iwokrama",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.8949,4.6348]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"Konashens",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.8729,1.7172]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Konashens",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.8729,1.7172]
+			}
+		}
+  ]
+}

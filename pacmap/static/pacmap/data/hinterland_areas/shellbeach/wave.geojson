@@ -1,0 +1,22 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Wave 3D",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.1551, 8.0068]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"SineWave",
+				"mediapath":["hinterland_areas","shellbeach","sinewave"],
+				"media_html":"<img width='120px' src='/static/pacmap/data/hinterland_areas/shellbeach/sinewave/negx.png'/>",
+				"feature_type":"Launch3D",
+				"coordinates":[-59.1551, 8.0068]
+			}
+		}
+	]
+}

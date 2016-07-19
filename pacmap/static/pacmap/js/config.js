@@ -90,7 +90,8 @@ var Config={
 				'layers':{
 					'keys':['creeks','rivers','boundary2','falls3d','kaieteur_pois','kaieteur_orange','kaieteur_blue','trailmap'],//'guyana_pixelated','satellite','trailmap',
 					'toggles':[
-						{'title':'Overlays','layers':['trailmap']},{'title':'Water','layers':['creeks','rivers']},
+						{'title':'Overlays','layers':['trailmap']},
+						{'title':'Water','layers':['creeks','rivers']},
 						{'title':'Boundary','layers':['boundary2']},
 						{'title':'POIs','layers':['kaieteur_pois','kaieteur_orange','kaieteur_blue','falls3d']}
 					],
@@ -181,14 +182,17 @@ var Config={
 				'photos':[window.DATA+'urbanparks/zoo/img/zoo_entrance.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['boundary2','zoo_pois','zoo_trail',],//'OpenStreetMap2','botanical_satellite',
+					'keys':['botanical_satellite','boundary2','zoo_pois','zoo02','zoo03',],//'OpenStreetMap2','botanical_satellite',
 					'toggles':[
-						{'title':'Trail','layers':['zoo_trail']},
+						{'title':'Satellite','layers':['botanical_satellite']},
+						{'title':'Trail','layers':['zoo02','zoo03']},
 						{'title':'POIs','layers':['zoo_pois']},
 					],
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'zoo_pois':{'style':'green_flag','type':'points','src_url':'urbanparks/zoo/zoo_pois.geojson'},
 					'zoo_trail':{'type':'line','src_url':'urbanparks/zoo/zoo_trail.geojson'},
+					'zoo02':{'type':'gpx','src_url':'urbanparks/zoo/zoo02.gpx'},
+					'zoo03':{'type':'gpx','src_url':'urbanparks/zoo/zoo03.gpx'},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/zoo/zoo_boundary.geojson','style':pac_style,},
 					'boundary2':{'hilite':false,'style':clear_pac,'type':'polygon','src_url':'urbanparks/zoo/zoo_boundary.geojson',},
@@ -202,13 +206,15 @@ var Config={
 				'photos':[window.DATA+'urbanparks/botanical/img/botanical_aerial.jpg',],
 				'keys':[],
 				'layers':{
-					'keys':['boundary2','botanical_satellite','botanical3d'],//'OpenStreetMap2',
+					'keys':['boundary2','botanical_satellite','track','botanical3d'],//'OpenStreetMap2',
 					'toggles':[
 						{'title':'Satellite','layers':['botanical_satellite']},
 						{'title':'POIs','layers':['botanical3d']},
+						{'title':'Road','layers':['track']},
 					],
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'botanical_satellite':{'type':'xyz','src_url':'urbanparks/botanical/botanical_satellite/'},
+					'track':{'type':'gpx','src_url':'urbanparks/botanical/botanical_drive.gpx'},
 					'boundary':{'type':'polygon','src_url':'urbanparks/botanical/botanical_boundary.geojson','style':pac_style,},
 					'boundary2':{'hilite':false,'style':clear_pac,'type':'polygon','src_url':'urbanparks/botanical/botanical_boundary.geojson',},
 					'botanical3d':{'style':'green_flag','type':'points','src_url':'urbanparks/botanical/botanical3d.geojson',},
@@ -222,11 +228,16 @@ var Config={
 				'photos':[window.DATA+'urbanparks/national/img/national_park.png',],
 				'keys':[],
 				'layers':{
-					'keys':['national_satellite','boundary2','track'],//'OpenStreetMap2',
+					'keys':['national_satellite','boundary2','track','orange_flag','red_flag','green_flag','blue_flag'],//'OpenStreetMap2',
 					'toggles':[
 						{'title':'Satellite','layers':['national_satellite']},
 						{'title':'Track','layers':['track']},
+						{'title':'POIs','layers':['orange_flag','red_flag','green_flag','blue_flag']}
 					],
+					'orange_flag':{'style':'orange_flag','type':'points','src_url':'urbanparks/national/orange_flag.geojson'},
+					'red_flag':{'style':'red_flag','type':'points','src_url':'urbanparks/national/red_flag.geojson'},
+					'green_flag':{'style':'green_flag','type':'points','src_url':'urbanparks/national/green_flag.geojson'},
+					'blue_flag':{'style':'blue_flag','type':'points','src_url':'urbanparks/national/blue_flag.geojson'},
 					'OpenStreetMap2':{'type':'base','name':'OpenStreetMap2','layeridx':2,'opacity':1.0},
 					'track':{'type':'gpx','src_url':'urbanparks/national/national_track.gpx'},
 					'national_satellite':{'type':'xyz','src_url':'urbanparks/national/national_satellite/'},

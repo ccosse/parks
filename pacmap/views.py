@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response,redirect
 from django.template import RequestContext
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 from django import forms
 
 import logging, xmlrpclib, json, time, os, string
@@ -13,6 +14,7 @@ FORMAT = '%(asctime)-15s %(message)s'
 logging.basicConfig(filename='/var/www/dev/pacmap/pacmap.log',level=logging.DEBUG, format=FORMAT)
 
 @require_http_methods(["GET", "POST"])
+@login_required
 def home(request):
 	logging.debug('pacmap.home')
 	if request.method == 'POST':
@@ -85,7 +87,7 @@ def hinterland(request):
 	return render_to_response(
 		'hinterland.html',{
 			'title':'Hinterland Parks, Protected Areas Commission, Guyana',
-			'pa_path': pa_path, 
+			'pa_path': pa_path,
 			'content': pa.get().content
 		},
 		context_instance = RequestContext(request)

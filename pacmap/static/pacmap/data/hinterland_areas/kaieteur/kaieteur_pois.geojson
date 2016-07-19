@@ -1,0 +1,36 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":2,
+	"features":[
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.5196,5.1775]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Rainy take-off",
+				"mediapath":["hinterland_areas","kaieteur","kaieteur_pois"],
+				"media_html":"<iframe width='420' height='315' src='https://www.youtube.com/embed/xifzxVl04mY' frameborder='0' allowfullscreen></iframe>",
+				"feature_type":"youtube",
+				"coordinates":[-59.5196,5.1775]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.4714,5.1902]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Rainy day at Kaieteur Falls",
+				"mediapath":["hinterland_areas","kaieteur","kaieteur_pois"],
+				"media_html":"<iframe width='200' height='150' src='https://www.youtube.com/embed/faX71pa-i1M' frameborder='0' allowfullscreen></iframe>",
+				"feature_type":"youtube",
+				"coordinates":[-59.4714,5.1902]
+			}
+		}
+	]
+}

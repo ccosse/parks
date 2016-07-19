@@ -1,0 +1,34 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":2,
+	"features":[
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1506,6.8209]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Example Red Flag",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1506,6.8209]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1505,6.8203]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Example Red Flag",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1505,6.8203]
+			}
+		}
+	]
+}
