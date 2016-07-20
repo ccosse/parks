@@ -195,7 +195,6 @@ var Map=function(mapdiv){
 		return polygon_layer;
 	}
 	me.setup=function(){
-/*
 	me.gmap = new google.maps.Map(document.getElementById('gmap'), {
 	  disableDefaultUI: true,
 	  keyboardShortcuts: false,
@@ -205,7 +204,6 @@ var Map=function(mapdiv){
 	  streetViewControl: false,
 	  mapTypeId: google.maps.MapTypeId.SATELLITE
 	});
-*/
 	console.log(me.gmap);
 
 	window.view = new ol.View({
