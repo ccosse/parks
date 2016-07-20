@@ -213,11 +213,11 @@ var Map=function(mapdiv){
 	window.view.on('change:center', function(evt) {
 		//console.log("GMAP setCenter: "+evt.type);
 	  var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
-//		me.gmap.panTo(new google.maps.LatLng(center[1], center[0]));
+		me.gmap.panTo(new google.maps.LatLng(center[1], center[0]));
 	});
 	window.view.on('change:resolution', function(evt) {
 		//console.log("GMAP setZoom: "+evt.type);
-//		me.gmap.setZoom(window.view.getZoom());
+		me.gmap.setZoom(window.view.getZoom());
 	});
 
 	me.map = new ol.Map({
@@ -253,14 +253,14 @@ var Map=function(mapdiv){
 	me.map.on('postrender',function(evt){
 		//console.log('postrender: '+evt.type);
 		var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
-//		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
-//		me.gmap.setZoom(window.view.getZoom());
+		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
+		me.gmap.setZoom(window.view.getZoom());
 	});
 	me.map.on('moveend',function(evt){
 		//console.log("moveend: "+evt.type);
 		var center = ol.proj.transform(window.view.getCenter(), 'EPSG:3857', 'EPSG:4326');
-//		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
-//		me.gmap.setZoom(window.view.getZoom());
+		me.gmap.setCenter(new google.maps.LatLng(center[1], center[0]));
+		me.gmap.setZoom(window.view.getZoom());
 	});
 	me.map.on('click',function(evt){
 		var debugpanel=document.getElementById("debug");
@@ -384,18 +384,18 @@ var Map=function(mapdiv){
 		me.xpopup.innerHTML="WHERE IS THIS POPUP?"
 		me.overlay.setMap(me.map);
 	//	me.overlay.setPosition(ol.proj.transform([-58.95,4.7],"EPSG:4326","EPSG:3857"));
-/*
+
 	var gmap=document.getElementById('gmap');
 	$("#gmap").css("height",window.innerHeight-51);
 	var bcr=gmap.getBoundingClientRect();
 	var res=compute_resolution(window.Cfg['bbox'],false,bcr.width,bcr.height);
 	me.map.setSize([bcr.width,bcr.height]);
 	window.view.setResolution(res);
-*/
+
 	window.view.setCenter(ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"));
 	var olMapDiv=document.getElementById('mapdiv');
 	olMapDiv=olMapDiv.parentNode.removeChild(olMapDiv);
-//	me.gmap.controls[google.maps.ControlPosition.TOP_LEFT].push(olMapDiv);
+	me.gmap.controls[google.maps.ControlPosition.TOP_LEFT].push(olMapDiv);
 
 }//end:setup
 
