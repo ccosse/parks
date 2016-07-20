@@ -205,8 +205,9 @@ var Map=function(mapdiv){
 	  streetViewControl: false,
 	  mapTypeId: google.maps.MapTypeId.SATELLITE
 	});
-	console.log(me.gmap);
 */
+	console.log(me.gmap);
+
 	window.view = new ol.View({
 	  maxZoom: 21,
 		center:ol.proj.transform([-58.9,4.31],"EPSG:4326","EPSG:3857"),
