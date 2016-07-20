@@ -222,7 +222,7 @@ var Map=function(mapdiv){
 	});
 
 	me.map = new ol.Map({
-	  layers: [sat],//osm,sat
+	  layers: [],//osm,sat
 		controls:[],
 	  target: mapdiv,
 		loadTilesWhileAnimating:true,
