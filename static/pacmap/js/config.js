@@ -1,5 +1,5 @@
-window.STATIC="/static/pacmap/"
-window.DATA="/static/pacmap/data/";
+window.STATIC="/parks/static/pacmap/"
+window.DATA="/parks/static/pacmap/data/";
 window.DEBUG=true;
 window.view=null;
 window.rlist=null;
