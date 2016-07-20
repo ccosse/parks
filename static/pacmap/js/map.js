@@ -202,7 +202,8 @@ var Map=function(mapdiv){
 	  disableDoubleClickZoom: true,
 	  scrollwheel: false,
 	  streetViewControl: false,
-	  mapTypeId: google.maps.MapTypeId.SATELLITE
+	  mapTypeId: google.maps.MapTypeId.SATELLITE,
+	  key:'AIzaSyDrydIL2mSGKL7mQhns5fkA-eSd8ozxxSk',
 	});
 	console.log(me.gmap);
 
