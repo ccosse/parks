@@ -1,0 +1,22 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Shell Beach Panorama2",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.4796, 8.24]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Shell Beach Panorama2",
+				"mediapath":["hinterland_areas","shellbeach","shellbeach_panorama2"],
+				"media_html":"<img width='120px' src='/static/pacmap/data/hinterland_areas/shellbeach/shellbeach_panorama2/negx.png'/>",
+				"feature_type":"Launch3D",
+				"coordinates":[-59.4796, 8.24]
+			}
+		}
+	]
+}

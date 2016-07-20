@@ -1,0 +1,132 @@
+{% extends 'pacmap_base.html' %}
+
+{% block extra_javascript_include %}
+	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacmap.css">
+	<link rel="stylesheet" type="text/css" href="/static/pacmap/css/pacmap_vh.css">
+{% endblock %}
+
+{% block extra_javascript %}
+function init(){}
+{% endblock %}
+{% block content %}
+
+<div class="row">
+	<div class="pad52 container-fluid">
+
+	{% for g in galleryimages %}
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumbnail">
+
+    	<a href="/admin/pacmap/galleryimage/{{g.id}}/change/">
+    		<span class="editicon glyphicon glyphicon-pencil"></span>
+    	</a>
+
+    	<a href="/static/pacmap/upload/images/{{g.filename}}">
+    	  <img src="/static/pacmap/upload/images/{{g.filename}}" class="img-responsive" alt="">
+    	</a>
+
+    	<div class="caption well">
+			<h3>{{ g.title }}</h3>
+			<p>
+				<span class="text-success">Filetype: Image</span>
+				<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+			</p>
+			<p>{{ g.desc }}</p>
+			<p>{{ g.lat }}, {{ g.lon }}</p>
+			<p>{{ g.tags }}</p>
+		</div>
+
+    </div>
+
+	{% endfor %}
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="container-fluid">
+
+	{% for g in embedded %}
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumbnail">
+
+   		<a href="/admin/pacmap/embedded/{{g.id}}/change/">
+    		<span class="editicon glyphicon glyphicon-pencil"></span>
+    	</a>
+
+ 		<div class="embed-responsive embed-responsive-16by9">
+		  <iframe class="embed-responsive-item" src="{{g.url}}" allowfullscreen></iframe>
+		</div>
+
+    	<div class="caption well">
+			<h3>{{ g.title }}</h3>
+			<p>
+				<span class="text-success">Filetype: Embedded Video</span>
+				<span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+			</p>
+			<p>{{ g.desc }}</p>
+			<p>{{ g.lat }}, {{ g.lon }}</p>
+			<p>{{ g.tags }}</p>
+		</div>
+
+    </div>
+	{% endfor %}
+
+	{% for g in galleryfiles %}
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumbnail">
+
+    	<a href="/admin/pacmap/galleryfile/{{g.id}}/change/">
+    		<span class="editicon glyphicon glyphicon-pencil"></span>
+    	</a>
+
+    	<a href="/static/pacmap/upload/files/{{g.filename}}">
+    	  <video src="/static/pacmap/upload/files/{{g.filename}}" class="img-responsive" alt=""></video>
+    	</a>
+
+    	<div class="caption well">
+			<h3>{{ g.title }}</h3>
+			<p>
+				<span class="text-success">Filetype: Video</span>
+				<span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+			</p>
+			<p>{{ g.desc }}</p>
+			<p>{{ g.lat }}, {{ g.lon }}</p>
+			<p>{{ g.tags }}</p>
+		</div>
+
+    </div>
+
+	{% endfor %}
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="container-fluid">
+
+	{% for g in documents %}
+	<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 thumbnail">
+
+   		<a href="/admin/pacmap/gallerydocument/{{g.id}}/change/">
+    		<span class="editicon glyphicon glyphicon-pencil"></span>
+    	</a>
+
+ 		<a href="/static/pacmap/upload/docs/{{g.filename}}">
+    	  <img src="/static/pacmap/img/pdf.png" class="img-responsive" alt="">
+    	</a>
+
+    	<div class="caption well">
+			<h3>{{ g.title }}</h3>
+			<p>
+				<span class="text-success">Filetype: File</span>
+				<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+			</p>
+			<p>{{ g.desc }}</p>
+			<p>{{ g.lat }}, {{ g.lon }}</p>
+			<p>{{ g.tags }}</p>
+		</div>
+
+    </div>
+	{% endfor %}
+</div>
+{% endblock %}

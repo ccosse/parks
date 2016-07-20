@@ -1,0 +1,21 @@
+.xBdiv{
+	top:0px;
+	left:0;
+	width:100%;
+	text-align:right;
+	z-index:999;
+
+}
+.xBicon{
+	top:0px;
+	right:0px;
+	width:24px;
+	height:24px;
+	z-index: 10;
+	position:absolute;
+	background-color:#666666;
+}
+.hires_div{
+	position:absolute;
+	top:52px;
+}

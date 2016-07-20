@@ -1,0 +1,51 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":1,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"Kaieteur Falls",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.4781,5.2831]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Kaieteur Falls",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.4781,5.2831]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"Camp Jaguar",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-57.5106,3.4415]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Camp Jaguar",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-57.5106,3.4415]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"Orinduk Falls",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-60.0155,5.193]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Orinduk Falls",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-60.0155,5.193]
+			}
+		}
+  ]
+}

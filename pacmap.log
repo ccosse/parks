@@ -1,0 +1,976 @@
+2016-05-10 08:19:14,400 pacmap.pacvideo
+2016-05-10 08:19:14,470 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:19:14,474 Internal Server Error: /pacmap/pacvideo/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 38, in pacvideo
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 137, in render_to_string
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: pacvideo.html
+2016-05-10 08:26:47,430 pacmap.pacvideo
+2016-05-10 08:26:47,431 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:26:47,435 Internal Server Error: /pacmap/pacvideo/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 38, in pacvideo
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 137, in render_to_string
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: pacvideo.html
+2016-05-10 08:30:44,152 pacmap.pacvideo
+2016-05-10 08:30:44,152 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:30:44,157 Internal Server Error: /pacmap/pacvideo/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 38, in pacvideo
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 137, in render_to_string
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: video.html
+2016-05-10 08:30:58,687 pacmap.pacvideo
+2016-05-10 08:30:58,690 Internal Server Error: /pacmap/pacvideo/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 38, in pacvideo
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 137, in render_to_string
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: video.html
+2016-05-10 08:31:44,892 pacmap.pacvideo
+2016-05-10 08:31:44,895 Internal Server Error: /pacmap/pacvideo/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 38, in pacvideo
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 137, in render_to_string
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: video.html
+2016-05-10 08:31:51,938 pacmap.pacvideo
+2016-05-10 08:31:51,941 Internal Server Error: /pacmap/pacvideo/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 38, in pacvideo
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 137, in render_to_string
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: video.html
+2016-05-10 08:32:05,839 pacmap.pacvideo
+2016-05-10 08:32:05,840 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:35:06,107 pacmap.pacvideo
+2016-05-10 08:35:06,108 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:37:47,455 pacmap.pacvideo
+2016-05-10 08:37:47,456 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:40:16,092 pacmap.home
+2016-05-10 08:40:16,097 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:40:24,468 pacmap.home
+2016-05-10 08:40:29,106 pacmap.home
+2016-05-10 08:41:07,471 pacmap.home
+2016-05-10 08:41:21,592 pacmap.pacvideo
+2016-05-10 08:47:36,399 pacmap.home
+2016-05-10 08:47:36,404 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 08:47:40,420 pacmap.pacvideo
+2016-05-10 08:48:45,987 pacmap.home
+2016-05-10 08:48:48,617 pacmap.home
+2016-05-10 08:48:56,049 pacmap.pacvideo
+2016-05-10 08:48:59,478 pacmap.pacvideo
+2016-05-10 08:49:06,457 pacmap.pacvideo
+2016-05-10 08:50:01,178 pacmap.home
+2016-05-10 08:50:11,473 pacmap.home
+2016-05-10 08:50:25,296 pacmap.pacvideo
+2016-05-10 08:50:28,418 pacmap.pacphotos
+2016-05-10 08:50:31,352 pacmap.pacphotos
+2016-05-10 09:07:03,255 pacmap.home
+2016-05-10 09:07:03,261 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:07:56,997 pacmap.pacphotos
+2016-05-10 09:08:00,575 pacmap.home
+2016-05-10 09:08:07,587 pacmap.home
+2016-05-10 09:08:38,077 pacmap.home
+2016-05-10 09:08:44,627 pacmap.home
+2016-05-10 09:08:53,234 pacmap.pacvideo
+2016-05-10 09:09:32,871 pacmap.pacphotos
+2016-05-10 09:09:36,954 Not Found: /kaieteur
+2016-05-10 09:09:40,875 pacmap.contact
+2016-05-10 09:11:56,138 pacmap.contact
+2016-05-10 09:11:56,139 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:12:05,567 Not Found: /phpMyAdmin/scripts/setup.php
+2016-05-10 09:12:06,056 Not Found: /pma/scripts/setup.php
+2016-05-10 09:12:06,511 Not Found: /myadmin/scripts/setup.php
+2016-05-10 09:12:28,412 pacmap.pacphotos
+2016-05-10 09:12:30,550 pacmap.pacvideo
+2016-05-10 09:12:39,669 pacmap.home
+2016-05-10 09:12:42,943 pacmap.pacvideo
+2016-05-10 09:13:03,991 pacmap.contact
+2016-05-10 09:20:24,104 pacmap.home
+2016-05-10 09:20:24,111 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:20:30,880 pacmap.home
+2016-05-10 09:27:05,689 pacmap.home
+2016-05-10 09:27:05,695 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:27:22,424 Not Found: /kaieteur
+2016-05-10 09:27:40,015 pacmap.home
+2016-05-10 09:28:19,452 pacmap.home
+2016-05-10 09:28:29,099 pacmap.home
+2016-05-10 09:28:48,075 pacmap.home
+2016-05-10 09:29:24,439 pacmap.home
+2016-05-10 09:29:32,485 pacmap.home
+2016-05-10 09:29:43,471 pacmap.home
+2016-05-10 09:30:42,644 pacmap.home
+2016-05-10 09:30:42,649 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:30:53,281 pacmap.home
+2016-05-10 09:31:07,568 pacmap.home
+2016-05-10 09:34:20,885 pacmap.home
+2016-05-10 09:34:20,890 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:34:29,066 pacmap.home
+2016-05-10 09:35:07,597 pacmap.home
+2016-05-10 09:35:14,327 pacmap.home
+2016-05-10 09:35:32,192 pacmap.home
+2016-05-10 09:35:32,197 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:35:39,429 pacmap.home
+2016-05-10 09:36:22,967 pacmap.hinterland
+2016-05-10 09:36:22,968 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:36:22,969 Internal Server Error: /pacmap/hinterland/kaieteur/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 37, in hinterland
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 137, in render_to_string
+    raise TemplateDoesNotExist(template_name, chain=chain)
+TemplateDoesNotExist: hinterland.html
+2016-05-10 09:41:21,580 pacmap.hinterland
+2016-05-10 09:41:21,581 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:41:33,691 pacmap.home
+2016-05-10 09:45:46,898 pacmap.hinterland
+2016-05-10 09:45:46,899 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 09:46:12,257 pacmap.hinterland
+2016-05-10 09:47:42,998 pacmap.hinterland
+2016-05-10 09:47:42,999 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 14:05:23,151 pacmap.home
+2016-05-10 14:05:23,214 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 14:06:24,743 pacmap.pacphotos
+2016-05-10 14:06:24,744 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 14:14:07,206 pacmap.home
+2016-05-10 14:14:07,212 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 15:20:42,672 pacmap.home
+2016-05-10 15:20:42,678 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 15:20:48,018 pacmap.pacphotos
+2016-05-10 15:22:29,818 pacmap.pacphotos
+2016-05-10 15:22:29,819 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 15:25:58,752 pacmap.pacphotos
+2016-05-10 15:25:58,752 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:17:38,375 pacmap.home
+2016-05-10 16:17:38,382 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:20:15,085 pacmap.pacphotos
+2016-05-10 16:20:15,087 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:24:48,449 pacmap.pacphotos
+2016-05-10 16:24:48,450 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:25:25,460 pacmap.pacphotos
+2016-05-10 16:27:36,616 pacmap.pacphotos
+2016-05-10 16:27:36,618 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:27:40,787 pacmap.pacphotos
+2016-05-10 16:28:08,185 pacmap.pacphotos
+2016-05-10 16:28:08,193 validation failed
+2016-05-10 16:28:08,194 handling file ...
+2016-05-10 16:28:08,194 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 86, in pacphotos
+    handle_uploaded_file(request.FILES['file'])
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+2016-05-10 16:29:27,070 pacmap.home
+2016-05-10 16:29:27,075 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:29:29,890 pacmap.pacphotos
+2016-05-10 16:29:29,890 <WSGIRequest: GET '/pacmap/pacphotos/'>
+2016-05-10 16:29:50,192 pacmap.pacphotos
+2016-05-10 16:29:50,193 <WSGIRequest: POST '/pacmap/pacphotos/'>
+2016-05-10 16:29:50,203 validation failed
+2016-05-10 16:29:50,203 handling file ...
+2016-05-10 16:29:50,203 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 87, in pacphotos
+    handle_uploaded_file(request.FILES['file'])
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+2016-05-10 16:30:36,490 pacmap.home
+2016-05-10 16:30:39,249 pacmap.pacphotos
+2016-05-10 16:30:39,249 <WSGIRequest: GET '/pacmap/pacphotos/'>
+2016-05-10 16:31:05,197 pacmap.pacphotos
+2016-05-10 16:31:05,197 <WSGIRequest: POST '/pacmap/pacphotos/'>
+2016-05-10 16:31:05,199 validation failed
+2016-05-10 16:31:05,200 handling file ...
+2016-05-10 16:31:05,200 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 87, in pacphotos
+    handle_uploaded_file(request.FILES['file'])
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+2016-05-10 16:35:29,791 pacmap.home
+2016-05-10 16:35:29,796 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:35:32,422 pacmap.pacphotos
+2016-05-10 16:35:32,422 <WSGIRequest: GET '/pacmap/pacphotos/'>
+2016-05-10 16:35:42,511 pacmap.pacphotos
+2016-05-10 16:35:42,511 <WSGIRequest: POST '/pacmap/pacphotos/'>
+2016-05-10 16:35:42,512 validation failed
+2016-05-10 16:35:42,512 handling file ...
+2016-05-10 16:35:42,513 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 83, in pacphotos
+    handle_uploaded_file(request.FILES['file'])
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+2016-05-10 16:43:19,076 pacmap.home
+2016-05-10 16:43:19,084 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:43:21,146 pacmap.pacphotos
+2016-05-10 16:43:21,146 <WSGIRequest: GET '/pacmap/pacphotos/'>
+2016-05-10 16:43:39,777 pacmap.pacphotos
+2016-05-10 16:43:39,778 <WSGIRequest: POST '/pacmap/pacphotos/'>
+2016-05-10 16:43:39,779 validation failed
+2016-05-10 16:43:39,779 handling file ...
+2016-05-10 16:43:39,779 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 83, in pacphotos
+    handle_uploaded_file(request.FILES['file'])
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+2016-05-10 16:46:29,176 pacmap.home
+2016-05-10 16:46:29,182 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:46:32,166 pacmap.pacphotos
+2016-05-10 16:46:44,283 pacmap.pacphotos
+2016-05-10 16:46:44,283 <MultiValueDict: {}>
+2016-05-10 16:46:44,284 validation failed
+2016-05-10 16:46:44,285 handling file ...
+2016-05-10 16:46:44,285 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 83, in pacphotos
+    handle_uploaded_file(request.FILES['file'])
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+2016-05-10 16:51:08,443 pacmap.home
+2016-05-10 16:51:08,448 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:51:11,030 pacmap.pacphotos
+2016-05-10 16:51:19,955 pacmap.pacphotos
+2016-05-10 16:51:19,956 <MultiValueDict: {}>
+2016-05-10 16:51:19,957 validation failed
+2016-05-10 16:51:19,957 handling file ...
+2016-05-10 16:51:19,957 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 83, in pacphotos
+    handle_uploaded_file(request.FILES['file'])
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+MultiValueDictKeyError: "'file'"
+2016-05-10 16:57:28,088 pacmap.home
+2016-05-10 16:57:28,095 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 16:57:31,030 pacmap.pacphotos
+2016-05-10 16:57:45,485 pacmap.pacphotos
+2016-05-10 16:57:45,485 <MultiValueDict: {u'file': [<InMemoryUploadedFile: 1896.jpg (image/jpeg)>]}>
+2016-05-10 16:57:45,486 validation success
+2016-05-10 16:57:45,486 handling file ...
+2016-05-10 16:57:45,487 handle_uploaded_file
+2016-05-10 16:57:45,487 1896.jpg
+2016-05-10 16:57:45,487 success
+2016-05-10 17:45:06,594 pacmap.pacphotos
+2016-05-10 17:45:06,595 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 17:45:22,148 pacmap.pacphotos
+2016-05-10 17:45:22,149 <MultiValueDict: {u'file': [<InMemoryUploadedFile: EPZ_N0R_0.gif (image/gif)>]}>
+2016-05-10 17:45:22,374 validation success
+2016-05-10 17:45:22,374 handling file ...
+2016-05-10 17:45:22,375 handle_uploaded_file
+2016-05-10 17:45:22,375 EPZ_N0R_0.gif
+2016-05-10 17:45:22,375 success
+2016-05-10 17:52:26,954 pacmap.pacphotos
+2016-05-10 17:52:26,956 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 17:53:05,339 pacmap.pacphotos
+2016-05-10 17:53:05,340 <MultiValueDict: {u'file': [<InMemoryUploadedFile: 1896.jpg (image/jpeg)>]}>
+2016-05-10 17:53:05,355 validation success
+2016-05-10 17:53:05,355 handling file ...
+2016-05-10 17:53:05,356 handle_uploaded_file
+2016-05-10 17:53:05,357 ['DEFAULT_CHUNK_SIZE', '__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__enter__', '__exit__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__len__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__unicode__', '__weakref__', '_get_closed', '_get_name', '_get_size', '_get_size_from_underlying_file', '_name', '_set_name', '_set_size', '_size', 'charset', 'chunks', 'close', 'closed', 'content_type', 'content_type_extra', 'encoding', 'field_name', 'file', 'fileno', 'flush', 'image', 'isatty', 'multiple_chunks', 'name', 'newlines', 'open', 'read', 'readinto', 'readline', 'readlines', 'seek', 'size', 'softspace', 'tell', 'truncate', 'write', 'writelines', 'xreadlines']
+2016-05-10 17:53:05,357 success
+2016-05-10 17:54:48,442 pacmap.pacphotos
+2016-05-10 17:54:48,444 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 17:54:53,717 Not Found: /path/to/default/style.css
+2016-05-10 18:00:37,208 pacmap.pacphotos
+2016-05-10 18:00:37,208 <MultiValueDict: {u'file': [<TemporaryUploadedFile: georgetown.tif (image/tiff)>]}>
+2016-05-10 18:00:37,401 validation success
+2016-05-10 18:00:37,402 handling file ...
+2016-05-10 18:00:37,402 handle_uploaded_file
+2016-05-10 18:00:37,402 ['DEFAULT_CHUNK_SIZE', '__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__enter__', '__exit__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__len__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__unicode__', '__weakref__', '_get_closed', '_get_name', '_get_size', '_get_size_from_underlying_file', '_name', '_set_name', '_set_size', '_size', 'charset', 'chunks', 'close', 'closed', 'content_type', 'content_type_extra', 'encoding', 'file', 'fileno', 'flush', 'image', 'isatty', 'mode', 'multiple_chunks', 'name', 'newlines', 'open', 'read', 'readinto', 'readline', 'readlines', 'seek', 'size', 'softspace', 'tell', 'temporary_file_path', 'truncate', 'write', 'writelines', 'xreadlines']
+2016-05-10 18:00:37,403 georgetown.tif
+2016-05-10 18:00:37,403 ['_Image__transformer', '_TiffImageFile__first', '_TiffImageFile__fp', '_TiffImageFile__frame', '_TiffImageFile__next', '__doc__', '__getattr__', '__init__', '__module__', '__repr__', '_compression', '_copy', '_decoder', '_dump', '_expand', '_load_libtiff', '_makeself', '_new', '_open', '_planar_configuration', '_seek', '_setup', '_tell', 'category', 'convert', 'copy', 'crop', 'decoderconfig', 'decodermaxblock', 'draft', 'filename', 'filter', 'format', 'format_description', 'fp', 'frombytes', 'fromstring', 'getbands', 'getbbox', 'getcolors', 'getdata', 'getextrema', 'getim', 'getpalette', 'getpixel', 'getprojection', 'histogram', 'ifd', 'im', 'info', 'load', 'load_end', 'load_prepare', 'mode', 'offset', 'palette', 'paste', 'point', 'putalpha', 'putdata', 'putpalette', 'putpixel', 'quantize', 'readonly', 'resize', 'rotate', 'save', 'seek', 'show', 'size', 'split', 'tag', 'tell', 'thumbnail', 'tile', 'tobitmap', 'tobytes', 'tostring', 'transform', 'transpose', 'verify']
+2016-05-10 18:00:37,403 success
+2016-05-10 18:08:00,887 pacmap.pacphotos
+2016-05-10 18:08:00,889 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 18:08:12,524 pacmap.pacphotos
+2016-05-10 18:08:12,525 <MultiValueDict: {u'file': [<InMemoryUploadedFile: asymptopia_logo.png (image/png)>]}>
+2016-05-10 18:08:12,537 validation success
+2016-05-10 18:08:12,537 handling file ...
+2016-05-10 18:08:12,538 handle_uploaded_file
+2016-05-10 18:08:12,538 ['DEFAULT_CHUNK_SIZE', '__bool__', '__class__', '__delattr__', '__dict__', '__doc__', '__enter__', '__exit__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__len__', '__module__', '__new__', '__nonzero__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__unicode__', '__weakref__', '_get_closed', '_get_name', '_get_size', '_get_size_from_underlying_file', '_name', '_set_name', '_set_size', '_size', 'charset', 'chunks', 'close', 'closed', 'content_type', 'content_type_extra', 'encoding', 'field_name', 'file', 'fileno', 'flush', 'image', 'isatty', 'multiple_chunks', 'name', 'newlines', 'open', 'read', 'readinto', 'readline', 'readlines', 'seek', 'size', 'softspace', 'tell', 'truncate', 'write', 'writelines', 'xreadlines']
+2016-05-10 18:08:12,539 asymptopia_logo.png
+2016-05-10 18:08:12,539 ['_Image__transformer', '_PngImageFile__idat', '__doc__', '__getattr__', '__init__', '__module__', '__repr__', '_copy', '_dump', '_expand', '_makeself', '_new', '_open', 'category', 'convert', 'copy', 'crop', 'decoderconfig', 'decodermaxblock', 'draft', 'filename', 'filter', 'format', 'format_description', 'fp', 'frombytes', 'fromstring', 'getbands', 'getbbox', 'getcolors', 'getdata', 'getextrema', 'getim', 'getpalette', 'getpixel', 'getprojection', 'histogram', 'im', 'info', 'load', 'load_end', 'load_prepare', 'load_read', 'mode', 'offset', 'palette', 'paste', 'png', 'point', 'putalpha', 'putdata', 'putpalette', 'putpixel', 'quantize', 'readonly', 'resize', 'rotate', 'save', 'seek', 'show', 'size', 'split', 'tell', 'text', 'thumbnail', 'tile', 'tobitmap', 'tobytes', 'tostring', 'transform', 'transpose', 'verify']
+2016-05-10 18:08:12,540 image upload success
+2016-05-10 18:08:12,540 success
+2016-05-10 18:22:10,447 pacmap.home
+2016-05-10 18:22:10,454 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 18:22:13,838 pacmap.pacphotos
+2016-05-10 18:23:29,483 pacmap.pacphotos
+2016-05-10 18:23:29,484 <MultiValueDict: {u'file': [<InMemoryUploadedFile: shellbeach.jpg (image/jpeg)>]}>
+2016-05-10 18:23:29,495 validation success
+2016-05-10 18:23:29,496 handling file ...
+2016-05-10 18:23:29,497 image upload success
+2016-05-10 18:23:29,497 success
+2016-05-10 18:23:29,499 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 18:40:25,499 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 134, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 376, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 248, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 255, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/lru_cache.py", line 100, in wrapper
+    result = user_function(*args, **kwds)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 115, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/var/www/dev/pacmap/views.py", line 59, in <module>
+    class UploadFileForm(forms.Form):
+  File "/var/www/dev/pacmap/views.py", line 60, in UploadFileForm
+    desc= forms.CharField(max_length=60,blank=False)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/forms/fields.py", line 229, in __init__
+    super(CharField, self).__init__(*args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'blank'
+2016-05-10 18:41:51,869 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 18:43:23,989 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:05:18,406 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:06:18,174 Not Found: /test/wp-admin/
+2016-05-10 19:14:37,135 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:22:35,731 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:24:33,364 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:44:12,964 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:48:26,711 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:52:08,238 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:57:16,603 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-10 19:58:57,985 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 00:09:53,900 pacmap.hinterland
+2016-05-11 00:09:53,900 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 00:54:10,605 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 00:54:34,374 pacmap.home
+2016-05-11 01:33:19,334 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 01:39:25,709 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 01:40:35,657 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 01:51:48,326 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 02:04:28,408 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 02:09:55,688 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 02:27:00,733 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 02:29:11,511 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:00:08,484 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:00:08,504 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/pacmap/views.py", line 116, in pacphotos
+    context_instance = RequestContext(request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py", line 45, in render_to_response
+    using=using)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader.py", line 114, in render_to_string
+    template_name, context, context_instance, dirs, dictionary)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/engine.py", line 244, in render_to_string
+    return t.render(context_instance)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 206, in render
+    return self._render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader_tags.py", line 173, in render
+    return compiled_parent._render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 197, in _render
+    return self.nodelist.render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/loader_tags.py", line 69, in render
+    result = block.nodelist.render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 992, in render
+    bit = node.render_annotated(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/base.py", line 959, in render_annotated
+    return self.render(context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/template/defaulttags.py", line 168, in render
+    len_values = len(values)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/models/query.py", line 240, in __len__
+    self._fetch_all()
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/models/query.py", line 1074, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/models/query.py", line 52, in __iter__
+    results = compiler.execute_sql()
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 848, in execute_sql
+    cursor.execute(sql, params)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+OperationalError: no such table: pacmap_galleryimage
+2016-05-11 03:09:44,605 pacmap.home
+2016-05-11 03:09:44,610 Internal Server Error: /pacmap/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/views/decorators/http.py", line 42, in inner
+    return func(request, *args, **kwargs)
+  File "/var/www/dev/pacmap/views.py", line 24, in home
+    rval	= { 'gtown' : pois[0] }
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/models/query.py", line 297, in __getitem__
+    return list(qs)[0]
+IndexError: list index out of range
+2016-05-11 03:11:44,083 pacmap.home
+2016-05-11 03:11:44,084 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:19:49,850 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:19:50,967 Forbidden (CSRF token missing or incorrect.): /pacmap/pacphotos/
+2016-05-11 03:24:58,191 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:26:31,396 Internal Server Error: /pacmap/pacphotos/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 134, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 376, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 248, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 255, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/lru_cache.py", line 100, in wrapper
+    result = user_function(*args, **kwds)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/urlresolvers.py", line 115, in get_callable
+    mod = import_module(mod_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/var/www/dev/pacmap/views.py", line 61, in <module>
+    class UploadImageForm(forms.Form):
+  File "/var/www/dev/pacmap/views.py", line 67, in UploadImageForm
+    title=forms.CharField(default="Untitled",max_length=60,required=True)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/forms/fields.py", line 229, in __init__
+    super(CharField, self).__init__(*args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'default'
+2016-05-11 03:27:19,609 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:28:21,279 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:33:21,691 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:34:40,590 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:36:26,244 form_valid
+2016-05-11 03:36:26,253 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:45:35,743 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:48:48,725 form invalid
+2016-05-11 03:48:48,727 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:52:42,169 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 03:52:55,502 Forbidden (CSRF token missing or incorrect.): /pacmap/pacphotos/
+2016-05-11 03:53:53,868 form invalid
+2016-05-11 04:07:53,842 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 04:10:45,923 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 04:11:56,147 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 04:12:21,028 form invalid
+2016-05-11 04:19:17,273 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 04:19:25,813 form invalid
+2016-05-11 04:19:47,494 form invalid
+2016-05-11 04:20:05,460 form invalid
+2016-05-11 10:33:50,551 pacmap.home
+2016-05-11 10:33:50,581 Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/parks/pacmap/views.py", line 21, in home
+    pois	= POI.objects.all().values();
+NameError: global name 'POI' is not defined
+2016-05-11 10:33:51,325 /var/www/parks/venv/lib/python2.7/site-packages/mezzanine/core/views.py:225: RemovedInDjango110Warning: render() must be called with a dict, not a RequestContext.
+  return HttpResponseServerError(t.render(context))
+
+2016-05-11 10:33:51,376 /var/www/parks/venv/lib/python2.7/site-packages/mezzanine/template/__init__.py:122: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return self.template.render(context)
+
+2016-05-11 10:33:51,422 /var/www/parks/venv/lib/python2.7/site-packages/mezzanine/pages/templatetags/pages_tags.py:134: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return t.render(Context(context))
+
+2016-05-11 10:58:14,193 form invalid
+2016-05-11 10:58:14,207 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 10:59:01,656 form invalid
+2016-05-11 11:00:03,487 form invalid
+2016-05-11 11:00:03,489 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:09:20,774 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:10:28,777 pacmap.home
+2016-05-11 11:10:28,783 Internal Server Error: /pacmap/deletephoto/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/views/decorators/http.py", line 42, in inner
+    return func(request, *args, **kwargs)
+  File "/var/www/dev/pacmap/views.py", line 19, in home
+    x 	= pois.get(name='Georgetown')
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+DoesNotExist: POI matching query does not exist.
+2016-05-11 11:11:47,692 pacmap.home
+2016-05-11 11:11:47,693 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:12:04,765 pacmap.home
+2016-05-11 11:13:23,878 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:13:37,225 form_valid
+2016-05-11 11:13:37,225 NOW DELETE FILE
+2016-05-11 11:13:37,225 Internal Server Error: /pacmap/deletephoto/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 158, in get_response
+    % (callback.__module__, view_name))
+ValueError: The view pacmap.views.deletephoto didn't return an HttpResponse object. It returned None instead.
+2016-05-11 11:17:27,557 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:17:46,571 form_valid
+2016-05-11 11:17:46,572 NOW DELETE FILE
+2016-05-11 11:20:46,084 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:21:56,956 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:27:03,376 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:28:09,455 form invalid
+2016-05-11 11:28:12,757 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:29:15,894 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:29:25,781 form invalid
+2016-05-11 11:29:25,782 <QueryDict: {u'csrfmiddlewaretoken': [u'5AtLSFOdYJrKivESTnl2PfRnCiE4Sg8p'], u'title': [u'']}>
+2016-05-11 11:35:48,461 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:36:01,255 form invalid
+2016-05-11 11:36:01,255 <QueryDict: {u'csrfmiddlewaretoken': [u'5AtLSFOdYJrKivESTnl2PfRnCiE4Sg8p'], u'pyld': [u'gecko_anim.png'], u'title': [u'']}>
+2016-05-11 11:39:27,494 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:39:35,857 form invalid
+2016-05-11 11:39:35,858 <QueryDict: {u'csrfmiddlewaretoken': [u'5AtLSFOdYJrKivESTnl2PfRnCiE4Sg8p'], u'pyld': [u'gecko_anim.png'], u'title': [u'']}>
+2016-05-11 11:40:09,402 form invalid
+2016-05-11 11:40:09,402 <QueryDict: {u'csrfmiddlewaretoken': [u'5AtLSFOdYJrKivESTnl2PfRnCiE4Sg8p'], u'pyld': [u'gecko_anim.png'], u'title': [u'']}>
+2016-05-11 11:40:35,654 form invalid
+2016-05-11 11:40:35,654 <QueryDict: {u'csrfmiddlewaretoken': [u'5AtLSFOdYJrKivESTnl2PfRnCiE4Sg8p'], u'pyld': [u'gecko_anim.png'], u'title': [u'']}>
+2016-05-11 11:41:29,152 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:41:39,502 gecko_anim.png
+2016-05-11 11:44:50,264 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:44:56,641 gecko_anim.png
+2016-05-11 11:44:56,736 gecko_anim.png deleted
+2016-05-11 11:48:27,607 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 11:56:54,388 form valid
+2016-05-11 11:56:54,428 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:05:48,652 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:07:10,573 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:07:25,501 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:09:44,539 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:11:44,795 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:13:07,991 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:14:58,263 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:16:17,679 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:22:22,274 form valid
+2016-05-11 12:22:22,283 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:22:54,742 iwokrama_pixelated.png
+2016-05-11 12:22:54,763 iwokrama_pixelated.png deleted
+2016-05-11 12:26:17,803 form valid
+2016-05-11 12:26:17,905 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:32:26,306 form valid
+2016-05-11 12:32:26,463 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:38:08,652 form valid
+2016-05-11 12:38:08,706 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 12:41:21,128 form valid
+2016-05-11 12:41:21,197 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 14:08:04,995 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 14:10:25,671 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 14:10:40,479 Not Found: /layers/upload
+2016-05-11 14:30:20,965 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 14:43:18,368 form is valid
+2016-05-11 14:43:18,369 Kaieteur-Falls-Trail-Map.png
+2016-05-11 14:43:18,445 Kaieteur-Falls-Trail-Map.png deleted
+2016-05-11 14:43:18,940 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 14:46:44,891 pacmap.home
+2016-05-11 14:46:44,892 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 14:51:54,083 pacmap.home
+2016-05-11 14:51:54,083 Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/parks/pacmap/views.py", line 21, in home
+    pois	= POI.objects.all().values();
+NameError: global name 'POI' is not defined
+2016-05-11 14:51:54,521 /var/www/parks/venv/lib/python2.7/site-packages/mezzanine/core/views.py:225: RemovedInDjango110Warning: render() must be called with a dict, not a RequestContext.
+  return HttpResponseServerError(t.render(context))
+
+2016-05-11 14:51:54,559 /var/www/parks/venv/lib/python2.7/site-packages/mezzanine/template/__init__.py:122: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return self.template.render(context)
+
+2016-05-11 14:51:54,604 /var/www/parks/venv/lib/python2.7/site-packages/mezzanine/pages/templatetags/pages_tags.py:134: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return t.render(Context(context))
+
+2016-05-11 14:52:04,250 pacmap.home
+2016-05-11 14:52:04,251 Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/parks/pacmap/views.py", line 21, in home
+    pois	= POI.objects.all().values();
+NameError: global name 'POI' is not defined
+2016-05-11 14:52:15,028 pacmap.home
+2016-05-11 14:52:15,028 Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/parks/pacmap/views.py", line 21, in home
+    pois	= POI.objects.all().values();
+NameError: global name 'POI' is not defined
+2016-05-11 14:52:40,907 pacmap.home
+2016-05-11 14:52:40,907 Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/parks/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/parks/pacmap/views.py", line 21, in home
+    pois	= POI.objects.all().values();
+NameError: global name 'POI' is not defined
+2016-05-11 15:07:48,180 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 15:23:10,350 pacmap.home
+2016-05-11 15:23:10,352 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 16:27:53,680 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 16:40:57,021 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 17:01:44,916 /var/www/dev/venv/lib/python2.7/site-packages/django/shortcuts.py:45: RemovedInDjango110Warning: The context_instance argument of render_to_string is deprecated.
+  using=using)
+
+2016-05-11 17:02:27,125 Internal Server Error: /admin/pacmap/galleryimage/add/
+Traceback (most recent call last):
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 541, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/views/decorators/cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 244, in inner
+    return view(request, *args, **kwargs)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1437, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/var/www/dev/venv/lib/python2.7/site-packages/django/utils/decorators.py", line 67, in _wrapper
+    return bound_func(*arg

@@ -1,0 +1,141 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":14,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"lethem",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.796181,3.376533]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Lethem",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.796181,3.376533]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"charity",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.604,7.383]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Charity",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.604,7.383]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"mathewsridge",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-60.126218,7.505810]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Mathews Ridge",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-60.126218,7.505810]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"linden",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.301659,6.011052]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Linden",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.301659,6.011052]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"corriverton",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-57.148819,5.927243]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Corriverton",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-57.148819,5.927243]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"new_amsterdam",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-57.513299,6.239238]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"New Amsterdam",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-57.513299,6.239238]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"mahdia",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.048470,5.273087]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Mahdia",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.048470,5.273087]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"bartica",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.620537,6.407638]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Bartica",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.620537,6.407638]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"georgetown",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.17,6.8]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Georgetown",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.17,6.8]
+			}
+		}
+	]
+}

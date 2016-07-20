@@ -1,0 +1,34 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":2,
+	"features":[
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1513,6.8208]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Example Orange Flag",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1513,6.8208]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.1499,6.8207]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Example Orange Flag",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.1499,6.8207]
+			}
+		}
+	]
+}

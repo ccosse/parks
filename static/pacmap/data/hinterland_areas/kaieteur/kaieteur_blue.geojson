@@ -1,0 +1,36 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":2,
+	"features":[
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.4854,5.1755]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Kaieteur Airstrip",
+				"mediapath":["hinterland_areas","kaieteur","kaieteur_blue"],
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.4854,5.1755]
+			}
+		},
+		{
+			"type":"Feature",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.4806,5.1473]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Kaieteur Visitor Center",
+				"mediapath":["hinterland_areas","kaieteur","kaieteur_orange"],
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.4806,5.1473]
+			}
+		}
+	]
+}

@@ -1,0 +1,81 @@
+{
+	"type":"FeatureCollection",
+	"totalFeatures":14,
+	"features":[
+		{
+			"type":"Feature",
+			"id":"kamarang",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-60.616,5.856]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Kamarang",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-60.616,5.856]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"karupukari",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.668,4.656]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Karupukari",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.668,4.656]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"apoteri",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-58.584,4.035]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Apoteri",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-58.584,4.035]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"mabaruma",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.778,8.192]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Mabaruma",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.778,8.192]
+			}
+		},
+		{
+			"type":"Feature",
+			"id":"annai",
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-59.129280,3.962701]
+			},
+			"geometry_name":"the_geom",
+			"properties":{
+				"Name":"Annai",
+				"media_html":"<img src='/static/pacmap/img/place.jpg'/>",
+				"feature_type":"poi",
+				"coordinates":[-59.129280,3.962701]
+			}
+		}
+	]
+}

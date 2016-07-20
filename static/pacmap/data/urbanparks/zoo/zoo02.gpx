@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<gpx version="1.0" creator="Ultra GPS Logger" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/0" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+<trk>
+<name><![CDATA[GY-zoo02]]></name>
+<trkseg>
+<trkpt lat="6.807389" lon="-58.144962"><ele>-26.00</ele><time>2016-06-13T19:52:58Z</time></trkpt>
+<trkpt lat="6.807396" lon="-58.145012"><ele>-25.00</ele><time>2016-06-13T19:53:05Z</time></trkpt>
+<trkpt lat="6.807404" lon="-58.145062"><ele>-25.00</ele><time>2016-06-13T19:53:09Z</time></trkpt>
+<trkpt lat="6.807418" lon="-58.145109"><ele>-26.00</ele><time>2016-06-13T19:53:13Z</time></trkpt>
+<trkpt lat="6.807436" lon="-58.145163"><ele>-28.00</ele><time>2016-06-13T19:53:17Z</time></trkpt>
+<trkpt lat="6.807458" lon="-58.145212"><ele>-28.00</ele><time>2016-06-13T19:53:21Z</time></trkpt>
+<trkpt lat="6.807477" lon="-58.145261"><ele>-29.00</ele><time>2016-06-13T19:53:25Z</time></trkpt>
+<trkpt lat="6.807499" lon="-58.145310"><ele>-29.00</ele><time>2016-06-13T19:53:29Z</time></trkpt>
+<trkpt lat="6.807517" lon="-58.145358"><ele>-28.00</ele><time>2016-06-13T19:53:33Z</time></trkpt>
+<trkpt lat="6.807538" lon="-58.145404"><ele>-28.00</ele><time>2016-06-13T19:53:37Z</time></trkpt>
+<trkpt lat="6.807546" lon="-58.145455"><ele>-28.00</ele><time>2016-06-13T19:53:41Z</time></trkpt>
+<trkpt lat="6.807534" lon="-58.145508"><ele>-28.00</ele><time>2016-06-13T19:53:46Z</time></trkpt>
+<trkpt lat="6.807518" lon="-58.145561"><ele>-27.00</ele><time>2016-06-13T19:53:51Z</time></trkpt>
+<trkpt lat="6.807507" lon="-58.145614"><ele>-26.00</ele><time>2016-06-13T19:53:55Z</time></trkpt>
+<trkpt lat="6.807499" lon="-58.145661"><ele>-26.00</ele><time>2016-06-13T19:53:59Z</time></trkpt>
+<trkpt lat="6.807520" lon="-58.145705"><ele>-26.00</ele><time>2016-06-13T19:54:15Z</time></trkpt>
+<trkpt lat="6.807539" lon="-58.145756"><ele>-26.00</ele><time>2016-06-13T19:54:19Z</time></trkpt>
+<trkpt lat="6.807563" lon="-58.145803"><ele>-27.00</ele><time>2016-06-13T19:54:23Z</time></trkpt>
+<trkpt lat="6.807587" lon="-58.145841"><ele>-28.00</ele><time>2016-06-13T19:54:27Z</time></trkpt>
+<trkpt lat="6.807610" lon="-58.145880"><ele>-28.00</ele><time>2016-06-13T19:54:31Z</time></trkpt>
+<trkpt lat="6.807635" lon="-58.145921"><ele>-29.00</ele><time>2016-06-13T19:54:35Z</time></trkpt>
+<trkpt lat="6.807663" lon="-58.145965"><ele>-30.00</ele><time>2016-06-13T19:54:39Z</time></trkpt>
+<trkpt lat="6.807685" lon="-58.146006"><ele>-29.00</ele><time>2016-06-13T19:54:43Z</time></trkpt>
+<trkpt lat="6.807708" lon="-58.146050"><ele>-27.00</ele><time>2016-06-13T19:54:48Z</time></trkpt>
+<trkpt lat="6.807729" lon="-58.146091"><ele>-30.00</ele><time>2016-06-13T19:54:52Z</time></trkpt>
+<trkpt lat="6.807746" lon="-58.146140"><ele>-32.00</ele><time>2016-06-13T19:54:56Z</time></trkpt>
+<trkpt lat="6.807752" lon="-58.146195"><ele>-32.00</ele><time>2016-06-13T19:55:00Z</time></trkpt>
+<trkpt lat="6.807750" lon="-58.146249"><ele>-33.00</ele><time>2016-06-13T19:55:04Z</time></trkpt>
+<trkpt lat="6.807742" lon="-58.146302"><ele>-34.00</ele><time>2016-06-13T19:55:09Z</time></trkpt>
+<trkpt lat="6.807721" lon="-58.146349"><ele>-32.00</ele><time>2016-06-13T19:55:12Z</time></trkpt>
+<trkpt lat="6.807696" lon="-58.146403"><ele>-31.00</ele><time>2016-06-13T19:55:16Z</time></trkpt>
+<trkpt lat="6.807687" lon="-58.146457"><ele>-30.00</ele><time>2016-06-13T19:55:20Z</time></trkpt>
+<trkpt lat="6.807699" lon="-58.146509"><ele>-31.00</ele><time>2016-06-13T19:55:24Z</time></trkpt>
+<trkpt lat="6.807718" lon="-58.146557"><ele>-31.00</ele><time>2016-06-13T19:55:28Z</time></trkpt>
+<trkpt lat="6.807729" lon="-58.146602"><ele>-30.00</ele><time>2016-06-13T19:55:32Z</time></trkpt>
+<trkpt lat="6.807745" lon="-58.146649"><ele>-30.00</ele><time>2016-06-13T19:55:36Z</time></trkpt>
+<trkpt lat="6.807757" lon="-58.146698"><ele>-29.00</ele><time>2016-06-13T19:55:40Z</time></trkpt>
+<trkpt lat="6.807770" lon="-58.146750"><ele>-29.00</ele><time>2016-06-13T19:55:44Z</time></trkpt>
+<trkpt lat="6.807782" lon="-58.146801"><ele>-30.00</ele><time>2016-06-13T19:55:48Z</time></trkpt>
+<trkpt lat="6.807796" lon="-58.146852"><ele>-31.00</ele><time>2016-06-13T19:55:52Z</time></trkpt>
+<trkpt lat="6.807816" lon="-58.146900"><ele>-31.00</ele><time>2016-06-13T19:55:56Z</time></trkpt>
+<trkpt lat="6.807839" lon="-58.146947"><ele>-32.00</ele><time>2016-06-13T19:56:00Z</time></trkpt>
+<trkpt lat="6.807864" lon="-58.146987"><ele>-32.00</ele><time>2016-06-13T19:56:04Z</time></trkpt>
+<trkpt lat="6.807892" lon="-58.147027"><ele>-32.00</ele><time>2016-06-13T19:56:12Z</time></trkpt>
+<trkpt lat="6.807931" lon="-58.147065"><ele>-30.00</ele><time>2016-06-13T19:56:16Z</time></trkpt>
+<trkpt lat="6.807959" lon="-58.147103"><ele>-29.00</ele><time>2016-06-13T19:56:19Z</time></trkpt>
+<trkpt lat="6.807989" lon="-58.147147"><ele>-30.00</ele><time>2016-06-13T19:56:23Z</time></trkpt>
+<trkpt lat="6.808011" lon="-58.147191"><ele>-30.00</ele><time>2016-06-13T19:56:27Z</time></trkpt>
+<trkpt lat="6.808016" lon="-58.147237"><ele>-28.00</ele><time>2016-06-13T19:56:31Z</time></trkpt>
+<trkpt lat="6.808012" lon="-58.147285"><ele>-29.00</ele><time>2016-06-13T19:56:35Z</time></trkpt>
+<trkpt lat="6.808000" lon="-58.147336"><ele>-31.00</ele><time>2016-06-13T19:56:39Z</time></trkpt>
+<trkpt lat="6.807984" lon="-58.147390"><ele>-32.00</ele><time>2016-06-13T19:56:43Z</time></trkpt>
+<trkpt lat="6.807974" lon="-58.147440"><ele>-31.00</ele><time>2016-06-13T19:56:47Z</time></trkpt>
+<trkpt lat="6.807961" lon="-58.147493"><ele>-31.00</ele><time>2016-06-13T19:56:52Z</time></trkpt>
+<trkpt lat="6.807933" lon="-58.147531"><ele>-31.00</ele><time>2016-06-13T19:56:56Z</time></trkpt>
+<trkpt lat="6.807897" lon="-58.147567"><ele>-34.00</ele><time>2016-06-13T19:57:01Z</time></trkpt>
+<trkpt lat="6.807856" lon="-58.147599"><ele>-34.00</ele><time>2016-06-13T19:57:06Z</time></trkpt>
+<trkpt lat="6.807810" lon="-58.147624"><ele>-33.00</ele><time>2016-06-13T19:57:11Z</time></trkpt>
+<trkpt lat="6.807766" lon="-58.147654"><ele>-31.00</ele><time>2016-06-13T19:57:16Z</time></trkpt>
+<trkpt lat="6.807731" lon="-58.147686"><ele>-30.00</ele><time>2016-06-13T19:57:20Z</time></trkpt>
+<trkpt lat="6.807691" lon="-58.147724"><ele>-28.00</ele><time>2016-06-13T19:57:24Z</time></trkpt>
+<trkpt lat="6.807646" lon="-58.147752"><ele>-28.00</ele><time>2016-06-13T19:57:28Z</time></trkpt>
+<trkpt lat="6.807604" lon="-58.147775"><ele>-29.00</ele><time>2016-06-13T19:57:32Z</time></trkpt>
+<trkpt lat="6.807580" lon="-58.147790"><ele>-29.00</ele><time>2016-06-13T19:57:36Z</time></trkpt>
+</trkseg>
+</trk>
+</gpx>
+<!-- Summary -->
+<!-- Creator: Ultra GPS Logger 3.115i -->
+<!-- Name: GY-zoo02 -->
+<!-- Duration: 00:04:39 -->
+<!-- Length: 355.17 -->
+<!-- Speed: 4.58 -->
+<!-- POI: 0 -->
+<!-- Category: Hike -->
+<!-- From: 6.807388738097046; -58.14496201604623 To: 6.807580179481882; -58.147789608607994 -->
+<!-- FromCity: Georgetown ToCity: Georgetown -->
+<!-- FromUTC: 2016-06-13T19:52:58Z [-4.0] ToUTC: 2016-06-13T19:57:36Z [-4.0] -->
+<!-- Trigger: 5 TimeTrigger: 1000 DistTrigger: 0 -->
+<!-- MaxSpeed: 5.40 -->
+<!-- Stopped: 00:00:00 (0) -->
+<!-- AvgMovSpeed: 4.54 -->
